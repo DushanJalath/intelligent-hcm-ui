@@ -1,0 +1,39 @@
+.container3{
+    margin-top: 50px;
+    width: 500px;
+    height : 120px;
+    background-color: #EAEAEA;
+    border-radius: 10px;
+    position:relative;
+    
+  }
+.title3{
+    position: absolute;
+    top : 10px;
+    right: 10px;
+    background-color:#02936F;
+    color: white;
+    border-radius: 50px;
+    padding: 10px;
+    margin-top: -23px;
+}
+
+.content5{
+    position:absolute;
+    padding:0px;
+    top:15px;
+    margin: 25px 10px;
+    font-family: 'Inter', sans-serif;
+    display:flex;
+    align-items: center;
+}
+
+#time3{
+    margin-left: 90px;
+    padding-left: 0px;
+    font-weight: 800;
+    font-size: 48px;
+}
+#time4{
+    font-size: 15px;
+}

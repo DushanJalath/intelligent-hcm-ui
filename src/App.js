@@ -1,13 +1,9 @@
 import './App.css';
-import LoginCoverImage from './components/LoginCoverImage.js';
-import AccountLogin from './components/AccountLogin.js';
+import Frame from './components/Frame.js'
 
 function App() {
   return (
-    <div className="container">
-      <LoginCoverImage/>
-      <AccountLogin/>
-    </div>
+    <Frame/>
   );
 }
 

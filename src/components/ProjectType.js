@@ -10,11 +10,20 @@ function ProjectType(props) {
 
     return (
         <div>
-            <label className={`checkbox-container ${isChecked ? 'checked' : ''}`}>
-                <input type="checkbox" onChange={handleCheckboxChange}></input>
-                <span className="checkmark"></span>
-                {props.content}
-            </label>
+            {isChecked ? (
+                <label className='checkbox-container checked'>
+                    <input type="checkbox" onChange={handleCheckboxChange}></input>
+                    <span className="checkmark"></span>
+                    {props.content}
+                </label>
+            ) : (
+                <label className='checkbox-container'>
+                    <input type="checkbox" onChange={handleCheckboxChange}></input>
+                    <span className="checkmark"></span>
+                    {props.content}
+                </label>
+            )}
+            
         </div>
     );
 }

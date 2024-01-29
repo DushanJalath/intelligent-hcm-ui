@@ -1,0 +1,26 @@
+.job-card {
+    
+    padding: 5px;
+    padding-left: 10px;
+    width: 600px;
+    height:250px;
+    margin:auto;
+    
+    background-color: #F3F3F3;
+    margin-top: 50px;
+    font-family:'Inter', sans-serif ;
+  }
+  
+  .job-details-btn {
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 8px;
+    margin-top: 10px;
+    padding:10px 20px;
+  }
+
+
+  

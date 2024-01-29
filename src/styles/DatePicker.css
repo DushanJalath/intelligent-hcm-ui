@@ -1,0 +1,40 @@
+/* customizing the calendar*/
+
+.react-datepicker{
+    font-family: Inter;
+    background-color: #FFFFFF;
+    border: 1px solid white;
+}
+
+.react-datepicker__header{
+    background-color: #8db1a9;
+    color: #2d2929;
+}
+
+.react-datepicker__day-name{
+    background-color: #74958d;
+}
+
+.react-datepicker__day--selected{
+    background-color: #02936F;
+    color: #FFFFFF;
+}
+
+.react-datepicker__day--today{
+    background-color: white;
+    border-radius: 25%;
+    outline: 2px solid #02936F;
+
+}
+
+.react-datepicker__navigation--previous, .react-datepicker__navigation--next{
+    color:#000000 ;
+}
+
+.react-datepicker__navigation--next{
+    color:#000000 ;
+}
+
+.calendar-icon{
+    margin-left: -40px;
+}

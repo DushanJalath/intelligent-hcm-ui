@@ -1,7 +1,10 @@
 import './App.css';
 import Frame from './components/Frame.js'
 
+
 import Monthlyreport from './components/Monthlyreport.js'
+=======
+
 
 
 <style>
@@ -9,6 +12,7 @@ import Monthlyreport from './components/Monthlyreport.js'
 </style>
 function App() {
   return (
+
     <Monthlyreport
       title="Monthly report"
     />
@@ -19,3 +23,5 @@ function App() {
 
 
 export default App;
+=======
+

@@ -1,13 +1,14 @@
 .container{
     margin-top: 50px;
     width: 300px;
-
-    height : 200px;
-
+    height : 90px;
     background-color: #EAEAEA;
     border-radius: 10px;
     position: relative;
-  }
+    display: flex;
+    flex-direction: column;
+}
+
 .title{
     position: absolute;
     top : 10px;
@@ -16,5 +17,16 @@
     color: white;
     border-radius: 50px;
     padding: 5px;
-    margin-top: -23px;
+    margin-top: -25px;
+    width: 190px;
+    text-align: center;
+}
+
+p{
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

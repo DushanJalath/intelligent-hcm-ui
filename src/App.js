@@ -1,4 +1,5 @@
 import './App.css';
+import Frame from './components/Frame.js'
 
 import SetWorkingHours from './components/SetWorkingHours'
 
@@ -8,12 +9,13 @@ import SetWorkingHours from './components/SetWorkingHours'
 </style>
 function App() {
   return (
-
     <SetWorkingHours
       title="Set Working Hours"
     />
   );
 
 }
+
+
 
 export default App;

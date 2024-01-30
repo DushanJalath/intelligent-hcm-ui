@@ -1,9 +1,13 @@
 import './App.css';
-import Frame from './components/Frame.js'
+import AddVacancy from './components/AddVacancy';
+import SendDetails from './components/SendDetails';
+import RequestedVacancy from './components/RequestedVacancy';
+import RequestedVacancyIcons from './components/RequestedVacancyIcons';
 
 function App() {
   return (
-    <Frame/>
+    <>
+    </>
   );
 }
 

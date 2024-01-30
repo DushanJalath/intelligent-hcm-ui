@@ -1,0 +1,42 @@
+.labels-SD{
+    width: 250px;
+    height: 24px;
+    top: 195px;
+    left: 474px;
+    opacity: 0.8px;
+    margin-right: 10px;
+
+    /*font-family: Inter;*/
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.01em;
+    text-align: left;
+    color: #000000;
+
+}
+
+.input-av{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    align-items: center;
+}
+.box-SD{
+    width: 329px;
+    height: 139px;
+    top: 182px;
+    left: 662px;
+    border-radius: 30px;
+    border-width: 0px;
+    font-size: large;
+    padding-left: 30px;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+  
+  }
+  .mdcloud-icon{
+    margin-top: 40px;
+    margin-left: 95PX;
+  }
+  

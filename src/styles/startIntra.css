@@ -1,0 +1,17 @@
+@import url(https://fontawesome.com/icons/circle-play?f=classic&s=light);
+
+.container{
+    width: 450px;
+    height : 90px;
+}
+
+
+ ul {
+    list-style: none;
+    padding: 0;
+    font-weight: bold;
+}
+li{
+    margin-bottom: 1.5px;
+}
+

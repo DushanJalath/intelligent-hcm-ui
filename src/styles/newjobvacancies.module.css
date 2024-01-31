@@ -1,14 +1,14 @@
-.container4{
-    border: 5px solid transparent;
-    margin-top: 50px;
+.container{
+    margin-top: 0px;
     width: 800px;
     height : 800px;
     background-color: #EAEAEA;
     border-radius: 10px;
     position: relative;
     font-family:Inter, sans-serif;
+    margin:auto;
   }
-.title4{
+.title{
     position: absolute;
     width:190px;
     top : 10px;
@@ -22,14 +22,22 @@
     font-size: 14px;
     
 }
+.content{
+    padding:10px;
+    display:absolute;
+    height:95%;
+}
 
 .pagination {
-    position:absolute;
-    margin-top:100px;
+    
+    
+    margin-top:70px;
     display: flex;
     align-items: center;
-    bottom:10px;
-    left:30%
+    justify-content: center;
+    
+    
+    
 }
 
 .btn {

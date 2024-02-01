@@ -1,5 +1,8 @@
 import './App.css';
-import Frame from './components/Frame.js'
+import AddVacancy from './components/AddVacancy';
+import SendDetails from './components/SendDetails';
+import RequestedVacancy from './components/RequestedVacancy';
+import RequestedVacancyIcons from './components/RequestedVacancyIcons';
 
 
 import Jvac from "./pages/employee job vacancy page.js"
@@ -14,7 +17,7 @@ import Overtime from "./pages/employee overtime tracking page.js"
 function App() {
   return (
 
-    <Jvac/>
+
   );
 
 }

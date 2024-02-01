@@ -4,7 +4,10 @@ import SendDetails from './components/SendDetails';
 import RequestedVacancy from './components/RequestedVacancy';
 import RequestedVacancyIcons from './components/RequestedVacancyIcons';
 
-import SetWorkingHours from './components/SetWorkingHours'
+
+import Monthlyreport from './components/Monthlyreport.js'
+=======
+
 
 
 <style>
@@ -12,14 +15,7 @@ import SetWorkingHours from './components/SetWorkingHours'
 </style>
 function App() {
   return (
-<<<<<<< HEAD
-    <>
-    </>
-=======
-    <SetWorkingHours
-      title="Set Working Hours"
-    />
->>>>>>> 30788e56352f13f3db535d4a66ef9c9f82ada8d9
+
   );
 
 }
@@ -27,3 +23,5 @@ function App() {
 
 
 export default App;
+=======
+

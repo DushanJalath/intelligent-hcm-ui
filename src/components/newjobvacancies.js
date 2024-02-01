@@ -21,6 +21,7 @@ function Frame(props) {
             <div className={Jobv.content}>
             <Jobcard {...job1} butval="JOB DETAILS"/>
             <Jobcard {...job1} butval="JOB DETAILS"/>
+            <Jobcard {...job1} butval="JOB DETAILS"/>
             
 
 

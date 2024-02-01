@@ -5,9 +5,11 @@ import RequestedVacancy from './components/RequestedVacancy';
 import RequestedVacancyIcons from './components/RequestedVacancyIcons';
 
 
+
 import Jvac from "./pages/employee job vacancy page.js"
 import Jobdetails from './pages/employee job details page.js'
 import Overtime from "./pages/employee overtime tracking page.js"
+import Navbar from "./components/Navbar.jsx"
 
 
 
@@ -16,7 +18,6 @@ import Overtime from "./pages/employee overtime tracking page.js"
 </style>
 function App() {
   return (
-
 
   );
 

@@ -1,15 +1,15 @@
-import '../styles/Overtimecount.css'
+import Overt from '../styles/Overtimecount.module.css'
 function Overtimecount(props) {
     return(
-        <div className='container2'>
-            <div className='title2'>{props.title}</div>
-            <div className='content2'>
-                <div className='container6'>
-                    <span id='time'>00:10:00</span>
-                    <span id='time2'>(hr : min : sec)</span>
+        <div className={Overt.container}>
+            <div className={Overt.title}>{props.title}</div>
+            <div className={Overt.content}>
+                <div className={Overt.container2}>
+                    <span id={Overt.time1}>00:10:00</span>
+                    <span id={Overt.time2}>(hr : min : sec)</span>
                 </div>
                 
-                <div className='text'>
+                <div className={Overt.text}>
                 Initiate overtime counting after the clock passes 05:00PM by engaging in project work. To activate overtime tracking, ensure ongoing project tasks are being performed.
                 </div>
 

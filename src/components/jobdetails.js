@@ -1,4 +1,4 @@
-import '../styles/jobvacancy.css'
+import jobdetailstyle from '../styles/jobdetails.module.css'
 import JobCard from './jobcard.js'
 
 function Frame(props) {
@@ -10,11 +10,11 @@ function Frame(props) {
 
 
     return(
-        <div className="container5">
-        <div className="title5">{props.title}</div>
-        <div className="jobvacancy">
-        <JobCard {...job1}/>
-        <button className="applybutton">Apply</button>
+        <div className={jobdetailstyle.container}>
+        <div className={jobdetailstyle.title}>{props.title}</div>
+        <div className={jobdetailstyle.jobvacancy}>
+        <JobCard {...job1} butval = "APPLY NOW"/>
+        
         </div>
         </div>
         )

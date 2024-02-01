@@ -1,12 +1,12 @@
-import '../styles/Totalovertime.css'
+import Totalover from '../styles/Totalovertime.module.css'
 function Totalovertime(props) {
     return(
-        <div className='container3'>
-            <div className='title3'>{props.title}</div>
+        <div className={Totalover.container}>
+            <div className={Totalover.title}>{props.title}</div>
             
-                <div className='content5'>
-                    <span id='time3'>00:10:00</span>
-                    <span id='time4'>(hr : min : sec)</span>
+                <div className={Totalover.content}>
+                    <span id={Totalover.time1}>00:10:00</span>
+                    <span id={Totalover.time2}>(hr : min : sec)</span>
                 </div>
                 
             </div>

@@ -5,8 +5,9 @@ import RequestedVacancy from './components/RequestedVacancy';
 import RequestedVacancyIcons from './components/RequestedVacancyIcons';
 
 
-import Monthlyreport from './components/Monthlyreport.js'
-=======
+import Jvac from "./pages/employee job vacancy page.js"
+import Jobdetails from './pages/employee job details page.js'
+import Overtime from "./pages/employee overtime tracking page.js"
 
 
 
@@ -16,6 +17,7 @@ import Monthlyreport from './components/Monthlyreport.js'
 function App() {
   return (
 
+
   );
 
 }
@@ -23,5 +25,5 @@ function App() {
 
 
 export default App;
-=======
+
 

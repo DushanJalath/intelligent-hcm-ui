@@ -2,8 +2,9 @@ import './App.css';
 import Frame from './components/Frame.js'
 
 
-import Monthlyreport from './components/Monthlyreport.js'
-=======
+import Jvac from "./pages/employee job vacancy page.js"
+import Jobdetails from './pages/employee job details page.js'
+import Overtime from "./pages/employee overtime tracking page.js"
 
 
 
@@ -13,9 +14,7 @@ import Monthlyreport from './components/Monthlyreport.js'
 function App() {
   return (
 
-    <Monthlyreport
-      title="Monthly report"
-    />
+    <Jvac/>
   );
 
 }
@@ -23,5 +22,5 @@ function App() {
 
 
 export default App;
-=======
+
 

@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import '../styles/jobcard.css';
-import '../styles/newjobvacancies.css'
+import Jobv from '../styles/newjobvacancies.module.css'
 import Jobcard from './jobcard.js'
 function Frame(props) {
     const [currentPage, setCurrentPage] = useState(1);
@@ -16,21 +16,25 @@ function Frame(props) {
         description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bibendum vitae dictumst sit vitae, mi imperdiet sit. Lectus eleifend aliquam nibh mauris, pretium. Lectus magnis lorem massa urna felis porta.'}
 
     return(
-        <div className='container4'>
-            <div className='title4'>{props.title}</div>
-            <Jobcard {...job1}/>
-            <Jobcard {...job1}/>
+        <div className={Jobv.container}>
+            <div className={Jobv.title}>{props.title}</div>
+            <div className={Jobv.content}>
+            <Jobcard {...job1} butval="JOB DETAILS"/>
+            <Jobcard {...job1} butval="JOB DETAILS"/>
+            
 
 
-
-            <div className="pagination">
-            <button onClick={() => handlePageChange(currentPage - 1)} className="btn" disabled={currentPage === 1}>Previous</button>
-            <button onClick={() => handlePageChange(1)} className={`btn ${currentPage === 1 ? 'active' : ''}`}>1</button>
-            <button onClick={() => handlePageChange(2)} className={`btn ${currentPage === 2 ? 'active' : ''}`}>2</button>
-            <button onClick={() => handlePageChange(3)} className={`btn ${currentPage === 3 ? 'active' : ''}`}>3</button>
-            <button onClick={() => handlePageChange(currentPage + 1)} className="btn" disabled={currentPage === 3}>Next</button>
+            <div className={Jobv.pagination}>
+            <button onClick={() => handlePageChange(currentPage - 1)} className={Jobv.btn} disabled={currentPage === 1}>Previous</button>
+            <button onClick={() => handlePageChange(1)} className={`${Jobv.btn} ${currentPage === 1 ? Jobv.active : ''}`}>1</button>
+            <button onClick={() => handlePageChange(2)} className={`${Jobv.btn} ${currentPage === 2 ? Jobv.active : ''}`}>2</button>
+            <button onClick={() => handlePageChange(3)} className={`${Jobv.btn} ${currentPage === 3 ? Jobv.active : ''}`}>3</button>
+            <button onClick={() => handlePageChange(currentPage + 1)} className={Jobv.btn} disabled={currentPage === 3}>Next</button>
         </div>
         </div>
+        </div>
+        
+        
     );
 }
 

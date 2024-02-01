@@ -1,8 +1,19 @@
 import React from 'react'
 import '../styles/accountlogin.css';
 import UserTypes from './UserTypes';
+import { useState } from 'react';
 
 export default function AccountLogin() {
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [rememberMe, setRememberMe] = useState(false);
+
+    const handleLogin = () => {
+        console.log('Email:', email);
+        console.log('Password:', password);
+        console.log('Remember Me:', rememberMe);
+  };
   return (
     <div className='right-container'>
         <div className='container1'>
@@ -23,16 +34,34 @@ export default function AccountLogin() {
 
             <div className='w-full flex flex-col'>
                 <p className='paragraph'>Email address</p>
-                <input type='email' placeholder='Email' className='box'/>
+                <input
+                    type='email'
+                    placeholder='Email'
+                    className='box'
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
             </div>
             <div className='w-full flex flex-col'>
                 <p className='paragraph'>Password</p>
-                <input type='password' placeholder='Password' className='box'/>
+                <input
+                    type='password'
+                    placeholder='Password'
+                    className='box'
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
             </div>
 
             <div className='w-full flex items-center justify-between'>
                 <div className='checkbox-raw'>
-                    <input type='checkbox' id='myCheckbox' className='custom-checkbox' />
+                    <input
+                    type='checkbox'
+                    id='myCheckbox'
+                    className='custom-checkbox'
+                    checked={rememberMe}
+                    onChange={() => setRememberMe(!rememberMe)}
+                    />
                     <label htmlFor='myCheckbox' className='custom-label'></label>
 
                     <p className='paragraph'>Remember me</p>
@@ -40,7 +69,7 @@ export default function AccountLogin() {
             </div>
 
             <div className='w-full flex flex-col my-4'>
-                <button className='login-box'>
+                <button className='login-box' onClick={handleLogin}>
                     Log in
                 </button>
             </div>

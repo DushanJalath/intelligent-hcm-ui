@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 .App {
   text-align: center;
 }
@@ -39,10 +41,10 @@
     transform: rotate(360deg);
   }
 }
+>>>>>>> 30788e56352f13f3db535d4a66ef9c9f82ada8d9
 .container {
   width: 100%;
   height: 100%;
   display: flex;
   align-items: start;
 }
-

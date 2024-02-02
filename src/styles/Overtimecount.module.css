@@ -1,4 +1,4 @@
-.container2{
+.container{
     margin-top: 50px;
     width: 500px;
     height : 200px;
@@ -7,7 +7,7 @@
     position:relative;
     
   }
-.title2{
+.title{
     position: absolute;
     top : 10px;
     right: 10px;
@@ -19,14 +19,14 @@
     width:190px;
     text-align: center;
 }
-.content2{
+.content{
     position:absolute;
     top: 50px;
     font-family: 'Inter', sans-serif;
     
 }
 
-#time{
+#time1{
     margin-left: 90px;
     padding-left: 0px;
     font-weight: 800;
@@ -41,7 +41,7 @@
     font: weight 400px;
     
 }
-.container6{
+.container2{
     display:flex;
     align-items: center;
     

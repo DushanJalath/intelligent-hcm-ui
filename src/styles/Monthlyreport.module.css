@@ -1,12 +1,14 @@
-.container1{
+.container{
     margin-top: 50px;
-    width: 450px;
+    width: 430px;
     height : 350px;
     background-color: #EAEAEA;
     border-radius: 10px;
     position: relative;
+    border:5px transparent black
+    
   }
-.title1{
+.title{
     position: absolute;
     width:190px;
     top : 10px;
@@ -19,24 +21,29 @@
     text-align: center;
 }
 .content{
-    position:absolute;
-    top:50px;
+    position: absolute;
+    top:20px;
+    margin-top:20px;
     font-size: 28px;
     font-family: 'Inter', sans-serif;
+    padding:10px;
     
 }
 .content1{
     
-    font-size: 20px;
+    font-size: 18px;
 }
-.content3{
-    margin-top: 60px;
-    font-size:34px;
+.content2{
+    margin-top: 40px;
+    font-size:32px;
     font-weight: 600;
     
 }
-.printer{
+img{
+    height:100px;
+    margin-right: 0px;
     position:absolute;
-    right:50px;
-    bottom: 40px;
+    bottom:0px;
+    right:0px;
+    
 }

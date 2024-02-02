@@ -1,12 +1,13 @@
 import './App.css';
-import EmpLeave from './components/EmpLeave';
-import RemainingLeaves from './components/RemainingLeaves';
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+</style>
 
 function App() {
   return (
     <>
-      <EmpLeave title="Employee Leave Form"/>
-      <RemainingLeaves title="Remaining Leaves"/>
+     
     </>
   )
 }

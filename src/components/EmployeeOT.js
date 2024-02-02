@@ -27,7 +27,7 @@ const EmployeeOT =()=>{
     }
 
     return(
-       <div className="OT-charts">
+       <div className="OTcharts">
         <div className="table">
             <table>
                 <tr>

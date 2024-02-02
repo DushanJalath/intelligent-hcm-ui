@@ -12,7 +12,7 @@ const SwitchView =(props)=>{
 
     return(
     
-    <div className="switch-view">
+    <div className="switch">
         <div className="switch-container">
         <button onClick={()=>handleOptionCHange(option1)}
         className={selectedOption===option1?'active':''}>

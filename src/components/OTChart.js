@@ -26,7 +26,7 @@ const OTChart = ({values})=>{
     };
 
     const chartOptions={
-        cutout: '70%',
+        cutout: '65%',
         tooltip:{
             enabled:false
         },
@@ -39,7 +39,7 @@ const OTChart = ({values})=>{
     }
 
     return (
-    <div className="container2">
+    <div className="container-2">
 
         <NameTag/>
 

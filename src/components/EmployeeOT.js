@@ -7,7 +7,7 @@ const EmployeeOT =()=>{
     
     const chartData_1=[55,45];
 
-    const chartData_2=[10,90];
+    const chartData_2=[20,80];
 
     const chartData_3=[75,25];
 
@@ -27,7 +27,7 @@ const EmployeeOT =()=>{
     }
 
     return(
-       <div className="OTcharts">
+       <div className="OT-charts">
         <div className="table">
             <table>
                 <tr>

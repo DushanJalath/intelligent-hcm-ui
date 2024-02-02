@@ -5,7 +5,7 @@ import OTChart from "./OTChart.js";
 
 const EmployeeOT =()=>{
     
-    const chartData_1=[45,55];
+    const chartData_1=[55,45];
 
     const chartData_2=[10,90];
 

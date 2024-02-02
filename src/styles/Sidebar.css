@@ -1,6 +1,29 @@
-/* Sidebar.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-/* Switch styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply font-Inter;
+  }
+  body {
+    background: #ffffff;
+  }
+  h1 {
+    @apply text-xl font-medium capitalize;
+  }
+}
+
+.link {
+  @apply p-2.5 flex rounded-md gap-6 items-center md:cursor-pointer cursor-default duration-300 font-medium;
+}
+
+.active {
+  @apply bg-[#F8F8F8] text-[#02936F];
+}
+
 .switch {
     position: relative;
     display: inline-block;
@@ -41,11 +64,11 @@
   }
   
   input:checked + .slider {
-    background-color: #09a330;
+    background-color: #02936F;
   }
   
   input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 1px #21282e;
   }
   
   input:checked + .slider:before {

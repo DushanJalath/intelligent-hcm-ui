@@ -1,5 +1,5 @@
 import '../styles/Monthlyreport.css'
-import PrintOutlinedIcon from '@mui/icons-material/PrintOutlined';
+// import PrintOutlinedIcon from '@mui/icons-material/PrintOutlined';
 
 function Frame(props) {
     return(
@@ -14,9 +14,9 @@ function Frame(props) {
             Total Overtime payment :<br/> 5$
             </div>
             </div>
-            <div className = "printer">
+            {/* <div className = "printer">
             <PrintOutlinedIcon/>
-            </div>
+            </div> */}
         </div>
     );
 }

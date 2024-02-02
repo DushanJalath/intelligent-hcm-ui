@@ -1,28 +1,17 @@
-import './App.css';
-import Frame from './components/Frame.js'
+import RootLayout from "./components/RootLayout";
+import { Route, Routes } from "react-router-dom";
+import TimeReporting from "./components/TimeReporting";
+import Settings from "./components/Settings";
 
-
-
-import Jvac from "./pages/employee job vacancy page.js"
-import Jobdetails from './pages/employee job details page.js'
-import Overtime from "./pages/employee overtime tracking page.js"
-import Navbar from "./components/Navbar.jsx"
-
-
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
-</style>
-function App() {
+const App = () => {
   return (
-
-      <Navbar/>
+      <RootLayout>
+        <Routes>
+          <Route path="/" element={<TimeReporting />} />
+          <Route path="/settings" element={<Settings />} />
+        </Routes>
+      </RootLayout>
   );
-
-}
-
-
+};
 
 export default App;
-
-

@@ -1,0 +1,42 @@
+
+.name-tag-container{
+    width: 310px;
+    height: 80px;
+    top: 155px;
+    left: 522px;
+    border-radius: 56px;
+    background-color: #FFFFFF;
+    margin-left: 38px;
+    margin-right: 38px;
+
+
+}
+.name-tag{
+    padding-top: 13px;
+    margin-left: 67px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    flex: 1;
+
+}
+
+.details{
+    margin-left: 20px;
+}
+
+.text-xl {
+    font-size: 1.25rem; /* or your desired font size */
+}
+
+.whitespace-pre {
+    white-space: pre;
+}
+
+.text-sm {
+    font-size: 0.875rem; /* or your desired font size */
+}
+
+.text-gray-500 {
+    color: #7b7b7b; /* or your desired gray color */
+}

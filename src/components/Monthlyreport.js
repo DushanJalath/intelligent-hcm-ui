@@ -1,5 +1,5 @@
 import Monrep from '../styles/Monthlyreport.module.css'
-import Printer from '../assets/printer.png'; 
+import Printer from '../assets/printer.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
@@ -17,10 +17,10 @@ function Frame(props) {
             </div>
             </div>
             <img src={Printer}></img>
-            
-            
-            
-            
+
+
+
+
         </div>
     );
 }

@@ -62,7 +62,7 @@ const handleCancel = (event)=>{
 }
     return(
         
-        <div className="container">
+        <div className="container-leave-form">
         <div className="title">
             {props.title}
         </div>

@@ -39,7 +39,7 @@ const OTChart = ({values})=>{
     }
 
     return (
-    <div className="container2">
+    <div className="container-2">
 
         <NameTag/>
 

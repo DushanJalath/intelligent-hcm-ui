@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import dp from "../assets/profile_picture_dummy.webp"
+import profile_picture from "../assets/profile_picture.webp"
 import '../styles/NameTag.css';
 
 const NameTag = (props) => {
@@ -12,7 +12,7 @@ const NameTag = (props) => {
         <div className="name-tag-container">
             <div className="name-tag">
                 <div className="profile rounded-full overflow-hidden">
-                    <img src={dp}
+                    <img src={profile_picture}
                     width={45}
                     alt=""
                     className="rounded-full"

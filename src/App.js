@@ -1,21 +1,14 @@
-import './App.css';
-
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
-</style>
-
-import SetWorkingHours from './components/SetWorkingHours'
+import React from 'react';
+import LeaveApprove from '../src/components/LeaveApprove';
 
 
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
-</style>
 function App() {
-  return (
-    <>
-     
-    </>
-  )
+    return (
+        <div className='App'>
+            <LeaveApprove />
+        </div>
+    );
+
 }
 
 export default App;

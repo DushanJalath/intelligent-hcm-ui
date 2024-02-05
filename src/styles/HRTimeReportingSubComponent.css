@@ -1,0 +1,32 @@
+.sub-container{
+    width: 428px;
+    height: 580px;
+    top: 400px;
+    left: 430px;
+    border-radius: 22px;
+    background: #EAEAEA;
+    margin-top: 50px;
+}
+
+.title{
+    position: relative;
+    top : -10px;
+    left: 220px;
+    background-color: #02936F;
+    color: white;
+    border-radius: 50px;
+    padding: 5px;
+    margin-top: 30px;
+    width: 150px;
+    text-align: center;
+    font-family: Inter;
+}
+
+.content{
+    padding-top:20px;
+    padding-left: 22px;
+}
+
+.page-buttons{
+    margin-top: -30px;
+}

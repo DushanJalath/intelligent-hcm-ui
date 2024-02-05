@@ -16,7 +16,7 @@ function Frame(props) {
             Total Overtime payment :<br/> 5$
             </div>
             </div>
-            <img src={Printer}></img>
+            <img className={Monrep.img} src={Printer}></img>
 
 
 

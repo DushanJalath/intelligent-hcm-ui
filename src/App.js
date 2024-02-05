@@ -1,12 +1,14 @@
 import React from 'react';
-import LeaveApprove from '../src/components/LeaveApprove';
-
-
+import Overtime from './pages/employeeOvertimeTrackingPage';
+import Manager from './pages/managerOvertimeTrackingPage'
+import Vacan from './pages/employeeJobVacancypage'
+import Details from './pages/employeeJobDetailsPage'
+import HR from './pages/hrOvertimeTrackingPage'
 function App() {
     return (
-        <div className='App'>
-            <LeaveApprove />
-        </div>
+        <>
+            <HR/>
+        </>
     );
 
 }

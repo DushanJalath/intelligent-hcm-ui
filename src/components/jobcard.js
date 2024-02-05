@@ -1,13 +1,13 @@
 import React from 'react';
-import '../styles/jobcard.css';
+import Card from '../styles/jobcard.module.css';
 
 const JobCard = ({ jobTitle, jobType, company, location, description,butval }) => {
   return (
-    <div className="job-card">
-          <h2 style={{fontSize:25}}>{jobTitle}</h2>
-          <p style={{fontSize:18,fontWeight:500}}>{jobType} - {company} / {location}</p>
-          <p style={{fontSize:15}}>{description}</p>
-          <button className="job-details-btn">{butval}</button>
+    <div className={Card.jobcard}>
+          <div className={Card.text1}>{jobTitle}</div>
+          <div className={Card.text2}>{jobType} - {company} / {location}</div>
+          <div className={Card.text3}>{description}</div>
+          <button className={Card.jobdetailsbtn}>{butval}</button>
     </div>
 
     

@@ -1,14 +1,12 @@
-.app-container {
+
+
+.appcontainer{
     display: flex;
+    
   }
   
  
-  .navbar {
-    width: 200px;
-    background-color: #333; 
-    color: white; 
-    padding: 20px; 
-  }
+ 
   
 
   .column1 {

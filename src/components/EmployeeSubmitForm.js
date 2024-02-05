@@ -11,7 +11,6 @@ const CustomDatePickerInput = ({ value, onClick,placeholder}) => (
         value={value}
         readOnly
         className="form-control"
-       //placeholder={placeholder}
       />
       <span className="calendar-icon">
         <BsCalendar />

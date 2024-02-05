@@ -1,17 +1,16 @@
-.container4 {
+.container6{
     margin-top: 40px;
     width: 1372px;
     height: auto;
     flex-shrink: 0;
     border-radius: 30px;
     background: #eaeaea;
-    border-radius: 10px;
     position: relative;
     margin-bottom: 40px;
     padding-bottom: 20px;
   }
   
-  .title4 {
+  .title6 {
     position: absolute;
     width: 302px;
     height: 50px;
@@ -25,7 +24,7 @@
     margin-right: 60px;
   }
   
-  .title-para4 {
+  .title-para6 {
     text-align: center;
     color: #fff;
     font-family: Inter;
@@ -36,10 +35,10 @@
     letter-spacing: 0.18px;
   }
   
-  .table-div {
+  .table-div2{
     width: 1227px;
     height: auto;
-    margin-left: 80px;
+    margin-left: 70px;
     padding-top: 45px;
   }
   
@@ -58,7 +57,7 @@
     background: #939393;
     border: none; /* Eliminate border */
   }
-  
+    
   .Page-navigation {
     max-width: 200px;
   }

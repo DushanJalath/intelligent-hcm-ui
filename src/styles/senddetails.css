@@ -1,6 +1,5 @@
 .container2{
-    margin-left: 500px;
-    margin-top: 50px;
+    margin-top: 40px;
     width: 659px;
     height: 283px;
     flex-shrink: 0;
@@ -12,15 +11,15 @@
 .title2{
     position: absolute;
     width: 302px;
-    height: 52px;
+    height: 50px;
     flex-shrink: 0;
     right: 10px;
     background-color: #02936F;
     color: white;
     border-radius: 27px;
-    padding: 2px;
+    padding: 10px;
     margin-top: -23px;
-    margin-right: 60px;
+    margin-right: 45px;
 }
 .title-para2{
     text-align: center;

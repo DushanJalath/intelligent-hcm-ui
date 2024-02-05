@@ -1,0 +1,32 @@
+.switch-view{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+}
+
+.switch-container{
+    height: 62px;
+    width: 462px;
+    border-radius: 29px;
+    background-color: #EAEAEA;
+    
+}
+
+button{
+    margin-left: 75px;
+    margin-top:10px ;
+    height: 40px;
+    width: 120px;
+    border-radius: 45px;
+    background-color: #EAEAEA;
+    border: none;
+    cursor: pointer;
+}
+
+.active{
+    background-color: white;
+    color: #176854;
+    font-weight: bold;
+}
+

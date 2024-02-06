@@ -1,11 +1,12 @@
 import React from 'react';
-// import NewCandidateSubmitForm from "./pages/NewCandidateSubmitForm";
+// import NewCandidateSubmitFormPage from "./pages/NewCandidateSubmitFormPage";
+import ManagersLeavePage from "./pages/ManagersLeavePage";
 // import EmployeeSubmitForm from "./components/EmployeeSubmitForm";
-import { Route, Routes } from "react-router-dom"; //AllNavBars
-import TimeReporting from "./components/TimeReporting"; //AllNavBars
-import Settings from "./components/Settings"; //AllNavBars
-// // import RootLayout from "./components/RootLayout"; //EmployeeNavBar
-import ManagerRootLayout from "./components/ManagerRootLayout"; //ManagerNavBar
+// import { Route, Routes } from "react-router-dom"; //AllNavBars
+// import TimeReporting from "./components/TimeReporting"; //AllNavBars
+// import Settings from "./components/Settings"; //AllNavBars
+// // // import RootLayout from "./components/RootLayout"; //EmployeeNavBar
+// import ManagerRootLayout from "./components/ManagerRootLayout"; //ManagerNavBar
 // import HRRootLayout from "./components/HRRootLayout"; //HRNavBar
 // import NewCandidateRootLayout from "./components/NewCandidateRootLayout";
 
@@ -26,9 +27,9 @@ export default App;
 
 
 
-import EmpLeave from "./components/EmpLeave";
-import RemainingLeaves from "./components/RemainingLeaves";
-import LeaveApprove from "./components/LeaveApprove";
+// import EmpLeave from "./components/EmpLeave";
+// import RemainingLeaves from "./components/RemainingLeaves";
+// import LeaveApprove from "./components/LeaveApprove";
 
 
 function App() {
@@ -44,12 +45,12 @@ function App() {
             {/*</RootLayout>*/}
 
 
-            <ManagerRootLayout>
-                <Routes>
-                    <Route path="/" element={<TimeReporting />} />
-                    <Route path="/settings" element={<Settings />} />
-                </Routes>
-            </ManagerRootLayout>
+            {/*<ManagerRootLayout>*/}
+            {/*    <Routes>*/}
+            {/*        <Route path="/" element={<TimeReporting />} />*/}
+            {/*        <Route path="/settings" element={<Settings />} />*/}
+            {/*    </Routes>*/}
+            {/*</ManagerRootLayout>*/}
 
 
             {/*<HRRootLayout>*/}
@@ -68,11 +69,13 @@ function App() {
             {/*</NewCandidateRootLayout>*/}
 
 
-            <EmpLeave title="Request Leave"/>
-            <RemainingLeaves />
-            <LeaveApprove />
+            {/*<EmpLeave title="Request Leave"/>*/}
+            {/*<RemainingLeaves />*/}
+            {/*<LeaveApprove />*/}
             {/*<EmployeeSubmitForm title="sss" />*/}
-            {/*<NewCandidateSubmitForm />*/}
+            {/*<NewCandidateSubmitFormPage />*/}
+            <ManagersLeavePage />
+            {/*<NewCandidateSubmitFormPage/>*/}
 
         </div>
     );

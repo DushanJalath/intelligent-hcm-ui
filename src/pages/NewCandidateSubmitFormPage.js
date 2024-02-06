@@ -5,7 +5,7 @@ import TimeReporting from "../components/TimeReporting"; //AllNavBars
 import Settings from "../components/Settings"; //AllNavBars
 import NewCandidateRootLayout from "../components/NewCandidateRootLayout";
 
-export default function NewCandidateSubmitForm (){
+export default function NewCandidateSubmitFormPage (){
     return(
         <div>
             <NewCandidateRootLayout>

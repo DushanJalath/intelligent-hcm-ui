@@ -39,10 +39,10 @@ export default function LeaveApprove() {
 
                 <div style={{display: 'flex', width: "200px", justifyContent: "center"}}>
                     <div id="LeaveApprove-Approve-button">
-                        <Button variant="contained" color="success" size="small">Approve</Button>
+                        <Button variant="contained" color="success" size="small" style={{ borderRadius: "20px", textTransform: "none" }}>Approve</Button>
                     </div>
                     <div id="LeaveApprove-Reject-button">
-                        <Button variant="contained" color="error" size="small">Reject</Button>
+                        <Button variant="contained" color="error" size="small" style={{ borderRadius: "20px", textTransform: "none" }}>Reject</Button>
                     </div>
                 </div>
 

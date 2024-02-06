@@ -104,10 +104,10 @@ const EmpLeave= (props)=>{
 
                     <div style={{display: 'flex', width: "795px", justifyContent: "center",marginTop:"110px"}}>
                         <div id="empLeave-Approve-button">
-                            <Button variant="contained" color="success" size="small" >Submit</Button>
+                            <Button variant="contained" color="success" size="small" style={{ borderRadius: "20px", textTransform: "none" }} >Submit</Button>
                         </div>
                         <div id="empLeave-Reject-button" style={{marginLeft: "50px"}}>
-                            <Button variant="contained" color="error" size="small">Cancel</Button>
+                            <Button variant="contained" color="error" size="small" style={{ borderRadius: "20px", textTransform: "none" }}>Cancel</Button>
                         </div>
                     </div>
 

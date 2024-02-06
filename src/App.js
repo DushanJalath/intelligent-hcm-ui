@@ -1,11 +1,13 @@
 import React from 'react';
-import { Route, Routes } from "react-router-dom"; //AllNavBars
-import TimeReporting from "./components/TimeReporting"; //AllNavBars
-import Settings from "./components/Settings"; //AllNavBars
-// import RootLayout from "./components/RootLayout"; //EmployeeNavBar
-// import ManagerRootLayout from "./components/ManagerRootLayout"; //ManagerNavBar
-// import HRRootLayout from "./components/HRRootLayout"; //HRNavBar
-import NewCandidateRootLayout from "./components/NewCandidateRootLayout";
+import NewCandidateSubmitForm from "./pages/NewCandidateSubmitForm";
+// import EmployeeSubmitForm from "./components/EmployeeSubmitForm";
+// import { Route, Routes } from "react-router-dom"; //AllNavBars
+// import TimeReporting from "./components/TimeReporting"; //AllNavBars
+// import Settings from "./components/Settings"; //AllNavBars
+// // import RootLayout from "./components/RootLayout"; //EmployeeNavBar
+// // import ManagerRootLayout from "./components/ManagerRootLayout"; //ManagerNavBar
+// // // // import HRRootLayout from "./components/HRRootLayout"; //HRNavBar
+// import NewCandidateRootLayout from "./components/NewCandidateRootLayout";
 
 /*
 const App = () => {
@@ -63,17 +65,19 @@ function App() {
             {/*</HRRootLayout>*/}
 
 
-            <NewCandidateRootLayout>
-                <Routes>
-                    <Route path="/" element={<TimeReporting />} />
-                    <Route path="/settings" element={<Settings />} />
-                </Routes>
-            </NewCandidateRootLayout>
+            {/*<NewCandidateRootLayout>*/}
+            {/*    <Routes>*/}
+            {/*        <Route path="/" element={<TimeReporting />} />*/}
+            {/*        <Route path="/settings" element={<Settings />} />*/}
+            {/*    </Routes>*/}
+            {/*</NewCandidateRootLayout>*/}
 
 
-            {/*<EmpLeave/>*/}
+            {/*<EmpLeave title="Request Leave"/>*/}
             {/*<RemainingLeaves />*/}
             {/*<LeaveApprove />*/}
+            {/*<EmployeeSubmitForm title="sss" />*/}
+            <NewCandidateSubmitForm />
 
         </div>
     );

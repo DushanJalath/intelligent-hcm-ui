@@ -38,8 +38,7 @@ const Sidebar = () => {
                         {open && (
                             <div className="rounded-full overflow-hidden">
                                 <img
-                                    src="/newcandidate.jpeg"
-                                    width={45}
+                                    src="/newcandidate.jpg"
                                     alt=""
                                     className="rounded-full"
                                     style={{ width: 50, height: 50, borderRadius: '50%' }}

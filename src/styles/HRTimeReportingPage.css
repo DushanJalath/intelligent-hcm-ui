@@ -1,0 +1,57 @@
+.main-container{
+    position: absolute;
+    left: 330px;
+    top: 0px;
+    padding-bottom: 30px;
+}
+.lower-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.employees-data{
+    margin-left: 30px;
+}
+
+.upper-container .container{
+    width: 500px;
+    height: 100px;   
+    color: #5E5E5E;
+}
+.upper-container .title{
+    position: relative;
+    margin-left: 80px;
+
+}
+
+.upper-container .time{
+    width: 342px;
+    height: 70px;
+    top: 167px;
+    left: 517px;
+    font-family: Inter;
+    font-size: 50px;
+    font-weight: 600;
+    line-height: 79px;
+    letter-spacing: 0.01em;
+    text-align: center;
+    margin-top: -40px;
+    
+    
+}
+
+.upper-container .date{
+    width: 342px;
+    height: 82px;
+    margin-top: -10px;
+    margin-left: 10px;
+    padding-left: 40px;
+    left: 517px;
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 23px;
+    letter-spacing: 0.01em;
+    text-align: left;
+
+}

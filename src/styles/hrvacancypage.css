@@ -1,0 +1,12 @@
+.container-RVP{
+    display: flex;
+}
+.component-RVP{
+    margin-left: 120px;
+}
+.copy{
+    display: none;
+}
+.genarate{
+    margin-left: 380px;
+}

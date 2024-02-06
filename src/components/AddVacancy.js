@@ -55,14 +55,14 @@ export default function AddVacancy(props) {
 
 
   return (
-    <div className='container'>
-        <div className='title'><p className='title-para'>{props.title}</p></div>
-        <div className='para-form'>
-            <div className='paragraph1'>
+    <div className='container-AV'>
+        <div className='title-AV'><p className='title-para-AV'>{props.title}</p></div>
+        <div className='para-form-AV'>
+            <div className='paragraph1-AV'>
                 <p>Please fill in the details below and generate system suggestions for the job vacancy. If the requirements are satisfactory, submit your form to the HR. If you need to edit the requirements, make 
                     the necessary changes and forward them to the HR for review.</p>
             </div>
-            <div className='form'>
+            <div className='form-AV'>
                 <form onSubmit={HandleGenarate} onReset={handleFormReset}>
                     <div className='In1'>
                         <AvDropdown label="Project type :" value={projectType} onChange={handleProjectTypeChange} placeholder="Select leave type"/>

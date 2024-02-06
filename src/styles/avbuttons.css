@@ -1,16 +1,13 @@
 .av-buttons{
-    width: 82px;
-    height: 29px;
-    top: 707px;
-    left: 739px;
+    background: #BDBDBD;
     border-radius: 27px;
+    width: 160px;
 }
 .button-AV{
     width: 160px;
     height: 41px;
     flex-shrink: 0;
     border-radius: 30px;
-    background: #BDBDBD;
     color: #000;
     font-family: Inter;
     font-size: 20px;
@@ -18,4 +15,4 @@
     font-weight: 700;
     line-height: normal;
     letter-spacing: 0.2px;
-    }
+}

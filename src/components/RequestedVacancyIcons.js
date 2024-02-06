@@ -2,6 +2,7 @@ import React from 'react'
 import check from '../assets/check.png'
 import clock from '../assets/clock.png'
 import reject from '../assets/reject.png'
+import '../styles/requestedvacancyicons.css'
 
 export default function RequestedVacancyIcons({ImageType}) {
     let img;

@@ -1,12 +1,12 @@
 import React from 'react';
-import NewCandidateSubmitForm from "./pages/NewCandidateSubmitForm";
+// import NewCandidateSubmitForm from "./pages/NewCandidateSubmitForm";
 // import EmployeeSubmitForm from "./components/EmployeeSubmitForm";
-// import { Route, Routes } from "react-router-dom"; //AllNavBars
-// import TimeReporting from "./components/TimeReporting"; //AllNavBars
-// import Settings from "./components/Settings"; //AllNavBars
+import { Route, Routes } from "react-router-dom"; //AllNavBars
+import TimeReporting from "./components/TimeReporting"; //AllNavBars
+import Settings from "./components/Settings"; //AllNavBars
 // // import RootLayout from "./components/RootLayout"; //EmployeeNavBar
 // // import ManagerRootLayout from "./components/ManagerRootLayout"; //ManagerNavBar
-// // // // import HRRootLayout from "./components/HRRootLayout"; //HRNavBar
+import HRRootLayout from "./components/HRRootLayout"; //HRNavBar
 // import NewCandidateRootLayout from "./components/NewCandidateRootLayout";
 
 /*
@@ -54,15 +54,12 @@ function App() {
             {/*</ManagerRootLayout>*/}
 
 
-
-
-            {/*HR NavBar*/}
-            {/*<HRRootLayout>*/}
-            {/*    <Routes>*/}
-            {/*        <Route path="/" element={<TimeReporting />} />*/}
-            {/*        <Route path="/settings" element={<Settings />} />*/}
-            {/*    </Routes>*/}
-            {/*</HRRootLayout>*/}
+            <HRRootLayout>
+                <Routes>
+                    <Route path="/" element={<TimeReporting />} />
+                    <Route path="/settings" element={<Settings />} />
+                </Routes>
+            </HRRootLayout>
 
 
             {/*<NewCandidateRootLayout>*/}
@@ -77,7 +74,7 @@ function App() {
             {/*<RemainingLeaves />*/}
             {/*<LeaveApprove />*/}
             {/*<EmployeeSubmitForm title="sss" />*/}
-            <NewCandidateSubmitForm />
+            {/*<NewCandidateSubmitForm />*/}
 
         </div>
     );

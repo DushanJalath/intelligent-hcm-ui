@@ -1,17 +1,25 @@
-import React from 'react'
-import AddVacancy from "../components/AddVacancy.js"
-import Sidebar from '../components/Sidebar.jsx'
-import '../styles/hrvacancypage.css'
+import Sidebar from "../components/Sidebar"
+import HRAddVacancy from "../components/HRAddVacancy";
 
-export default function HrVacancyPage() {
-  return (
-    <div className="container-RVP">
-      <div>
-        <Sidebar/>
-      </div>
-      <div className="component-RVP">
-        <AddVacancy title="Add Vacancy"/>
-      </div>
-    </div>
-  )
+function app() {
+    const Styles = {
+        marginTop: '-550px',
+        
+      };
+    return (
+        <>
+        <Sidebar/>,
+        <div style={Styles}>
+            <HRAddVacancy title="Add Vacancy"/>
+
+        </div>
+        
+    </>
+   
+
+    )
+    
 }
+
+export default app;
+

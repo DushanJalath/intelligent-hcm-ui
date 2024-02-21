@@ -5,10 +5,6 @@ function SendBill(props) {
     const [name, setCategory] = useState('');
     const [billFile, setBill] = useState(null);
 
-    const handleCategoryChange = (e) => {
-        setCategory(e.target.value);
-    };
-
     const handleBillDragOver = (e) => {
         e.preventDefault();
     };

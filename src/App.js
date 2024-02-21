@@ -1,11 +1,11 @@
 import React from 'react';
-import LeaveApprove from '../src/components/LeaveApprove';
+import UserRegistration from './components/UserRegistration';
 
 
 function App() {
     return (
         <div className='App'>
-            <LeaveApprove />
+            <UserRegistration title="User Registration"/>
         </div>
     );
 

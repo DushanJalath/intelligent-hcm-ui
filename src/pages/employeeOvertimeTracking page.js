@@ -2,7 +2,7 @@ import Monthlyreport from "../components/Monthlyreport.js"
 import Overtimecount from "../components/Overtimecount.js"
 import Totalovertime from "../components/Totalovertime.js"
 import TimeAndDate from "../components/TimeAndDate.js"
-import "./employee overtime tracking page.css"
+import "../styles/employeeOvertimeTrackingPage.css"
 
 function App() {
     return (

@@ -1,4 +1,4 @@
-import '../styles/employeeSubmit.css'
+import '../styles/employeeSubmitForm.css'
 import React, { useState } from 'react';
 import 'react-datepicker/dist/react-datepicker.module.css';
 import DatePicker from 'react-datepicker'; 
@@ -11,7 +11,6 @@ const CustomDatePickerInput = ({ value, onClick,placeholder}) => (
         value={value}
         readOnly
         className="form-control"
-       //placeholder={placeholder}
       />
       <span className="calendar-icon">
         <BsCalendar />

@@ -66,24 +66,9 @@ const Sidebar = () => {
                                 Job Vacancy
                             </NavLink>
                         </li>
-                        <li>
-                            <NavLink to={"/overtimetracking"} className="link">
-                                <IoMdNotificationsOutline size={23} className="min-w-max" />
-                                Notification
-                            </NavLink>
-                        </li>
                     </ul>
 
-                    <div className="mt-auto px-2.5 mb-5">
-                        <NavLink to={"/settings"} className="link">
-                            <SlSettings size={23} className="min-w-max" />
-                            Settings
-                        </NavLink>
-                        <NavLink to={"/logout"} className="link mt-2">
-                            <IoExitOutline size={23} className="min-w-max" />
-                            Log Out
-                        </NavLink>
-                    </div>
+
                 </div>
 
                 <div className={`m-3 md:hidden cursor-pointer ${!open && 'transform translate-x-[15px]'}`} onClick={handleToggleSidebar}>

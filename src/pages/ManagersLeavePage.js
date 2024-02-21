@@ -5,7 +5,7 @@ import Settings from "../components/Settings";
 import ManagerRootLayout from "../components/ManagerRootLayout";
 import EmpLeave from "../components/EmpLeave";
 import RemainingLeaves from "../components/RemainingLeaves";
-import LeaveApprove from "../components/LeaveApprove";
+
 
 export default function ManagersLeavePage (){
     return(
@@ -18,7 +18,6 @@ export default function ManagersLeavePage (){
             </ManagerRootLayout>
             <EmpLeave title="Request Leave"/>
             <RemainingLeaves />
-            <LeaveApprove />
         </div>
     )
 }

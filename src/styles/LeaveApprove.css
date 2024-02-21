@@ -22,10 +22,10 @@
     position: relative;
     border-radius: 20px;
     width: 100%;
-    max-width: 950px;
+    max-width: 60%;
     box-sizing: border-box;
     margin-left: 420px;
-    margin-top: 465px;
+    margin-top: 50px;
 
 }
 
@@ -87,6 +87,7 @@
     position: relative;
     border-left: 1px solid gray;
     border-right: 1px solid gray;
+    padding: 10px;
 
 }
 

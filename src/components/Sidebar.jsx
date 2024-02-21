@@ -46,7 +46,7 @@ const Sidebar = () => {
     };
 
     return (
-        <div>
+        <div className="sidebar">
             <div className={`bg-[#EAEAEA] text-[#0C0C0D] shadow-xl z-[999] max-w-[19rem] w-[19rem] overflow-hidden md:relative fixed h-screen ${!open && "md:w-[4rem]"}`}>
                 <div className="flex flex-col h-full">
                     <div className="flex items-center gap-3.5 font-medium border-b py-5 border-slate-300 mx-3">

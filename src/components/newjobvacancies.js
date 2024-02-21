@@ -1,5 +1,4 @@
 import {useState} from 'react'
-import '../styles/jobcard.css';
 import Jobv from '../styles/newjobvacancies.module.css'
 import Jobcard from './jobcard.js'
 function Frame(props) {

@@ -1,28 +1,27 @@
-.container{
-    margin-left: 500px;
-    margin-top: 50px;
+.container-AV{
+    margin-top: 35px;
     width: 659px;
-    height: 770px;
+    height: auto;
     flex-shrink: 0;
     border-radius: 30px;
     background: #EAEAEA;
     border-radius: 10px;
     position: relative;
   }
-.title{
+.title-AV{
     position: absolute;
     width: 302px;
-    height: 52px;
+    height: 50px;
     flex-shrink: 0;
     right: 10px;
     background-color: #02936F;
     color: white;
     border-radius: 27px;
-    padding: 2px;
+    padding: 10px;
     margin-top: -23px;
     margin-right: 60px;
 }
-.title-para{
+.title-para-AV{
     text-align: center;
     color: #FFF;
     font-family: Inter;
@@ -32,7 +31,7 @@
     line-height: normal;
     letter-spacing: 0.18px;
 }
-.paragraph1{
+.paragraph1-AV{
     width: 600px;
     margin-left: 30px;
     margin-top: 50px;
@@ -44,10 +43,11 @@
     line-height: normal;
     letter-spacing: 0.54px;
 }
-.para-form{
+.para-form-AV{
     display: block;
+    padding-top: 2px;
 }
-.form{
+.form-AV{
     padding-top: 50px;
     padding-left: 42px;
     padding-right: 25px;

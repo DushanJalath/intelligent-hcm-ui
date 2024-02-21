@@ -1,0 +1,32 @@
+.appontainer {
+    display: flex;
+    
+  }
+  .nav{
+    position:fixed;
+  }
+  .columns{
+    display:flex;
+    justify-content: space-between;
+  }
+ .control{
+    width:40%;
+    margin:auto;
+    padding-top:20px;
+    
+    
+ }
+ 
+  
+
+  .column1 {
+    
+    flex: 1; 
+    padding: 20px; 
+    
+  }
+  .column2{
+   
+    flex:1;
+    padding:20px;
+  }

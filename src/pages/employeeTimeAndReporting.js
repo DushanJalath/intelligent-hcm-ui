@@ -8,25 +8,26 @@ import '../styles/employeeTimeAndReportingPageStyle.css'
 
 function EmployeeTimeAndReportingPage(params) {
     return(
-        <div className="container">
-            <div className="navbar">
-                <NavBar/>
-            </div>
-            <div className="row">
-                <div className="time-and-date">
-                    <TimeAndDate/>
+        <>
+            <NavBar/>
+            <div class="time-report">
+                <div className='timeDate'>
+                    <TimeAndDate title="Time and Date"/>
                 </div>
-                <div className="today-working-hours">
-                    <TodayWorkingHours/>
+                <div className='todayWorkingHours'>
+                    <TodayWorkingHours title="Today Working Hours"/>
                 </div>
             </div>
-            <div className="start-intra">
+            <div className='start-intra'>
                 <StartIntra/>
             </div>
-            <div className="set-working-hours">
-                <SetWorkingHours/>
+            <div className='working-hours'>
+                <SetWorkingHours title="Set Working Hours"/>
             </div>
-        </div>
+            
+
+        </>
+            
     );
 }
 

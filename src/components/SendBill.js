@@ -26,8 +26,8 @@ function SendBill(props) {
 
     return(
         <>
-        <div className='container'>
-            <div className='title'>{props.title}</div>
+        <div className='container-send-bill'>
+            <div className='title-send-bill'>{props.title}</div>
             <form>
                 <div className='grp'>
                     <label>Bill Category:</label>

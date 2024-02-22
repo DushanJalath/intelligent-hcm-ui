@@ -1,10 +1,10 @@
 
 import React from 'react';
-import EmployeeVacancySubmitFormPage from './pages/EmployeeJobVacancySubmitForm';
+import AddBillsPage from './pages/AddBillsPage'
 
 function App() {
     return (
-        <EmployeeVacancySubmitFormPage/>
+        <AddBillsPage/>
     );
 }
 

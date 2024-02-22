@@ -81,13 +81,13 @@ const Sidebar = () => {
 
                     <ul className="whitespace-pre px-2.5 text-[1rem] py-5 flex flex-col gap-1 font-medium overflow-x-hidden scrollbar-thin scrollbar-track-white scrollbar-thumb-slate-100 md:h-[68%] h-[70%]">
                         <li>
-                            <NavLink to={"/timereporting"} className="link">
+                            <NavLink to={"/"} className="link">
                                 <AiOutlineAppstore size={23} className="min-w-max"/>
                                 Time Reporting
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to={"/overtimetracking"} className="link">
+                            <NavLink to={"/EmployeeOvertimeTrackingPageNew"} className="link">
                                 <IoMdPie size={23} className="min-w-max"/>
                                 Overtime Tracking
                             </NavLink>
@@ -108,7 +108,7 @@ const Sidebar = () => {
                             </div>
                         )}
                         <li>
-                            <NavLink to={"/storage"} className="link">
+                            <NavLink to={"/EmployeeJobVacancyPageNew"} className="link">
                                 <FiFile size={23} className="min-w-max"/>
                                 Job Vacancies
                             </NavLink>

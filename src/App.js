@@ -1,8 +1,11 @@
 import React from 'react';
+// import EmployeeLeavePage from "./pages/EmployeeLeavePage";
+// import HRApproveMEmployeesLeavePage from "./pages/HRApproveEmployeesLeavePage";
+// import ManagerRequestVacancyPage1 from "./pages/ManagerRequestVacancyPage1";
 // import HrVacancyPage from "./pages/HrVacancyPage";
 // import HRApproveMEmployeesLeavePage from "./pages/HRApproveEmployeesLeavePage";
 // import HRApproveManagersLeavePage from "./pages/HRApproveManagersLeavePage";
-import ManagerViewLeaveStatusOfEmployeesPage from "./pages/ManagerViewLeaveStatusOfEmployeesPage";
+// import ManagerViewLeaveStatusOfEmployeesPage from "./pages/ManagerViewLeaveStatusOfEmployeesPage";
 // import ManagersLeavePage from "./pages/ManagersLeavePage";
 // import HRApproveManagersLeavePage from "./pages/HRApproveEmployeesLeavePage";
 // import HRApproveManagersLeavePage from "./pages/HRApproveManagersLeavePage";
@@ -13,14 +16,29 @@ import ManagerViewLeaveStatusOfEmployeesPage from "./pages/ManagerViewLeaveStatu
 // import ManagerViewLeaveStatusOfEmployeesPage from "./pages/ManagerViewLeaveStatusOfEmployeesPage";
 // import ViewEmployeeLeaveStatus from "./components/ViewEmployeeLeaveStatus";
 // import LeaveApprove from "./components/LeaveApprove";
-// import StatusButton from "./components/StatusButton";
+import StatusButton from "./components/StatusButton";
 // import NewCandidateSubmitFormPage from "./pages/NewCandidateSubmitFormPage";
 // import ManagersLeavePage from "./pages/ManagersLeavePage";
 // import EmployeeSubmitForm from "./components/EmployeeSubmitForm";
-// import { Route, Routes } from "react-router-dom"; //AllNavBars
-// import TimeReporting from "./components/TimeReporting"; //AllNavBars
-// import Settings from "./components/Settings"; //AllNavBars
-// import RootLayout from "./components/RootLayout"; //EmployeeNavBar
+import { Route, Routes } from "react-router-dom"; //AllNavBars
+import TimeReporting from "./components/TimeReporting"; //AllNavBars
+import Settings from "./components/Settings"; //AllNavBars
+import RootLayout from "./components/RootLayout";
+import ManagersLeavePage from "./pages/ManagersLeavePage";
+import EmployeeJobDetailsPageNew from "./pages/EmployeeJobDetailsPageNew";
+import EmployeeJobVacancyPageNew from "./pages/EmployeeJobVacancyPageNew";
+import EmployeeLeavePage from "./pages/EmployeeLeavePage";
+import EmployeeOvertimeTrackingPageNew from "./pages/EmployeeOvertimeTrackingPageNew";
+// import EmployeeLeavePageNew from "./pages/EmployeeLeavePageNew";
+import HRApproveMEmployeesLeavePage from "./pages/HRApproveEmployeesLeavePage";
+import HRApproveManagersLeavePage from "./pages/HRApproveManagersLeavePage";
+// import HrJobPage from "./pages/HrJobPage";
+import HROvertimeTrackingPageNew from "./pages/HROvertimeTrackingPageNew";
+import ManagerViewLeaveStatusOfEmployeesPage from "./pages/ManagerViewLeaveStatusOfEmployeesPage";
+import NewCandidateSubmitFormPage from "./pages/NewCandidateSubmitFormPage";
+import ManagerRequestVacancyPage1 from "./pages/ManagerRequestVacancyPage1";
+// import ManagerOvertimeTrackingPageNew from "./pages/ManagerOvertimeTrackingPageNew";
+import ViewEmployeeLeaveStatus from "./components/ViewEmployeeLeaveStatus"; //EmployeeNavBar
 // import ManagerRootLayout from "./components/ManagerRootLayout"; //ManagerNavBar
 // import HRRootLayout from "./components/HRRootLayout"; //HRNavBar
 // import NewCandidateRootLayout from "./components/NewCandidateRootLayout";
@@ -31,44 +49,26 @@ import ManagerViewLeaveStatusOfEmployeesPage from "./pages/ManagerViewLeaveStatu
 // import Settings from "./components/Settings";
 // import ManagerRootLayout from "./components/ManagerRootLayout";
 
-/*
-const App = () => {
-    return (
-        <RootLayout>
-            <Routes>
-                <Route path="/" element={<TimeReporting />} />
-                <Route path="/settings" element={<Settings />} />
-            </Routes>
-        </RootLayout>
-    );
-};
-
-export default App;
- */
-
-
 
 // import EmpLeave from "./components/EmpLeave";
 // import RemainingLeaves from "./components/RemainingLeaves";
 // import LeaveApprove from "./components/LeaveApprove";
 
-
-//Leave Button Props
-// const approvedStatus = 'approved';
-
-
-
 function App() {
     return (
         <div className='App'>
 
-            {/*Employee NavBar*/}
-            {/*<RootLayout>*/}
-            {/*    <Routes>*/}
-            {/*        <Route path="/" element={<TimeReporting />} />*/}
-            {/*        <Route path="/settings" element={<Settings />} />*/}
-            {/*    </Routes>*/}
-            {/*</RootLayout>*/}
+            <RootLayout>
+                <Routes>
+                    {/*<Route path="/" element={<EmployeeTimeReporting />} />*/}
+                    {/*<Route path="/EmployeeJobDetailsPageNew" element={<EmployeeJobDetailsPageNew/>}/>*/}
+                    <Route path="/managerLeavePage" element={<ManagersLeavePage/>}/>
+                    {/*<Route path="/EmployeeOvertimeTrackingPageNew" element={<EmployeeOvertimeTrackingPageNew/>}/>*/}
+                    <Route path="/managerLeavePage" element={<ManagersLeavePage/>}/>
+                    {/*<Route path="/EmployeeJobVacancyPageNew" element={<EmployeeJobVacancyPageNew/>}/>*/}
+                    <Route path="/managerLeavePage" element={<ManagersLeavePage/>}/>
+                </Routes>
+            </RootLayout>
 
 
             {/*<ManagerRootLayout>*/}
@@ -111,16 +111,64 @@ function App() {
             {/*<HRApproveManagersLeavePage/>*/}
             {/*<ManagersLeavePage/>*/}
             {/*<LeaveApprove/>*/}
+            {/*<HRApproveMEmployeesLeavePage/>*/}
+            {/*<ManagerRequestVacancyPage1/>*/}
+
+
+            {/*Test Done*/}
+
+            {/*Employee*/}
+            {/*<EmployeeJobDetailsPageNew/>*/}
+            {/*<EmployeeJobVacancyPageNew/>*/}
+
+            {/*HR*/}
+            {/*<HRApproveMEmployeesLeavePage/>*/}
+            {/*<HRApproveManagersLeavePage/>*/}
+
+            {/*Manager*/}
+            {/*<ManagersLeavePage/>*/}
+            {/*<ManagerViewLeaveStatusOfEmployeesPage/>*/}
+
+            {/*New Candidate*/}
+            {/*<NewCandidateSubmitFormPage/>*/}
+
+
+
+
+            {/*Not Working*/}
+            {/*<EmployeeLeavePage/>*/}
+
+
+
+
+            {/*Working But Need to Modify Layouts*/}
+            {/*<EmployeeOvertimeTrackingPageNew/>*/}
+            {/*<HrJobPage/>*/}
+            {/*<HROvertimeTrackingPageNew/>*/}
+            {/*<ManagerRequestVacancyPage1/>*/}
+
+            {/*<ManagerOvertimeTrackingPageNew/>*/}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 
             {/*New Pages*/}
-            {/*<HRApproveMEmployeesLeavePage/>*/}
-            {/*<HRApproveManagersLeavePage/>*/}
-            <ManagerViewLeaveStatusOfEmployeesPage/>
-            {/*<ManagersLeavePage/>*/}
+
+
         </div>
     );
 }

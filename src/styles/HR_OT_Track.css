@@ -1,0 +1,16 @@
+.hrOTContainer{
+    margin-left: 50px ;
+    width: 1200px;
+    height : 880px;
+    background-color: #EAEAEA;
+    border-radius: 10px;
+    position: relative;
+    margin-top: 100px;
+    padding-bottom: 36px;
+
+}
+
+.chart-container{
+    margin-top: -100px;
+    width:360px;
+}

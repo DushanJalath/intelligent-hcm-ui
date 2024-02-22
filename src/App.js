@@ -38,7 +38,8 @@ import ManagerViewLeaveStatusOfEmployeesPage from "./pages/ManagerViewLeaveStatu
 import NewCandidateSubmitFormPage from "./pages/NewCandidateSubmitFormPage";
 import ManagerRequestVacancyPage1 from "./pages/ManagerRequestVacancyPage1";
 // import ManagerOvertimeTrackingPageNew from "./pages/ManagerOvertimeTrackingPageNew";
-import ViewEmployeeLeaveStatus from "./components/ViewEmployeeLeaveStatus"; //EmployeeNavBar
+import ViewEmployeeLeaveStatus from "./components/ViewEmployeeLeaveStatus";
+import HrVacancyPage from "./pages/HrVacancyPage"; //EmployeeNavBar
 // import ManagerRootLayout from "./components/ManagerRootLayout"; //ManagerNavBar
 // import HRRootLayout from "./components/HRRootLayout"; //HRNavBar
 // import NewCandidateRootLayout from "./components/NewCandidateRootLayout";
@@ -58,17 +59,17 @@ function App() {
     return (
         <div className='App'>
 
-            <RootLayout>
-                <Routes>
-                    {/*<Route path="/" element={<EmployeeTimeReporting />} />*/}
-                    {/*<Route path="/EmployeeJobDetailsPageNew" element={<EmployeeJobDetailsPageNew/>}/>*/}
-                    <Route path="/managerLeavePage" element={<ManagersLeavePage/>}/>
-                    {/*<Route path="/EmployeeOvertimeTrackingPageNew" element={<EmployeeOvertimeTrackingPageNew/>}/>*/}
-                    <Route path="/managerLeavePage" element={<ManagersLeavePage/>}/>
-                    {/*<Route path="/EmployeeJobVacancyPageNew" element={<EmployeeJobVacancyPageNew/>}/>*/}
-                    <Route path="/managerLeavePage" element={<ManagersLeavePage/>}/>
-                </Routes>
-            </RootLayout>
+            {/*<RootLayout>*/}
+            {/*    <Routes>*/}
+            {/*        /!*<Route path="/" element={<EmployeeTimeReporting />} />*!/*/}
+            {/*        /!*<Route path="/EmployeeJobDetailsPageNew" element={<EmployeeJobDetailsPageNew/>}/>*!/*/}
+            {/*        <Route path="/managerLeavePage" element={<ManagersLeavePage/>}/>*/}
+            {/*        /!*<Route path="/EmployeeOvertimeTrackingPageNew" element={<EmployeeOvertimeTrackingPageNew/>}/>*!/*/}
+            {/*        <Route path="/managerLeavePage" element={<ManagersLeavePage/>}/>*/}
+            {/*        /!*<Route path="/EmployeeJobVacancyPageNew" element={<EmployeeJobVacancyPageNew/>}/>*!/*/}
+            {/*        <Route path="/managerLeavePage" element={<ManagersLeavePage/>}/>*/}
+            {/*    </Routes>*/}
+            {/*</RootLayout>*/}
 
 
             {/*<ManagerRootLayout>*/}
@@ -148,6 +149,7 @@ function App() {
             {/*<ManagerRequestVacancyPage1/>*/}
 
             {/*<ManagerOvertimeTrackingPageNew/>*/}
+            <HrVacancyPage/>
 
 
 

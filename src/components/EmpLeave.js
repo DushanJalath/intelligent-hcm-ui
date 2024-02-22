@@ -102,7 +102,7 @@ const EmpLeave= (props)=>{
                     {/*    </div>*/}
                     {/*</div>*/}
 
-                    <div style={{display: 'flex', width: "795px", justifyContent: "center",marginTop:"110px"}}>
+                    <div style={{display: 'flex', width: "795px", justifyContent: "center",marginTop:"30px"}}>
                         <div id="empLeave-Approve-button">
                             <Button variant="contained" color="success" size="small" style={{ borderRadius: "20px", textTransform: "none" }} >Submit</Button>
                         </div>

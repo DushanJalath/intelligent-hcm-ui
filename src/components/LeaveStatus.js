@@ -1,6 +1,6 @@
 import React from 'react'
 import '../styles/leavestatus.css'
-import StatusButton from "./StatusButton";
+import LeaveStatusButton from './LeaveStatusButton';;
 
 const approvedStatus = 'pending';
 const approvedStatus1 = 'approved';
@@ -9,7 +9,7 @@ const approvedStatus2 = 'Rejected';
 function LeaveStatus(props) {
     return (
 
-        <div className='container'>
+        <div className='leave-container'>
             <div className='title'>{props.title}</div>
             <div className="user-card">
                 <table className="leave-details">
@@ -29,7 +29,7 @@ function LeaveStatus(props) {
                     </tbody>
                 </table>
 
-                <StatusButton status={approvedStatus1}/>
+                <LeaveStatusButton status={approvedStatus1}/>
 
             </div>
 
@@ -50,7 +50,7 @@ function LeaveStatus(props) {
                     </tr>
                     </tbody>
                 </table>
-                <StatusButton status={approvedStatus2}/>
+                <LeaveStatusButton status={approvedStatus2}/>
 
             </div>
 
@@ -71,7 +71,7 @@ function LeaveStatus(props) {
                     </tr>
                     </tbody>
                 </table>
-                <StatusButton status={approvedStatus}/>
+                <LeaveStatusButton status={approvedStatus}/>
             </div>
 
             

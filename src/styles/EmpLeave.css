@@ -1,8 +1,8 @@
 .container-leave-form{
     margin-top: 50px;
-    margin-left: 420px;
-    width: 900px;
-    height : 550px;
+    margin-left: 50px;
+    width: 825px;
+    height : 450px;
     background-color: #EAEAEA;
     border-radius: 10px;
     position: relative;
@@ -26,8 +26,31 @@
     padding-left: 25px;
     padding-right: 25px;
     padding-bottom: 50px;
-}
-
-
-
-
+  }
+  
+  .Buttons{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+    margin-left: 210px;
+    margin-right: 100px;
+  
+  }
+  
+  .submit,.cancel{
+    flex:1;
+  }
+  
+  .submit button{
+    background-color: #02936F;
+    color: white;
+    border:none;
+  }
+  
+  .cancel button{
+    background-color: #BA2A2A;
+    color: white;
+    border:none;
+  }
+  
+  

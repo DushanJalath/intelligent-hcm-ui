@@ -2,11 +2,11 @@ import React from 'react'
 import '../styles/LeaveApprove.css'
 import { Button } from "@mui/material";
 
-export default function LeaveApprove() {
+export default function LeaveApproveManagers() {
     return (
         <div className="leaveApprove-container">
             <div className="menu">
-                <p>Approve Employees Leave</p>
+                <p>Approve Managers Leave</p>
             </div>
             <div className="user-card">
                 <div className="user-photo">
@@ -272,13 +272,6 @@ export default function LeaveApprove() {
                 </table>
 
             </div>
-
-
-
-
-</div>
-
-
-
-)
+        </div>
+            )
 }

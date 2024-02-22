@@ -39,12 +39,8 @@ const DatePicker = (props)=>{
                     showYearDropdown
                     customInput={<CustomDatePickerInput placeholder={placeholderText}/>}
                     />
-
                 </div>
-
-
             </div>
-
         </div>
        
     )

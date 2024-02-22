@@ -8,11 +8,11 @@ const ButtonComponent = (props)=>{
     return (
         <div className="buttons">
             <button onClick={onClick}>
-            {label}
+                {label}
             </button>
 
         </div>
-        
+
     )
 }
 

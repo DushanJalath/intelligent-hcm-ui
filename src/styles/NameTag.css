@@ -1,19 +1,17 @@
 
 .name-tag-container{
-    width: 310px;
+    width: 250px;
     height: 80px;
     top: 155px;
     left: 522px;
     border-radius: 56px;
     background-color: #FFFFFF;
-    margin-left: 38px;
     margin-right: 38px;
 
 
 }
 .name-tag{
     padding-top: 14px;
-    margin-left: 67px;
     width: 200px;
     display: flex;
     align-items: center;

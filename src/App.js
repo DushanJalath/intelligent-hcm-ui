@@ -1,11 +1,10 @@
 import React from 'react';
-import LeaveApprove from '../src/components/LeaveApprove';
-
+import EmployeeLeavePage from './pages/EmployeeLeavePage';
 
 function App() {
     return (
         <div className='App'>
-            <LeaveApprove />
+            <EmployeeLeavePage/>
         </div>
     );
 

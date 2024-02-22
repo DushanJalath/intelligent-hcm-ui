@@ -3,7 +3,7 @@ import '../styles/startIntra.css';
 
 function StartIntra(params) {
     return (
-        <div className='container'>
+        <div className='container-intra'>
             <span>To start project select the project type and start your timer.</span>
             <ul>
                 <li>

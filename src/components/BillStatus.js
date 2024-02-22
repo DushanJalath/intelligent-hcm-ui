@@ -9,8 +9,8 @@ const approvedStatus2 = 'Rejected';
 function BillStatus(props) {
     return (
 
-        <div className='container'>
-            <div className='title'>{props.title}</div>
+        <div className='container-bill-status'>
+            <div className='title-bill-status'>{props.title}</div>
             <div className="user-card">
                 <table className="leave-details">
                     <tbody>

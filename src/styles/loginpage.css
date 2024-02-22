@@ -1,0 +1,23 @@
+/* Updated CSS */
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+.Login-page {
+    display: flex;
+    margin: 0; /* Remove any default margin */
+    padding: 0; /* Remove any default padding */
+    border: none; /* Ensure no border is applied */
+    height: 700px;
+}
+
+.Login-cover {
+    width:48.24%;
+    
+}
+
+.Account-login {
+    margin-top: 40px;
+    margin-left: 260px;
+}

@@ -2,9 +2,9 @@
 
 
 
-.container{
+.container-bill-status{
     margin-top: 50px;
-    width: 400px;
+    width: 600px;
     height : 450px;
     background-color: #EAEAEA;
     border-radius: 10px;
@@ -13,7 +13,7 @@
     padding-right: 15px;
     padding-left: 15px;
   }
-.title{
+.title-bill-status{
     position: absolute;
     top : 10px;
     right: 10px;
@@ -96,6 +96,7 @@
 }
 
 .leave-details {
+    width:400px;
     text-align: left;
     position: relative;
     padding: 10px;

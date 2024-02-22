@@ -34,9 +34,9 @@ const TodayWorkingHours = (props) => {
   }, []);
 
   return (
-    <div className='container'>
-        <div className='title'>{props.title}</div>
-        <p>{currentTime}</p>
+    <div className='container-2'>
+        <div className='title-2'>{props.title}</div>
+        <p className='time-2'>{currentTime}</p>
     </div>
   );
 };

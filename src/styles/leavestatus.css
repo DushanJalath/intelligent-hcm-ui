@@ -2,10 +2,10 @@
 
 
 
-.container{
-    margin-top: 50px;
-    width: 400px;
-    height : 450px;
+.leave-container{
+    margin-top: 350px;
+    width: 825px;
+    height : 400px;
     background-color: #EAEAEA;
     border-radius: 10px;
     position: relative;
@@ -13,6 +13,7 @@
     padding-right: 15px;
     padding-left: 15px;
   }
+
 .title{
     position: absolute;
     top : 10px;
@@ -50,7 +51,7 @@
     display: flex;
     align-items: center;
     position: relative;
-    height: auto;
+    height: 85px;
     width: 100%;
     box-sizing: border-box;
     margin: 30px 0;
@@ -99,12 +100,19 @@
     text-align: left;
     position: relative;
     padding: 10px;
+    margin: 50px;
+    width:400px;
     border-right: 1px solid gray;
 }
 
 .leave-type-tag,
 .leave-type {
     font-weight: 700;
+
+}
+
+.leave-type-tag{
+    width: 100px;
 }
 
 

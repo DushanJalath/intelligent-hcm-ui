@@ -6,8 +6,10 @@
     font-weight: bold;
     border-radius: 30px;
     cursor: default;
-    margin-left: 10px;
+    margin-left: 80px;
     color: white;
+    width: 160px;
+    height: 40px;
 }
 
 /* Define styles for the approved status */

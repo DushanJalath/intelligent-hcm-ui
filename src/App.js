@@ -1,10 +1,10 @@
 
 import React from 'react';
-import AddBillsPage from './pages/AddBillsPage'
+import UserRegPage from './pages/UserRegPage';
 
 function App() {
     return (
-        <AddBillsPage/>
+        <UserRegPage/>
     );
 }
 

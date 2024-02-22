@@ -1,23 +1,21 @@
 .container1{
-    margin-top: 50px;
-    margin-left: 1000px ;
+    margin-top: -545px;
+    margin-left: 1500px ;
     width: 300px;
     height : 150px;
     background-color: #EAEAEA;
     border-radius: 10px;
     position: relative;
   }
-  .title{
+  .container1-menu{
     position: absolute;
-    top : 10px;
-    right: 10px;
+    top : -29px;
+    right: 19px;
     background-color: #02936F;
     color: white;
     border-radius: 50px;
-    padding: 5px;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-top: -23px;
+   padding: 13px 20px;
+
   }
 .data {
     display: flex;
@@ -32,12 +30,14 @@
     margin-left: 10px;
 }
 
-p{
-  width: 150px;
-}
+
 
 .block{
   padding: 25px;
   font-weight: bold;
 }
 
+.container1-title{
+    font-size: 16px;
+    font-weight: bold;
+}

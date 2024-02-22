@@ -1,0 +1,29 @@
+/* SegmentedControl.css */
+
+.segmented-control {
+    display: flex;
+    justify-content: space-between;
+    background-color:#EAEAEA;
+    padding:10px 50px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .segment {
+    border-radius: 15px;
+    font-size: 10px;
+    font-weight: 800;
+    color:#5E5E5E;
+
+    padding: 5px 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .segment.active {
+    background-color:#FFFFFF;
+    color:#176854;
+    ;
+  }
+  

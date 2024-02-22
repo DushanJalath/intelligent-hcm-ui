@@ -15,5 +15,4 @@ const StatusButton = ({ status }) => {
         </div>
     );
 };
-
 export default StatusButton;

@@ -1,13 +1,13 @@
 import Jobdetails from "../components/jobdetails.js"
-import "./employee job details page.css"
-import Navbar from "../components/Navbar.jsx"
+import "../styles/employeeJobDetailsPage.css"
 
+import Navbar from "../components/Sidebar.jsx"
 
 function App() {
     return (
       <div className="app-container">
       <div className="navbar">
-        
+        <Navbar/>
       </div>
       <div className="main-content">
       <Jobdetails title="Job details"/>

@@ -1,13 +1,10 @@
 import React from 'react';
-import EmployeeLeavePage from './pages/EmployeeLeavePage';
+import BillStatus from './components/BillStatus';
 
 function App() {
     return (
-        <div className='App'>
-            <EmployeeLeavePage/>
-        </div>
+        <BillStatus title="Bill Status"/>
     );
-
 }
 
 export default App;

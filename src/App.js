@@ -1,10 +1,10 @@
 
 import React from 'react';
-import BillStatus from './components/BillStatus';
+import EmployeeTimeAndReportingPage from './pages/employeeTimeAndReporting';
 
 function App() {
     return (
-        <BillStatus title="Bill Status"/>
+        <EmployeeTimeAndReportingPage/>
     );
 }
 

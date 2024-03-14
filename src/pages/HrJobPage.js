@@ -1,17 +1,15 @@
 import React from 'react'
 import '../styles/managerrequestvacancypage.css'
 import HrJobVacancyStatus from "../components/HrJobVacancyStatus";
-import HrJobRequesdedVacancy from "../components/HrJobRequestedVacancy"
-import Sidebar from '../components/Sidebar';
+import HRSidebar from '../components/HRSidebar.jsx';
 
 export default function HrJobPage() {
   return (
     <div className="container-RVP">
       <div>
-        <Sidebar/>
+        <HRSidebar/>
       </div>
       <div className="component-RVP">
-        <HrJobRequesdedVacancy title="Requested Vacancy"/>
         <HrJobVacancyStatus title="Vacancy Status"/>  
       </div>
     </div>

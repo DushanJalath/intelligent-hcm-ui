@@ -10,6 +10,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import HrJobRequestedVacancyIcons from './HrJobRequestedVacancyIcons';
+import HrVacancyStatusPdfIcon from './HrVacancyStatusPdfIcon';
 import HrJobPublishIcon from './HrJobPublishIcon';
 import HrJobVacancyStatusButtons from './HrJobVacancyStatusButtons';
 
@@ -50,33 +51,33 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     Categorys,
     Vacancies,
     Numvacancy,
-    Documents,
-    Action,
+    DownloadD,
+    UploadD,
     Publish,
   ) {
-    return { IDs, Categorys, Vacancies, Numvacancy, Documents,Action,Publish};
+    return { IDs, Categorys, Vacancies, Numvacancy, DownloadD, UploadD,Publish};
   }
   
   const rows2 = [
-    createDataforHRVS(1, 'Quality Assurance', 'QA Engineer', 5, 'download','download','publish'),
-    createDataforHRVS(2, 'UI/UX Design', 'UI Designer', 1, 'download','download','publish'),
-    createDataforHRVS(3, 'Software Development', 'Full Stack Developer', 3, 'download','download','publish'),
-    createDataforHRVS(4, 'Quality Assurance', 'QA Engineer', 4, 'download','download','publish'),
-    createDataforHRVS(5, 'UI/UX Design', 'UI Designer', 3, 'download','download','publish'),
-    createDataforHRVS(6, 'Software Development', 'Full Stack Developer', 2, 'download','download','publish'),
-    createDataforHRVS(7, 'UI/UX Design', 'UI Designer', 1, 'download','download','publish'),
-    createDataforHRVS(8, 'Quality Assurance', 'QA Engineer', 3, 'download','download','publish'),
-    createDataforHRVS(9, 'Quality Assurance', 'QA Engineer', 2, 'download','download','publish'),
-    createDataforHRVS(10, 'Quality Assurance', 'QA Engineer', 4, 'download','download','publish'),
-    createDataforHRVS(11, 'UI/UX Design', 'UI Designer', 3, 'download','download','publish'),
-    createDataforHRVS(12, 'Software Development', 'Full Stack Developer', 2, 'download','download','publish'),
+    createDataforHRVS(1, 'Quality Assurance', 'QA Engineer', 5, 'pdf','download','publish'),
+    createDataforHRVS(2, 'UI/UX Design', 'UI Designer', 1, 'pdf','download','publish'),
+    createDataforHRVS(3, 'Software Development', 'Full Stack Developer', 3, 'pdf','download','publish'),
+    createDataforHRVS(4, 'Quality Assurance', 'QA Engineer', 4, 'pdf','download','publish'),
+    createDataforHRVS(5, 'UI/UX Design', 'UI Designer', 3, 'pdf','download','publish'),
+    createDataforHRVS(6, 'Software Development', 'Full Stack Developer', 2, 'pdf','download','publish'),
+    createDataforHRVS(7, 'UI/UX Design', 'UI Designer', 1, 'pdf','download','publish'),
+    createDataforHRVS(8, 'Quality Assurance', 'QA Engineer', 3, 'pdf','download','publish'),
+    createDataforHRVS(9, 'Quality Assurance', 'QA Engineer', 2, 'pdf','download','publish'),
+    createDataforHRVS(10, 'Quality Assurance', 'QA Engineer', 4, 'pdf','download','publish'),
+    createDataforHRVS(11, 'UI/UX Design', 'UI Designer', 3, 'pdf','download','publish'),
+    createDataforHRVS(12, 'Software Development', 'Full Stack Developer', 2, 'pdf','download','publish'),
     createDataforHRVS(13, 'UI/UX Design', 'UI Designer', 1, 'download','download','publish'),
     createDataforHRVS(14, 'Quality Assurance', 'QA Engineer', 3, 'download','download','publish'),
     createDataforHRVS(15, 'Quality Assurance', 'QA Engineer', 2,'download','download','publish'),
   
   ];
   
-  const itemsPerPages = 11;
+  const itemsPerPages = 8;
 
 export default function HrJobVacancyStatus(props) {
     const [currentPage, setCurrentPage] = useState(1);
@@ -111,7 +112,8 @@ export default function HrJobVacancyStatus(props) {
                         <StyledTableCell align="center">Vacancy Category</StyledTableCell>
                         <StyledTableCell align="center">Job Vacancy</StyledTableCell>
                         <StyledTableCell align="center">Number of vacancies</StyledTableCell>
-                        <StyledTableCell align="center">Document</StyledTableCell>
+                        <StyledTableCell align="center">Download Document</StyledTableCell>
+                        <StyledTableCell align="center">Upload Document</StyledTableCell>
                         <StyledTableCell align="center">Action</StyledTableCell>
                         <StyledTableCell align="center">Publish</StyledTableCell>
 
@@ -124,7 +126,8 @@ export default function HrJobVacancyStatus(props) {
                         <StyledTableCell align="center">{row2.Categorys}</StyledTableCell>
                         <StyledTableCell align="center">{row2.Vacancies}</StyledTableCell>
                         <StyledTableCell align="center">{row2.Numvacancy}</StyledTableCell>
-                        <StyledTableCell align="center"><HrJobRequestedVacancyIcons ImageType={row2.Documents}/></StyledTableCell>
+                        <StyledTableCell align="center"><HrVacancyStatusPdfIcon ImageType={row2.DownloadD}/></StyledTableCell>
+                        <StyledTableCell align="center"><HrJobRequestedVacancyIcons ImageType={row2.UploadD}/></StyledTableCell>
                         <StyledTableCell align='center'><HrJobVacancyStatusButtons onStatusChange={(newStatus) => handleStatusChange(row2.IDs, newStatus)} /></StyledTableCell>
                         <StyledTableCell align="center"><HrJobPublishIcon ImageType={row2.Publish} /></StyledTableCell>
                         </StyledTableRow>

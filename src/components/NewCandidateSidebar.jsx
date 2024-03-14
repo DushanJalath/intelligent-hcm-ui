@@ -1,10 +1,7 @@
 import React, { useState } from "react";
-import { SlSettings } from "react-icons/sl";
-import { IoExitOutline } from "react-icons/io5";
 import { useMediaQuery } from "react-responsive";
 import { MdMenu } from "react-icons/md";
 import { NavLink, useLocation } from "react-router-dom";
-import { IoMdNotificationsOutline } from "react-icons/io";
 import { FiFile } from "react-icons/fi";
 import "../styles/Sidebar.css";
 

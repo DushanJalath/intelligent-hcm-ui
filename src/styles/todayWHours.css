@@ -1,6 +1,6 @@
-.container{
+.container-2{
     margin-top: 50px;
-    width: 300px;
+    width: 250px;
     height : 90px;
     background-color: #EAEAEA;
     border-radius: 10px;
@@ -9,7 +9,7 @@
     flex-direction: column;
 }
 
-.title{
+.title-2{
     position: absolute;
     top : 10px;
     right: 10px;
@@ -22,10 +22,10 @@
     text-align: center;
 }
 
-p{
+.time-2{
     font-weight: bold;
     font-size: 30px;
-    margin-bottom: 100px;
+    padding-top: 30px;
     display: flex;
     align-items: center;
     justify-content: center;

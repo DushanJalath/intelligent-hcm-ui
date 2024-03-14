@@ -4,7 +4,7 @@ import ProjectType from './ProjectType';
 
 function SetWorkingHours(props) {
     return(
-        <div className='container'>
+        <div className='container-working-hours'>
             <div className='title'>{props.title}</div>
             <div class='list'>
                 <ProjectType

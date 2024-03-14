@@ -40,7 +40,7 @@ const SubMenu = ({ data }) => {
                     <li key={menu}>
                         <NavLink
                             to={`/${data.name}/${menu}`}
-                            className={`link !bg-transparent capitalize ${isActive && "text-red-600"} ${isActive && "bg-gray-200"}`}
+                            className={`link !bg-transparent capitalize ${isActive && "text-red-600"} ${isActive && "bg-blue-200"}`}
                         >
                             {menu}
                         </NavLink>

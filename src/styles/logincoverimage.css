@@ -1,23 +1,14 @@
 .left-side-container {
-  position: relative;
-  width: 100%;
-  max-width: 893px;
+  width: auto;
   height: auto;
   display: flex;
   flex-direction: column;
   background-color: #02936F;
-  margin: auto;
 }
 
 .cover-image {
-  max-width: 100%;
+  max-width: auto;
   height: auto;
   flex-shrink: 0;
 }
 
-/* Responsive styles */
-@media only screen and (max-width: 600px) {
-  .left-side-container {
-      padding: 10px; /* Adjust padding for smaller screens */
-  }
-}

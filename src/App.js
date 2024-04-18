@@ -1,11 +1,18 @@
-
 import React from 'react';
 
-import UserRegPage from './pages/UserRegPage';
+import EmployeeFinalPage from "./fianalPages/EmployeeFinalPage";
+// import ManagerFinalPage from "./fianalPages/ManagerFinalPage";
+// import HRFinalPage from "./fianalPages/HRFinalPage";
+
 
 function App() {
     return (
-        <UserRegPage/>
+        <div className='App'>
+            <EmployeeFinalPage/>
+            {/*<ManagerFinalPage/>*/}
+            {/*<HRFinalPage/>*/}
+
+        </div>
     );
 }
 

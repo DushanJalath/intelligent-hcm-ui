@@ -5,11 +5,13 @@ import Sidebar from "../components/Sidebar";
 import LeaveStatus from "../components/LeaveStatus";
 import '../styles/EmployeeLeavePage.css';
 
+
+
 const EmployeeLeavePage=()=>{
     return(
         <>
         <div className="emp-leave-page">
-        
+
             <Sidebar/>
 
             <div className="main-container">
@@ -24,8 +26,8 @@ const EmployeeLeavePage=()=>{
                 <LeaveStatus title="Leave Status"/>
             </div>
         </div>
-        
-          
+
+
         </>
     )
 }

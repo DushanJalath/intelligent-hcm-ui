@@ -1,3 +1,4 @@
+
 import TimeAndDate from '../components/TimeAndDate.js'
 import TodayWorkingHours from '../components/TodayWorkingHours.js'
 import StartIntra from '../components/StartIntra.js'
@@ -6,7 +7,7 @@ import SetWorkingHours from '../components/SetWorkingHours.js'
 import '../styles/employeeTimeAndReportingPageStyle.css'
 
 
-function employeeTimeAndReporting(pardafedms) {
+function NewEmployeeTimeAndReporting(pardafedms) {
     return(
         <>
             {/*<NavBar/>*/}
@@ -24,11 +25,11 @@ function employeeTimeAndReporting(pardafedms) {
             <div className='working-hours'>
                 <SetWorkingHours title="Set Working Hours"/>
             </div>
-            
+
 
         </>
-            
+
     );
 }
 
-export default employeeTimeAndReporting;
+export default NewEmployeeTimeAndReporting;

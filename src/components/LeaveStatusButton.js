@@ -1,7 +1,7 @@
 import React from 'react';
-import '../styles/StatusButton.css'; // Import the CSS file
+import '../styles/LeaveStatusButton.css'; // Import the CSS file
 
-const StatusButton = ({ status }) => {
+const LeaveStatusButton = ({ status }) => {
     return (
         <div>
             <div>
@@ -15,4 +15,5 @@ const StatusButton = ({ status }) => {
         </div>
     );
 };
-export default StatusButton;
+
+export default LeaveStatusButton;

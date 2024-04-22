@@ -5,8 +5,11 @@ import AvInputs from './AvInputs';
 import AvTextArea from './AvTextArea'
 import AvButtons from './AvButtons';
 import { useState } from 'react';
+import axios from 'axios';
 
 export default function AddVacancy(props) {
+    const [successMessage, setSuccessMessage] = useState('');
+
     //project type
     const [projectType, setProjectType] = useState('');
     const handleProjectTypeChange = (value) => {
@@ -14,19 +17,24 @@ export default function AddVacancy(props) {
     };
 
     //Job vacancy category
-    const [category, setCategory] = useState(''); 
-    const handleCategoryChange = (value) => {
-      setCategory(value);
+    const [possition, setPossition] = useState(''); 
+    const handlePossitionChange = (value) => {
+      setPossition(value);
     };
 
     //Job vacancy
-    const [vacancy, setVacancy] = useState('');
-    const handleVacancyChange = (value) => {
-      setVacancy(value);
+    const [pre_requisits, setPre_requisits] = useState('');
+    const handlePre_requisitsChange = (value) => {
+      setPre_requisits(value);
+    };
+    //Job vacancy
+    const [responsibilities, setResponsibilities] = useState('');
+    const handleResponsibilitiesChange = (value) => {
+      setResponsibilities(value);
     };
 
     //Number of job vacancies
-    const [numOfVacancies, setNumOfVacancies] = useState('');
+    const [num_of_vacancies, setNumOfVacancies] = useState('');
     const handleNumOfVacanciesChange = (value) => {
       setNumOfVacancies(value);
     };
@@ -37,19 +45,43 @@ export default function AddVacancy(props) {
       setMoreDetails(value);
     };
 
-    const HandleGenarate = (event)=>{
+    const HandleGenarate = async (event) => {
         event.preventDefault();
-        console.log ('projectType : ', projectType);
-        console.log ('category :', category);
-        console.log ('vacancy :', vacancy);
-        console.log ('numOfVacancies :', numOfVacancies);
-        console.log ('moreDetails :', moreDetails);
-    }
+        const formData = {
+            project_type: projectType,
+            pre_requisits: pre_requisits,  
+            possition: possition,
+            num_of_vacancies: parseInt(num_of_vacancies),
+            responsibilities: responsibilities,
+            more_details: moreDetails
+        };
+        try {
+            const accessToken = localStorage.getItem('token');
+            console.log('Access Token:', accessToken);
+            console.log('Request Headers:', {
+                Authorization: `Bearer ${accessToken}`
+            }); // Assuming you store the access token in localStorage
+            const response = await axios.post('http://localhost:8000/create_vacancy', formData, {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                }
+            });
+            setSuccessMessage('Vacancy created successfully');
+            console.log(response.data);
+            // Refresh the page after successful submission
+            window.location.reload();
+        } catch (error) {
+            setSuccessMessage('An error occurred');
+            console.error('Error:', error);
+        }
+    };
+    
     const handleFormReset = () => {
         setProjectType('');
-        setCategory('');
-        setVacancy('');
+        setPossition('');
+        setPre_requisits('');
         setNumOfVacancies('');
+        setResponsibilities('');
         setMoreDetails('');
       };
 
@@ -68,25 +100,29 @@ export default function AddVacancy(props) {
                         <AvDropdown label="Project type :" value={projectType} onChange={handleProjectTypeChange} placeholder="Select leave type"/>
                     </div>
                     <div className='In2'>
-                        <AvInputs label="Job vacancy category :" value={category} onChange={handleCategoryChange} placeholder="Enter the category"/>
+                        <AvInputs label="Job possition :" value={possition} onChange={handlePossitionChange} placeholder="Enter the possition"/>
                     </div>
                     <div className='In2'>
-                        <AvInputs label=" Job vacancy : " value={vacancy} onChange={handleVacancyChange} placeholder="Enter the vacancy"/>
+                        <AvInputs label=" Job pre-requisits : " value={pre_requisits} onChange={handlePre_requisitsChange} placeholder="Enter the pre-requisits"/>
                     </div>
                     <div className='In2'>
-                        <AvInputs label="Number of job vacancies :" value={numOfVacancies} onChange={handleNumOfVacanciesChange} placeholder="Enter the number"/>
+                        <AvInputs label="Responsibilities :" value={responsibilities} onChange={handleResponsibilitiesChange} placeholder="Enter responsibilities"/>
+                    </div>
+                    <div className='In2'>
+                        <AvInputs label="Number of job vacancies :" value={num_of_vacancies} onChange={handleNumOfVacanciesChange} placeholder="Enter the number"/>
                     </div>
                     <div className='In2'>
                         <AvTextArea label="More about the vacancy :" value={moreDetails} onChange={handleMoreDetailsChange} placeholder="Enter more details"/>
                     </div>
-                    <div className="AV-Buttons">
+                    <div className="AV-Buttons-manager">
                         <div className="copy">
                             <AvButtons  type="reset" label="copy"/>
                         </div>
                         <div className="genarate">
-                            <AvButtons type="submit" label="genarate" onClick= {HandleGenarate}/>
+                            <AvButtons type="submit" label="genarate"/>
                         </div>
                     </div>
+                    <p className='success-message'>{successMessage}</p>
                     
                 </form>
             </div>

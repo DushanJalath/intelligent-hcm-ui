@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import '../styles/requestedvacancy.css';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
@@ -42,41 +43,40 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-function createData(
-  ID,
-  Category,
-  Vacancy,
-  Numvacancies,
-  Document,
-  Action,
-  Publish,
-) {
-  return { ID, Category, Vacancy, Numvacancies, Document, Action, Publish };
-}
-
-const rows = [
-  createData(1, 'Quality Assurance', 'QA Engineer', 5, 'check', 'clock', 'reject'),
-  createData(2, 'UI/UX Design', 'UI Designer', 1, 'reject', 'clock', 'check'),
-  createData(3, 'Software Development', 'Full Stack Developer', 3, 'check', 'clock', 'reject'),
-  createData(4, 'Quality Assurance', 'QA Engineer', 4, 'check', 'reject', 'clock'),
-  createData(5, 'UI/UX Design', 'UI Designer', 3, 'reject', 'check', 'reject'),
-  createData(6, 'Software Development', 'Full Stack Developer', 2, 'clock', 'clock', 'check'),
-  createData(7, 'UI/UX Design', 'UI Designer', 1, 'check', 'reject', 'check'),
-  createData(8, 'Quality Assurance', 'QA Engineer', 3, 'clock', 'reject', 'clock'),
-  createData(9, 'Quality Assurance', 'QA Engineer', 2, 'clock', 'reject', 'clock'),
-
-];
-
-const itemsPerPage = 3; // Adjust the number of items per page
-
 export default function RequestedVacancy(props) {
+  const [vacancies, setVacancies] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const accessToken = localStorage.getItem('token');
+        console.log('Access Token:', accessToken);
+        console.log('Request Headers:', {
+          Authorization: `Bearer ${accessToken}`,
+        });
+
+        const response = await axios.get('http://localhost:8000/get_vacancies', {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+
+        setVacancies(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+  
+  const itemsPerPage = 10;
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = rows.slice(indexOfFirstItem, indexOfLastItem);
-
-  const totalPages = Math.ceil(rows.length / itemsPerPage);
+  const currentItems = vacancies.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(vacancies.length / itemsPerPage);
 
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
@@ -91,8 +91,8 @@ export default function RequestedVacancy(props) {
             <TableHead>
               <TableRow>
                 <StyledTableCell align="center">Vacancy ID</StyledTableCell>
-                <StyledTableCell align="center">Vacancy Category</StyledTableCell>
-                <StyledTableCell align="center">Job Vacancy</StyledTableCell>
+                <StyledTableCell align="center">Project Type</StyledTableCell>
+                <StyledTableCell align="center">Possition</StyledTableCell>
                 <StyledTableCell align="center">Number of vacancies</StyledTableCell>
                 <StyledTableCell align="center">Document</StyledTableCell>
                 <StyledTableCell align="center">Action</StyledTableCell>
@@ -102,10 +102,10 @@ export default function RequestedVacancy(props) {
             <TableBody>
               {currentItems.map((row) => (
                 <StyledTableRow key={row.ID}>
-                  <StyledTableCell align="center">{row.ID}</StyledTableCell>
-                  <StyledTableCell align="center">{row.Category}</StyledTableCell>
-                  <StyledTableCell align="center">{row.Vacancy}</StyledTableCell>
-                  <StyledTableCell align="center">{row.Numvacancies}</StyledTableCell>
+                  <StyledTableCell align="center">{row.vacancy_id}</StyledTableCell>
+                  <StyledTableCell align="center">{row.project_type}</StyledTableCell>
+                  <StyledTableCell align="center">{row.possition}</StyledTableCell>
+                  <StyledTableCell align="center">{row.num_of_vacancies}</StyledTableCell>
                   <StyledTableCell align="center"><RequestedVacancyIcons ImageType={row.Document}/></StyledTableCell>
                   <StyledTableCell align="center"><RequestedVacancyIcons ImageType={row.Action}/></StyledTableCell>
                   <StyledTableCell align="center"><RequestedVacancyIcons ImageType={row.Publish}/></StyledTableCell>

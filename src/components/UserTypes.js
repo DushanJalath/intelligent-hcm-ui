@@ -4,7 +4,7 @@ import HRImage from '../assets/HR.png';
 import EMImage from '../assets/EM.png'; 
 import MNImage from '../assets/MN.png'; 
 
-export default function UserTypes({  userType }) {
+export default function UserTypes({ userType, onSelectType, selectedUserType }) {
   let src;
 
   switch (userType) {
@@ -23,10 +23,13 @@ export default function UserTypes({  userType }) {
 
   return (
     <div className='user-types'>
-      <div className='user-panel'>
+      <button
+        className={`user-panel ${userType === selectedUserType ? 'selected' : ''}`}
+        onClick={() => onSelectType(userType)}
+      >
         <img src={src} alt={`Cover for ${userType}`} className='single-user'/>
         <p className='user-para'>{userType}</p>
-      </div>
+      </button>
     </div>
   );
 }

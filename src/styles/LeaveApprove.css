@@ -1,15 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-body {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #f5f5f5;
-}
+
 
 .menu {
     position: absolute;
@@ -17,7 +8,7 @@ body {
     right: 5%;
     background-color: #02936F;
     text-align: center;
-    padding: 3px 20px;
+    padding: 13px 20px;
     border-radius: 40px;
     color: #ffffff;
     font-weight: bold;
@@ -25,15 +16,17 @@ body {
 
 
 
-.container {
+.leaveApprove-container {
     background-color: #EAEAEA;
     padding: 20px;
     position: relative;
     border-radius: 20px;
     width: 100%;
-    max-width: 950px;
+    max-width: 60%;
     box-sizing: border-box;
-    margin: 0 auto;
+    margin-left: 420px;
+    margin-top: 50px;
+
 }
 
 .user-card {
@@ -75,17 +68,18 @@ body {
 .user-name {
     display: flex;
     align-items: baseline;
-    font-size: small;
+    font-size: 18px;
+    font-weight: bold;
 }
 
-.user-name h2 {
+.user-name p {
     margin: 0;
-    color: #333;
+    color: black;
 }
 
 .user-details p {
-    margin: 5px 0;
-    color: #666;
+    margin: -2px 0;
+    color: black;
 }
 
 .leave-details {
@@ -93,7 +87,8 @@ body {
     position: relative;
     border-left: 1px solid gray;
     border-right: 1px solid gray;
-    padding: 0 10px;
+    padding: 10px;
+
 }
 
 .leave-type-tag,
@@ -118,7 +113,7 @@ body {
     }
 }
 
-.Approve-button {
+#LeaveApprove-Approve-button {
     padding-right: 2px;
     padding-left: 8px;
 }

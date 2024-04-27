@@ -24,10 +24,9 @@ const App = () => {
                     <Route path="/hrleavepredictionpage" element={<HRLeavePredictionPage />} />                      
                 </Routes>
             </div>
-
-      x
     </div>
   );
 };
 
 export default App;
+

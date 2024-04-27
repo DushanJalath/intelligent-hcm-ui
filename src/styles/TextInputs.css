@@ -1,11 +1,9 @@
 label{
     width: 173px;
     height: 24px;
-    top: 195px;
-    left: 474px;
-    opacity: 0.8px;
-    margin-right: 10px;
 
+    opacity: 0.8;
+    margin-right: 10px;
     /*font-family: Inter;*/
     font-size: 20px;
     font-weight: 400;
@@ -38,8 +36,8 @@ input{
     border-width: 0px;
     text-align: center;
     box-sizing: border-box;
-  
+
     background-color: #FFFFFF;
-  
+
   }
 

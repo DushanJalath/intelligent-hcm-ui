@@ -1,7 +1,7 @@
-.container{
+.container-working-hours{
     margin-top: 50px;
-    width: 300px;
-    height : 110px;
+    width: 350px;
+    height : 160px;
     background-color: #EAEAEA;
     border-radius: 10px;
     position: relative;
@@ -20,5 +20,5 @@
 }
 
 .list{
-    margin-top: 5px;
+    margin-top: 15px;
 }

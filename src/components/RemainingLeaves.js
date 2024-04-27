@@ -5,8 +5,8 @@ const RemainingLeaves =(props)=>{
     return (
         
         <div className="container1">
-        <div className="title">
-            {props.title}
+        <div className="container1-menu">
+           <p className="container1-title">Remaining Leaves</p>
         </div>
         <div className="block">
         <div className="data">
@@ -27,7 +27,6 @@ const RemainingLeaves =(props)=>{
             <div className="number">
                 05
             </div>
-
         </div>
         </div>
         </div>

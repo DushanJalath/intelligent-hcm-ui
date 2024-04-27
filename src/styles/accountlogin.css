@@ -1,7 +1,7 @@
 .right-container{
   align-items: center;
-  width: 50%;
-  height: 100%;
+  width: auto;
+  height: auto;
   background-color: #FFF;
   display: flex;
   flex-direction: column;
@@ -9,13 +9,11 @@
   justify-content: space-between;
 }
 .container1{
-  width: 100%;
+  width: auto;
   display: flex;
   flex-direction: column;
-  max-width: 450px;
 }
 .header{
-  width: 100%;
   display: flex;
   flex-direction: column;
   margin-bottom: 2px;
@@ -45,7 +43,7 @@
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 700;
   line-height: normal;
 }
 .box{
@@ -154,4 +152,10 @@
 
 .custom-checkbox:checked + .custom-label::before {
   visibility: visible;
+}
+
+.hide-message{
+  font-size: 16px;
+  font-family: Inter;
+  font-weight: 700;
 }

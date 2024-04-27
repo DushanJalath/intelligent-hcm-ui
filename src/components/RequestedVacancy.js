@@ -107,7 +107,7 @@ export default function RequestedVacancy(props) {
                   <StyledTableCell align="center">{row.possition}</StyledTableCell>
                   <StyledTableCell align="center">{row.num_of_vacancies}</StyledTableCell>
                   <StyledTableCell align="center"><RequestedVacancyIcons ImageType={row.Document}/></StyledTableCell>
-                  <StyledTableCell align="center"><RequestedVacancyIcons ImageType={row.Action}/></StyledTableCell>
+                  <StyledTableCell align="center"><RequestedVacancyIcons ImageType={row.status}/></StyledTableCell>
                   <StyledTableCell align="center"><RequestedVacancyIcons ImageType={row.Publish}/></StyledTableCell>
                 </StyledTableRow>
               ))}

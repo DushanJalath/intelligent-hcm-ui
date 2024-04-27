@@ -8,13 +8,13 @@ export default function RequestedVacancyIcons({ImageType}) {
     let img;
 
     switch (ImageType) {
-      case 'check':
+      case 'approved':
         img = check;
         break;
-      case 'clock':
+      case 'pending':
         img = clock;
         break;
-      case 'reject':
+      case 'rejected':
         img = reject;
         break;
       default:

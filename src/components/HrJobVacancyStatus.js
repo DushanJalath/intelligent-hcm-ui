@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../styles/hrjobvacancystatus.css'
 import { useState } from 'react';
 import { styled } from '@mui/material/styles';
@@ -13,6 +13,7 @@ import HrJobRequestedVacancyIcons from './HrJobRequestedVacancyIcons';
 import HrVacancyStatusPdfIcon from './HrVacancyStatusPdfIcon';
 import HrJobPublishIcon from './HrJobPublishIcon';
 import HrJobVacancyStatusButtons from './HrJobVacancyStatusButtons';
+import axios from 'axios';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -44,48 +45,66 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
       border: 0,
     },
   }));
+  // function createDataforHRVS(
+  //   vacancy_id,
+  //   project_type,
+  //   possition,
+  //   num_of_vacancies,
+  //   DownloadD,
+  //   UploadD,
+  //   Publish,
+  // ) {
+  //   return { vacancy_id, project_type, possition, num_of_vacancies, DownloadD, UploadD,Publish};
+  // }
   
-  function createDataforHRVS(
-    IDs,
-    Categorys,
-    Vacancies,
-    Numvacancy,
-    DownloadD,
-    UploadD,
-    Publish,
-  ) {
-    return { IDs, Categorys, Vacancies, Numvacancy, DownloadD, UploadD,Publish};
-  }
+  // const vacancies = [
+  //   createDataforHRVS(1, 'Quality Assurance', 'QA Engineer', 5, 'pdf','download','publish'),
+  //   createDataforHRVS(2, 'UI/UX Design', 'UI Designer', 1, 'pdf','download','publish'),
+  //   createDataforHRVS(3, 'Software Development', 'Full Stack Developer', 3, 'pdf','download','publish'),
+  //   createDataforHRVS(4, 'Quality Assurance', 'QA Engineer', 4, 'pdf','download','publish'),
+  //   createDataforHRVS(5, 'UI/UX Design', 'UI Designer', 3, 'pdf','download','publish'),
+  //   createDataforHRVS(6, 'Software Development', 'Full Stack Developer', 2, 'pdf','download','publish'),
+  //   createDataforHRVS(7, 'UI/UX Design', 'UI Designer', 1, 'pdf','download','publish'),
+  //   createDataforHRVS(8, 'Quality Assurance', 'QA Engineer', 3, 'pdf','download','publish'),
+  //   createDataforHRVS(9, 'Quality Assurance', 'QA Engineer', 2, 'pdf','download','publish'),
+  //   createDataforHRVS(10, 'Quality Assurance', 'QA Engineer', 4, 'pdf','download','publish'),
+  //   createDataforHRVS(11, 'UI/UX Design', 'UI Designer', 3, 'pdf','download','publish'),
+  //   createDataforHRVS(12, 'Software Development', 'Full Stack Developer', 2, 'pdf','download','publish'),
+  //   createDataforHRVS(13, 'UI/UX Design', 'UI Designer', 1, 'download','download','publish'),
+  //   createDataforHRVS(14, 'Quality Assurance', 'QA Engineer', 3, 'download','download','publish'),
+  //   createDataforHRVS(15, 'Quality Assurance', 'QA Engineer', 2,'download','download','publish'),
   
-  const rows2 = [
-    createDataforHRVS(1, 'Quality Assurance', 'QA Engineer', 5, 'pdf','download','publish'),
-    createDataforHRVS(2, 'UI/UX Design', 'UI Designer', 1, 'pdf','download','publish'),
-    createDataforHRVS(3, 'Software Development', 'Full Stack Developer', 3, 'pdf','download','publish'),
-    createDataforHRVS(4, 'Quality Assurance', 'QA Engineer', 4, 'pdf','download','publish'),
-    createDataforHRVS(5, 'UI/UX Design', 'UI Designer', 3, 'pdf','download','publish'),
-    createDataforHRVS(6, 'Software Development', 'Full Stack Developer', 2, 'pdf','download','publish'),
-    createDataforHRVS(7, 'UI/UX Design', 'UI Designer', 1, 'pdf','download','publish'),
-    createDataforHRVS(8, 'Quality Assurance', 'QA Engineer', 3, 'pdf','download','publish'),
-    createDataforHRVS(9, 'Quality Assurance', 'QA Engineer', 2, 'pdf','download','publish'),
-    createDataforHRVS(10, 'Quality Assurance', 'QA Engineer', 4, 'pdf','download','publish'),
-    createDataforHRVS(11, 'UI/UX Design', 'UI Designer', 3, 'pdf','download','publish'),
-    createDataforHRVS(12, 'Software Development', 'Full Stack Developer', 2, 'pdf','download','publish'),
-    createDataforHRVS(13, 'UI/UX Design', 'UI Designer', 1, 'download','download','publish'),
-    createDataforHRVS(14, 'Quality Assurance', 'QA Engineer', 3, 'download','download','publish'),
-    createDataforHRVS(15, 'Quality Assurance', 'QA Engineer', 2,'download','download','publish'),
+  // ];
   
-  ];
-  
-  const itemsPerPages = 8;
-
-export default function HrJobVacancyStatus(props) {
+  export default function HrJobVacancyStatus(props) {
+    const [vacancies, setVacancies] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
 
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const accessToken = localStorage.getItem('token');
+          console.log('Access Token:', accessToken);
+          console.log('Request Headers:', {
+            Authorization: `Bearer ${accessToken}`,
+          });
+          const response = await axios.get('http://127.0.0.1:8000/get_hr_vacancies', {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          });
+          setVacancies(response.data);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      };
+      fetchData();
+    }, []);
+    const itemsPerPages = 8;
     const indexOfLastItem = currentPage * itemsPerPages;
     const indexOfFirstItem = indexOfLastItem - itemsPerPages;
-    const currentItems = rows2.slice(indexOfFirstItem, indexOfLastItem);
-
-    const totalPages = Math.ceil(rows2.length / itemsPerPages);
+    const currentItems = vacancies.slice(indexOfFirstItem, indexOfLastItem);
+    const totalPages = Math.ceil(vacancies.length / itemsPerPages);
 
     const handlePageChange = (newPage1) => {
     setCurrentPage(newPage1);
@@ -93,10 +112,10 @@ export default function HrJobVacancyStatus(props) {
 
     const handleStatusChange = (id, newStatus) => {
         // Update the status in your data structure (rows2)
-        const updatedRows = rows2.map((row) => (row.IDs === id ? { ...row, status: newStatus } : row));
-        // Update the data
-        // You might want to update your state or perform other actions based on the status change
-        console.log(updatedRows);
+        const updatedVacancies = vacancies.map((vacancy) => {
+          return vacancy.vacancy_id === id ? { ...vacancy, status: newStatus } : vacancy;
+        });
+        setVacancies(updatedVacancies);
     };
 
   return (
@@ -108,8 +127,8 @@ export default function HrJobVacancyStatus(props) {
                     <TableHead>
                     <TableRow>
                         <StyledTableCell align="center">Vacancy ID</StyledTableCell>
-                        <StyledTableCell align="center">Vacancy Category</StyledTableCell>
-                        <StyledTableCell align="center">Job Vacancy</StyledTableCell>
+                        <StyledTableCell align="center">Project Type</StyledTableCell>
+                        <StyledTableCell align="center">Possition</StyledTableCell>
                         <StyledTableCell align="center">Number of vacancies</StyledTableCell>
                         <StyledTableCell align="center">Download Document</StyledTableCell>
                         <StyledTableCell align="center">Upload Document</StyledTableCell>
@@ -120,14 +139,14 @@ export default function HrJobVacancyStatus(props) {
                     </TableHead>
                     <TableBody>
                     {currentItems.map((row2) => (
-                        <StyledTableRow key={row2.ID}>
-                        <StyledTableCell align="center">{row2.IDs}</StyledTableCell>
-                        <StyledTableCell align="center">{row2.Categorys}</StyledTableCell>
-                        <StyledTableCell align="center">{row2.Vacancies}</StyledTableCell>
-                        <StyledTableCell align="center">{row2.Numvacancy}</StyledTableCell>
+                        <StyledTableRow key={row2.vacancy_id}>
+                        <StyledTableCell align="center">{row2.vacancy_id}</StyledTableCell>
+                        <StyledTableCell align="center">{row2.project_type}</StyledTableCell>
+                        <StyledTableCell align="center">{row2.possition}</StyledTableCell>
+                        <StyledTableCell align="center">{row2.num_of_vacancies}</StyledTableCell>
                         <StyledTableCell align="center"><HrVacancyStatusPdfIcon ImageType={row2.DownloadD}/></StyledTableCell>
                         <StyledTableCell align="center"><HrJobRequestedVacancyIcons ImageType={row2.UploadD}/></StyledTableCell>
-                        <StyledTableCell align='center'><HrJobVacancyStatusButtons onStatusChange={(newStatus) => handleStatusChange(row2.IDs, newStatus)} /></StyledTableCell>
+                        <StyledTableCell align='center'><HrJobVacancyStatusButtons onStatusChange={(newStatus) => handleStatusChange(row2.vacancy_id, newStatus)}vacancy_id={row2.vacancy_id} /></StyledTableCell>
                         <StyledTableCell align="center"><HrJobPublishIcon ImageType={row2.Publish} /></StyledTableCell>
                         </StyledTableRow>
                     ))}

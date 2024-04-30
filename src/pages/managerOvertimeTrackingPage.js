@@ -11,25 +11,26 @@ function App() {
   <>
    
         <div className="appontainer">
-        <div className="navbar">
-        <Navbar/>
-        </div>
+            <div className="navbar">
+              <Navbar/>
+            </div>
       
-      <div className="content">
-        <div className="control">
-        <Control categories = {Categories}/>
-        </div>
-        <div className="columns">
-      <div className="column1">
-        
-        <TimeAndDate title="Time and Date"/>
-        <Overtimecount title="Overtime count"/>
-        <Totalovertime title="Remainings Overtime"/>
-        <Totalovertime title="Total Overflow"/>
-         </div>
+          <div className="content">
+            <div className="control">
+              <Control categories = {Categories}/>
+            </div>
+
+          <div className="columns">
+           <div className="column1">
+             <TimeAndDate title="Time and Date"/>
+             <Overtimecount title="Overtime count"/>
+             <Totalovertime title="Remainings Overtime"/>
+             <Totalovertime title="Total Overflow"/>
+            </div>
+
         <div className="column2">
-        <Monthlyreport title="Monthly report"/> 
-      </div>
+            <Monthlyreport title="Monthly report"/>
+        </div>
       </div>
       </div>
     

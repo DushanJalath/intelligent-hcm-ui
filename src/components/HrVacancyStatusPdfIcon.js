@@ -51,7 +51,7 @@ export default function HrVacancyStatusPdfIcon({ endpointUrl, cvId ,filename}) {
     return (
         <div className='img-types align-items-center'>
             <div className='img-panel flex'>
-                <button onClick={handleDownload} className='download-btn'>
+                <button onClick={handleDownload} className='download-btn-sk'>
                     <img src={img1} className='single-user' alt='PDF Icon' />
                 </button>
             </div>

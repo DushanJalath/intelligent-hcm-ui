@@ -1,9 +1,13 @@
 .main-container{
     margin-left: 300px;
-    margin-top: -700px;
 }
 
 .sub-container{
-    margin-left: 200px;
-    margin-top: -600px;
+    margin-left: 00px;
+    margin-top: -500px;
+}
+
+.leave-status{
+    margin-left: 350px;
+    margin-top: 300px;
 }

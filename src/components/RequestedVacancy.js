@@ -10,6 +10,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import RequestedVacancyIcons from './RequestedVacancyIcons';
+import HrVacancyStatusPdfIcon from './HrVacancyStatusPdfIcon';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -106,9 +107,9 @@ export default function RequestedVacancy(props) {
                   <StyledTableCell align="center">{row.project_type}</StyledTableCell>
                   <StyledTableCell align="center">{row.possition}</StyledTableCell>
                   <StyledTableCell align="center">{row.num_of_vacancies}</StyledTableCell>
-                  <StyledTableCell align="center"><RequestedVacancyIcons ImageType={row.Document}/></StyledTableCell>
+                  <StyledTableCell align="center"><HrVacancyStatusPdfIcon endpointUrl=" " cvId={row.vacancy_id} filename={row.vacancy_id} /></StyledTableCell>
                   <StyledTableCell align="center"><RequestedVacancyIcons ImageType={row.status}/></StyledTableCell>
-                  <StyledTableCell align="center"><RequestedVacancyIcons ImageType={row.Publish}/></StyledTableCell>
+                  <StyledTableCell align="center"><RequestedVacancyIcons ImageType={row.publish_status}/></StyledTableCell>
                 </StyledTableRow>
               ))}
             </TableBody>

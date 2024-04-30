@@ -1,10 +1,7 @@
 import React, { useState } from "react";
-import { SlSettings } from "react-icons/sl";
-import { IoExitOutline } from "react-icons/io5";
 import { useMediaQuery } from "react-responsive";
 import { MdMenu } from "react-icons/md";
 import { NavLink, useLocation } from "react-router-dom";
-import { IoMdNotificationsOutline } from "react-icons/io";
 import { FiFile } from "react-icons/fi";
 import "../styles/Sidebar.css";
 
@@ -38,8 +35,7 @@ const Sidebar = () => {
                         {open && (
                             <div className="rounded-full overflow-hidden">
                                 <img
-                                    src="/newcandidate.jpeg"
-                                    width={45}
+                                    src="/newcandidate.jpg"
                                     alt=""
                                     className="rounded-full"
                                     style={{ width: 50, height: 50, borderRadius: '50%' }}
@@ -67,24 +63,9 @@ const Sidebar = () => {
                                 Job Vacancy
                             </NavLink>
                         </li>
-                        <li>
-                            <NavLink to={"/overtimetracking"} className="link">
-                                <IoMdNotificationsOutline size={23} className="min-w-max" />
-                                Notification
-                            </NavLink>
-                        </li>
                     </ul>
 
-                    <div className="mt-auto px-2.5 mb-5">
-                        <NavLink to={"/settings"} className="link">
-                            <SlSettings size={23} className="min-w-max" />
-                            Settings
-                        </NavLink>
-                        <NavLink to={"/logout"} className="link mt-2">
-                            <IoExitOutline size={23} className="min-w-max" />
-                            Log Out
-                        </NavLink>
-                    </div>
+
                 </div>
 
                 <div className={`m-3 md:hidden cursor-pointer ${!open && 'transform translate-x-[15px]'}`} onClick={handleToggleSidebar}>

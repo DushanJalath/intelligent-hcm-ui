@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SubMenu from "./SubMenu";
 import { SlSettings } from "react-icons/sl";
-import { AiOutlineAppstore } from "react-icons/ai";
+import {AiOutlineAppstore, AiOutlinePlusCircle} from "react-icons/ai";
 import { TbReportAnalytics } from "react-icons/tb";
 import { IoExitOutline } from "react-icons/io5";
 import { useMediaQuery } from "react-responsive";
@@ -30,11 +30,6 @@ const Sidebar = () => {
             icon: IoCalendarOutline,
             menus: ["View Absence", "Request Leave"],
         },
-        {
-            name: "Leave Prediction",
-            icon: TbReportAnalytics,
-            menus: ["View Leave Predict", "Submit Form"],
-        },
     ];
 
     const handleToggleSidebar = () => {
@@ -46,7 +41,7 @@ const Sidebar = () => {
     };
 
     return (
-        <div>
+        <div className="sidebar">
             <div className={`bg-[#EAEAEA] text-[#0C0C0D] shadow-xl z-[999] max-w-[19rem] w-[19rem] overflow-hidden md:relative fixed h-screen ${!open && "md:w-[4rem]"}`}>
                 <div className="flex flex-col h-full">
                     <div className="flex items-center gap-3.5 font-medium border-b py-5 border-slate-300 mx-3">
@@ -86,37 +81,49 @@ const Sidebar = () => {
 
                     <ul className="whitespace-pre px-2.5 text-[1rem] py-5 flex flex-col gap-1 font-medium overflow-x-hidden scrollbar-thin scrollbar-track-white scrollbar-thumb-slate-100 md:h-[68%] h-[70%]">
                         <li>
-                            <NavLink to={"/timereporting"} className="link">
-                                <AiOutlineAppstore size={23} className="min-w-max" />
+                            <NavLink to={"/NewEmployeeTimeAndReporting"} className="link">
+                                <AiOutlineAppstore size={23} className="min-w-max"/>
                                 Time Reporting
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to={"/overtimetracking"} className="link">
-                                <IoMdPie size={23} className="min-w-max" />
+                            <NavLink to={"/EmployeeOvertimeTrackingPageNew"} className="link">
+                                <IoMdPie size={23} className="min-w-max"/>
                                 Overtime Tracking
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to={"/leavePrediction"} className="link">
+                                <TbReportAnalytics size={23} className="min-w-max"/>
+                                Leave Prediction
                             </NavLink>
                         </li>
                         {(open || isTabletMid) && (
                             <div>
                                 {subMenusList?.map((menu) => (
                                     <div key={menu.name} className="flex flex-col gap-1">
-                                        <SubMenu data={menu} />
+                                        <SubMenu data={menu}/>
                                     </div>
                                 ))}
                             </div>
                         )}
                         <li>
-                            <NavLink to={"/storage"} className="link">
-                                <FiFile size={23} className="min-w-max" />
+                            <NavLink to={"/EmployeeJobVacancyPageNew"} className="link">
+                                <FiFile size={23} className="min-w-max"/>
                                 Job Vacancies
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to={"/AddBillsPage"} className="link">
+                                <AiOutlinePlusCircle size={23} className="min-w-max"/>
+                                Clam Bills
                             </NavLink>
                         </li>
                     </ul>
 
                     <div className="mt-auto px-2.5 mb-5">
                         <NavLink to={"/settings"} className="link">
-                            <SlSettings size={23} className="min-w-max" />
+                            <SlSettings size={23} className="min-w-max"/>
                             Settings
                         </NavLink>
                         <NavLink to={"/logout"} className="link mt-2">

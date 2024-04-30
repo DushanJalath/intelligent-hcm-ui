@@ -74,8 +74,8 @@ function LeavePredictionchart() {
         </DemoContainer>
       </LocalizationProvider>
       </div>
-      <button onClick={handlePredictClick}>Predict</button>
-      {error && <div className="error">{error}</div>}
+      <button className=" buttn-hrpredic" onClick={handlePredictClick}>Predict</button>
+      {error && <div className="error_a">{error}</div>}
       {prediction !== null && (
         <div>
           <h2>Predicted Attendance:</h2>

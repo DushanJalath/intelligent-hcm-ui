@@ -1,7 +1,7 @@
 .right-container{
   align-items: center;
-  width: auto;
-  height: auto;
+  width: 600px;
+  height: 700px;
   background-color: #FFF;
   display: flex;
   flex-direction: column;
@@ -9,11 +9,13 @@
   justify-content: space-between;
 }
 .container1{
-  width: auto;
+  width: 500px;
+  height: 700px;
   display: flex;
   flex-direction: column;
 }
 .header{
+  width: 500px;
   display: flex;
   flex-direction: column;
   margin-bottom: 2px;
@@ -29,7 +31,6 @@
   padding-bottom: -20px;
 }
 .header-paragraph{
-  width: 411px;
   color: #8692A6;
   font-family: Inter;
   font-size: 18px;
@@ -38,15 +39,26 @@
   line-height: 28px; /* 155.556% */
   padding-top: -30px;
 }
-.paragraph{
+.header-paragraph-login{
+  margin-top: 10px;
+  width: 436px;
+}
+.paragraph-login{
   color: #000;
+  width: 400px;
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
-.box{
+
+.login-colms{
+  margin-top: 30px;
+}
+.box-login{
   width: 426px;
   height: 64px;
   flex-shrink: 0;
@@ -78,6 +90,9 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+}
+.remember-icon{
+  margin-top: 5px;
 }
 .checkbox-raw{
   width: 100%;

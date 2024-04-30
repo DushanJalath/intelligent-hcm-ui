@@ -1,0 +1,22 @@
+.time-report {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 350px;
+  }
+  
+.timeDate {
+    
+    margin-right: 60px;
+}
+
+  
+.start-intra {
+    margin-top: 60px;
+    margin-left: 350px;
+}
+
+.working-hours{
+    margin-top: 60px;
+    margin-left: 350px;
+}

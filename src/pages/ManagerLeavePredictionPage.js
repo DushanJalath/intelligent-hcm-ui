@@ -1,19 +1,19 @@
 import React from "react";
 import ManagerSidebar from '../components/ManagerSidebar.jsx'
+import LeavePredictionchart from '../components/LeavePredictionchart'
+import TimeAndDate from '../components/TimeAndDate'
+import '../styles/hrleavepredictionpage.css'
 
 export default function ManagerLeavePredictionPage() {
-    const Styles = {
-        display: 'flex',
-        
-      };
+  
   return (
-    
-    <div style={Styles}>
+    <div className='hr-leave-predict'>
       <div>
         <ManagerSidebar/>
       </div>
       <div className="Leave_section">
-        
+        {/* <TimeAndDate className="leave-page-date" title="Time and Date"/> */}
+      <LeavePredictionchart/>
       </div>
     </div>
   )

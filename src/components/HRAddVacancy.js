@@ -77,7 +77,7 @@ export default function HRAddVacancy(props) {
     };
     
   return (
-    <div className='container'>
+    <div className='container-HRADD'>
         <div className='title'><p className='title-para'>{props.title}</p></div>
         <div className='para-form'>
             <div className='paragraph1'>

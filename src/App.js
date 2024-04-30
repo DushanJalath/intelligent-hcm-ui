@@ -7,6 +7,7 @@ import HrjobPage from './pages/HrJobPage';
 import HrNewCandidatePage from './pages/HrNewCandidatePage';
 import ManagerLeavePredictionPage from './pages/ManagerLeavePredictionPage';
 import HRLeavePredictionPage from './pages/HrLeavePredictionPage';
+import HrApproveBillsPage from './pages/HrApproveBillsPage';
 
 
 const App = () => {
@@ -21,11 +22,10 @@ const App = () => {
                     <Route path="/hrjobpage" element={<HrjobPage />} />
                     <Route path="/hrnewcandidatepage" element={<HrNewCandidatePage />} />
                     <Route path="/managerleavepredictionpage" element={<ManagerLeavePredictionPage />} />
-                    <Route path="/hrleavepredictionpage" element={<HRLeavePredictionPage />} />                      
+                    <Route path="/hrleavepredictionpage" element={<HRLeavePredictionPage />} />
+                    <Route path="/hrapprovebillspage" element={<HrApproveBillsPage />} />                      
                 </Routes>
             </div>
-
-      x
     </div>
   );
 };

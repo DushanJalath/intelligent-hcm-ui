@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import '../styles/accountlogin.css';
 import UserTypes from './UserTypes';
 import axios from 'axios';
@@ -12,6 +12,17 @@ export default function AccountLogin() {
     const [loginMessage, setLoginMessage] = useState('');
     const [selectedUserType, setSelectedUserType] = useState(null);
     const navigate = useNavigate();
+
+
+    useEffect(() => {
+        const rememberedEmail = localStorage.getItem('rememberedEmail');
+        const rememberedPassword = localStorage.getItem('rememberedPassword');
+        const rememberedType = localStorage.getItem('rememberedType');
+    
+        if (rememberedEmail) setEmail(rememberedEmail);
+        if (rememberedPassword) setPassword(rememberedPassword);
+        if (rememberedType) setType(rememberedType);
+    }, []);
 
     const handleLogin = async () => {
 
@@ -35,6 +46,15 @@ export default function AccountLogin() {
         if (selectedUserType === null){
             setLoginMessage('User type not selected');
             return;
+        }
+        if (rememberMe) {
+            localStorage.setItem('rememberedEmail', email);
+            localStorage.setItem('rememberedPassword', password);
+            localStorage.setItem('rememberedType', type);
+        } else {
+            localStorage.removeItem('rememberedEmail');
+            localStorage.removeItem('rememberedPassword');
+            localStorage.removeItem('rememberedType');
         }
     
         try {
@@ -78,11 +98,11 @@ export default function AccountLogin() {
             <div className='container1'>
                 <div className='header'>
                     <h1 className='header-H1'>Account Login</h1>
-                    <p className='header-paragraph'>If you are already a member you can login with your email address and password</p>
+                    <p className='header-paragraph-login'>If you are already a member you can login with your email address and password</p>
                 </div>
 
-                <div className='w-full flex flex-col'>
-                    <p className='paragraph'>User types</p>
+                <div className='login-colms'>
+                    <p className='paragraph-login'>User types</p>
                     <div className='user'>
                     <UserTypes userType="HR" onSelectType={handleSelectType} selectedUserType={selectedUserType} setSelectedUserType={setSelectedUserType} onChange={(e) => setType(e.target.value)}/>
                     <UserTypes userType="Manager" onSelectType={handleSelectType} selectedUserType={selectedUserType} setSelectedUserType={setSelectedUserType} onChange={(e) => setType(e.target.value)}/>
@@ -90,29 +110,29 @@ export default function AccountLogin() {
                     </div>
                 </div>
 
-                <div className='w-full flex flex-col'>
-                    <p className='paragraph'>Email address</p>
+                <div className='login-colms'>
+                    <p className='paragraph-login'>Email address</p>
                     <input
                         type='email'
                         placeholder='Email'
-                        className='box'
+                        className='box-login'
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
-                <div className='w-full flex flex-col'>
-                    <p className='paragraph'>Password</p>
+                <div className='login-colms'>
+                    <p className='paragraph-login'>Password</p>
                     <input
                         type='password'
                         placeholder='Password'
-                        className='box'
+                        className='box-login'
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
                     <p className='hide-message'>{loginMessage}</p>
                 </div>
 
-                <div className='w-full flex items-center justify-between'>
+                <div className='remember-icon'>
                     <div className='checkbox-raw'>
                         <input
                             type='checkbox'
@@ -123,11 +143,11 @@ export default function AccountLogin() {
                         />
                         <label htmlFor='myCheckbox' className='custom-label'></label>
 
-                        <p className='paragraph'>Remember me</p>
+                        <p className='paragraph-login'>Remember me</p>
                     </div>    
                 </div>
 
-                <div className='w-full flex flex-col my-4'>
+                <div className='login-colms my-4'>
                     <button className='login-box' onClick={handleLogin}>
                         Log in
                     </button>

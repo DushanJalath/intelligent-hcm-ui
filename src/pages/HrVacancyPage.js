@@ -3,7 +3,7 @@ import HRAddVacancy from "../components/HRAddVacancy";
 
 function app() {
     const Styles = {
-        marginTop: '-900px',
+        marginTop: '-60px',
         
       };
     return (

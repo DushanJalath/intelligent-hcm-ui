@@ -23,7 +23,7 @@
   }
 
   button, [type='button']{
-      background-color: black;
+      /* background-color: black; */
   }
 
 }

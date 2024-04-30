@@ -13,6 +13,7 @@ const TimeAndDate = (props) => {
       const now = new Date();
       const formattedTime = format(now, 'h:mm a');
       setCurrentTime(formattedTime);
+      console.log(formattedTime);
     };
 
     const updateCurrentDate = () => {
@@ -27,6 +28,7 @@ const TimeAndDate = (props) => {
       setCurrentDay(day);
       setCurrentMonth(month);
       setCurrentYear(year);
+      console.log(day, month, year);
     };
 
     // Update the date immediately when the component mounts

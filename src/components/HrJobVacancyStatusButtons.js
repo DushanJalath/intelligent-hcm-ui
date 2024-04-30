@@ -1,20 +1,20 @@
+// HrJobVacancyStatusButtons.js
 import React, { useState } from "react";
+import axios from "axios";
 import { ImCheckmark, ImCross } from "react-icons/im";
 import "../styles/hrjobvacancystatusbuttons.css";
-import axios from "axios";
 
-export default function HrJobVacancyStatusButtons({ onStatusChange, vacancy_id }) {
+export default function HrJobVacancyStatusButtons({ onStatusChange, id, endpointUrl }) {
   const [status, setStatus] = useState(null);
 
   const handleStatusChange = async (newStatus) => {
     setStatus(newStatus);
 
-    const url = `http://127.0.0.1:8000/update_hr_vacancy/${vacancy_id}`;
     const accessToken = localStorage.getItem("token");
 
     try {
       const response = await axios.put(
-        url,
+        endpointUrl.replace("{id}", id),
         { new_status: newStatus },
         {
           headers: {
@@ -23,12 +23,13 @@ export default function HrJobVacancyStatusButtons({ onStatusChange, vacancy_id }
           },
         }
       );
+      console.log("Response:", id, response.data.message);
 
       if (response.status === 200) {
         const data = response.data;
         onStatusChange(data.message);
       } else {
-        throw new Error("Failed to update vacancy status");
+        throw new Error("Failed to update status");
       }
     } catch (error) {
       console.error("Error:", error.message);
@@ -40,17 +41,10 @@ export default function HrJobVacancyStatusButtons({ onStatusChange, vacancy_id }
       <div className="btn-panel flex ">
         {status === null && (
           <>
-            <button
-              className="img-button1"
-              onClick={() => handleStatusChange("approved")}
-            >
+            <button className="img-button1" onClick={() => handleStatusChange("approved")}>
               Approve
             </button>
-
-            <button
-              className="img-button2"
-              onClick={() => handleStatusChange("rejected")}
-            >
+            <button className="img-button2" onClick={() => handleStatusChange("rejected")}>
               Reject
             </button>
           </>

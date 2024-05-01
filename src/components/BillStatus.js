@@ -1,4 +1,5 @@
 import React from 'react'
+// import "../styles/BillStatus.css"
 import '../styles/BillStatus.css'
 import StatusButton from "./StatusButton";
 
@@ -62,8 +63,8 @@ function BillStatus(props) {
                 <StatusButton status={approvedStatus}/>
             </div>
 
-            
-    </div>
+
+        </div>
     )
 }
 

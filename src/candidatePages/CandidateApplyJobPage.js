@@ -1,9 +1,8 @@
 import Jobdetails from "../components/jobdetails.js"
+import Navbar from "../components/Sidebar.jsx"
 import "../styles/employeeJobDetailsPage.css"
 
-import Navbar from "../components/Sidebar.jsx"
-
-export default function EmployeeJobDetailsPageNew (){
+export default function CandidateApplyJobPage (){
     return (
         <div className="app-container">
             <div className="navbar">
@@ -12,7 +11,6 @@ export default function EmployeeJobDetailsPageNew (){
             <div className="main-content">
                 <Jobdetails title="Job details"/>
             </div>
-
         </div>
     )
 }

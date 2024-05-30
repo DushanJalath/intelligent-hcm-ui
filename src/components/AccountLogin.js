@@ -70,8 +70,14 @@ export default function AccountLogin() {
             }
             const jwtToken = response.data.access_token;
             localStorage.setItem('token', jwtToken);
+           
+            //Get User Type to Front End
+            const userType = response.data.type;
+            localStorage.setItem('userType', userType);
+
             setLoginMessage('Successfully logged in');
             navigate('/managerReuestVacancypage');
+
     
         } catch (error) {
             if (error.response) {

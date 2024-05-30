@@ -3,10 +3,10 @@ import TimeReporting from "../components/TimeReporting"
 import Settings from "../components/Settings"
 import HRRootLayout from "../components/HRRootLayout"
 import React from "react";
-import LeaveApproveManagers from "../components/LeaveApproveManagers";
+import LeaveApprove from "../components/LeaveApprove";
 
 
-export default function HRApproveManagersLeavePage (){
+export default function ApproveEmpLeavePage (){
     return(
         <div>
             <HRRootLayout>
@@ -15,7 +15,7 @@ export default function HRApproveManagersLeavePage (){
                     <Route path="/settings" element={<Settings />} />
                 </Routes>
             </HRRootLayout>
-            <LeaveApproveManagers/>
+            <LeaveApprove/>
         </div>
     )
 }

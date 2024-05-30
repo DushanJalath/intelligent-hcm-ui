@@ -1,19 +1,21 @@
 import { Route, Routes } from "react-router-dom";
 import TimeReporting from "../components/TimeReporting"
 import Settings from "../components/Settings"
-import ManagerRootLayout from "../components/ManagerRootLayout"
-import ViewEmployeeLeaveStatus from "../components/ViewEmployeeLeaveStatus";
+import HRRootLayout from "../components/HRRootLayout"
+import React from "react";
+import LeaveApproveManagers from "../components/LeaveApproveManagers";
 
-export default function ManagerViewLeaveStatusOfEmployeesPage (){
+
+export default function ApproveManagerLeavePage (){
     return(
         <div>
-            <ManagerRootLayout>
+            <HRRootLayout>
                 <Routes>
                     <Route path="/" element={<TimeReporting />} />
                     <Route path="/settings" element={<Settings />} />
                 </Routes>
-            </ManagerRootLayout>
-            <ViewEmployeeLeaveStatus/>
+            </HRRootLayout>
+            <LeaveApproveManagers/>
         </div>
     )
 }

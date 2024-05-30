@@ -1,14 +1,14 @@
-import Sidebar from "../components/Sidebar"
+import HRSidebar from "../components/HRSidebar";
 import HRAddVacancy from "../components/HRAddVacancy";
 
-function app() {
+function AddJobVacancyPage() {
     const Styles = {
-        marginTop: '-550px',
+        marginTop: '-60px',
         
       };
     return (
         <>
-        <Sidebar/>,
+        <HRSidebar/>,
         <div style={Styles}>
             <HRAddVacancy title="Add Vacancy"/>
 
@@ -21,5 +21,5 @@ function app() {
     
 }
 
-export default app;
+export default AddJobVacancyPage;
 

@@ -1,21 +1,19 @@
 import { Route, Routes } from "react-router-dom";
 import TimeReporting from "../components/TimeReporting"
 import Settings from "../components/Settings"
-import HRRootLayout from "../components/HRRootLayout"
-import React from "react";
-import LeaveApprove from "../components/LeaveApprove";
+import ManagerRootLayout from "../components/ManagerRootLayout"
+import ViewEmployeeLeaveStatus from "../components/ViewEmployeeLeaveStatus";
 
-
-export default function HRApproveMEmployeesLeavePage (){
+export default function LeaveStatusPage (){
     return(
         <div>
-            <HRRootLayout>
+            <ManagerRootLayout>
                 <Routes>
                     <Route path="/" element={<TimeReporting />} />
                     <Route path="/settings" element={<Settings />} />
                 </Routes>
-            </HRRootLayout>
-            <LeaveApprove/>
+            </ManagerRootLayout>
+            <ViewEmployeeLeaveStatus/>
         </div>
     )
 }

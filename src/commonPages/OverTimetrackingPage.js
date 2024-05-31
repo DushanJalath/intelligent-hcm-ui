@@ -7,7 +7,7 @@ import Sidebar from "../components/Sidebar";
 import ManagerSidebar from "../components/ManagerSidebar";
 
 
-export default function OverTimeTrackingPage (){
+export default function OverTimetrackingPage (){
     const userType = localStorage.getItem('userType');
     return (
         

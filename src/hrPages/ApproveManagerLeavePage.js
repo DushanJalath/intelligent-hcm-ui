@@ -1,7 +1,5 @@
-import { Route, Routes } from "react-router-dom";
-import TimeReporting from "../components/TimeReporting"
-import Settings from "../components/Settings"
-import HRRootLayout from "../components/HRRootLayout"
+
+import HRSidebar from "../components/HRSidebar"
 import React from "react";
 import LeaveApproveManagers from "../components/LeaveApproveManagers";
 
@@ -9,13 +7,8 @@ import LeaveApproveManagers from "../components/LeaveApproveManagers";
 export default function ApproveManagerLeavePage (){
     return(
         <div>
-            <HRRootLayout>
-                <Routes>
-                    <Route path="/" element={<TimeReporting />} />
-                    <Route path="/settings" element={<Settings />} />
-                </Routes>
-            </HRRootLayout>
-            <LeaveApproveManagers/>
+           <HRSidebar/> 
+           <LeaveApproveManagers/>
         </div>
     )
 }

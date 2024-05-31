@@ -1,15 +1,15 @@
 import React from "react";
 import HRTrackOT from "../components/HR_OT_Track";
-import Sidebar from "../components/Sidebar";
+import HRSidebar from "../components/HRSidebar";
 import SwitchView from "../components/SwitchView";
 import '../styles/HROTTrackingPage.css';
 
-const HROTTrackingPage=()=>{
+const OverTimetrackingPageEmp=()=>{
     return(
         <>
         <div className="hr-ot-tracking">
         
-            <Sidebar/>
+            <HRSidebar/>
 
             <div className="slide-bar">
                 <SwitchView option1="Employee" page1="" option2="Manager" page2=""/>
@@ -25,4 +25,4 @@ const HROTTrackingPage=()=>{
     )
 }
 
-export default HROTTrackingPage
+export default OverTimetrackingPageEmp

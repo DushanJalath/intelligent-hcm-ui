@@ -1,14 +1,14 @@
-import Sidebar from '../components/Sidebar';
+import HRSidebar from '../components/HRSidebar';
 import ManagerSidebar from '../components/ManagerSidebar';
 
-export default function ViewIndividualAttendancePage (){
+export default function EmployeesAttendances (){
     const userType = localStorage.getItem('userType');
     return (
         <>
-         {userType === 'Employee' && <Sidebar/>}
+         {userType === 'HR' && <HRSidebar/>}
          {userType === 'Manager' && <ManagerSidebar/>}  
             <div className="app-container">
-                {/* View Individual Attendence Emploee and Manager */}
+                {/* View Attendence Emploee*/}
             </div>
         </>
       

@@ -1,7 +1,7 @@
 // import TimeAndDate from "./components/TimeAndDate";
 import HRTimeReportingSubComponent from "../components/HRTimeReportingSubComponent";
 import '../styles/HRTimeReportingPage.css';
-import Sidebar from '../components/Sidebar';
+import HRSidebar from '../components/HRSidebar';
 import TimeAndDate from "../components/TimeAndDate";
 
 
@@ -28,7 +28,7 @@ const employeesTimeReportingData=[
     return (
         <>
         <div>
-            <Sidebar/>
+            <HRSidebar/>
         </div>
 
         <div className="main-container">

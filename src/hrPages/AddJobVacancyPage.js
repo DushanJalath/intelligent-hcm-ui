@@ -8,7 +8,7 @@ function AddJobVacancyPage() {
       };
     return (
         <>
-        <HRSidebar/>,
+        <HRSidebar/>
         <div style={Styles}>
             <HRAddVacancy title="Add Vacancy"/>
 

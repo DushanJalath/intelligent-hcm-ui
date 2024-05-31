@@ -9,9 +9,6 @@ export default function JobVacancyDetailsPage (){
         <div className="app-container">
             {userType === 'Employee' && <Sidebar/>}
             {userType === 'Manager' && <ManagerSidebar/>}
-                <div className="navbar">
-                    <Navbar/>
-                </div>
                 <div className="main-content">
                     <Jobvacancy title="New Job Vacancies"/>
                 </div>

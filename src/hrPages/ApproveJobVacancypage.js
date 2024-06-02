@@ -3,7 +3,7 @@ import '../styles/managerrequestvacancypage.css'
 import HrJobVacancyStatus from "../components/HrJobVacancyStatus";
 import HRSidebar from '../components/HRSidebar.jsx';
 
-export default function HrJobPage() {
+export default function ApproveJobVacancypage() {
   return (
     <div className="container-RVP">
       <div>

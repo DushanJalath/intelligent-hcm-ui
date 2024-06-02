@@ -4,7 +4,7 @@ import HrNewCandidate from '../components/HrNewCandidate.js';
 import HRSidebar from '../components/HRSidebar.jsx';
 
 
-export default function HrNewCandidatePage() {
+export default function CandidateApplyPage() {
     return (
         <div className="container-RVP">
           <div>

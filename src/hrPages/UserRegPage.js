@@ -1,11 +1,11 @@
-import Sidebar from "../components/Sidebar";
+import HRSidebar from "../components/HRSidebar";
 import UserRegistration from "../components/UserRegistration";
 import '../styles/userRegPage.css'
 
 function UserRegPage(props) {
     return(
         <>
-        <Sidebar/>
+        <HRSidebar/>
         <div className="reg-form">
             <UserRegistration title="User Regsitration"/>
         </div>

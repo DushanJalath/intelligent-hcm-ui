@@ -70,8 +70,25 @@ export default function AccountLogin() {
             }
             const jwtToken = response.data.access_token;
             localStorage.setItem('token', jwtToken);
+           
+            //Get User Type to Front End
+            const userType = response.data.type;
+            localStorage.setItem('userType', userType);
+
+            //Get User Name to Front End
+            const userName = response.data.name;
+            localStorage.setItem('userName', userName);
+
             setLoginMessage('Successfully logged in');
-            navigate('/managerReuestVacancypage');
+          
+            if (userType === 'Employee') {
+                navigate('/time and reporting');
+            } else if (userType === 'Manager') {
+                navigate('/time and reporting');
+            } else if (userType === 'HR') {
+                navigate('/Time Reporting/Employees');
+            }
+
     
         } catch (error) {
             if (error.response) {

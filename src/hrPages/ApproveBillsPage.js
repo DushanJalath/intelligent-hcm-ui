@@ -3,7 +3,7 @@ import '../styles/managerrequestvacancypage.css'
 import HrApproveBills from '../components/HrApproveBills.js';
 import HRSidebar from '../components/HRSidebar.jsx';
 
-export default function HrApproveBillsPage() {
+export default function ApproveBillsPage() {
     return (
         <div className="container-RVP">
           <div>

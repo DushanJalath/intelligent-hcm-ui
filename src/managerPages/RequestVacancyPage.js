@@ -6,7 +6,7 @@ import ManagerSidebar from '../components/ManagerSidebar.jsx'
 import '../styles/managerrequestvacancypage.css'
 
 
-export default function ManagerRequestVacancyPage1() {
+export default function RequestVacancyPage() {
   return (
     <div className="container-RVP">
       <div>

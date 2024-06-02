@@ -1,0 +1,77 @@
+.container-AV{
+    margin-top: 35px;
+    width: 659px;
+    height: auto;
+    flex-shrink: 0;
+    border-radius: 30px;
+    background: #EAEAEA;
+    border-radius: 10px;
+    position: relative;
+  }
+.title-AV{
+    position: absolute;
+    width: 302px;
+    height: 50px;
+    flex-shrink: 0;
+    right: 10px;
+    background-color: #02936F;
+    color: white;
+    border-radius: 27px;
+    padding: 10px;
+    margin-top: -23px;
+    margin-right: 60px;
+}
+.title-para-AV{
+    text-align: center;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.18px;
+}
+.paragraph1-AV{
+    width: 600px;
+    margin-left: 30px;
+    margin-top: 50px;
+    color: #000;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.54px;
+}
+.para-form-AV{
+    display: block;
+    padding-top: 2px;
+}
+.form-AV{
+    padding-top: 50px;
+    padding-left: 42px;
+    padding-right: 25px;
+    padding-bottom: 50px;
+}
+.AV-Buttons-manager{
+    display: flex;
+    margin-top: 70px;
+}
+.copy{
+    width: 200px;
+    margin-left: 200px;
+}
+.In1{
+    margin-bottom: 30px;
+}
+.success-message{
+    padding-left: 170px;
+    padding-top: 40px;
+    color: #02936F;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.54px;
+    margin-left: 30px;
+}

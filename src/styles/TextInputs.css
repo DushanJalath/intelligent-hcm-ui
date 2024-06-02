@@ -1,0 +1,43 @@
+label{
+    width: 173px;
+    height: 24px;
+
+    opacity: 0.8;
+    margin-right: 10px;
+    /*font-family: Inter;*/
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.01em;
+    text-align: left;
+
+    color: #000000;
+
+}
+
+.input {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    align-items: center;
+}
+
+.box{
+    flex: 1;
+    margin-left: 10px;
+}
+
+input{
+    width: 383px;
+    height: 48px;
+    top: 182px;
+    left: 662px;
+    border-radius: 30px;
+    border-width: 0px;
+    text-align: center;
+    box-sizing: border-box;
+
+    background-color: #FFFFFF;
+
+  }
+

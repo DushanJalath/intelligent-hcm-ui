@@ -1,22 +1,20 @@
-import HRSidebar from "../components/HRSidebar";
+import Sidebar from "../components/Sidebar"
 import HRAddVacancy from "../components/HRAddVacancy";
 
 function app() {
     const Styles = {
-        marginTop: '-60px',
+        marginTop: '-550px',
         
       };
     return (
         <>
-        <HRSidebar/>,
+        <Sidebar/>,
         <div style={Styles}>
             <HRAddVacancy title="Add Vacancy"/>
 
         </div>
         
-    </>
-   
-
+        </>
     )
     
 }

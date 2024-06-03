@@ -1,10 +1,10 @@
 import React from 'react'
 import '../styles/BillStatus.css'
-import StatusButton from "./StatusButton";
+// import StatusButton from "./StatusButton";
 
-const approvedStatus = 'pending';
-const approvedStatus1 = 'approved';
-const approvedStatus2 = 'Rejected';
+// const approvedStatus = 'pending';
+// const approvedStatus1 = 'approved';
+// const approvedStatus2 = 'Rejected';
 
 function BillStatus(props) {
     return (
@@ -25,7 +25,7 @@ function BillStatus(props) {
                     </tbody>
                 </table>
 
-                <StatusButton status={approvedStatus1}/>
+                {/* <StatusButton status={approvedStatus1}/> */}
 
             </div>
 
@@ -42,7 +42,7 @@ function BillStatus(props) {
                     </tr>
                     </tbody>
                 </table>
-                <StatusButton status={approvedStatus2}/>
+                {/* <StatusButton status={approvedStatus2}/> */}
 
             </div>
 
@@ -59,7 +59,7 @@ function BillStatus(props) {
                     </tr>
                     </tbody>
                 </table>
-                <StatusButton status={approvedStatus}/>
+                {/* <StatusButton status={approvedStatus}/> */}
             </div>
 
             

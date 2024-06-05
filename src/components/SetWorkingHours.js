@@ -1,12 +1,11 @@
 import '../styles/setWorkingHours.css'
 import ProjectType from './ProjectType';
 
-
 function SetWorkingHours(props) {
-    return(
+    return (
         <div className='container-working-hours'>
-            <div className='title'>{props.title}</div>
-            <div class='list'>
+            <div className='selectProject-title'>{props.title}</div> {/* Updated class name */}
+            <div className='list'>
                 <ProjectType
                     content="Work Task"
                 />
@@ -20,7 +19,6 @@ function SetWorkingHours(props) {
                     content="External"
                 />
             </div>
-            
         </div>
     );
 }

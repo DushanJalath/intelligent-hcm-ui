@@ -30,7 +30,7 @@ function TimeAndReportingPage(pardafedms) {
                 </div>
 
                 <div className='working-hours'>
-                    <SetWorkingHours title="Set Working Hours"/>
+                    <SetWorkingHours title="Select Project"/>
                 </div>
             </>
         );

@@ -1,21 +1,8 @@
 import '../styles/employeeSubmitForm.css';
 import React, { useState } from 'react';
-import { BsCalendar } from 'react-icons/bs';
 import { Button } from "@mui/material";
-
-const CustomDatePickerInput = ({ value, onClick, placeholder }) => (
-    <div className="custom-datepicker-input" onClick={onClick}>
-        <input
-            type="text"
-            value={value}
-            readOnly
-            className="form-control"
-        />
-        <span className="calendar-icon">
-            <BsCalendar />
-        </span>
-    </div>
-);
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import SendIcon from '@mui/icons-material/Send';
 
 function EmployeeSubmitForm(props) {
     const [name, setName] = useState('');
@@ -57,19 +44,19 @@ function EmployeeSubmitForm(props) {
         <div className='container-ncSubmitForm'>
             <div className='title-ncSubmitForm'>{props.title}</div>
             <form>
-                <div className='grp'>
+                <div className='grp_form'>
                     <label>Name:</label>
                     <input type="text" placeholder='Full Name' value={name} onChange={handleNameChange} />
                 </div>
-                <div className='grp'>
+                <div className='grp_form'>
                     <label>Contact No:</label>
                     <input type="text" placeholder='Contact No' value={contactNo} onChange={handleContactNoChange} />
                 </div>
-                <div className='grp'>
+                <div className='grp_form'>
                     <label>Email:</label>
                     <input type="text" placeholder='E mail' value={email} onChange={handleEmailChange} />
                 </div>
-                <div className='grp'>
+                <div className='grp_form'>
                     <label>Upload CV:</label>
                     <div
                         onDrop={handleCvDrop}
@@ -81,14 +68,22 @@ function EmployeeSubmitForm(props) {
                         ) : (
                             <>
                                 <p>Drag &amp; drop your CV here</p>
-                                <img src="/icons8-import-pdf-50.png" alt="PDF icon"
-                                     style={{ width: '30px', height: '27px', marginLeft: '235px' }} />
+                                {/* Use CloudUploadIcon here */}
+                                <CloudUploadIcon style={{ fontSize: 40, color: '#02936F' }} />
                             </>
                         )}
                     </div>
                 </div>
-                <div id="ncSubmitForm-submit-button" style={{ marginLeft: "10px", marginTop: "30px", marginBottom: "30px" }}>
-                    <Button variant="contained" color="success" size="small" style={{ borderRadius: "20px", textTransform: "none" }}>Submit</Button>
+                <div id="ncSubmitForm-submit-button" style={{ marginLeft: "390px", marginTop: "80px", marginBottom: "30px" }}>
+                    <Button
+                        variant="contained"
+                        color="success"
+                        size="medium"
+                        style={{ borderRadius: "25px", textTransform: "none" }}
+                        endIcon={<SendIcon />}
+                    >
+                        Submit
+                    </Button>
                 </div>
             </form>
         </div>

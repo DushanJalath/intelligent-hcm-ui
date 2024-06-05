@@ -7,7 +7,7 @@
 }
 
 .cover-image {
-  max-width: auto;
+  /* max-width: auto; */
   height: auto;
   flex-shrink: 0;
 }

@@ -1,24 +1,26 @@
-.container-working-hours{
+.container-working-hours {
     margin-top: 50px;
     width: 350px;
-    height : 160px;
+    height: 160px;
     background-color: #EAEAEA;
     border-radius: 10px;
     position: relative;
     padding: 15px;
     padding-top: 20px;
-  }
-.title{
+}
+
+.selectProject-title { /* New class name */
     position: absolute;
-    top : 10px;
+    top: 10px;
     right: 10px;
     background-color: #02936F;
     color: white;
     border-radius: 50px;
-    padding: 5px;
+    padding: 5px 20px 5px 20px;
     margin-top: -23px;
+    font-weight: bold; /* If you want the text to be bold */
 }
 
-.list{
+.list {
     margin-top: 15px;
 }

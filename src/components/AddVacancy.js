@@ -61,7 +61,7 @@ export default function AddVacancy(props) {
             console.log('Access Token:', accessToken);
             console.log('Request Headers:', {
                 Authorization: `Bearer ${accessToken}`
-            }); // Assuming you store the access token in localStorage
+            }); 
             const response = await api.post('/create_vacancy', formData, {
                 headers: {
                     Authorization: `Bearer ${accessToken}`
@@ -69,7 +69,6 @@ export default function AddVacancy(props) {
             });
             setSuccessMessage('Vacancy created successfully');
             console.log(response.data);
-            // Refresh the page after successful submission
             window.location.reload();
         } catch (error) {
             setSuccessMessage('An error occurred');

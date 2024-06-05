@@ -1,7 +1,7 @@
 .container123{
     margin-top: 50px;
-    margin-left: 300px ;
-    width: 360px;
+    margin-left: 220px ;
+    width: 340px;
     height : 200px;
     background-color: #EAEAEA;
     border-radius: 10px;
@@ -14,7 +14,7 @@
     background-color: #02936F;
     color: white;
     border-radius: 50px;
-   padding: 5px 20px;
+    padding: 5px 20px;
 
   }
 .dataemp {
@@ -35,7 +35,7 @@
 .blockemp{
   padding: 25px;
   font-weight: bold;
-  padding-left: 50px;
+  padding-left: 30px;
 }
 
 .container123-title{

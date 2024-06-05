@@ -1,7 +1,9 @@
 .right-container{
+  margin-left: 727px;
+  margin-top: -60px;
   align-items: center;
   width: 600px;
-  height: 700px;
+  height: 600px;
   background-color: #FFF;
   display: flex;
   flex-direction: column;
@@ -56,7 +58,7 @@
 }
 
 .login-colms{
-  margin-top: 30px;
+  margin-top: 5px;
 }
 .box-login{
   width: 426px;
@@ -79,7 +81,7 @@
 }
 .login-box{
   width: 426px;
-  height: 64px;
+  height: 44px;
   flex-shrink: 0;
   border-radius: 6px;
   background: #02936F;

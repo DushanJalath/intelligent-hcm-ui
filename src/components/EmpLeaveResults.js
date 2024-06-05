@@ -1,38 +1,34 @@
 import React, { useState, useEffect } from "react";
 import "../styles/empleaveresult.css";
 import axios from "axios";
+
+
 function EmpLeaveResults() {
-//   const [todaytotattendance, setTodaytotattendance] = useState([]);
-//   const [todaytotleave, setTodaytotleave] = useState([]);
-//   const [todaypredleave, setTodaypredleave] = useState([]);
-//   const [totalempcount, setTotalempcount] = useState([]);
-  const [leaveresult, setLeaveresult] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const accessToken = localStorage.getItem("token");
-        console.log("Access Token:", accessToken);
-        console.log("Request Headers:", {
-          Authorization: `Bearer ${accessToken}`,
-        });
+    const [leaveresult, setLeaveresult] = useState({});
 
-        const response = await axios.get(
-          "http://localhost:8001/predictResult",
-          {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-          }
-        );
-        console.log("Response:", response.data);
-        setLeaveresult(response.data);
-      } catch (error) {
-        console.error("Error:", error);
-      }
-    };
-    fetchData();
-  }, []);
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const accessToken = localStorage.getItem("token");
+          console.log("Access Token:", accessToken);
+  
+          const response = await axios.get(
+            "http://localhost:8001/predictResult",
+            {
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            }
+          );
+          console.log("Response:", response.data);
+          setLeaveresult(response.data);
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      };
+      fetchData();
+    }, []);
 
   return (
     <div className="container123">

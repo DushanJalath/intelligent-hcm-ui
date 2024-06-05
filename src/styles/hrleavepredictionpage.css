@@ -6,12 +6,12 @@
     width: 700px;
 }
 .manager-leave{
-    padding-left: 700px;
+    padding-left: 250px;
     display: flex;
 }
-/* .emp-leave-title2{
-    margin-right: 500px;
-} */
+.emp-leave-title2{
+    margin-left: 110px;
+}
 .Leave_section{
     width: 700px;
     padding-left: 100px;

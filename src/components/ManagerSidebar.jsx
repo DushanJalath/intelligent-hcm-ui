@@ -40,7 +40,7 @@ const Sidebar = () => {
         {
             name: "Absence Management",
             icon: IoCalendarOutline,
-            menus: ["View Attandance", "Request Leave","Leave Status"],
+            menus: ["View Attandance","Employees Attendances","Request Leave","Leave Status"],
         },
         {
             name: "Job Vacancies",

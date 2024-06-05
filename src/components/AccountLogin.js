@@ -1,10 +1,9 @@
 import React, { useState , useEffect } from 'react';
 import '../styles/accountlogin.css';
 import UserTypes from './UserTypes';
-import {useNavigate} from 'react-router-dom';
 import api from '../api';
 import axios from 'axios';
-import {useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../styles/newCandidateApplyJob.css';
 import { FaPlus } from 'react-icons/fa';
 

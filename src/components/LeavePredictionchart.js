@@ -25,7 +25,7 @@ function LeavePredictionchart() {
     try {
       const accessToken = localStorage.getItem("token");
       const predictionResponse = await axios.post(
-        "http://127.0.0.1:8000/predict/",
+        "http://127.0.0.1:8001/predict/",
         { date: date.format("MMDD") }, // Format date as MMDD before sending
         {
           headers: {
@@ -37,7 +37,7 @@ function LeavePredictionchart() {
       setError(null);
 
       const chartResponse = await axios.post(
-        "http://127.0.0.1:8000/predict/chart/",
+        "http://127.0.0.1:8001/predict/chart/",
         { date: date.format("MMDD") }, // Format date as MMDD before sending
         {
           headers: {
@@ -61,32 +61,49 @@ function LeavePredictionchart() {
 
   return (
     <div className="modM">
-      <h1>Employee Attendance Prediction</h1>
-      <div className="modL">
-      <label className="momdate">Date (MMDD): </label>
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DemoContainer components={["DatePicker"]}>
-          <DatePicker
-            label="Pick the date"
-            value={date}
-            onChange={handleDateChange}
-          />
-        </DemoContainer>
-      </LocalizationProvider>
+      <div class="modm1">
+        <p>Employee Attendance Prediction</p>
       </div>
-      <button className=" buttn-hrpredic" onClick={handlePredictClick}>Predict</button>
+      <div className="modL">
+        <label className="momdate">
+          Pick a date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:{" "}
+        </label>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <DemoContainer components={["DatePicker"]}>
+            <DatePicker
+              label="Pick the date"
+              className="empdatepick"
+              value={date}
+              onChange={handleDateChange}
+            />
+          </DemoContainer>
+        </LocalizationProvider>
+      </div>
+      <div class="emp-pred-btn">
+        <button className=" buttn-hrpredic" onClick={handlePredictClick}>
+          Predict
+        </button>
+      </div>
       {error && <div className="error_a">{error}</div>}
       {prediction !== null && (
-        <div>
-          <h2>Predicted Attendance:</h2>
-          <p>{prediction}</p>
+        <div class="prediceted-emp-att">
+          <h2 class="prediceted-emp-att-ph2">
+            Predicted Attendance&nbsp;:&nbsp;
+          </h2>
+          <p class="prediceted-emp-att-p">{prediction}</p>
         </div>
       )}
-      <div>
-        <LeaveChart
+      <div class="leave-chart-emp">
+        <div className="modm1">
+          <p className="container123-title">Predicted Attandance Chart That Week</p>
+        </div>
+        <div className="leave-chart-emp1">
+        <LeaveChart 
           xArray={chartData.map((data) => data.date)}
           yArray={chartData.map((data) => data.predicted_attendance)}
         />
+        </div>
+        
       </div>
     </div>
   );

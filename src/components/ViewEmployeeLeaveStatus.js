@@ -1,6 +1,6 @@
 import React from 'react'
 import '../styles/LeaveApprove.css'
-import StatusButton from "./StatusButton";
+// import StatusButton from "./StatusButton";
 
 
 const approvedStatus = 'pending';
@@ -42,7 +42,7 @@ export default function ViewEmployeeLeaveStatus() {
                     </tbody>
                 </table>
 
-                <StatusButton status={approvedStatus1}/>
+                {/* <StatusButton status={approvedStatus1}/> */}
 
             </div>
 
@@ -74,7 +74,7 @@ export default function ViewEmployeeLeaveStatus() {
                     </tr>
                     </tbody>
                 </table>
-                <StatusButton status={approvedStatus2}/>
+                {/* <StatusButton status={approvedStatus2}/> */}
 
             </div>
 
@@ -106,7 +106,7 @@ export default function ViewEmployeeLeaveStatus() {
                     </tr>
                     </tbody>
                 </table>
-                <StatusButton status={approvedStatus}/>
+                {/* <StatusButton status={approvedStatus}/> */}
 
             </div>
 
@@ -138,7 +138,7 @@ export default function ViewEmployeeLeaveStatus() {
                     </tr>
                     </tbody>
                 </table>
-                <StatusButton status={approvedStatus}/>
+                {/* <StatusButton status={approvedStatus}/> */}
 
             </div>
 

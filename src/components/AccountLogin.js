@@ -1,8 +1,9 @@
 import React, { useState , useEffect} from 'react';
 import '../styles/accountlogin.css';
 import UserTypes from './UserTypes';
-import axios from 'axios';
+// import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
+import api from '../api';
 
 export default function AccountLogin() {
     const [email, setEmail] = useState('');
@@ -58,7 +59,7 @@ export default function AccountLogin() {
         }
     
         try {
-            const response = await axios.post('http://127.0.0.1:8000/login', {
+            const response = await api.post('/login', {
                 email: email,
                 password: password,
                 type: type, 
@@ -69,9 +70,28 @@ export default function AccountLogin() {
                 return;
             }
             const jwtToken = response.data.access_token;
+            const refreshToken = response.data.refresh_token;
             localStorage.setItem('token', jwtToken);
+            localStorage.setItem('refresh_token', refreshToken);
+           
+            //Get User Type to Front End
+            const userType = response.data.type;
+            localStorage.setItem('userType', userType);
+
+            //Get User Name to Front End
+            const userName = response.data.name;
+            localStorage.setItem('userName', userName);
+
             setLoginMessage('Successfully logged in');
-            navigate('/managerReuestVacancypage');
+          
+            if (userType === 'Employee') {
+                navigate('/time and reporting');
+            } else if (userType === 'Manager') {
+                navigate('/time and reporting');
+            } else if (userType === 'HR') {
+                navigate('/Time Reporting/Employees');
+            }
+
     
         } catch (error) {
             if (error.response) {

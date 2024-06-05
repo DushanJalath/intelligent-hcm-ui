@@ -6,6 +6,7 @@ import AvTextArea from './AvTextArea'
 import AvButtons from './AvButtons';
 import { useState } from 'react';
 import axios from 'axios';
+import api from '../api';
 
 export default function AddVacancy(props) {
     const [successMessage, setSuccessMessage] = useState('');
@@ -61,7 +62,7 @@ export default function AddVacancy(props) {
             console.log('Request Headers:', {
                 Authorization: `Bearer ${accessToken}`
             }); // Assuming you store the access token in localStorage
-            const response = await axios.post('http://localhost:8000/create_vacancy', formData, {
+            const response = await api.post('/create_vacancy', formData, {
                 headers: {
                     Authorization: `Bearer ${accessToken}`
                 }

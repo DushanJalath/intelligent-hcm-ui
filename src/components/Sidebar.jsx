@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SubMenu from "./SubMenu";
 import { SlSettings } from "react-icons/sl";
 import {AiOutlineAppstore, AiOutlinePlusCircle} from "react-icons/ai";
-import { TbReportAnalytics } from "react-icons/tb";
+// import { TbReportAnalytics } from "react-icons/tb";
 import { IoExitOutline } from "react-icons/io5";
 import { useMediaQuery } from "react-responsive";
 import { MdMenu } from "react-icons/md";
@@ -15,11 +15,23 @@ import "../styles/Sidebar.css";
 
 const Sidebar = () => {
     const [open, setOpen] = useState(true);
-    const [employeeDetails] = useState({
-        name: "Sahan Perera",
-        role: "Employee Name",
+    const [employeeDetails,setEmployeeDetails] = useState({
+        name: "",
+        role: "Employee",
     });
     const isTabletMid = useMediaQuery({ query: "(max-width: 768px)" });
+    const userName = localStorage.getItem('userName');
+
+    useEffect(() => {
+        // Update employee details state with the user's name
+        if (userName) {
+            setEmployeeDetails(prevState => ({
+                ...prevState,
+                name: userName
+            }));
+        }
+    }, [userName]);
+
 
     const [toggleState, setToggleState] = useState(true);
     useLocation();
@@ -28,7 +40,7 @@ const Sidebar = () => {
         {
             name: "Absence Management",
             icon: IoCalendarOutline,
-            menus: ["View Absence", "Request Leave"],
+            menus: ["View Attandance", "Request Leave"],
         },
     ];
 
@@ -81,23 +93,23 @@ const Sidebar = () => {
 
                     <ul className="whitespace-pre px-2.5 text-[1rem] py-5 flex flex-col gap-1 font-medium overflow-x-hidden scrollbar-thin scrollbar-track-white scrollbar-thumb-slate-100 md:h-[68%] h-[70%]">
                         <li>
-                            <NavLink to={"/NewEmployeeTimeAndReporting"} className="link">
+                            <NavLink to={"/time And Reporting"} className="link">
                                 <AiOutlineAppstore size={23} className="min-w-max"/>
-                                Time Reporting
+                                Time And Reporting
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to={"/EmployeeOvertimeTrackingPageNew"} className="link">
+                            <NavLink to={"/over time tracking"} className="link">
                                 <IoMdPie size={23} className="min-w-max"/>
                                 Overtime Tracking
                             </NavLink>
                         </li>
-                        <li>
-                            <NavLink to={"/leavePrediction"} className="link">
+                        {/* <li>
+                            <NavLink to={"/leave prediction"} className="link">
                                 <TbReportAnalytics size={23} className="min-w-max"/>
                                 Leave Prediction
                             </NavLink>
-                        </li>
+                        </li> */}
                         {(open || isTabletMid) && (
                             <div>
                                 {subMenusList?.map((menu) => (
@@ -108,13 +120,13 @@ const Sidebar = () => {
                             </div>
                         )}
                         <li>
-                            <NavLink to={"/EmployeeJobVacancyPageNew"} className="link">
+                            <NavLink to={"/job vacancy details"} className="link">
                                 <FiFile size={23} className="min-w-max"/>
                                 Job Vacancies
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to={"/AddBillsPage"} className="link">
+                            <NavLink to={"/add bills"} className="link">
                                 <AiOutlinePlusCircle size={23} className="min-w-max"/>
                                 Clam Bills
                             </NavLink>

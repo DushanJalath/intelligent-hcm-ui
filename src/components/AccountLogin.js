@@ -1,9 +1,12 @@
-import React, { useState , useEffect} from 'react';
+import React, { useState , useEffect } from 'react';
 import '../styles/accountlogin.css';
 import UserTypes from './UserTypes';
-// import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import api from '../api';
+import axios from 'axios';
+import {useNavigate } from 'react-router-dom';
+import '../styles/newCandidateApplyJob.css';
+import { FaPlus } from 'react-icons/fa';
 
 export default function AccountLogin() {
     const [email, setEmail] = useState('');
@@ -112,10 +115,21 @@ export default function AccountLogin() {
     const handleSelectType = (type) => {
         setSelectedUserType(type); 
     };
-    
+
+    const handleApplyJob = () => {
+        navigate('/candidate-job-vacancy-details'); // Navigate to the candidate job vacancy details page
+    };
+
+      
     return (
         <div className='right-container'>
             <div className='container1'>
+                
+                <button className='apply-job-button' onClick={handleApplyJob} >
+                    Apply Now
+                    <FaPlus className="icon" />
+                </button>
+
                 <div className='header'>
                     <h1 className='header-H1'>Account Login</h1>
                     <p className='header-paragraph-login'>If you are already a member you can login with your email address and password</p>

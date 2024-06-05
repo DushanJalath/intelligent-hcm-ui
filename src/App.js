@@ -24,6 +24,9 @@ import ApproveBillsPage from "../src/hrPages/ApproveBillsPage";
 import UserRegPage from "../src/hrPages/UserRegPage";
 import CandidateApplyPage from "../src/hrPages/CandidateApplyPage";
 import ApproveEmployeesLeavePage from "../src/hrPages/ApproveEmployeesLeavePage";
+import CandidateJobVacancyDetailsPage from '../src/candidatePages/CandidateJobVacancyDetailsPage';
+import CandidateSubmitFormPage from '../src/candidatePages/CandidateSubmitFormPage';
+
 
 
 const App = () => {
@@ -73,7 +76,11 @@ const App = () => {
                     <Route path="/Job Vacancies/Managers Requests" element={<ApproveJobVacancypage/>} />
                     <Route path="/manage bills" element={<ApproveBillsPage/>} />
                     <Route path="/register" element={<UserRegPage/>} />
-                    <Route path="/candidates" element={<CandidateApplyPage/>} />                    
+                    <Route path="/candidates" element={<CandidateApplyPage/>} /> 
+
+                    {/* candidate */}
+                    <Route path="/candidate-job-vacancy-details" element={<CandidateJobVacancyDetailsPage/>} /> 
+                    <Route path="/candidate-submit-form" element={<CandidateSubmitFormPage/>} />                   
                 </Routes>
             </div>
     </div>

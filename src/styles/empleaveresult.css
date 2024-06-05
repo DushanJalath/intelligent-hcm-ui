@@ -1,0 +1,44 @@
+.container123{
+    margin-top: 50px;
+    margin-left: 300px ;
+    width: 360px;
+    height : 200px;
+    background-color: #EAEAEA;
+    border-radius: 10px;
+    position: relative;
+  }
+  .container123-menu{
+    position: absolute;
+    top : -15px;
+    right: 19px;
+    background-color: #02936F;
+    color: white;
+    border-radius: 50px;
+   padding: 5px 20px;
+
+  }
+.dataemp {
+    display: flex;
+    flex-direction: row;
+    margin: 15px;
+    align-items: center;
+    height: 20px;
+}
+
+.numberemp{
+    flex: 1;
+    margin-left: 10px;
+}
+
+
+
+.blockemp{
+  padding: 25px;
+  font-weight: bold;
+  padding-left: 50px;
+}
+
+.container123-title{
+    font-size: 16px;
+    font-weight: bold;
+}

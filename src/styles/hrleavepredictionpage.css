@@ -5,6 +5,13 @@
 .leave-page-date{
     width: 700px;
 }
+.manager-leave{
+    padding-left: 700px;
+    display: flex;
+}
+/* .emp-leave-title2{
+    margin-right: 500px;
+} */
 .Leave_section{
     width: 700px;
     padding-left: 100px;

@@ -3,11 +3,12 @@ import HRAddVacancy from "../components/HRAddVacancy";
 
 function AddJobVacancyPage() {
     const Styles = {
-        marginTop: '-60px',
+        marginTop: '-550px',
         
       };
     return (
         <>
+
         <HRSidebar/>
         <div style={Styles}>
             <HRAddVacancy title="Add Vacancy"/>

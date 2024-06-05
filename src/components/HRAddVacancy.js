@@ -67,12 +67,12 @@ export default function HRAddVacancy(props) {
                 }
             });
             setSuccessMessage('Vacancy created successfully');
-            console.log(response.data);
+            // console.log(response.data);
             // Refresh the page after successful submission
             window.location.reload();
         } catch (error) {
             setSuccessMessage('An error occurred');
-            console.error('Error:', error);
+            // console.error('Error:', error);
         }
     };
     

@@ -1,0 +1,114 @@
+.landing-page {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-image: url('../assets/landing-page-image.jpg'); /* Make sure the path is correct */
+    background-size: cover;
+    background-position: center;
+}
+
+.landingheader {
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    z-index: 10;
+}
+
+.buttons {
+    position: absolute;
+    top: 6%;
+    right: 9%;
+    z-index: 10;
+    display: flex;
+    gap: 3%;
+}
+
+.landing-button {
+    width: 180px;
+    padding: 2.2% 0; 
+    font-size: 1.2vw;
+    /* background-color: #00070e; */
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
+    font-weight: 600;
+    font-size: 1vw;
+}
+
+.landing-button:hover {
+    background-color: #00BF63;
+    color: white;
+}
+
+.bottom-right-gif {
+    position: absolute;
+    top: 18%;
+    right: 8%;
+    z-index: 10;
+    width: 40%; /* Adjusted size as needed */
+    height: auto;
+}
+
+.left-content {
+    position: absolute;
+    top: 45%;
+    left: 3%;
+    transform: translateY(-50%);
+    z-index: 10;
+    color: white;
+}
+
+.main-heading {
+    font-size: 4vw;
+    font-weight: bold;
+    margin-bottom: 3%; /* Adjusted margin */
+    color: black;
+    line-height: 0.9;
+    max-width: 50%; /* Adjusted max-width */
+}
+
+.sub-heading {
+    font-size: 1vw;
+    line-height: 1.5;
+    color: black;
+    max-width: 40%; /* Adjusted max-width */
+}
+
+/* Media Query for smaller screens */
+@media only screen and (max-width: 768px) {
+    .buttons {
+        top: 4%;
+        right: 4%;
+        flex-direction: column;
+    }
+
+    .landing-button {
+        width: 70%;
+    }
+
+    .bottom-right-gif {
+        top: 10%;
+        right: 4%;
+        width: 70%;
+    }
+
+    .left-content {
+        top: 50%;
+        left: 4%;
+        transform: translateY(-50%);
+    }
+
+    .main-heading {
+        font-size: 3vw;
+        margin-bottom: 3%;
+    }
+
+    .sub-heading {
+        font-size: 1.5vw;
+        max-width: 80%;
+    }
+}

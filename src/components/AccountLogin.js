@@ -1,10 +1,9 @@
-import React, { useState , useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/accountlogin.css';
 import UserTypes from './UserTypes';
 import axios from 'axios';
-import {useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../styles/newCandidateApplyJob.css';
-import { FaPlus } from 'react-icons/fa';
 
 export default function AccountLogin() {
     const [email, setEmail] = useState('');
@@ -14,7 +13,6 @@ export default function AccountLogin() {
     const [loginMessage, setLoginMessage] = useState('');
     const [selectedUserType, setSelectedUserType] = useState(null);
     const navigate = useNavigate();
-
 
     useEffect(() => {
         const rememberedEmail = localStorage.getItem('rememberedEmail');
@@ -27,8 +25,7 @@ export default function AccountLogin() {
     }, []);
 
     const handleLogin = async () => {
-
-        if(email == " " && password == " "){
+        if (email === '' || password === '') {
             setLoginMessage('Enter your email and password');
             return;
         }
@@ -45,7 +42,7 @@ export default function AccountLogin() {
             return;
         }
         
-        if (selectedUserType === null){
+        if (selectedUserType === null) {
             setLoginMessage('User type not selected');
             return;
         }
@@ -73,24 +70,21 @@ export default function AccountLogin() {
             const jwtToken = response.data.access_token;
             localStorage.setItem('token', jwtToken);
            
-            //Get User Type to Front End
+            // Get User Type to Front End
             const userType = response.data.type;
             localStorage.setItem('userType', userType);
 
-            //Get User Name to Front End
+            // Get User Name to Front End
             const userName = response.data.name;
             localStorage.setItem('userName', userName);
 
             setLoginMessage('Successfully logged in');
           
-            if (userType === 'Employee') {
-                navigate('/time and reporting');
-            } else if (userType === 'Manager') {
+            if (userType === 'Employee' || userType === 'Manager') {
                 navigate('/time and reporting');
             } else if (userType === 'HR') {
                 navigate('/Time Reporting/Employees');
             }
-
     
         } catch (error) {
             if (error.response) {
@@ -112,20 +106,9 @@ export default function AccountLogin() {
         setSelectedUserType(type); 
     };
 
-    const handleApplyJob = () => {
-        navigate('/candidate-job-vacancy-details'); // Navigate to the candidate job vacancy details page
-    };
-
-      
     return (
         <div className='right-container'>
             <div className='container1'>
-                
-                <button className='apply-job-button' onClick={handleApplyJob} >
-                    Apply Now
-                    <FaPlus className="icon" />
-                </button>
-
                 <div className='header'>
                     <h1 className='header-H1'>Account Login</h1>
                     <p className='header-paragraph-login'>If you are already a member you can login with your email address and password</p>
@@ -134,9 +117,9 @@ export default function AccountLogin() {
                 <div className='login-colms'>
                     <p className='paragraph-login'>User types</p>
                     <div className='user'>
-                    <UserTypes userType="HR" onSelectType={handleSelectType} selectedUserType={selectedUserType} setSelectedUserType={setSelectedUserType} onChange={(e) => setType(e.target.value)}/>
-                    <UserTypes userType="Manager" onSelectType={handleSelectType} selectedUserType={selectedUserType} setSelectedUserType={setSelectedUserType} onChange={(e) => setType(e.target.value)}/>
-                    <UserTypes userType="Employee" onSelectType={handleSelectType} selectedUserType={selectedUserType} setSelectedUserType={setSelectedUserType} onChange={(e) => setType(e.target.value)}/>
+                        <UserTypes userType="HR" onSelectType={handleSelectType} selectedUserType={selectedUserType} setSelectedUserType={setSelectedUserType} onChange={(e) => setType(e.target.value)} />
+                        <UserTypes userType="Manager" onSelectType={handleSelectType} selectedUserType={selectedUserType} setSelectedUserType={setSelectedUserType} onChange={(e) => setType(e.target.value)} />
+                        <UserTypes userType="Employee" onSelectType={handleSelectType} selectedUserType={selectedUserType} setSelectedUserType={setSelectedUserType} onChange={(e) => setType(e.target.value)} />
                     </div>
                 </div>
 
@@ -172,7 +155,6 @@ export default function AccountLogin() {
                             onChange={() => setRememberMe(!rememberMe)}
                         />
                         <label htmlFor='myCheckbox' className='custom-label'></label>
-
                         <p className='paragraph-login'>Remember me</p>
                     </div>    
                 </div>

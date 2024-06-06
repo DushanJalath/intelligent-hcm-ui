@@ -3,6 +3,7 @@ import { useMediaQuery } from "react-responsive";
 import { MdMenu } from "react-icons/md";
 import { NavLink, useLocation } from "react-router-dom";
 import { FiFile } from "react-icons/fi";
+import { FaUserPlus   } from 'react-icons/fa';
 import "../styles/Sidebar.css";
 
 
@@ -49,7 +50,11 @@ const Sidebar = () => {
                         <li>
                             <NavLink to={"/candidate-job-vacancy-details"} className="link">
                                 <FiFile size={23} className="min-w-max" />
-                                Job Vacancy
+                                Job Vacancies
+                            </NavLink>
+                            <NavLink to={"/candidate-submit-form"} className="link">
+                                <FaUserPlus    size={23} className="min-w-max" />
+                                Apply
                             </NavLink>
                         </li>
                     </ul>

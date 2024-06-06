@@ -5,7 +5,6 @@ import AvInputs from './AvInputs';
 import AvTextArea from './AvTextArea'
 import AvButtons from './AvButtons';
 import { useState } from 'react';
-import axios from 'axios';
 import api from '../api';
 
 export default function AddVacancy(props) {

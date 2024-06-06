@@ -1,7 +1,8 @@
-.container{
+.user-reg-container{
     margin-top: 50px;
-    width: 600px;
-    height : 650px;
+    margin-right: 50px;
+    width: 90%;
+    height : 550px;
     background-color: #EAEAEA;
     border-radius: 10px;
     position: relative;
@@ -9,7 +10,7 @@
     padding-top: 30px;
 }
 
-.title{
+.user-reg-title{
     position: absolute;
     top : 10px;
     right: 10px;
@@ -44,7 +45,7 @@ label{
     margin-bottom: 5px;
 }
 
-.grp{
+.user-reg-grp{
    margin-bottom: 6px;
    display: flex;
    flex-direction: column; 
@@ -64,21 +65,14 @@ label{
     padding: 5px;
 }
 
-.grp-1 {
-    display: flex;
-    flex-direction: row;
-}
-
-.row {
-    display: flex;
-    flex-direction: column;
-    margin-right: 20px; /* Adjust as needed for spacing between columns */
-    margin-bottom: 10px; /* Adjust as needed for spacing between rows */
-}
-
 label {
     margin-bottom: 5px; /* Adjust as needed for spacing between label and input */
 }
 
 
+
+.user-reg-grp-container{
+    display: flex;
+    gap: 50px;
+}
 

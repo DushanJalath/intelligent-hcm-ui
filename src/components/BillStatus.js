@@ -15,7 +15,7 @@ function BillStatus(props) {
                 <table className="leave-details">
                     <tbody>
                     <tr>
-                        <td className="leave-type-tag">Leave Type :</td>
+                        <td className="leave-type-tag">Bill Category :</td>
                         <td className="leave-type">Personal Leave</td>
                     </tr>
                     <tr>

@@ -1,3 +1,5 @@
-.content-addBill-page{
+.content-addBill-page {
     margin-left: 350px;
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack items vertically */
 }

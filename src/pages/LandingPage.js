@@ -32,7 +32,7 @@ const LandingPage = () => {
                     <h1 className="main-heading">Let's Start Something Big Together</h1>
                     <p className="sub-heading">Join our community and explore exciting career opportunities. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                 </div>
-                <div className="buttons">
+                <div className="landbuttons">
                     <button className='landing-button' onClick={handleUser}>
                         Log In
                     </button>

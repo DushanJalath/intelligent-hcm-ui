@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes,Route } from 'react-router-dom';
+import LandingPage from "../src/pages/LandingPage";
 import LoginPage from "../src/pages/LoginPage";
 import TimeAndReportingPage from "../src/commonPages/TimeAndReportingPage";
 import OverTimetrackingPage from "../src/commonPages/OverTimetrackingPage";
@@ -26,6 +27,10 @@ import CandidateApplyPage from "../src/hrPages/CandidateApplyPage";
 import ApproveEmployeesLeavePage from "../src/hrPages/ApproveEmployeesLeavePage";
 import CandidateJobVacancyDetailsPage from '../src/candidatePages/CandidateJobVacancyDetailsPage';
 import CandidateSubmitFormPage from '../src/candidatePages/CandidateSubmitFormPage';
+import CandidateDonePage from '../src/candidatePages/CandidateDonePage';
+import CandidateErrorPage from '../src/candidatePages/CandidateErrorPage';
+
+
 
 
 
@@ -34,15 +39,17 @@ const App = () => {
     <div>   
             <div>
                 <Routes>
-                    <Route path="/" element={<LoginPage/>} />
+                <Route path="/" element={<LandingPage/>} />
+                    <Route path="/login" element={<LoginPage/>} />
                     <Route path="/logout" element={<LoginPage/>} />
+                    <Route path="/land" element={<LandingPage/>} />
                                       
                     {/* Employees Pages */}
                     <Route path="/time and reporting" element={<TimeAndReportingPage/>} />
                     <Route path="/Absence Management/View Attandance" element={<ViewIndividualAttendancePage/>} />
                     {/* <Route path="/Absence Management/Request Leave" element={<RequestLeavePage/>} /> */}
                     <Route path="/over time tracking" element={<OverTimetrackingPage/>} />
-                    <Route path="/job vacancy details" element={<JobVacancyDetailsPage/>} />
+                    {/* <Route path="/job vacancy details" element={<JobVacancyDetailsPage/>} /> */}
                     {/* <Route path="/job vacancy details/apply job" element={<ApplyJobPage/>} /> */}
                     {/* <Route path="/job vacancy details/apply job/submit form" element={<SubmitJobFormPage/>} /> */}
                     {/* <Route path="/job vacancy details/apply job/submit form/done" element={<SubmitJobFormPage/>} /> */}
@@ -80,7 +87,9 @@ const App = () => {
 
                     {/* candidate */}
                     <Route path="/candidate-job-vacancy-details" element={<CandidateJobVacancyDetailsPage/>} /> 
-                    <Route path="/candidate-submit-form" element={<CandidateSubmitFormPage/>} />                   
+                    <Route path="/candidate-submit-form" element={<CandidateSubmitFormPage/>} /> 
+                    <Route path="/done" element={<CandidateDonePage/>} />  
+                    <Route path="/error" element={<CandidateErrorPage/>} />                  
                 </Routes>
             </div>
     </div>

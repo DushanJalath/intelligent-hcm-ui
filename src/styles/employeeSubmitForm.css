@@ -1,28 +1,28 @@
 /* employeeSubmitForm.css */
 .container-ncSubmitForm {
-    margin: 65px auto 0;
-    width: 630px;
+    margin: 20px auto 0;
+    width: 800px;
    
     border-radius: 10px;
     position: relative;
-    background-color: #EAEAEA;
+    /* background-color: #EAEAEA; */
     padding: 15px;
     box-sizing: border-box;
 }
 
 .title-ncSubmitForm {
-    position: absolute;
+    /* position: absolute;
     top: -18px;
     right: 30px;
     background-color: #02936F;
-    color: white;
+    color: white; */
     border-radius: 50px;
     padding: 5px 20px;
     font-weight:600;
 }
 
 form {
-    margin: 30px 20px 30px 20px;
+    margin: 0px 30px 30px 30px;
 }
 
 input {
@@ -42,7 +42,9 @@ label {
 .grp_form {
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .grp-name {

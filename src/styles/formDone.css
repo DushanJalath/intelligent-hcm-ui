@@ -1,0 +1,10 @@
+.container-ncDoneForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh; /* Ensures the container takes up the full viewport height */
+  }
+  
+
+  /* Add any additional CSS styles as needed */
+  

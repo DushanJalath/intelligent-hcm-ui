@@ -1,70 +1,56 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import '../styles/BillStatus.css'
-// import StatusButton from "./StatusButton";
 
-// const approvedStatus = 'pending';
-// const approvedStatus1 = 'approved';
-// const approvedStatus2 = 'Rejected';
+const approvedStatus = 'pending';
+const approvedStatus1 = 'approved';
+const approvedStatus2 = 'Rejected';
 
 function BillStatus(props) {
-    return (
+    const [documents, setDocuments] = useState([]);
+    useEffect(() => {
+        const fetchDocuments = async () => {
+        try {
+            const accessToken = localStorage.getItem('token');
+            const response = await axios.get('http://localhost:8000/bill_status/',{
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                }
+            });
+            setDocuments(response.data);
+        } catch (error) {
+            console.error('Error fetching documents:', error);
+        }
+    };
+    fetchDocuments();
+}, []);
 
-        <div className='container-bill-status'>
-            <div className='title-bill-status'>{props.title}</div>
-            <div className="user-card">
-                <table className="leave-details">
+        return (
+            <div className='container-bill-status'>
+              <div className='title-bill-status'>{props.title}</div>
+              <div className='content'>
+              {/* Map over the responses and render a user card for each response */}
+              {documents.map((response, index) => (
+                <div className="user-card" key={index}>
+                  <table className="leave-details">
                     <tbody>
-                    <tr>
-                        <td className="leave-type-tag">Bill Category :</td>
-                        <td className="leave-type">Personal Leave</td>
-                    </tr>
-                    <tr>
-                        <td className="leave-startdate-tag">Start Date :</td>
-                        <td className="leave-startdate">2020-10-10</td>
-                    </tr>
+                      <tr>
+                        <td className="leave-type-tag">Bill Type :</td>
+                        <td className="leave-type">{response.category}</td>
+                      </tr>
+                      <tr>
+                        <td className="leave-startdate-tag">Submitted Date :</td>
+                        <td className="leave-startdate">{response.submitdate}</td>
+                      </tr>
                     </tbody>
-                </table>
-
-                {/* <StatusButton status={approvedStatus1}/> */}
-
+                  </table>
+                  {response.status}
+                </div>
+              ))}
+              </div>
             </div>
+          );
+        };
 
-            <div className="user-card">
-                <table className="leave-details">
-                    <tbody>
-                    <tr>
-                        <td className="leave-type-tag">Leave Type :</td>
-                        <td className="leave-type">Personal Leave</td>
-                    </tr>
-                    <tr>
-                        <td className="leave-startdate-tag">Start Date :</td>
-                        <td className="leave-startdate">2020-10-10</td>
-                    </tr>
-                    </tbody>
-                </table>
-                {/* <StatusButton status={approvedStatus2}/> */}
-
-            </div>
-
-            <div className="user-card">
-                <table className="leave-details">
-                    <tbody>
-                    <tr>
-                        <td className="leave-type-tag">Leave Type :</td>
-                        <td className="leave-type">Personal Leave</td>
-                    </tr>
-                    <tr>
-                        <td className="leave-startdate-tag">Start Date :</td>
-                        <td className="leave-startdate">2020-10-10</td>
-                    </tr>
-                    </tbody>
-                </table>
-                {/* <StatusButton status={approvedStatus}/> */}
-            </div>
-
-            
-    </div>
-    )
-}
 
 export default BillStatus

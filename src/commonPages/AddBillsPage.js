@@ -12,7 +12,7 @@ function AddBillsPage(params) {
                 {userType === 'Manager' && <ManagerSidebar/>}   
                 <div className="content-addBill-page">
                     <SendBill title="Send Bill to HR" className="send-bill"/>
-                    {/* <BillStatus title="Bill Status" className="bill-status"/> */}
+                    <BillStatus title="Bill Status" className="bill-status"/>
                 </div>
             </>
         );

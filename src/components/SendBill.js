@@ -7,11 +7,16 @@ import '../styles/sendBill.css';
 function SendBill(props) {
     const [userID, setUserID] = useState('');
     const [category, setCategory] = useState('');
+    const [invoiceNumber, setInvoiceNumber] = useState('');
+    const [date, setDate] = useState('');
+    const [storeName, setStoreName] = useState('');
+    const [total, setTotal] = useState('');
     const [billImage, setBillImage] = useState(null);
     const [loading, setLoading] = useState(false);
     const [isSubmitEnabled, setIsSubmitEnabled] = useState(false);
     const [feedbackMessage, setFeedbackMessage] = useState('');
     const [feedbackColor, setFeedbackColor] = useState('');
+    const [isVisible,setIsVisible] = useState(false)
 
     const handleUserIDChange = (e) => {
         setUserID(e.target.value);
@@ -21,7 +26,31 @@ function SendBill(props) {
         setCategory(e.target.value);
     };
 
-    const handleBillImageDrop = (e) => {
+    const handleInvoiceChange  = (e) => {
+        setInvoiceNumber(e.target.value);
+    };
+
+    const handleDateChange  = (e) => {
+        setDate(e.target.value);
+    };
+
+    const handleStoreNameChange  = (e) => {
+        setStoreName(e.target.value);
+    };
+
+    const handleTotalChange  = (e) => {
+        setTotal(e.target.value);
+    };
+
+    function resetBillinfo(){
+        setIsVisible(false);
+        setInvoiceNumber('');
+        setDate('')
+        setStoreName('')
+        setTotal('')
+    };
+
+    const handleBillImageDrop = async(e) => {
         e.preventDefault();
         const droppedFiles = e.dataTransfer.files;
 
@@ -33,6 +62,25 @@ function SendBill(props) {
                 alert('Please upload an image file.');
             }
         }
+        try {
+            const formData = new FormData();
+            formData.append('image', droppedFiles[0]);
+            const accessToken = localStorage.getItem('token');
+            const response = await axios.post('http://127.0.0.1:8000/extract_bill_entity', formData, {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+            console.log('Upload successful:', response.data);
+            setInvoiceNumber(response.data.invoicenumber);
+            setDate(response.data.date);
+            setStoreName(response.data.storename);
+            setTotal(response.data.totalamount);
+            setIsVisible(true);
+        } catch (error) {
+            console.log('Error uploading file:', error);
+        }
     };
 
     const handleBillImageDragOver = (e) => {
@@ -40,31 +88,40 @@ function SendBill(props) {
     };
 
     useEffect(() => {
-        if (userID && category && billImage) {
+        if (userID && category && billImage && invoiceNumber && date && storeName && total) {
             setIsSubmitEnabled(true);
         } else {
             setIsSubmitEnabled(false);
         }
-    }, [userID, category, billImage]);
+    }, [userID, category, billImage, invoiceNumber, date, storeName, total]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
 
         try {
-            const formData = new FormData();
-            formData.append('file', billImage);
-            formData.append('bill_type', category);
-            formData.append('user_id', userID);
-
-            const response = await axios.post('http://localhost:8000/upload-bill/', formData, {
+            const currentDate = new Date();
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth() + 1; 
+            const day = currentDate.getDate();
+            const formattedDate = `${day}-${month}-${year}`;
+            const newData = {
+                u_id:userID,
+                amount:total,
+                category:category,
+                storename:storeName,
+                Date:date,
+                status:"pending",
+                submitdate:formattedDate,
+                invoice_number:invoiceNumber
+            };
+            const accessToken = localStorage.getItem('token');
+            console.log(newData);
+            await axios.post('http://127.0.0.1:8000/create_bill', newData,{
                 headers: {
-                    'Content-Type': 'multipart/form-data'
+                    Authorization: `Bearer ${accessToken}`
                 }
             });
-
-            console.log(response.data);
-
             // Set success feedback message
             setFeedbackMessage('Bill submitted successfully');
             setFeedbackColor('green');
@@ -73,6 +130,7 @@ function SendBill(props) {
             setUserID('');
             setCategory('');
             setBillImage(null);
+            resetBillinfo();
         } catch (error) {
             console.error('Error uploading file:', error);
             setFeedbackMessage('Error submitting. Please try again.');
@@ -87,6 +145,7 @@ function SendBill(props) {
         setCategory('');
         setBillImage(null);
         setFeedbackMessage('');
+        resetBillinfo();
     };
 
     return (
@@ -119,6 +178,26 @@ function SendBill(props) {
                         )}
                     </div>
                 </div>
+                {isVisible && (
+                <div>
+                    <div className='grpSendBill'>
+                        <label>Invoice Number:</label>
+                        <input type="text" value={invoiceNumber} onChange={handleInvoiceChange} />
+                    </div>
+                    <div className='grpSendBill'>
+                        <label>Date:</label>
+                        <input type="text" value={date} onChange={handleDateChange} />
+                    </div>
+                    <div className='grpSendBill'>
+                        <label>StoreName:</label>
+                        <input type="text" value={storeName} onChange={handleStoreNameChange} />
+                    </div>
+                    <div className='grpSendBill'>
+                        <label>Total:</label>
+                        <input type="text" value={total} onChange={handleTotalChange} />
+                    </div>
+                </div>
+                )}
                 <div className='grpSendBill buttons'>
                     <Button
                         type="submit"

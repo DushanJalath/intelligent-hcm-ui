@@ -92,6 +92,7 @@ function SendBill(props) {
     return (
         <div className='container-send-bill'>
             <div className='title-send-bill'>{props.title}</div>
+            <p className='sendBilldescrption'>Submit your bill for HR review.Upload a clear photo of the bill (JPG or PNG format). </p>
             <form onSubmit={handleSubmit}>
                 <div className='grpSendBill'>
                     <label>User ID:</label>

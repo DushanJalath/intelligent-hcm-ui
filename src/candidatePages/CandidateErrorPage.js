@@ -1,9 +1,16 @@
 import React from "react";
 import { motion } from "framer-motion";
 import '../styles/formError.css';
+import { useNavigate } from "react-router-dom";
 
 export default function CandidateErrorPage() {
+    const navigate = useNavigate();
     const isError = true; // Set to true to trigger animation
+
+    const handleBackToHome = () => {
+        navigate("/");
+
+    };
 
     return (
         <div className="container-ncErrorForm">
@@ -63,6 +70,9 @@ export default function CandidateErrorPage() {
                         </motion.svg>
                         {/* Add more animation elements here if needed */}
                     </motion.div>
+                    <button className="errorpagebutton" onClick={handleBackToHome}>
+                        Back To Home
+                    </button>
                 </div>
             )}
         </div>

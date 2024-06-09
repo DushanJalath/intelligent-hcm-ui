@@ -11,7 +11,7 @@ function AddBillsPage(params) {
                 {userType === 'Employee' && <Sidebar/>}
                 {userType === 'Manager' && <ManagerSidebar/>}   
                 <div className="content-addBill-page">
-                    <SendBill title="Send Bill to HR" className="send-bill"/>
+                    <SendBill title="Send Bill" className="send-bill"/>
                     {/* <BillStatus title="Bill Status" className="bill-status"/> */}
                 </div>
             </>

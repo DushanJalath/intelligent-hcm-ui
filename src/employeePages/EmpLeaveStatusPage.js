@@ -1,13 +1,11 @@
 import React from "react";
-import LeaveRequestForm from "../components/LeaveRequestForm";
-import RemainingLeaves from "../components/RemainingLeaves";
 import Sidebar from "../components/Sidebar";
 import ManagerSidebar from "../components/ManagerSidebar";
-// import BillStatus from "../components/BillStatus";
+import LeaveStatus from "../components/LeaveStatus";
 
-export default function RequestLeavePage (){
+export default function EmpLeaveStatusPage (){
     const userType = localStorage.getItem('userType');
-    const bills = [
+    const leaves = [
         {
             leaveType: 'Personal Leave',
             startDate: '2020-10-10',
@@ -43,9 +41,7 @@ export default function RequestLeavePage (){
         <div>
             {userType === 'Employee' && <Sidebar/>}
             {userType === 'Manager' && <ManagerSidebar/>}
-                <LeaveRequestForm title="Request Leave"/>
-                <RemainingLeaves />
-                {/* <BillStatus title="Bill Status" className="bill-status"  bills={bills}/> */}
+                <LeaveStatus title="Leave Status" className="leave-status" leaves={leaves}/>
         </div>
     )
 }

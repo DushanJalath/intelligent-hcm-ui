@@ -1,3 +1,4 @@
+// EmpLeaveStatusPage.js
 import React from "react";
 import Sidebar from "../components/Sidebar";
 import ManagerSidebar from "../components/ManagerSidebar";
@@ -9,31 +10,31 @@ export default function EmpLeaveStatusPage (){
         {
             leaveType: 'Personal Leave',
             startDate: '2020-10-10',
-            endDate: '2020-10-15',
+            noOfDays: 6,
             status: 'Pending'
         },
         {
             leaveType: 'Sick Leave',
             startDate: '2020-11-05',
-            endDate: '2020-11-07',
+            noOfDays: 3,
             status: 'Approved'
         },
         {
             leaveType: 'Vacation',
             startDate: '2021-01-20',
-            endDate: '2021-01-25',
+            noOfDays: 6,
             status: 'Rejected'
         },
         {
             leaveType: 'Sick Leave',
             startDate: '2020-11-05',
-            endDate: '2020-11-07',
+            noOfDays: 3,
             status: 'Approved'
         },
         {
             leaveType: 'Sick Leave',
             startDate: '2020-11-05',
-            endDate: '2020-11-07',
+            noOfDays: 3,
             status: 'Rejected'
         }
     ];

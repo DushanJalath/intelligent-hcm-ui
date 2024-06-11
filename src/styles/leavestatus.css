@@ -69,3 +69,20 @@
     color: #555;
     padding-bottom: 6%;
 }
+
+/* Add this CSS to leavestatus.css */
+
+.pagination-button {
+    background-color: transparent;
+    /* border: 1px solid #ccc; */
+    padding: 18px 3px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.pagination-button.active {
+    /* background-color: #007bff; Change to your preferred color */
+    color: green;
+    /* border-color: #007bff; */
+    font-weight: 900;
+}

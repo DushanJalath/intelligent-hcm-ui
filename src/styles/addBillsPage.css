@@ -1,5 +1,17 @@
-.content-addBill-page {
-    margin-left: 350px;
-    display: flex; /* Use flexbox for layout */
-    flex-direction: column; /* Stack items vertically */
+.add-bills-page {
+    display: flex;
+    /* justify-content: center; */
 }
+
+.bills-container {
+    display: flex;
+}
+
+.container-send-bill,
+.verifyBillss {
+    margin-top: 50px;
+}
+
+
+
+

@@ -46,6 +46,11 @@ const Sidebar = () => {
             name: "Job Vacancies",
             icon: FiFile,
             menus: ["View job vacancies", "Request job vacancy"],
+        },
+        {
+            name: "Clam Bills",
+            icon: AiOutlinePlusCircle,
+            menus: ["Send Bill", "Bill Status"],
         }
     ];
 
@@ -104,12 +109,6 @@ const Sidebar = () => {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to={"/over time tracking"} className="link">
-                                <IoMdPie size={23} className="min-w-max"/>
-                                Overtime Tracking
-                            </NavLink>
-                        </li>
-                        <li>
                             <NavLink to={"/leave prediction"} className="link">
                                 <TbReportAnalytics size={23} className="min-w-max"/>
                                 Leave Prediction
@@ -124,11 +123,17 @@ const Sidebar = () => {
                                 ))}
                             </div>
                         )}
-
+{/* 
                         <li>
                             <NavLink to={"/add bills"} className="link">
                                 <AiOutlinePlusCircle size={23} className="min-w-max"/>
                                 Clam Bills
+                            </NavLink>
+                        </li> */}
+                         <li>
+                            <NavLink to={"/over time tracking"} className="link">
+                                <IoMdPie size={23} className="min-w-max"/>
+                                Overtime Tracking
                             </NavLink>
                         </li>
 

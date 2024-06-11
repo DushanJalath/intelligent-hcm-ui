@@ -1,4 +1,3 @@
-
 import '../styles/employeeSubmitForm.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -152,7 +151,8 @@ function EmployeeSubmitForm(props) {
 
     return (
         <div className='container-ncSubmitForm'>
-            <div className='title-ncSubmitForm'>{props.title}</div>
+            <div style={{ fontSize: '18px', fontWeight: '800', marginBottom: '5px', color:'#02936F' }}>{props.title}</div>
+            <p className='employeeSubmitform'>Submit yor CV and fill necessary details.</p>
             <form onSubmit={handleSubmit}>
                 <div className='grp_form'>
                     <label>Name:</label>
@@ -219,7 +219,7 @@ function EmployeeSubmitForm(props) {
                         variant="contained"
                         color="error"
                         size="medium"
-                        style={{ borderRadius: "20px", textTransform: "none" }}
+                        style={{ borderRadius: "20px", textTransform: "none", margin: '0 10px' }}
                         onClick={handleReset}
                         disabled={isResetDisabled} 
                     >

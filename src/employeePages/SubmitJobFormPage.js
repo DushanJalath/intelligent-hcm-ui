@@ -6,7 +6,7 @@ export default function SubmitJobFormPage (){
     return(
         <div>
             <Sidebar/>
-            <EmployeeSubmitForm title="Submit Form" />
+            <EmployeeSubmitForm title="Apply for Job"/>
         </div>
     )
 }

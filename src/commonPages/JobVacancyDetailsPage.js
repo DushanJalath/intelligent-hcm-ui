@@ -10,7 +10,7 @@ export default function JobVacancyDetailsPage (){
             {userType === 'Employee' && <Sidebar/>}
             {userType === 'Manager' && <ManagerSidebar/>}
                 <div className="main-content">
-                    <Jobvacancy title="New Job Vacancies"/>
+                    <Jobvacancy title="Job Vacancies" className="leave-status"/>
                 </div>
         </div>
     )

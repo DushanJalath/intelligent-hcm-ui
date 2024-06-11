@@ -4,11 +4,12 @@
     padding-left: 10px;
     width: 600px;
     border-radius: 20px;
-    margin:auto;
+    /* margin:auto; */
+    margin-left: 18px;
   
     
     background-color: #F3F3F3;
-    margin-top: 50px;
+    margin-bottom: 50px;
     font-family:'Inter', sans-serif ;
   }
 

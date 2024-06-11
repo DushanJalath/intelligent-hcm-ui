@@ -8,7 +8,7 @@ function LeaveRequestForm(props) {
     const [userID, setUserID] = useState('');
     const [category, setCategory] = useState('');
     const [startDate, setStartDate] = useState('');
-    const [endDate, setEndDate] = useState('');
+    const [numOfDays, setNumOfDays] = useState('');
     const [loading, setLoading] = useState(false);
     const [isSubmitEnabled, setIsSubmitEnabled] = useState(false);
     const [feedbackMessage, setFeedbackMessage] = useState('');
@@ -27,12 +27,12 @@ function LeaveRequestForm(props) {
     };
 
     useEffect(() => {
-        if (userName && userID && category && startDate && endDate) {
+        if (userName && userID && category && startDate && numOfDays) {
             setIsSubmitEnabled(true);
         } else {
             setIsSubmitEnabled(false);
         }
-    }, [userName, userID, category, startDate, endDate]);
+    }, [userName, userID, category, startDate, numOfDays]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -44,7 +44,7 @@ function LeaveRequestForm(props) {
                 user_id: userID,
                 request_type: category,
                 start_date: startDate,
-                end_date: endDate
+                num_of_days: numOfDays
             };
 
             const response = await axios.post('http://localhost:8000/upload-request/', data, {
@@ -64,7 +64,7 @@ function LeaveRequestForm(props) {
             setUserID('');
             setCategory('');
             setStartDate('');
-            setEndDate('');
+            setNumOfDays('');
         } catch (error) {
             console.error('Error submitting request:', error);
             setFeedbackMessage('Error submitting. Please try again.');
@@ -79,7 +79,7 @@ function LeaveRequestForm(props) {
         setUserID('');
         setCategory('');
         setStartDate('');
-        setEndDate('');
+        setNumOfDays('');
         setFeedbackMessage('');
     };
 
@@ -114,8 +114,8 @@ function LeaveRequestForm(props) {
                     <input type="date" placeholder='Leave Start Date' value={startDate} onChange={(e) => setStartDate(e.target.value)} className="date-input" min={today} />
                 </div>
                 <div className='grpRequestLeave'>
-                    <label>Leave End Date:</label>
-                    <input type="date" placeholder='Leave End Date' value={endDate} onChange={(e) => setEndDate(e.target.value)} className="date-input" min={startDate} />
+                    <label>Number of Days:</label>
+                    <input type="number" placeholder='Number of Days' value={numOfDays} onChange={(e) => setNumOfDays(e.target.value)} />
                 </div>
                 <div className='grpRequestLeave buttons'>
                     <Button

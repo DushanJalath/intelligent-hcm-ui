@@ -8,7 +8,7 @@ export default function CandidateJobVacancyDetailsPage() {
         <div className="app-container">
             <NewCandidateSidebar />
             <div className="main-content">
-                <Jobvacancy/>
+                <Jobvacancy title="Job Vacancies" className="leave-status"/>
             </div>
         </div>
     );

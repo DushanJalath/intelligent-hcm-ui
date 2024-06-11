@@ -58,3 +58,7 @@
    background-color: #ddd; 
    cursor: not-allowed; 
 }
+
+.leave-status{
+    color: #02936F;
+}

@@ -1,8 +1,11 @@
+
 import React, { useState } from 'react';
+
 import '../styles/BillStatus.css';
 import { BsFileText } from 'react-icons/bs';
 
 function BillStatus(props) {
+
     const [currentPage, setCurrentPage] = useState(1);
     const billsPerPage = 10; // Number of bill cards per page
 
@@ -38,10 +41,11 @@ function BillStatus(props) {
                     <div className="bill-part">
                     <p className="bill-label">Uploaded Bill:</p>
                         <BsFileText className="bill-icon" />
+
                     </div>
                     <div className="bill-part">
                         <p className="bill-label">Status:</p>
-                        <p className={`status-bill-value ${bill.status.toLowerCase()}`}>{bill.status}</p>
+                        <p className={`status-bill-value ${response.status.toLowerCase()}`}>{response.status}</p>
                     </div>
                 </div>
             ))}

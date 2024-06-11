@@ -11,6 +11,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import RequestedVacancyIcons from './RequestedVacancyIcons';
 import HrVacancyStatusPdfIcon from './HrVacancyStatusPdfIcon';
+import api from '../api';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -57,7 +58,7 @@ export default function RequestedVacancy(props) {
           Authorization: `Bearer ${accessToken}`,
         });
 
-        const response = await axios.get('http://localhost:8000/get_vacancies', {
+        const response = await api.get('/get_vacancies', {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },

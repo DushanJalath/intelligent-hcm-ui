@@ -120,7 +120,7 @@ export default function HrApproveBills(props) {
                     {row4.Date}
                   </StyledTableCell>
                   <StyledTableCell align="center">
-                    <HrVacancyStatusPdfIcon ImageType={row4.DownloadD} />
+                    <HrVacancyStatusPdfIcon endpointUrl="http://localhost:8000/get_bill_pdf" cvId = {row4.bill_id} filename="Employeebill"/>
                   </StyledTableCell>
                   <StyledTableCell align="center">
                   <HrJobVacancyStatusButtons

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/accountlogin.css';
 import UserTypes from './UserTypes';
+import api from '../api';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../styles/newCandidateApplyJob.css';
@@ -57,7 +58,7 @@ export default function AccountLogin() {
         }
     
         try {
-            const response = await axios.post('http://127.0.0.1:8000/login', {
+            const response = await api.post('/login', {
                 email: email,
                 password: password,
                 type: type, 
@@ -68,7 +69,9 @@ export default function AccountLogin() {
                 return;
             }
             const jwtToken = response.data.access_token;
+            const refreshToken = response.data.refresh_token;
             localStorage.setItem('token', jwtToken);
+            localStorage.setItem('refresh_token', refreshToken);
            
             // Get User Type to Front End
             const userType = response.data.type;

@@ -5,7 +5,7 @@ import LoginPage from "../src/pages/LoginPage";
 import TimeAndReportingPage from "../src/commonPages/TimeAndReportingPage";
 import OverTimetrackingPage from "../src/commonPages/OverTimetrackingPage";
 import ViewIndividualAttendancePage from "../src/commonPages/ViewIndividualAttendancePage";
-// import RequestLeavePage from "../src/commonPages/RequestLeavePage"; //CSS conflict with Login Page
+import RequestLeavePage from "../src/commonPages/RequestLeavePage"; //CSS conflict with Login Page
 // import ViewAttendancePage from "./employeePages/ViewAttendancePage";
 import AddBillsPage from "../src/commonPages/AddBillsPage";
 import JobVacancyDetailsPage from "../src/commonPages/JobVacancyDetailsPage";
@@ -29,6 +29,9 @@ import CandidateJobVacancyDetailsPage from '../src/candidatePages/CandidateJobVa
 import CandidateSubmitFormPage from '../src/candidatePages/CandidateSubmitFormPage';
 import CandidateDonePage from '../src/candidatePages/CandidateDonePage';
 import CandidateErrorPage from '../src/candidatePages/CandidateErrorPage';
+import EmpLeaveStatusPage from './employeePages/EmpLeaveStatusPage';
+import SubmitJobFormPage from './employeePages/SubmitJobFormPage';
+import BillStatusPage from './commonPages/BillStatusPage'
 
 
 
@@ -38,6 +41,7 @@ const App = () => {
   return (
     <div>   
             <div>
+            
                 <Routes>
                 <Route path="/" element={<LandingPage/>} />
                     <Route path="/login" element={<LoginPage/>} />
@@ -47,25 +51,25 @@ const App = () => {
                     {/* Employees Pages */}
                     <Route path="/time and reporting" element={<TimeAndReportingPage/>} />
                     <Route path="/Absence Management/View Attandance" element={<ViewIndividualAttendancePage/>} />
-                    {/* <Route path="/Absence Management/Request Leave" element={<RequestLeavePage/>} /> */}
+                    <Route path="/Absence Management/Request Leave" element={<RequestLeavePage/>} />
+                    <Route path="/Absence Management/Leave Status" element={<EmpLeaveStatusPage/>} /> 
                     <Route path="/over time tracking" element={<OverTimetrackingPage/>} />
-                    {/* <Route path="/job vacancy details" element={<JobVacancyDetailsPage/>} /> */}
-                    {/* <Route path="/job vacancy details/apply job" element={<ApplyJobPage/>} /> */}
-                    {/* <Route path="/job vacancy details/apply job/submit form" element={<SubmitJobFormPage/>} /> */}
-                    {/* <Route path="/job vacancy details/apply job/submit form/done" element={<SubmitJobFormPage/>} /> */}
-                    <Route path="/add bills" element={<AddBillsPage/>} />
+                    <Route path="/Job Vacancies/Job Details" element={<JobVacancyDetailsPage/>} />
+                    <Route path="/Job Vacancies/Apply Job" element={<SubmitJobFormPage/>} />
+                    <Route path="/Clam Bills/Send Bill" element={<AddBillsPage/>} />
+                    <Route path="/Clam Bills/Bill Status" element={<BillStatusPage/>} />
 
                     {/* Managers Routes */}
                     <Route path="/time and reporting" element={<TimeAndReportingPage/>} />
                     <Route path="/Absence Management/View Attandance" element={<ViewIndividualAttendancePage/>} />
                     <Route path="/Absence Management/Employees Attendances" element={<EmployeesAttendances/>} />
-                     {/* <Route path="/Absence Management/Request Leave" element={<RequestLeavePage/>} /> */}
+                     <Route path="/Absence Management/Request Leave" element={<RequestLeavePage/>} />
                     <Route path="/Absence Management/Leave Status" element={<LeaveStatusPage/>} /> 
                     <Route path="/over time tracking" element={<OverTimetrackingPage/>} />
                     <Route path="/Leave Prediction" element={<EmployeesLeavePredictionPage/>} /> 
                     <Route path="/Job Vacancies/View job vacancies" element={<JobVacancyDetailsPage/>} /> 
                     <Route path="/Job Vacancies/Request job vacancy" element={<RequestVacancyPage/>} />
-                    <Route path="/add bills" element={<AddBillsPage/>} />
+                    <Route path="/Clam Bills/Send Bill" element={<AddBillsPage/>} />
 
 
                     {/* HR Routes */}

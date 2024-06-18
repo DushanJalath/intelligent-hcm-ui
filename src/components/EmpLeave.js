@@ -5,7 +5,7 @@ import DatePicker from "./DatePicker";
 import DropDown from "./Dropdown";
 // import ButtonComponent from "./Buttons";
 
-import '../styles/EmpLeave.css';
+// import '../styles/EmpLeave.css';
 import {Button} from "@mui/material";
 
 const EmpLeave= (props)=>{
@@ -92,15 +92,6 @@ const EmpLeave= (props)=>{
                         <DropDown label="Leave type" options={options} placeholder="Select leave type"
                                   selectedValue={leaveType} onChange={updateLeaveType}/>
                     </div>
-
-                    {/*<div className="Buttons">*/}
-                    {/*    <div className="submit">*/}
-                    {/*        <ButtonComponent label="Submit" onClick= {handleSubmit}/>*/}
-                    {/*    </div>*/}
-                    {/*    <div className="cancel">*/}
-                    {/*        <ButtonComponent label="Cancel"onClick= {handleCancel}/>*/}
-                    {/*    </div>*/}
-                    {/*</div>*/}
 
                     <div style={{display: 'flex', width: "795px", justifyContent: "center",marginTop:"30px"}}>
                         <div id="empLeave-Approve-button">

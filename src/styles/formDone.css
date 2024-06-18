@@ -5,6 +5,20 @@
     height: 80vh; /* Ensures the container takes up the full viewport height */
   }
   
+  .donepagebutton {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 13px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-top: 80px;
+}
 
-  /* Add any additional CSS styles as needed */
+.donepagebutton:hover {
+    background-color: #333;
+}
+
   

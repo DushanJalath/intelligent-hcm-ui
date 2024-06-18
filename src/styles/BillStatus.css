@@ -1,135 +1,99 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
-
-
-.container-bill-status{
+.bill-status-container {
     margin-top: 50px;
-    width: 600px;
-    height : 450px;
+    width: 750px;
     background-color: #EAEAEA;
     border-radius: 10px;
     position: relative;
-    padding-top: 20px;
-    padding-right: 15px;
-    padding-left: 15px;
-  }
-.title-bill-status{
-    position: absolute;
-    top : 10px;
-    right: 10px;
-    background-color: #02936F;
-    color: white;
+    padding: 20px;
+    margin-left: 470px;
+    margin-bottom: 50px;
+}
+
+/* Your existing styles... */
+
+.bill-part:not(:first-child) {
+    margin-left: 20px; /* Added to create space between items */
+}
+
+
+
+.bill-icon {
+    margin-right: 50%;
+    width: 20px;
+    height: 20px;
+    /* Add any styling as needed */
+}
+.bill-status-title {
+    color: #02936F;
     border-radius: 50px;
-    padding: 5px;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-top: -23px;
-}
-
-
-
-
-.leaveApprove-container {
-    background-color: #EAEAEA;
-    padding: 20px;
-    position: relative;
-    border-radius: 20px;
-    width: 450px;
-    max-width: 60%;
-    box-sizing: border-box;
-    margin-left: 420px;
-    margin-top: 50px;
-
-}
-
-.user-card {
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    position: relative;
-    height: auto;
-    width: 100%;
-    box-sizing: border-box;
-    margin: 30px 0;
-    padding: 20px;
-}
-
-.user-photo {
-    width: 60px;
-    height: 60px;
-    overflow: hidden;
-    border-radius: 50%;
-}
-
-.user-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.user-details {
-    flex: 1;
-    padding-left: 20px;
-    padding-right: 40px;
-    text-align: left;
-    position: relative;
-}
-
-.user-name {
-    display: flex;
-    align-items: baseline;
+    padding-bottom: 2px;
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 800;
+    font-size: large;
 }
 
-.user-name p {
-    margin: 0;
-    color: black;
+.bill-status-card {
+    background-color: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 14px;
+    display: flex;
+    margin: 5px 18px 18px 18px;
 }
 
-.user-details p {
-    margin: -2px 0;
-    color: black;
-}
-
-.leave-details {
-    width:400px;
-    text-align: left;
+.bill-part {
+    flex: 1;
+    text-align: center;
     position: relative;
-    padding: 10px;
-    border-right: 1px solid gray;
 }
 
-.leave-type-tag,
-.leave-type {
-    font-weight: 700;
+.bill-part:not(:first-child) {
+    margin-left: 20px; /* Added to create space between items */
 }
 
-
-@media (max-width: 600px) {
-    .menu {
-        right: 2%;
-    }
-
-    .first-vertical-line,
-    .second-vertical-line {
-        height: 50px;
-    }
-
-    .user-photo {
-        width: 40px;
-        height: 40px;
-    }
+.bill-label {
+    font-weight: bold;
+    text-align: left;
 }
 
-#LeaveApprove-Approve-button {
-    padding-right: 2px;
-    padding-left: 8px;
+.bill-value {
+    text-align: left;
+    font-size: 14px;
 }
 
-.Reject-button {
-    margin-right: 9px;
+.status-bill-value {
+    text-align: left;
+    font-weight: 750;
+}
+
+.pending .status-bill-value {
+    color: orange;
+}
+
+.paid .status-bill-value {
+    color: green;
+}
+
+.overdue .status-bill-value {
+    color: red;
+}
+
+.bill-description {
+    font-size: 14px;
+    color: #555;
+    padding-bottom: 6%;
+}
+
+/* Pagination styles */
+
+.pagination-button {
+    background-color: transparent;
+    padding: 18px 3px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.pagination-button.active {
+    color: green;
+    font-weight: 900;
 }

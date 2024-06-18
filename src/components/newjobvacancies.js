@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import JobCard from './jobcard';
 
-
 function JobVacancy(props) {
     const [jobVacancies, setJobVacancies] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -42,24 +41,39 @@ function JobVacancy(props) {
     const endIndex = Math.min(startIndex + jobsPerPage, jobVacancies.length);
 
     return (
-        <div style={{ padding: '20px' }}>
-            <div style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '20px' }}>{props.title}</div>
-            <div>
-                {jobVacancies.slice(startIndex, endIndex).map((job) => (
-                    <JobCard
-                        key={job.job_title}
-                        jobTitle={job.job_title}
-                        jobType={job.job_type}
-                        workMode={job.work_mode}
-                        pdfLink={job.pdf_link}
-                    />
-                ))}
-                <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
-                    <button onClick={handlePreviousPage} style={{ marginRight: '10px' }} disabled={currentPage === 1}>Previous</button>
-                    {[...Array(totalPages).keys()].map((page) => (
-                        <button key={page + 1} onClick={() => handlePageChange(page + 1)} style={{ marginRight: '10px' }} className={currentPage === page + 1 ? 'active' : ''}>{page + 1}</button>
+        <div
+            className='job-vacancy-container'
+            style={{
+                marginTop: '50px',
+                width: '680px',
+                backgroundColor: '#EAEAEA',
+                borderRadius: '10px',
+                position: 'relative',
+                // padding: '20px',
+                marginLeft: '470px',
+                marginBottom: '50px',
+            }}
+        >
+            <div style={{ padding: '20px' }}>
+                <div style={{ fontSize: '18px', fontWeight: '800', marginBottom: '5px', color:'#02936F' }}>{props.title}</div>
+                <p className='leavedescription'>Deatils about job vacancies.</p>
+                <div>
+                    {jobVacancies.slice(startIndex, endIndex).map((job) => (
+                        <JobCard
+                            key={job.job_title}
+                            jobTitle={job.job_title}
+                            jobType={job.job_type}
+                            workMode={job.work_mode}
+                            pdfLink={job.pdf_link}
+                        />
                     ))}
-                    <button onClick={handleNextPage} style={{ marginLeft: '10px' }} disabled={currentPage === totalPages}>Next</button>
+                    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+                        <button onClick={handlePreviousPage} style={{ marginRight: '10px' }} disabled={currentPage === 1}>Previous</button>
+                        {[...Array(totalPages).keys()].map((page) => (
+                            <button key={page + 1} onClick={() => handlePageChange(page + 1)} style={{ marginRight: '10px' }} className={`pagination-button ${currentPage === page + 1 ? 'active' : ''}`}>{page + 1}</button>
+                        ))}
+                        <button onClick={handleNextPage} style={{ marginLeft: '10px' }} disabled={currentPage === totalPages}>Next</button>
+                    </div>
                 </div>
             </div>
         </div>

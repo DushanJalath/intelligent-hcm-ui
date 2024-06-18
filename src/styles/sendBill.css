@@ -1,21 +1,46 @@
 .container-send-bill {
-    margin-top: 50px;
     width: 600px;
-    background-color: #EAEAEA;
+    background-color: #00000017; 
     border-radius: 10px;
     position: relative;
     padding: 20px;
+    margin-left: 470px;
+    height: 75%;
 }
 
+.waiting-message {
+    display: flex;
+    align-items: center;
+    color: rgb(0, 33, 141);
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.waiting-message p {
+    margin: 0;
+}
+
+
+
 .title-send-bill {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: #02936F;
-    color: white;
+    /* position: absolute; */
+    /* top: 10px; */
+    /* right: 15px; */
+    /* background-color: #02936F; */
+    color: #02936F;
     border-radius: 50px;
-    padding: 5px;
-    margin-top: -23px;
+    /* padding: px; */
+    /* margin-top: -23px; */
+    text-align: left;
+    font-weight: 800;
+    font-size: large;
+}
+
+.sendBilldescrption {
+    font-size: smaller;
+    margin-top: 5px;
+    font-weight: 500;
 }
 
 .grpSendBill {
@@ -42,6 +67,8 @@
     border-radius: 15px;
     margin-top: 10px;
     margin-bottom: 40px;
+    background-color: #ffffff;
+    
 }
 
 .upload-area p {
@@ -56,6 +83,7 @@
 .grpSendBill.buttons {
     display: flex;
     justify-content: center;
+    margin-top: 30px;
 }
 
 .grpSendBill .MuiButton-root {

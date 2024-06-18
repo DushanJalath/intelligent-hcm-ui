@@ -1,31 +1,35 @@
 /* employeeSubmitForm.css */
 .container-ncSubmitForm {
-    margin: 20px auto 0;
-    width: 800px;
-   
+    width: 700px;
     border-radius: 10px;
     position: relative;
-    /* background-color: #EAEAEA; */
     padding: 15px;
     box-sizing: border-box;
+    background-color: #00000017;
+    margin-left: 470px;
+    margin-top: 50px;
 }
 
 .title-ncSubmitForm {
-    /* position: absolute;
-    top: -18px;
-    right: 30px;
-    background-color: #02936F;
-    color: white; */
     border-radius: 50px;
     padding: 5px 20px;
-    font-weight:600;
+    font-weight: 600;
+}
+
+.employeeSubmitform{
+    font-size: smaller;
+    margin-top: 5px;
+    font-weight: 500;
+    color: #555;
+    
 }
 
 form {
-    margin: 0px 30px 30px 30px;
+    margin: 35px 18px 18px 18px;
 }
 
-input {
+input,
+select {
     border: 1px solid #ccc;
     padding: 8px;
     border-radius: 15px;
@@ -36,7 +40,6 @@ input {
 label {
     font-weight: bold;
     margin-bottom: 8px;
-    font-size: 20px;
 }
 
 .grp_form {
@@ -47,11 +50,30 @@ label {
     margin-right: 10px;
 }
 
-.grp-name {
+select {
+    background-color: #fff;
+    appearance: none;
+    padding: 8px 12px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+select:focus {
+    outline: none;
+    border-color: #02936F;
+}
+
+.dropdown-icon {
+    position: relative;
+    pointer-events: none;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     align-items: center;
+    justify-content: center;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #02936F;
 }
 
 .react-datepicker {

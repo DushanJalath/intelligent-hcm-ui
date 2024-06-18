@@ -1,79 +1,115 @@
-import React from "react";
+import React,{useEffect,useState}from "react";
 import'../styles/HR_OT_Track.css';
 import HROTChart from "../components/HROTChart";
+import NameTag from "./NameTag";
+import api from "../api"
 
 
 
-const HRTrackOT =()=>{
-    
-    const chartData_1=[45,55];
+const HRTrackOT = ({userType}) => {
+    const [otData, setOtData] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 6;
 
-    const chartData_2=[20,80];
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const accessToken = localStorage.getItem('token');
+                console.log('Access Token:', accessToken);
+                console.log('Request Headers:', {
+                Authorization: `Bearer ${accessToken}`,
+                });
+                const endpoint = userType === 'Manager' ? '/get_ot_data_man' : '/get_ot_data_emp';
+                const response = await api.get(endpoint, {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                    },
+                }); 
+                const data = response.data;
+                setOtData(data);
+            } catch (error) {
+                console.error('Error fetching OT data:', error);
+            }
+        };
 
-    const chartData_3=[75,25];
+        fetchData();
+    }, [userType]);
 
-    const chartData_4=[32,68];
-    
-    const chartData_5=[56,44];
 
-    const chartData_6=[20,80];
+    const itemsPerPages = 8;
+    const indexOfLastItem = currentPage * itemsPerPages;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPages;
+    const currentData = otData.slice(indexOfFirstItem, indexOfLastItem);
+    const totalPages = Math.ceil(otData.length / itemsPerPages);
+  
+    const handlePageChange = (newPage1) => {
+      setCurrentPage(newPage1);
+    };
 
-    const options={
-        Tooltip:{
-            enabled:false
-        },
-        legend: {
-                display: false, 
-        }
-    }
-
-    return(
-       <div className="hrOTContainer">
-        <div className="table">
-            <table>
-                <tr>
-                    <td>
-                        <div className="chart-container">
-                            <HROTChart values={chartData_1} options={options}/>
-                        </div>
-                    </td>
-
-                    <td>
-                    <div className="chart-container">
-                            <HROTChart values={chartData_2}/>
-                        </div>
-                    </td>
-
-                    <td>
-                    <div className="chart-container">
-                            <HROTChart values={chartData_3}/>
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                    <div className="chart-container">
-                            <HROTChart values={chartData_4}/>
-                        </div>
-                    </td>
-
-                    <td>
-                    <div className="chart-container">
-                            <HROTChart values={chartData_5}/>
-                        </div>
-                    </td>
-
-                    <td>
-                    <div className="chart-container">
-                            <HROTChart values={chartData_6}/>
-                        </div>
-                    </td>
-                </tr>
-            </table>
+    return (
+        <div className="hrOTContainer">
+            <div className="ot-table">
+                {Array.from({ length: Math.ceil(currentData.length / 3) }, (_, rowIndex) => (
+                    <div key={rowIndex} className="ot-row">
+                        {currentData.slice(rowIndex * 3, rowIndex * 3 + 3).map((data, colIndex) => (
+                            <div key={colIndex} className="ot-chart-container">
+                                <NameTag name={data.name} role={data.role} />
+                                <HROTChart values={[data.completed, data.remaining]} />
+                            </div>
+                        ))}
+                    </div>
+                ))}
+            </div>
+           
+            <nav aria-label="Page-navigation">
+          <ul className="hrot-pagination">
+            <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
+              <button
+                className={`page-link1 ${
+                  currentPage === 1 ? "active-prev" : ""
+                }`}
+                onClick={() => handlePageChange(currentPage - 1)}
+              >
+                Previous
+              </button>
+            </li>
+            {Array.from({ length: totalPages }, (_, index) => (
+              <li
+                key={index}
+                className={`page-item1 ${
+                  currentPage === index + 1 ? "active" : ""
+                }`}
+              >
+                <button
+                  className={`page-link ${
+                    currentPage === index + 1 ? "active" : ""
+                  }`}
+                  onClick={() => handlePageChange(index + 1)}
+                >
+                  {index + 1}
+                </button>
+              </li>
+            ))}
+            <li
+              className={`page-item ${
+                currentPage === totalPages ? "disabled" : ""
+              }`}
+            >
+              <button
+                className={`page-link1 ${
+                  currentPage === totalPages ? "active-next" : ""
+                }`}
+                onClick={() => handlePageChange(currentPage + 1)}
+              >
+                Next
+              </button>
+            </li>
+          </ul>
+        </nav>
         </div>
-       </div>
-    )
-}
+    );
+};
 
 export default HRTrackOT;
+
+

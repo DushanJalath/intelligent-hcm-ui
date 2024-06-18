@@ -17,10 +17,10 @@ const EmpLeave= (props)=>{
     }
 
     //Enter Employee ID
-    const [empID, setEmpID]= useState('');
+    const [empEmail, setEmpEmail]= useState('');
 
-    const updateID = (event) =>{
-        setEmpID(event.target.value)
+    const updateEmail = (event) =>{
+        setEmpEmail(event.target.value)
     }
 
     //Select Leave Start date and Leave End date
@@ -47,14 +47,46 @@ const EmpLeave= (props)=>{
         {label:'Personal leave',value:'Personal leave'},
     ]
 
-    const handleSubmit = (event)=>{
+    /*const handleSubmit = (event)=>{
         event.preventDefault();
         console.log ('Employee Name : ', name);
         console.log ('Employee ID :', empID);
         console.log ('Leave Start Date :', startDate);
         console.log ('Leave End Date :', endDate);
         console.log ('Leave Type :', leaveType);
-    }
+    }*/
+
+    const handleSubmit = async(event)=>{
+        event.preventDefault();
+        const FormData={
+            "user_email":empEmail,
+            "name":name,
+            "start_date":startDate,
+            "end_date":endDate,
+            "leave_type":leaveType,
+            "leave_status":"pending"
+            }
+    
+        try {
+            const accessToken = localStorage.getItem('token');
+            console.log('Access Token:', accessToken);
+            console.log('Request Headers:', {Authorization: `Bearer ${accessToken}` });
+    
+            const response = await api.post('/add_emp_leave', FormData, {
+                headers: {Authorization:`Bearer ${accessToken}` }});
+    
+            setSuccessMessage('Leave added successfully');
+            console.log(response.data);
+    
+            window.location.reload();
+        } 
+    
+        catch (error) {
+            setSuccessMessage('An error occurred');
+            console.error('Error:', error);
+        }
+    };
+                
 
     const handleCancel = (event)=>{
         event.preventDefault();
@@ -70,12 +102,12 @@ const EmpLeave= (props)=>{
             <div className="form">
                 <form onSubmit={handleSubmit}>
 
-                    <div className="Input1">
-                        <TextInputs label="Employee Name" value={name} onChange={updateName}/>
+                    <div className="Input2">
+                        <TextInputs label="Employee Email" value={empEmail} onChange={updateEmail}/>
                     </div>
 
-                    <div className="Input2">
-                        <TextInputs label="Employee ID" value={empID} onChange={updateID}/>
+                    <div className="Input1">
+                        <TextInputs label="Employee Name" value={name} onChange={updateName}/>
                     </div>
 
                     <div className="Input3">

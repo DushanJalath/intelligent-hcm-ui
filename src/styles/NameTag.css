@@ -1,26 +1,39 @@
 
 .name-tag-container{
-    width: 250px;
-    height: 80px;
+    width: 230px;
+    height: 70px;
     top: 155px;
     left: 522px;
     border-radius: 56px;
     background-color: #FFFFFF;
-    margin-right: 38px;
+    margin-left: 10px;
 
 
 }
 .name-tag{
-    padding-top: 14px;
-    width: 200px;
+    padding-top: 7.5px;
+    padding-bottom: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
+    width: 230px;
     display: flex;
     align-items: center;
     flex: 1;
 
 }
 
-.details{
+.name-tag-details{
     margin-left: 20px;
+}
+
+.name-tag-name{
+    text-align: left;
+
+}
+
+.name-tag-role{
+    text-align: left;
+
 }
 
 .text-xl {

@@ -1,0 +1,75 @@
+/* General styles */
+.sendEmail {
+    display: flex; /* Center form horizontally */
+    flex-direction: column; /* Stack form elements vertically */
+    width: fit-content; /* Adjust width as needed */
+    margin: 0 auto; /* Center form horizontally */
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #EAEAEA;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Labels */
+  .sendEmail label {
+    display: block;
+    width: 300px;
+    margin-bottom: 5px;
+    color: #000000;
+  }
+  
+  /* Inputs */
+  .sendEmail input[type="text"],
+  .sendEmail input[type="email"],
+  .sendEmail input[type="date"],
+  .sendEmail input[type="time"] {
+    width: 100%;
+    padding: 7px;
+    margin-left: 10px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    box-sizing: border-box; /* Include padding in width calculation */
+  }
+  
+  /* Button */
+  .sendEmail button[type="submit"] {
+    background-color: #02936F;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .sendEmail button[type="submit"]:hover {
+    background-color: #02936f; /* Darker blue on hover */
+  }
+  
+  /* Success/Error message (optional) */
+  .sendEmail .message {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 3px;
+  }
+  
+  .sendEmail .message.success {
+    background-color: #dff0d8; /* Light green for success */
+    color: #468847;
+  }
+  
+  .sendEmail .message.error {
+    background-color: #f2dede; /* Light red for error */
+    color: #a94442;
+  }
+
+  .sendEmail-form-elements {
+    display: flex; /* Enable flexbox layout */
+    align-items: center; /* Align labels and inputs vertically */
+    margin-bottom: 10px;/* Add spacing between groups */
+  }
+
+
+ 
+  

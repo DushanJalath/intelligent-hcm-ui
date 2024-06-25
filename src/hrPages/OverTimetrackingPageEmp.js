@@ -1,7 +1,7 @@
 import React from "react";
 import HRTrackOT from "../components/HR_OT_Track";
 import HRSidebar from "../components/HRSidebar";
-import SwitchView from "../components/SwitchView";
+//import SwitchView from "../components/SwitchView";
 import '../styles/HROTTrackingPage.css';
 
 const OverTimetrackingPageEmp=()=>{
@@ -11,13 +11,18 @@ const OverTimetrackingPageEmp=()=>{
         
             <HRSidebar/>
 
-            <div className="slide-bar">
-                <SwitchView option1="Employee" page1="" option2="Manager" page2=""/>
+            <div className="hr-ot-content">
+                {/*<div className="slide-bar">
+                    <SwitchView option1="Employee" page1="" option2="Manager" page2=""/>
+                </div>*/}
+
+                <div className="hr-ot-sub-container">
+                    <HRTrackOT userType="Employee"/>
+                </div>
+
             </div>
 
-            <div className="hr-ot-sub-container">
-                <HRTrackOT/>
-            </div>
+ 
         </div>
         
           

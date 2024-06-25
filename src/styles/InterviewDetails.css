@@ -1,51 +1,68 @@
-.hrOTContainer{
-    margin-left: 50px ;
-    margin-right: 20px;
-    max-width: 1200px;
-    max-height : 880px;
-    background-color: #EAEAEA;
+.container4 {
+    margin-top: 40px;
+    width: 1300px;
+    height: auto;
+    flex-shrink: 0;
+    border-radius: 30px;
+    background: #eaeaea;
     border-radius: 10px;
     position: relative;
-    padding-top: 20px;
+    margin-bottom: 40px;
+    margin-left: 30px;
     padding-bottom: 20px;
-    
+  }
+  
+  .title4 {
+    position: absolute;
+    width: 302px;
+    height: 30px;
+    right: 10px;
+    background-color: #02936f;
+    color: white;
+    border-radius: 27px;
+    padding: 2px;
+    margin-top: -23px;
+    margin-right: 60px;
+    text-decoration: solid;
+    text-align: center;
+    font-size: larger;
+    font-weight: 600;
+  }
+  
 
-}
-
-.ot-table-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow: auto;
-    max-width: 100%;
-    max-height: 100%;
-}
-
-.ot-table {
-    display: flex;
-    flex-direction: column;
-    gap: 30px; 
-}
-
-.ot-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 30px; 
-}
-
-.ot-chart-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%; /* Make sure it takes full width within the grid column */
-}
-
-  .hrot-pagination {
+  
+  .table-div {
+    width: 1227px;
+    height: auto;
+    margin-left: 40px;
+    padding-top: 45px;
+  }
+  
+  .vacancy-table {
+    width: 1227px;
+    height: 60px;
+    border: none; /* Eliminate border */
+    flex-shrink: 0;
+    background: #fff;
+  }
+  
+  .table-raw1,
+  .table-raw {
+    text-align: center;
+    height: 60px;
+    background: #939393;
+    border: none; /* Eliminate border */
+  }
+  
+  .Page-navigation {
+    max-width: 200px;
+  }
+  
+  .pagination {
     display: flex;
     max-width: 300px;
     margin-left: 460px;
     margin-top: 20px;
-    padding-top: 20px;
   }
   
   .page-item1 {

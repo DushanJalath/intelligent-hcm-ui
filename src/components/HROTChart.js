@@ -1,7 +1,7 @@
 import React from "react";
 import { Doughnut } from "react-chartjs-2";
 import '../styles/HROTChart.css'
-import NameTag from "./NameTag";
+//import NameTag from "./NameTag";
 
 import {Chart as ChartJS,
 ArcElement,
@@ -42,14 +42,18 @@ const HROTChart = ({values})=>{
     <div className="hrot-container">
 
         <div className="hrot-chart">
-            <div className= "hrot-name">
-            <NameTag/>
-            </div>
+            
         
             <Doughnut 
                 data={chartData} 
                 options={chartOptions}>
             </Doughnut>
+
+            <div className="hrot-values">
+                <p>Completed: {values[0]}</p>
+                <p>Remaining: {values[1]}</p>
+            </div>
+            
         </div>
         </div>
     )

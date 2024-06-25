@@ -1,10 +1,26 @@
 
+.hr-ot-tracking{
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+.hr-ot-content{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
 .slide-bar{
-    margin-top: -700px;
+    /*margin-top: -700px;*/
     margin-left: 400px;
 }
 
 .hr-ot-sub-container{
-    margin-left: 300px;
-    margin-top: -50px;
+    flex-grow: 1;
+    border-radius: 10px;
+    margin-left: 270px;
+    margin-top: 10px;
+    padding-bottom: 36px;
+    overflow: auto; 
 }

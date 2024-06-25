@@ -45,7 +45,7 @@ function BillStatus(props) {
                     </div>
                     <div className="bill-part">
                         <p className="bill-label">Status:</p>
-                        <p className={`status-bill-value ${response.status.toLowerCase()}`}>{response.status}</p>
+                        <p className={`status-bill-value ${bill.status.toLowerCase()}`}>{bill.status}</p>
                     </div>
                 </div>
             ))}

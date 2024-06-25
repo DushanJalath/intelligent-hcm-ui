@@ -32,10 +32,23 @@ const SendEmail = ({onEmailSent,c_id}) => {
         time: interviewTime,
         venue: interviewLocation,
         interviewer_id: interviewerEmail,
+        confirmed_date:confirmationDate,
         result: 'pending' // Assuming the initial result is pending
       };
     try{
-    const response = await api.post('/add_interview',interviewData);
+      const accessToken = localStorage.getItem("token");
+          console.log("Access Token:", accessToken);
+          console.log("Request Headers:", {
+            Authorization: `Bearer ${accessToken}`,
+          });
+          const response = await api.post('/add_interview',interviewData,
+            {
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            }
+          );
+    
     console.log(response.data);
 } catch (error) {
     if (error.response) {

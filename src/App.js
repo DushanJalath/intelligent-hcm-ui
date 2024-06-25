@@ -33,9 +33,7 @@ import EmpLeaveStatusPage from './employeePages/EmpLeaveStatusPage';
 import SubmitJobFormPage from './employeePages/SubmitJobFormPage';
 import BillStatusPage from './commonPages/BillStatusPage'
 import LeaveCountPage from './commonPages/LeaveCountPage'
-
-
-
+import LeaveReportPage from './hrPages/LeaveReportPage'
 
 
 const App = () => {
@@ -76,7 +74,8 @@ const App = () => {
                     {/* HR Routes */}
                     <Route path="/Time Reporting/Employees" element={<TimeAndReportingPageEmp/>} />
                     <Route path="/Time Reporting/Managers" element={<TimeAndReportingPageManager/>} /> 
-                    <Route path="/Absence Management/Set Leave Count" element={<LeaveCountPage/>} /> 
+                    <Route path="/Absence Management/Set Leave Count" element={<LeaveCountPage/>} />
+                    <Route path="/Absence Management/Leave Report" element={<LeaveReportPage/>} />  
                     <Route path="/Absence Management/Employees Leave Requests" element={<ApproveEmployeesLeavePage/>} /> 
                     <Route path="/Absence Management/Managers Leave Requests" element={<ApproveManagerLeavePage/>} /> 
                     <Route path="/Absence Management/Employees Attendances" element={<EmployeesAttendances/>} />

@@ -46,7 +46,7 @@ const Sidebar = () => {
         {
             name: "Absence Management",
             icon: IoCalendarOutline,
-            menus: ["Set Leave Count","Employees Leave Requests","Managers Leave Requests","Employees Attendances","Managers Attendances"],
+            menus: ["Set Leave Count","Leave Report","Employees Leave Requests","Managers Leave Requests","Employees Attendances","Managers Attendances"],
         },
         {
             name: "Overtime Tracking",

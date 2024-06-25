@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function ManagerLeaveDashboard() {
-    const [managerLeaveData, setManagerLeaveData] = useState(null); // Only one latest record
+    const [managerLeaveData, setManagerLeaveData] = useState(null);
     const [loading, setLoading] = useState(false);
     const [feedbackMessage, setFeedbackMessage] = useState('');
     const [feedbackColor, setFeedbackColor] = useState('');

@@ -10,7 +10,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import HrVacancyStatusPdfIcon from "./HrVacancyStatusPdfIcon";
-import HrJobVacancyStatusButtons from "./HrJobVacancyStatusButtons";
+import HrNewCandidateStatusButton from "./HRNewCandidateStatusButton";
 import axios from "axios";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -122,7 +122,7 @@ export default function HrNewCandidate(props) {
                   <HrVacancyStatusPdfIcon endpointUrl="http://127.0.0.1:8000/download_cv" cvId= {row3.cv} filename={row3.c_id} />
                   </StyledTableCell>
                   <StyledTableCell align="center">
-                    <HrJobVacancyStatusButtons
+                    <HrNewCandidateStatusButton
                       onStatusChange={handleStatusChange}
                       id={row3.c_id}
                       endpointUrl="http://127.0.0.1:8000/update_candidate/{id}"

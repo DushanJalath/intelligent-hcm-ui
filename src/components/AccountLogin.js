@@ -111,8 +111,8 @@ export default function AccountLogin() {
 
   return (
     <div className="right-container">
-      <div className="container1">
-        <div className="header">
+      <div className="container-login">
+        <div className="header-login">
           <h1 className="header-H1">Account Login</h1>
           <p className="header-paragraph-login">
             If you are already a member you can login with your email address

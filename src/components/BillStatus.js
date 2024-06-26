@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/billstatus.css';
+import '../styles/BillStatus.css';
 import { AiOutlineFileText } from 'react-icons/ai';
 import axios from 'axios';
 

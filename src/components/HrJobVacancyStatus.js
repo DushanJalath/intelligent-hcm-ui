@@ -174,11 +174,11 @@ export default function HrJobVacancyStatus(props) {
                     <HrJobVacancyStatusButtons
                       onStatusChange={handleStatusChange}
                       id={row2.vacancy_id }
-                      endpointUrl="http://127.0.0.1:8000/update_hr_vacancy/{id}"
+                      endpointUrl="/update_hr_vacancy/{id}"
                     />
                   </StyledTableCell>
                   <StyledTableCell align="center">
-                    <HrJobPublishIcon />
+                    <HrJobPublishIcon endpointUrl="/publish_vacancy" jobId={row2.vacancy_id} />
                   </StyledTableCell>
                 </StyledTableRow>
               ))}

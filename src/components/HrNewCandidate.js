@@ -105,6 +105,7 @@ export default function HrNewCandidate(props) {
                 <StyledTableCell align="center">CandidateID</StyledTableCell>
                 <StyledTableCell align="center">FullName</StyledTableCell>
                 <StyledTableCell align="center">Email</StyledTableCell>
+                <StyledTableCell align="center">Score</StyledTableCell>
                 <StyledTableCell align="center">
                   Download Document
                 </StyledTableCell>
@@ -117,6 +118,7 @@ export default function HrNewCandidate(props) {
                   <StyledTableCell align="center">{row3.c_id}</StyledTableCell>
                   <StyledTableCell align="center">{row3.name}</StyledTableCell>
                   <StyledTableCell align="center">{row3.email}</StyledTableCell>
+                  <StyledTableCell align="center">{row3.score}</StyledTableCell>
                   <StyledTableCell align="center">
                   <HrVacancyStatusPdfIcon endpointUrl="http://127.0.0.1:8000/download_cv" cvId= {row3.cv} filename={row3.c_id} />
                   </StyledTableCell>

@@ -1,6 +1,6 @@
 import React from 'react';
 import pdfw from "../assets/pdfw.png";
-import axios from 'axios'; // Import Axios for HTTP requests
+import api from "../api";
 import '../styles/requestedvacancyicons.css';
 
 export default function HrVacancyStatusPdfIcon({ endpointUrl, cvId ,filename}) {
@@ -10,7 +10,7 @@ export default function HrVacancyStatusPdfIcon({ endpointUrl, cvId ,filename}) {
         const accessToken = localStorage.getItem('token'); // Get the access token from local storage or wherever it's stored
 
         try {
-            const response = await axios.get(`${endpointUrl}/${cvId}`, {           
+            const response = await api.get(`${endpointUrl}/${cvId}`, {           
                 headers: {
                     Authorization: `Bearer ${accessToken}`, // Include authorization header with the token
                 },

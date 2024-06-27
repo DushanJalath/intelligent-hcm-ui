@@ -33,7 +33,7 @@ function LeavePredictionchart() {
           },
         }
       );
-      setPrediction(predictionResponse.data.predicted_attendance.toFixed(2)); // Rounded to 2 decimal places
+      setPrediction(predictionResponse.data.predicted_attendance.toFixed(0)); // Rounded to 2 decimal places
       setError(null);
 
       const chartResponse = await axios.post(
@@ -62,7 +62,7 @@ function LeavePredictionchart() {
   return (
     <div className="modM">
       <div class="modm1">
-        <p>Employee Attendance Prediction</p>
+        <p className="container123-title">Employee Attendance Prediction</p>
       </div>
       <div className="modL">
         <label className="momdate">
@@ -78,12 +78,13 @@ function LeavePredictionchart() {
             />
           </DemoContainer>
         </LocalizationProvider>
-      </div>
-      <div class="emp-pred-btn">
+        <div class="emp-pred-btn">
         <button className=" buttn-hrpredic" onClick={handlePredictClick}>
           Predict
         </button>
       </div>
+      </div>
+      
       {error && <div className="error_a">{error}</div>}
       {prediction !== null && (
         <div class="prediceted-emp-att">

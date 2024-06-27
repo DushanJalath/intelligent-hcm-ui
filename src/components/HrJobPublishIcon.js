@@ -17,6 +17,7 @@ export default function HrJobPublishIcon({ endpointUrl, jobId }) {
             });
 
             console.log("Publish Response:", response.data);
+            alert("Vacancy published successfully")
 
             // Add your logic for handling the publish response here
         } catch (error) {

@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import SendEmail from './sendEmailToCandidate';
 import Modal from "react-modal";
-import axios from "axios";
+import api from "../api";
 import { ImCheckmark, ImCross } from "react-icons/im";
 import "../styles/hrjobvacancystatusbuttons.css";
 import "../styles/CandidateEmailModal.css"
@@ -28,7 +28,7 @@ export default function HrNewCandidateStatusButton({ onStatusChange, id, endpoin
     const accessToken = localStorage.getItem("token");
 
     try {
-      const response = await axios.put(
+      const response = await api.put(
         endpointUrl.replace("{id}", id),
         { new_status: newStatus },
         {
@@ -62,7 +62,7 @@ export default function HrNewCandidateStatusButton({ onStatusChange, id, endpoin
             </button>
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
               <button className="modal-close" onClick={closeModal} >X</button>
-            <SendEmail onEmailSent={()=>handleStatusChange('Approved')} c_id={id}/>
+            <SendEmail onEmailSent={()=>handleStatusChange('approved')} c_id={id}/>
             </Modal>
             {/*<button className="img-button2" onClick={() => handleStatusChange("rejected")}>
               Reject

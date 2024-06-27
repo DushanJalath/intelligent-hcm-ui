@@ -11,7 +11,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import HrVacancyStatusPdfIcon from "./HrVacancyStatusPdfIcon";
 import HrNewCandidateStatusButton from "./HRNewCandidateStatusButton";
-import axios from "axios";
+import api from "../api";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -58,14 +58,11 @@ export default function HrNewCandidate(props) {
         console.log("Request Headers:", {
           Authorization: `Bearer ${accessToken}`,
         });
-        const response = await axios.get(
-          "http://127.0.0.1:8000/get_candidates",
-          {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-          }
-        );
+        const response = await api.get("/get_candidates", {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
         setCandidate(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -120,13 +117,17 @@ export default function HrNewCandidate(props) {
                   <StyledTableCell align="center">{row3.email}</StyledTableCell>
                   <StyledTableCell align="center">{row3.score}</StyledTableCell>
                   <StyledTableCell align="center">
-                  <HrVacancyStatusPdfIcon endpointUrl="http://127.0.0.1:8000/download_cv" cvId= {row3.cv} filename={row3.c_id} />
+                    <HrVacancyStatusPdfIcon
+                      endpointUrl="/download_cv"
+                      cvId={row3.cv}
+                      filename={row3.c_id}
+                    />
                   </StyledTableCell>
                   <StyledTableCell align="center">
                     <HrNewCandidateStatusButton
                       onStatusChange={handleStatusChange}
                       id={row3.c_id}
-                      endpointUrl="http://127.0.0.1:8000/update_candidate/{id}"
+                      endpointUrl="/update_candidate/{id}"
                     />
                   </StyledTableCell>
                 </StyledTableRow>

@@ -1,3 +1,4 @@
+
 import '../styles/employeeSubmitForm.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -5,7 +6,8 @@ import { Button } from "@mui/material";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { useNavigate } from 'react-router-dom';
 
-function EmployeeSubmitForm(props) {
+function EmployeeSubmitForm({ title, vacancy_id }) {
+    // State variables using useState hook
     const [name, setName] = useState('');
     const [contactNo, setContactNo] = useState('');
     const [email, setEmail] = useState('');
@@ -15,51 +17,17 @@ function EmployeeSubmitForm(props) {
     const [contactError, setContactError] = useState('');
     const [emailError, setEmailError] = useState('');
     const [cvError, setCvError] = useState('');
-    const [selectedJob, setSelectedJob] = useState('');
-    const [selectedJobType, setSelectedJobType] = useState('');
     const [isResetDisabled, setIsResetDisabled] = useState(false);
-    const [jobTitles, setJobTitles] = useState([]);
-    const [jobTypes, setJobTypes] = useState([]);
-    const [selectedJobTypes, setSelectedJobTypes] = useState([]);
 
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchJobVacancies = async () => {
-            try {
-                const response = await axios.get('http://localhost:8000/jobvacancies/');
-                setJobTitles(response.data.job_titles);
-                setJobTypes(response.data.job_types);
-            } catch (error) {
-                console.error('Error fetching job vacancies:', error);
-            }
-        };
-
-        fetchJobVacancies();
-    }, []);
-
-    useEffect(() => {
-        if (selectedJob) {
-            const fetchJobTypes = async () => {
-                try {
-                    const response = await axios.get(`http://localhost:8000/jobtypes/${selectedJob}`);
-                    setSelectedJobTypes(response.data.job_types);
-                } catch (error) {
-                    console.error('Error fetching job types:', error);
-                }
-            };
-
-            fetchJobTypes();
-        }
-    }, [selectedJob]);
-
-    useEffect(() => {
-        if (name && contactNo && email && cvFile && selectedJob && selectedJobType && !contactError && !emailError && !cvError) {
+        if (name && contactNo && email && cvFile && !contactError && !emailError && !cvError) {
             setIsSubmitEnabled(true);
         } else {
             setIsSubmitEnabled(false);
         }
-    }, [name, contactNo, email, cvFile, selectedJob, selectedJobType, contactError, emailError, cvError]);
+    }, [name, contactNo, email, cvFile, contactError, emailError, cvError]);
 
     const handleNameChange = (e) => {
         setName(e.target.value);
@@ -113,14 +81,13 @@ function EmployeeSubmitForm(props) {
 
         try {
             const formData = new FormData();
-            formData.append('file', cvFile);
+            formData.append('cv', cvFile);
             formData.append('name', name);
             formData.append('email', email);
             formData.append('contact_number', contactNo);
-            formData.append('job_title', selectedJob);
-            formData.append('job_type', selectedJobType);
+            formData.append('vacancy_id', vacancy_id); // Append vacancy_id to form data
 
-            const response = await axios.post('http://localhost:8000/CVUpload/', formData, {
+            const response = await axios.post('http://localhost:8000/Candidate-CV-Upload/', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -142,8 +109,6 @@ function EmployeeSubmitForm(props) {
         setContactNo('');
         setEmail('');
         setCvFile(null);
-        setSelectedJob('');
-        setSelectedJobType('');
         setContactError('');
         setEmailError('');
         setCvError('');
@@ -151,8 +116,8 @@ function EmployeeSubmitForm(props) {
 
     return (
         <div className='container-ncSubmitForm'>
-            <div style={{ fontSize: '18px', fontWeight: '800', marginBottom: '5px', color:'#02936F' }}>{props.title}</div>
-            <p className='employeeSubmitform'>Submit yor CV and fill necessary details.</p>
+            <div style={{ fontSize: '18px', fontWeight: '800', marginBottom: '5px', color:'#02936F' }}>{title}</div>
+            <p className='employeeSubmitform'>Submit your CV and fill necessary details.</p>
             <form onSubmit={handleSubmit}>
                 <div className='grp_form'>
                     <label>Name:</label>
@@ -167,24 +132,6 @@ function EmployeeSubmitForm(props) {
                     <label>Email:</label>
                     <input type="text" placeholder='Email' value={email} onChange={handleEmailChange} />
                     {emailError && <p style={{ color: 'red', fontSize: '14px', fontWeight: 'bold' }}>{emailError}</p>}
-                </div>
-                <div className='grp_form'>
-                    <label>Job Title:</label>
-                    <select value={selectedJob} onChange={(e) => setSelectedJob(e.target.value)}>
-                        <option value="">Select Job Title</option>
-                        {jobTitles.map((title, index) => (
-                            <option key={index} value={title}>{title}</option>
-                        ))}
-                    </select>
-                </div>
-                <div className='grp_form'>
-                    <label>Job Type:</label>
-                    <select value={selectedJobType} onChange={(e) => setSelectedJobType(e.target.value)}>
-                        <option value="">Select Job Type</option>
-                        {selectedJobTypes.map((type, index) => (
-                            <option key={index} value={type}>{type}</option>
-                        ))}
-                    </select>
                 </div>
                 <div className='grp_form'>
                     <label>Upload CV:</label>
@@ -211,7 +158,7 @@ function EmployeeSubmitForm(props) {
                         color="success"
                         size="medium"
                         style={{ borderRadius: "20px", textTransform: "none" }}
-                        disabled={!isSubmitEnabled || loading} 
+                        disabled={!isSubmitEnabled || loading}
                     >
                         {loading ? 'Submitting...' : 'Submit'}
                     </Button>
@@ -221,7 +168,7 @@ function EmployeeSubmitForm(props) {
                         size="medium"
                         style={{ borderRadius: "20px", textTransform: "none", margin: '0 10px' }}
                         onClick={handleReset}
-                        disabled={isResetDisabled} 
+                        disabled={isResetDisabled}
                     >
                         Reset
                     </Button>

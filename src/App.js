@@ -34,7 +34,7 @@ import SubmitJobFormPage from './employeePages/SubmitJobFormPage';
 import BillStatusPage from './commonPages/BillStatusPage'
 import LeaveCountPage from './commonPages/LeaveCountPage'
 import LeaveReportPage from './hrPages/LeaveReportPage'
-
+import StaffFormPage from './commonPages/StaffFormPage'
 
 const App = () => {
   return (
@@ -53,8 +53,8 @@ const App = () => {
                     <Route path="/Absence Management/Request Leave" element={<RequestLeavePage/>} />
                     <Route path="/Absence Management/Leave Status" element={<EmpLeaveStatusPage/>} /> 
                     <Route path="/over time tracking" element={<OverTimetrackingPage/>} />
-                    <Route path="/Job Vacancies/Job Details" element={<JobVacancyDetailsPage/>} />
-                    <Route path="/Job Vacancies/Apply Job" element={<SubmitJobFormPage/>} />
+                    <Route path="/Job Details" element={<JobVacancyDetailsPage/>} />
+                    <Route path="/staff-submit-form" element={<StaffFormPage/>} />
                     <Route path="/Clam Bills/Send Bill" element={<AddBillsPage/>} />
                     <Route path="/Clam Bills/Bill Status" element={<BillStatusPage/>} />
 
@@ -86,6 +86,7 @@ const App = () => {
                     <Route path="/Leave Prediction/Managers" element={<EmployeesLeavePredictionPage/>} /> 
                     <Route path="/Job Vacancies/Add Job Vacancy" element={<AddJobVacancyPage/>} />
                     <Route path="/Job Vacancies/Managers Requests" element={<ApproveJobVacancypage/>} />
+                    <Route path="/Job Vacancies/View Job Vacancies" element={<JobVacancyDetailsPage/>} />
                     <Route path="/manage bills" element={<ApproveBillsPage/>} />
                     <Route path="/register" element={<UserRegPage/>} />
                     <Route path="/candidates" element={<CandidateApplyPage/>} /> 

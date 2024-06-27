@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { FaFilePdf, FaUserPlus } from 'react-icons/fa';
 import styles from '../styles/jobcard.module.css';
@@ -12,6 +11,8 @@ const JobCard = ({ jobTitle, jobType, workMode, file_id, vacancy_id, applyLink }
         fontSize: '30px',
         cursor: 'pointer',
     };
+
+    const userType = localStorage.getItem('userType');
 
     const handlePdfDownload = async () => {
         try {
@@ -31,7 +32,11 @@ const JobCard = ({ jobTitle, jobType, workMode, file_id, vacancy_id, applyLink }
     };
 
     const handleApply = () => {
-        navigate('/candidate-submit-form', { state: { vacancy_id } }); // Pass vacancy_id via state
+        if (userType === 'Employee' || userType === 'Manager' || userType === 'HR') {
+            navigate('/staff-submit-form', { state: { vacancy_id } });
+        } else {
+            navigate('/candidate-submit-form', { state: { vacancy_id } });
+        }
     };
 
     return (
@@ -65,4 +70,3 @@ const JobCard = ({ jobTitle, jobType, workMode, file_id, vacancy_id, applyLink }
 };
 
 export default JobCard;
-

@@ -61,7 +61,7 @@ const Sidebar = () => {
         {
             name: "Job Vacancies",
             icon: FiFile,
-            menus: ["Add Job Vacancy", "Managers Requests"],
+            menus: ["Add Job Vacancy", "Managers Requests","View Job Vacancies"],
         }
     ];
 

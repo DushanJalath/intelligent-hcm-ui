@@ -152,9 +152,9 @@ function UserRegistration(props) {
                 <div className='user-reg-grp'>
                     <label htmlFor="employeeType">Select Employee Type : </label>
                     <select id="employeeType" name="employeeType" value={employeeType} onChange={handleTypeChange}>
-                        <option value="employee">Employee</option>
-                        <option value="manager">Manager</option>
-                        <option value="hr">HR</option>
+                        <option value="Employee">Employee</option>
+                        <option value="Manager">Manager</option>
+                        <option value="HR">HR</option>
                     </select>
                 </div>
                 <div className='user-reg-grp'>

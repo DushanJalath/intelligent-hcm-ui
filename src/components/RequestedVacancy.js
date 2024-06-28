@@ -92,9 +92,9 @@ export default function RequestedVacancy(props) {
             <TableHead>
               <TableRow>
                 <StyledTableCell align="center">Vacancy ID</StyledTableCell>
-                <StyledTableCell align="center">Project Type</StyledTableCell>
+                <StyledTableCell align="center">Job Type</StyledTableCell>
                 <StyledTableCell align="center">Possition</StyledTableCell>
-                <StyledTableCell align="center">Number of vacancies</StyledTableCell>
+                <StyledTableCell align="center">Number Of Vacancies</StyledTableCell>
                 <StyledTableCell align="center">Document</StyledTableCell>
                 <StyledTableCell align="center">Action</StyledTableCell>
                 <StyledTableCell align="center">Publish</StyledTableCell>

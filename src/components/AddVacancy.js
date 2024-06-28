@@ -67,10 +67,12 @@ export default function AddVacancy(props) {
                 }
             });
             setSuccessMessage('Vacancy created successfully');
+            alert('Vacancy created successfully')
             console.log(response.data);
             window.location.reload();
         } catch (error) {
             setSuccessMessage('An error occurred');
+            alert('An error occurred')
             console.error('Error:', error);
         }
     };
@@ -96,7 +98,7 @@ export default function AddVacancy(props) {
             <div className='form-AV'>
                 <form onSubmit={HandleGenarate} onReset={handleFormReset}>
                     <div className='In1'>
-                        <AvDropdown label="Project type :" value={projectType} onChange={handleProjectTypeChange} placeholder="Select leave type"/>
+                        <AvDropdown label="Job type :" value={projectType} onChange={handleProjectTypeChange} placeholder="Select leave type"/>
                     </div>
                     <div className='In2'>
                         <AvInputs label="Job possition :" value={possition} onChange={handlePossitionChange} placeholder="Enter the possition"/>
@@ -121,7 +123,7 @@ export default function AddVacancy(props) {
                             <AvButtons type="submit" label="Submit"/>
                         </div>
                     </div>
-                    <p className='success-message'>{successMessage}</p>
+                    {/* <p className='success-message'>{successMessage}</p> */}
                     
                 </form>
             </div>

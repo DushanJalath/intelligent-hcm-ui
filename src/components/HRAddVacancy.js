@@ -78,13 +78,12 @@ export default function HRAddVacancy(props) {
     
   return (
     <div className='container-HRADD'>
-        <div className='title'><p className='title-para'>{props.title}</p></div>
+        <div className='title-hrv'><p className='title-para'>{props.title}</p></div>
         <div className='para-form'>
             <div className='paragraph1'>
-                <p>Please fill in the details below and generate system suggestions for the job vacancy. If the requirements are satisfactory, submit your form to the HR. If you need to edit the requirements, make 
-                    the necessary changes and forward them to the HR for review.</p>
+                <p>Please fill in the details below and generate system suggestions for the job vacancy. If the requirements are satisfactory, submit your form.</p>
             </div>
-            <div className='form'>
+            <div className='form-hrv'>
                 <form onSubmit={HandleGenarate}>
                     <div className='In1'>
                         <AvDropdown label="Project type :" value={projectType} onChange={handleProjectTypeChange} placeholder="Select leave type"/>
@@ -106,7 +105,7 @@ export default function HRAddVacancy(props) {
                     </div>
                     <div className="AV-Buttons">
                         <div className="genarate">
-                            <AvButtons type="submit" label="genarate"/>
+                            <AvButtons type="submit" label="Submit"/>
                         </div>
                     </div>
                     <p className='success-message'>{successMessage}</p>   

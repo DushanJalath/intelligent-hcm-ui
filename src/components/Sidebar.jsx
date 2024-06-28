@@ -47,11 +47,7 @@ const Sidebar = () => {
             icon: AiOutlinePlusCircle,
             menus: ["Send Bill", "Bill Status"],
         },
-        {
-            name: "Job Vacancies",
-            icon: FiFile,
-            menus: ["Job Details", "Apply Job"],
-        },
+     
     ];
 
     const handleToggleSidebar = () => {
@@ -124,12 +120,12 @@ const Sidebar = () => {
                                 ))}
                             </div>
                         )}
-                        {/* <li>
-                            <NavLink to={"/job vacancy details"} className="link">
+                        <li>
+                            <NavLink to={"/Job Details"} className="link">
                                 <FiFile size={23} className="min-w-max"/>
                                 Job Vacancies
                             </NavLink>
-                        </li> */}
+                        </li>
                         {/* <li>
                             <NavLink to={"/add bills"} className="link">
                                 <AiOutlinePlusCircle size={23} className="min-w-max"/>

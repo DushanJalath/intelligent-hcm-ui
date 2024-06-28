@@ -13,14 +13,14 @@ import HrJobRequestedVacancyIcons from "./HrJobRequestedVacancyIcons";
 import HrVacancyStatusPdfIcon from "./HrVacancyStatusPdfIcon";
 import HrJobPublishIcon from "./HrJobPublishIcon";
 import HrJobVacancyStatusButtons from "./HrJobVacancyStatusButtons";
-import axios from "axios";
+import api from "../api";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.white,
     color: theme.palette.common.black,
     fontFamily: "Inter",
-    fontSize: "19px",
+    fontSize: "15px",
     fontStyle: "normal",
     fontWeight: 800,
     lineHeight: "normal",
@@ -29,7 +29,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.body}`]: {
     color: "#000",
     fontFamily: "Inter",
-    fontSize: "18px",
+    fontSize: "14px",
     fontStyle: "normal",
     fontWeight: 600,
     lineHeight: "normal",
@@ -88,8 +88,8 @@ export default function HrJobVacancyStatus(props) {
         console.log("Request Headers:", {
           Authorization: `Bearer ${accessToken}`,
         });
-        const response = await axios.get(
-          "http://127.0.0.1:8000/get_hr_vacancies",
+        const response = await api.get(
+          "/get_hr_vacancies",
           {
             headers: {
               Authorization: `Bearer ${accessToken}`,
@@ -174,11 +174,11 @@ export default function HrJobVacancyStatus(props) {
                     <HrJobVacancyStatusButtons
                       onStatusChange={handleStatusChange}
                       id={row2.vacancy_id }
-                      endpointUrl="http://127.0.0.1:8000/update_hr_vacancy/{id}"
+                      endpointUrl="/update_hr_vacancy/{id}"
                     />
                   </StyledTableCell>
                   <StyledTableCell align="center">
-                    <HrJobPublishIcon />
+                    <HrJobPublishIcon endpointUrl="/publish_vacancy" jobId={row2.vacancy_id} />
                   </StyledTableCell>
                 </StyledTableRow>
               ))}

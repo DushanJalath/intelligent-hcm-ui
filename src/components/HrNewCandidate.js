@@ -10,15 +10,15 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import HrVacancyStatusPdfIcon from "./HrVacancyStatusPdfIcon";
-import HrJobVacancyStatusButtons from "./HrJobVacancyStatusButtons";
-import axios from "axios";
+import HrNewCandidateStatusButton from "./HRNewCandidateStatusButton";
+import api from "../api";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.white,
     color: theme.palette.common.black,
     fontFamily: "Inter",
-    fontSize: "19px",
+    fontSize: "15px",
     fontStyle: "normal",
     fontWeight: 800,
     lineHeight: "normal",
@@ -28,7 +28,6 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     fontSize: "14px",
     color: "#000",
     fontFamily: "Inter",
-    fontSize: "18px",
     fontStyle: "normal",
     fontWeight: 600,
     lineHeight: "normal",
@@ -59,14 +58,11 @@ export default function HrNewCandidate(props) {
         console.log("Request Headers:", {
           Authorization: `Bearer ${accessToken}`,
         });
-        const response = await axios.get(
-          "http://127.0.0.1:8000/get_candidates",
-          {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-          }
-        );
+        const response = await api.get("/get_candidates", {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
         setCandidate(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -106,6 +102,7 @@ export default function HrNewCandidate(props) {
                 <StyledTableCell align="center">CandidateID</StyledTableCell>
                 <StyledTableCell align="center">FullName</StyledTableCell>
                 <StyledTableCell align="center">Email</StyledTableCell>
+                <StyledTableCell align="center">Score</StyledTableCell>
                 <StyledTableCell align="center">
                   Download Document
                 </StyledTableCell>
@@ -118,14 +115,19 @@ export default function HrNewCandidate(props) {
                   <StyledTableCell align="center">{row3.c_id}</StyledTableCell>
                   <StyledTableCell align="center">{row3.name}</StyledTableCell>
                   <StyledTableCell align="center">{row3.email}</StyledTableCell>
+                  <StyledTableCell align="center">{row3.score}</StyledTableCell>
                   <StyledTableCell align="center">
-                  <HrVacancyStatusPdfIcon endpointUrl="http://127.0.0.1:8000/download_cv" cvId= {row3.cv} filename={row3.c_id} />
+                    <HrVacancyStatusPdfIcon
+                      endpointUrl="/download_cv"
+                      cvId={row3.cv}
+                      filename={row3.c_id}
+                    />
                   </StyledTableCell>
                   <StyledTableCell align="center">
-                    <HrJobVacancyStatusButtons
+                    <HrNewCandidateStatusButton
                       onStatusChange={handleStatusChange}
                       id={row3.c_id}
-                      endpointUrl="http://127.0.0.1:8000/update_candidate/{id}"
+                      endpointUrl="/update_candidate/{id}"
                     />
                   </StyledTableCell>
                 </StyledTableRow>

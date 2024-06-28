@@ -1,7 +1,7 @@
 import React from "react";
 import '../styles/RemainingLeaves.css';
 
-const RemainingLeaves = (props) => {
+const RemainingLeaves = ({ leaveCounts }) => {
     return (
         <div className="remaining-leaves-container">
             <div className="remaining-leaves-menu">
@@ -12,24 +12,24 @@ const RemainingLeaves = (props) => {
                 <div className="remaining-leaves-data">
                     <p>Sick leave</p>
                     <div className="remaining-leaves-number">
-                        02
+                        {leaveCounts.SickLeaveCount}
                     </div>
                 </div>
                 <div className="remaining-leaves-data">
-                    <p>Vacation</p>
+                    <p>Annual Leave</p>
                     <div className="remaining-leaves-number">
-                        04
+                        {leaveCounts.AnnualLeaveCount}
                     </div>
                 </div>
                 <div className="remaining-leaves-data">
-                    <p>Personal Leave</p>
+                    <p>Casual Leave</p>
                     <div className="remaining-leaves-number">
-                        05
+                        {leaveCounts.CasualLeaveCount}
                     </div>
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 export default RemainingLeaves;

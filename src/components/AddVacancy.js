@@ -114,11 +114,11 @@ export default function AddVacancy(props) {
                         <AvTextArea label="More about the vacancy :" value={moreDetails} onChange={handleMoreDetailsChange} placeholder="Enter more details"/>
                     </div>
                     <div className="AV-Buttons-manager">
-                        <div className="copy">
+                        {/* <div className="copy">
                             <AvButtons  type="reset" label="copy"/>
-                        </div>
+                        </div> */}
                         <div className="genarate">
-                            <AvButtons type="submit" label="genarate"/>
+                            <AvButtons type="submit" label="Submit"/>
                         </div>
                     </div>
                     <p className='success-message'>{successMessage}</p>

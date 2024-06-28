@@ -102,7 +102,7 @@ export default function AddVacancy(props) {
                         <AvInputs label="Job possition :" value={possition} onChange={handlePossitionChange} placeholder="Enter the possition"/>
                     </div>
                     <div className='In2'>
-                        <AvInputs label=" Job pre-requisits : " value={pre_requisits} onChange={handlePre_requisitsChange} placeholder="Enter the pre-requisits"/>
+                        <AvInputs label="Job pre-requisits : " value={pre_requisits} onChange={handlePre_requisitsChange} placeholder="Enter the pre-requisits"/>
                     </div>
                     <div className='In2'>
                         <AvInputs label="Responsibilities :" value={responsibilities} onChange={handleResponsibilitiesChange} placeholder="Enter responsibilities"/>

@@ -1,6 +1,6 @@
 .container-1{
     margin-top: 50px;
-    width: 300px;
+    width: 430px;
     height : 90px;
     background-color: #EAEAEA;
     border-radius: 10px;
@@ -32,7 +32,7 @@
 .timeGrp{
     font-weight: bold;
     font-size: 22px;
-    padding-top: 3px;
+    padding-top: 0px;
     display: flex;
     align-items: center;
 }

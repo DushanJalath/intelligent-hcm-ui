@@ -2,12 +2,11 @@
     margin-top: 50px;
     margin-right: 50px;
     width: 90%;
-    height : 550px;
+    height : 600px;
     background-color: #EAEAEA;
     border-radius: 10px;
     position: relative;
     padding: 10px;
-    padding-top: 30px;
 }
 
 .user-reg-title{
@@ -25,6 +24,7 @@ form{
     background-color: #F3F3F3;
     padding: 30px;
     border-radius: 10px;
+    margin-bottom: 50px;
 }
 
 input{
@@ -63,6 +63,7 @@ label{
     border-radius: 50px;
     background-color: #02936F;
     padding: 5px;
+    margin-top:50px;
 }
 
 label {

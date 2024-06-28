@@ -3,21 +3,33 @@ import React, { useState } from 'react';
 import api from '../api';
 
 function UserRegistration(props) {
-    const [name, setName] = useState('');
+    const [fName, setFirstName] = useState('');
+    const [lName, setLastName] = useState('');
     const [contactNo, setContactNo] = useState('');
     const [address, setAddress] = useState('');
-    const [email, setEmail] = useState('');
+    const [user_email, setEmail] = useState('');
     const [password, setPassWord] = useState('');
+    const [cPassword, setCPassWord] = useState('');
     const [employeeType, setEmployeeType] = useState('employee'); // Set a default value
+    const [profilePic, setProfilePic] = useState(null);
 
-    const [successMessage, setSuccessMessage] = useState('');
+    const [alertMessage, setAlertMessage] = useState('');
+    const [alertClass, setAlertClass] = useState('');
 
     const handleTypeChange = (e) => {
         setEmployeeType(e.target.value);
     };
 
-    const handleNameChange = (e) => {
-        setName(e.target.value);
+    const handleConfirmPassword = (e) => {
+        setCPassWord(e.target.value);
+    };
+
+    const handleFirstNameChange = (e) => {
+        setFirstName(e.target.value);
+    };
+
+    const handleLastNameChange = (e) => {
+        setLastName(e.target.value);
     };
 
     const handleContactNoChange = (e) => {
@@ -36,17 +48,35 @@ function UserRegistration(props) {
         setPassWord(e.target.value);
     };
 
+    const handleProfilePicChange = (e) => {
+        setProfilePic(e.target.files[0]);
+    };
+
     const addTodoHandler = async (e) => {
         e.preventDefault();
-        
-        const formData = {
-            'name': name,
-            'contact': contactNo,
-            'email': email,
-            'address': address,
-            'password': password,
-            'empType': employeeType
-        };
+
+        if (password !== cPassword) {
+            setAlertMessage('Passwords are mismatching');
+            setAlertClass('alert-error');
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('fName', fName);
+        formData.append('lName', lName);
+        formData.append('contact', contactNo);
+        formData.append('user_email', user_email);
+        formData.append('address', address);
+        formData.append('user_pw', password);
+        formData.append('user_type', employeeType);
+        if (profilePic) {
+            formData.append('profile_pic', profilePic);
+        }
+        console.log('FormData content:');
+        formData.forEach((value, key) => {
+        console.log(`${key}: ${value}`);
+        });
+
 
         try {
             const accessToken = localStorage.getItem('token');
@@ -55,19 +85,34 @@ function UserRegistration(props) {
                 Authorization: `Bearer ${accessToken}`
             });
 
-            const response = await api.post('/users', formData, {
+            const response = await api.post('http://localhost:8000/users', formData, {
                 headers: {
-                    Authorization: `Bearer ${accessToken}`
+                    Authorization: `Bearer ${accessToken}`,
+                    'Content-Type': 'multipart/form-data'
                 }
             });
 
-            setSuccessMessage('User registered successfully');
+            setAlertMessage('User registered successfully');
+            setAlertClass('alert-success');
             console.log(response.data);
 
-            window.location.reload();
+            // Optionally, reset the form fields
+            setFirstName('');
+            setLastName('');
+            setContactNo('');
+            setAddress('');
+            setEmail('');
+            setPassWord('');
+            setCPassWord('');
+            setEmployeeType('employee');
+            setProfilePic(null);
+
+            // No need to reload the window; update UI based on backend response
         } catch (error) {
-            setSuccessMessage('An error occurred');
-            console.error('Error:', error);
+            const errorMessage = error.response?.data?.message || 'An error occurred';
+            setAlertMessage(errorMessage);
+            setAlertClass('alert-error');
+            console.error('Error:', error)
         }
     };
 
@@ -75,22 +120,32 @@ function UserRegistration(props) {
         <div className='user-reg-container'>
             <div className='user-reg-title'>{props.title}</div>
             <form onSubmit={addTodoHandler}>
-                <div className='user-reg-grp'>
-                    <label>Full Name : </label>
-                    <input type="text" placeholder='Full Name' value={name} onChange={handleNameChange} />
-                </div>
                 <div className="user-reg-grp-container">
+                    <div className='user-reg-grp'>
+                        <label>First Name : </label>
+                        <input type="text" placeholder='First Name' value={fName} onChange={handleFirstNameChange} />
+                    </div>
+                    <div className='user-reg-grp'>
+                        <label>Last Name : </label>
+                        <input type="text" placeholder='Last Name' value={lName} onChange={handleLastNameChange} />
+                    </div>
                     <div className='user-reg-grp'>
                         <label>Contact No : </label>
                         <input type="text" placeholder='Contact No' value={contactNo} onChange={handleContactNoChange} />
                     </div>
+                </div>
+                <div className="user-reg-grp-container">
                     <div className='user-reg-grp'>
                         <label>Email : </label>
-                        <input type="text" placeholder='E mail' value={email} onChange={handleEmailChange} />
+                        <input type="text" placeholder='E mail' value={user_email} onChange={handleEmailChange} />
                     </div>
                     <div className='user-reg-grp'>
                         <label>Password : </label>
                         <input type="password" placeholder='Password' value={password} onChange={handlePassWordChange} />
+                    </div>    
+                    <div className='user-reg-grp'>
+                        <label>Confirm Password : </label>
+                        <input type="password" placeholder='Confirm Password' value={cPassword} onChange={handleConfirmPassword} />
                     </div>
                 </div>
 
@@ -106,9 +161,17 @@ function UserRegistration(props) {
                     <label>Address : </label>
                     <input type="text" placeholder='Address' value={address} onChange={handleAddressChange} />
                 </div>
+                <div className='user-reg-grp'>
+                    <label>Profile Picture : </label>
+                    <input type="file" onChange={handleProfilePicChange} />
+                </div>
 
                 <button type="submit" className='submit'>Submit</button>
-                <p className='success-message'>{successMessage}</p>
+                {alertMessage && (
+                    <div className={`alert ${alertClass}`}>
+                        {alertMessage}
+                    </div>
+                )}
             </form>
         </div>
     );

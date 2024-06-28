@@ -5,7 +5,7 @@ import AvInputs from './AvInputs';
 import AvTextArea from './AvTextArea'
 import AvButtons from './AvButtons';
 import { useState } from 'react';
-import axios from 'axios';
+import api from "../api";
 
 export default function HRAddVacancy(props) {
     const [successMessage, setSuccessMessage] = useState('');
@@ -61,17 +61,19 @@ export default function HRAddVacancy(props) {
             console.log('Request Headers:', {
                 Authorization: `Bearer ${accessToken}`
             }); // Assuming you store the access token in localStorage
-            const response = await axios.post('http://localhost:8000/create_vacancy', formData, {
+            const response = await api.post('/create_vacancy', formData, {
                 headers: {
                     Authorization: `Bearer ${accessToken}`
                 }
             });
             setSuccessMessage('Vacancy created successfully');
+            alert("Vacancy created successfully");
             // console.log(response.data);
             // Refresh the page after successful submission
             window.location.reload();
         } catch (error) {
             setSuccessMessage('An error occurred');
+            alert("An error occurred");
             // console.error('Error:', error);
         }
     };
@@ -86,7 +88,7 @@ export default function HRAddVacancy(props) {
             <div className='form-hrv'>
                 <form onSubmit={HandleGenarate}>
                     <div className='In1'>
-                        <AvDropdown label="Project type :" value={projectType} onChange={handleProjectTypeChange} placeholder="Select leave type"/>
+                        <AvDropdown label="Job type :" value={projectType} onChange={handleProjectTypeChange} placeholder="Select leave type"/>
                     </div>
                     <div className='In2'>
                         <AvInputs label="Job possition :" value={possition} onChange={handlePossitionChange} placeholder="Enter the possition"/>
@@ -108,7 +110,7 @@ export default function HRAddVacancy(props) {
                             <AvButtons type="submit" label="Submit"/>
                         </div>
                     </div>
-                    <p className='success-message'>{successMessage}</p>   
+                    {/* <p className='success-message'>{successMessage}</p>    */}
                 </form>
             </div>
         </div>

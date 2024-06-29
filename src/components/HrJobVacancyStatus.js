@@ -10,7 +10,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import HrJobRequestedVacancyIcons from "./HrJobRequestedVacancyIcons";
-import HrVacancyStatusPdfIcon from "./HrVacancyStatusPdfIcon";
+import VacancyPdfDownloadIcon from "./VacancyPdfDownloadIcon";
 import HrJobPublishIcon from "./HrJobPublishIcon";
 import HrJobVacancyStatusButtons from "./HrJobVacancyStatusButtons";
 import api from "../api";
@@ -58,14 +58,11 @@ export default function HrJobVacancyStatus(props) {
         console.log("Request Headers:", {
           Authorization: `Bearer ${accessToken}`,
         });
-        const response = await api.get(
-          "/get_hr_vacancies",
-          {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-          }
-        );
+        const response = await api.get("/get_hr_vacancies", {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
         setVacancies(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -135,20 +132,30 @@ export default function HrJobVacancyStatus(props) {
                     {row2.num_of_vacancies}
                   </StyledTableCell>
                   <StyledTableCell align="center">
-                    <HrVacancyStatusPdfIcon ImageType={row2.DownloadD} />
+                    <VacancyPdfDownloadIcon
+                      endpointUrl="/download_vacancy-pdf"
+                      pdfId={row2.pdf_file_id}
+                      filename={row2.vacancy_id}
+                    />
                   </StyledTableCell>
                   <StyledTableCell align="center">
-                    <HrJobRequestedVacancyIcons endpointUrl="" jobId = {row2.vacancy_id} />
+                    <HrJobRequestedVacancyIcons
+                      endpointUrl=""
+                      jobId={row2.vacancy_id}
+                    />
                   </StyledTableCell>
                   <StyledTableCell align="center">
                     <HrJobVacancyStatusButtons
                       onStatusChange={handleStatusChange}
-                      id={row2.vacancy_id }
+                      id={row2.vacancy_id}
                       endpointUrl="/update_hr_vacancy/{id}"
                     />
                   </StyledTableCell>
                   <StyledTableCell align="center">
-                    <HrJobPublishIcon endpointUrl="/publish_vacancy" jobId={row2.vacancy_id} />
+                    <HrJobPublishIcon
+                      endpointUrl="/publish_vacancy"
+                      jobId={row2.vacancy_id}
+                    />
                   </StyledTableCell>
                 </StyledTableRow>
               ))}

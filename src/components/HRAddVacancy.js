@@ -6,15 +6,22 @@ import AvTextArea from './AvTextArea'
 import AvButtons from './AvButtons';
 import { useState } from 'react';
 import api from "../api";
+import AvDropdown2 from './AvDropdown2';
 
 export default function HRAddVacancy(props) {
     const [successMessage, setSuccessMessage] = useState('');
 
     //project type
-    const [jobType, setProjectType] = useState('');
-    const handleProjectTypeChange = (value) => {
-        setProjectType(value);
+    const [jobType, setJobType] = useState('');
+    const handleJobTypeChange = (value) => {
+        setJobType(value);
     };
+
+    const [workMode, setWorkMode] = useState('');
+    const handleWorkModeChange = (value) => {
+        setWorkMode(value);
+    }
+
 
     //Job vacancy category
     const [possition, setPossition] = useState(''); 
@@ -49,6 +56,7 @@ export default function HRAddVacancy(props) {
         event.preventDefault();
         const formData = {
             job_type: jobType,
+            work_mode: workMode,
             pre_requisits: pre_requisits,  
             possition: possition,
             num_of_vacancies: parseInt(num_of_vacancies),
@@ -88,7 +96,10 @@ export default function HRAddVacancy(props) {
             <div className='form-hrv'>
                 <form onSubmit={HandleGenarate}>
                     <div className='In1'>
-                        <AvDropdown label="Job type :" value={jobType} onChange={handleProjectTypeChange} placeholder="Select leave type"/>
+                        <AvDropdown label="Job type :" value={jobType} onChange={handleJobTypeChange} placeholder="Select leave type"/>
+                    </div>
+                    <div className='In1'>
+                        <AvDropdown2 label="Work mode :" value={workMode} onChange={handleWorkModeChange} placeholder="Select work mode"/>
                     </div>
                     <div className='In2'>
                         <AvInputs label="Job possition :" value={possition} onChange={handlePossitionChange} placeholder="Enter the possition"/>

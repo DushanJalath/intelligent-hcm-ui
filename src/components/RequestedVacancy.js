@@ -104,7 +104,7 @@ export default function RequestedVacancy(props) {
               {currentItems.map((row) => (
                 <StyledTableRow key={row.ID}>
                   <StyledTableCell align="center">{row.vacancy_id}</StyledTableCell>
-                  <StyledTableCell align="center">{row.project_type}</StyledTableCell>
+                  <StyledTableCell align="center">{row.job_type}</StyledTableCell>
                   <StyledTableCell align="center">{row.possition}</StyledTableCell>
                   <StyledTableCell align="center">{row.num_of_vacancies}</StyledTableCell>
                   <StyledTableCell align="center"><HrVacancyStatusPdfIcon endpointUrl=" " cvId={row.vacancy_id} filename={row.vacancy_id} /></StyledTableCell>

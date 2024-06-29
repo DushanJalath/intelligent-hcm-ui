@@ -126,7 +126,7 @@ export default function HrJobVacancyStatus(props) {
                     {row2.vacancy_id}
                   </StyledTableCell>
                   <StyledTableCell align="center">
-                    {row2.project_type}
+                    {row2.job_type}
                   </StyledTableCell>
                   <StyledTableCell align="center">
                     {row2.possition}

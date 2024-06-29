@@ -11,7 +11,7 @@ export default function AddVacancy(props) {
     const [successMessage, setSuccessMessage] = useState('');
 
     //project type
-    const [projectType, setProjectType] = useState('');
+    const [jobType, setProjectType] = useState('');
     const handleProjectTypeChange = (value) => {
         setProjectType(value);
     };
@@ -48,7 +48,7 @@ export default function AddVacancy(props) {
     const HandleGenarate = async (event) => {
         event.preventDefault();
         const formData = {
-            project_type: projectType,
+            job_type: jobType,
             pre_requisits: pre_requisits,  
             possition: possition,
             num_of_vacancies: parseInt(num_of_vacancies),
@@ -98,7 +98,7 @@ export default function AddVacancy(props) {
             <div className='form-AV'>
                 <form onSubmit={HandleGenarate} onReset={handleFormReset}>
                     <div className='In1'>
-                        <AvDropdown label="Job type :" value={projectType} onChange={handleProjectTypeChange} placeholder="Select leave type"/>
+                        <AvDropdown label="Job type :" value={jobType} onChange={handleProjectTypeChange} placeholder="Select leave type"/>
                     </div>
                     <div className='In2'>
                         <AvInputs label="Job possition :" value={possition} onChange={handlePossitionChange} placeholder="Enter the possition"/>

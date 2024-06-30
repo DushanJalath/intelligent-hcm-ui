@@ -10,6 +10,7 @@ function UserRegistration(props) {
     const [user_email, setEmail] = useState('');
     const [password, setPassWord] = useState('');
     const [cPassword, setCPassWord] = useState('');
+    const [position, setPosition] = useState('');
     const [employeeType, setEmployeeType] = useState('employee'); // Set a default value
     const [profilePic, setProfilePic] = useState(null);
 
@@ -19,6 +20,7 @@ function UserRegistration(props) {
     const handleTypeChange = (e) => {
         setEmployeeType(e.target.value);
     };
+    
 
     const handleConfirmPassword = (e) => {
         setCPassWord(e.target.value);
@@ -27,6 +29,10 @@ function UserRegistration(props) {
     const handleFirstNameChange = (e) => {
         setFirstName(e.target.value);
     };
+
+    const handlePosition=(e)=>{
+        setPosition(e.target.value);
+    }
 
     const handleLastNameChange = (e) => {
         setLastName(e.target.value);
@@ -69,6 +75,7 @@ function UserRegistration(props) {
         formData.append('address', address);
         formData.append('user_pw', password);
         formData.append('user_type', employeeType);
+        formData.append('user_role', position);
         if (profilePic) {
             formData.append('profile_pic', profilePic);
         }
@@ -148,15 +155,21 @@ function UserRegistration(props) {
                         <input type="password" placeholder='Confirm Password' value={cPassword} onChange={handleConfirmPassword} />
                     </div>
                 </div>
-
-                <div className='user-reg-grp'>
-                    <label htmlFor="employeeType">Select Employee Type : </label>
-                    <select id="employeeType" name="employeeType" value={employeeType} onChange={handleTypeChange}>
-                        <option value="Employee">Employee</option>
-                        <option value="Manager">Manager</option>
-                        <option value="HR">HR</option>
-                    </select>
+                <div className="user-reg-grp-container">
+                    <div className='user-reg-grp'>
+                        <label htmlFor="employeeType">Select Employee Type : </label>
+                        <select id="employeeType" name="employeeType" value={employeeType} onChange={handleTypeChange}>
+                            <option value="Employee">Employee</option>
+                            <option value="Manager">Manager</option>
+                            <option value="HR">HR</option>
+                        </select>
+                    </div>
+                    <div className='user-reg-grp'>
+                        <label>Position : </label>
+                        <input type="text" placeholder='Position' value={position} onChange={handlePosition} />
+                    </div>
                 </div>
+                
                 <div className='user-reg-grp'>
                     <label>Address : </label>
                     <input type="text" placeholder='Address' value={address} onChange={handleAddressChange} />

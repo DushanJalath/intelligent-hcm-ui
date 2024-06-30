@@ -10,7 +10,7 @@ function JobVacancy(props) {
     useEffect(() => {
         const fetchJobVacancies = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:8000/job-vacancies/');
+                const response = await fetch('http://127.0.0.1:8000/vacancies');
                 const data = await response.json();
                 setJobVacancies(data);
                 // Calculate total pages
@@ -60,10 +60,10 @@ function JobVacancy(props) {
                 <div>
                     {jobVacancies.slice(startIndex, endIndex).map((job) => (
                         <JobCard
-                            jobTitle={job.job_title}
+                            jobTitle={job.possition}
                             jobType={job.job_type}
                             workMode={job.work_mode}
-                            file_id={job.pdf_id}
+                            file_id={job.pdf_file_id}
                             vacancy_id={job.vacancy_id}
                         />
                     ))}

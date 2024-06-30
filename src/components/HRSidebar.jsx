@@ -70,6 +70,11 @@ const Sidebar = () => {
             name: "Job Vacancies",
             icon: FiFile,
             menus: ["Add Job Vacancy", "Vacancy Requests","View Job Vacancies"],
+        },
+        {
+            name: "Candidates",
+            icon: FaUsers,
+            menus: ["New Candidate Details", "Interview Details"],
         }
     ];
 
@@ -137,16 +142,16 @@ const Sidebar = () => {
                                Manage Bills
                             </NavLink>
                         </li>
+                        {/* <li>
+                            <NavLink to={"/candidates"} className="link">
+                                <FaUsers size={23} className="min-w-max"/>
+                               Candidates
+                            </NavLink>
+                        </li> */}
                         <li>
                             <NavLink to={"/register"} className="link">
                                 <FaUserPlus  size={23} className="min-w-max"/>
                                Register User
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink to={"/candidates"} className="link">
-                                <FaUsers size={23} className="min-w-max"/>
-                               Candidates
                             </NavLink>
                         </li>
 

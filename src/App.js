@@ -35,6 +35,7 @@ import BillStatusPage from './commonPages/BillStatusPage'
 import LeaveCountPage from './commonPages/LeaveCountPage'
 import LeaveReportPage from './hrPages/LeaveReportPage'
 import StaffFormPage from './commonPages/StaffFormPage'
+import ManagerLeaveRequest from './managerPages/ManagerLeaveRequest'
 
 const App = () => {
   return (
@@ -62,7 +63,7 @@ const App = () => {
                     <Route path="/time and reporting" element={<TimeAndReportingPage/>} />
                     <Route path="/Absence Management/View Attandance" element={<ViewIndividualAttendancePage/>} />
                     <Route path="/Absence Management/Employees Attendances" element={<EmployeesAttendances/>} />
-                     <Route path="/Absence Management/Request Leave" element={<RequestLeavePage/>} />
+                    <Route path="/Absence Management/Manager Request Leave" element={<ManagerLeaveRequest/>} />
                     <Route path="/Absence Management/Leave Status" element={<LeaveStatusPage/>} /> 
                     <Route path="/over time tracking" element={<OverTimetrackingPage/>} />
                     <Route path="/Leave Prediction" element={<EmployeesLeavePredictionPage/>} /> 
@@ -76,16 +77,14 @@ const App = () => {
                     <Route path="/Time Reporting/Managers" element={<TimeAndReportingPageManager/>} /> 
                     <Route path="/Absence Management/Set Leave Count" element={<LeaveCountPage/>} />
                     <Route path="/Absence Management/Leave Report" element={<LeaveReportPage/>} />  
-                    <Route path="/Absence Management/Employees Leave Requests" element={<ApproveEmployeesLeavePage/>} /> 
-                    <Route path="/Absence Management/Managers Leave Requests" element={<ApproveManagerLeavePage/>} /> 
+                    <Route path="/Absence Management/Leave Requests" element={<ApproveEmployeesLeavePage/>} /> 
                     <Route path="/Absence Management/Employees Attendances" element={<EmployeesAttendances/>} />
                     <Route path="/Absence Management/Managers Attendances" element={<ManagersAttendances/>} />
                     <Route path="/Overtime Tracking/Employees" element={<OverTimetrackingPageEmp/>} /> 
                     <Route path="/Overtime Tracking/Managers" element={<OvertimetrackingPageManager/>} /> 
                     <Route path="/Leave Prediction/Employees" element={<EmployeesLeavePredictionPage/>} /> 
-                    <Route path="/Leave Prediction/Managers" element={<EmployeesLeavePredictionPage/>} /> 
                     <Route path="/Job Vacancies/Add Job Vacancy" element={<AddJobVacancyPage/>} />
-                    <Route path="/Job Vacancies/Managers Requests" element={<ApproveJobVacancypage/>} />
+                    <Route path="/Job Vacancies/Vacancy Requests" element={<ApproveJobVacancypage/>} />
                     <Route path="/Job Vacancies/View Job Vacancies" element={<JobVacancyDetailsPage/>} />
                     <Route path="/manage bills" element={<ApproveBillsPage/>} />
                     <Route path="/register" element={<UserRegPage/>} />

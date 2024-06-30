@@ -56,13 +56,14 @@ export default function LeaveApproveEmployees() {
             </div>
             {leaveRequests.map((request, index) => (
                 <div className="user-card" key={index}>
-                    <div className="user-photo">
-                        <img src="https://via.placeholder.com/300" alt="User Photo"/>
-                    </div>
                     <div className="user-details">
                         <div className="user-name">
-                            <p className="nameTag">Name: </p>
+                            <p className="nameTag">Name : </p>
                             <p className="emName">{request.user_name}</p>
+                        </div>
+                        <div className="user-name">
+                            <p className="nameTag">email : </p>
+                            <p className="emName">{request.user_email}</p>
                         </div>
                     </div>
 

@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import LeaveRequestForm from "../components/LeaveRequestForm";
 import RemainingLeaves from "../components/RemainingLeaves";
 import Sidebar from "../components/Sidebar";
+import ManagerSidebar from "../components/ManagerSidebar";
 import axios from "axios";
 
-export default function RequestLeavePage() {
+export default function ManagerLeaveRequest() {
+    const userType = localStorage.getItem('userType');
     const [leaveCounts, setLeaveCounts] = useState({
         SickLeaveCount: 0,
         AnnualLeaveCount: 0,
@@ -15,7 +17,7 @@ export default function RequestLeavePage() {
         const fetchLeaveCounts = async () => {
             try {
                 const accessToken = localStorage.getItem('token');
-                const response = await axios.get('http://localhost:8000/employee_remaning_leaves', {
+                const response = await axios.get('http://localhost:8000/managers_remaning_leaves', {
                     headers: {
                         Authorization: `Bearer ${accessToken}`,
                         'Content-Type': 'application/json'
@@ -37,7 +39,8 @@ export default function RequestLeavePage() {
 
     return (
         <div>
-            <Sidebar />
+            {userType === 'Employee' && <Sidebar />}
+            {userType === 'Manager' && <ManagerSidebar />}
             <LeaveRequestForm title="Request Leave" leaveCounts={leaveCounts} />
             <RemainingLeaves leaveCounts={leaveCounts} />
         </div>

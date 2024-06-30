@@ -36,6 +36,8 @@ import LeaveCountPage from './commonPages/LeaveCountPage'
 import LeaveReportPage from './hrPages/LeaveReportPage'
 import StaffFormPage from './commonPages/StaffFormPage'
 import ManagerLeaveRequest from './managerPages/ManagerLeaveRequest'
+import InterviewDetailsPage from './hrPages/InterviewDetailsPage'
+
 
 const App = () => {
   return (
@@ -56,8 +58,8 @@ const App = () => {
                     <Route path="/over time tracking" element={<OverTimetrackingPage/>} />
                     <Route path="/Job Details" element={<JobVacancyDetailsPage/>} />
                     <Route path="/staff-submit-form" element={<StaffFormPage/>} />
-                    <Route path="/Clam Bills/Send Bill" element={<AddBillsPage/>} />
-                    <Route path="/Clam Bills/Bill Status" element={<BillStatusPage/>} />
+                    {/* <Route path="/Clam Bills/Send Bill" element={<AddBillsPage/>} /> */}
+                    <Route path="/Claim Bills/Bill Status" element={<BillStatusPage/>} />
 
                     {/* Managers Routes */}
                     <Route path="/time and reporting" element={<TimeAndReportingPage/>} />
@@ -69,7 +71,7 @@ const App = () => {
                     <Route path="/Leave Prediction" element={<EmployeesLeavePredictionPage/>} /> 
                     <Route path="/Job Vacancies/View job vacancies" element={<JobVacancyDetailsPage/>} /> 
                     <Route path="/Job Vacancies/Request job vacancy" element={<RequestVacancyPage/>} />
-                    <Route path="/Clam Bills/Send Bill" element={<AddBillsPage/>} />
+                    <Route path="/Claim Bills/Send Bill" element={<AddBillsPage/>} />
 
 
                     {/* HR Routes */}
@@ -86,9 +88,11 @@ const App = () => {
                     <Route path="/Job Vacancies/Add Job Vacancy" element={<AddJobVacancyPage/>} />
                     <Route path="/Job Vacancies/Vacancy Requests" element={<ApproveJobVacancypage/>} />
                     <Route path="/Job Vacancies/View Job Vacancies" element={<JobVacancyDetailsPage/>} />
+                    <Route path="/Candidates/New Candidate Details" element={<CandidateApplyPage/>} />
+                    <Route path="/Candidates/Interview Details" element={<InterviewDetailsPage/>} />
                     <Route path="/manage bills" element={<ApproveBillsPage/>} />
                     <Route path="/register" element={<UserRegPage/>} />
-                    <Route path="/candidates" element={<CandidateApplyPage/>} /> 
+     
 
                     {/* candidate */}
                     <Route path="/candidate-job-vacancy-details" element={<CandidateJobVacancyDetailsPage/>} /> 

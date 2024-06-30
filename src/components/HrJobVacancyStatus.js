@@ -9,7 +9,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import HrJobRequestedVacancyIcons from "./HrJobRequestedVacancyIcons";
+// import HrJobRequestedVacancyIcons from "./HrJobRequestedVacancyIcons";
 import VacancyPdfDownloadIcon from "./VacancyPdfDownloadIcon";
 import HrJobPublishIcon from "./HrJobPublishIcon";
 import HrJobVacancyStatusButtons from "./HrJobVacancyStatusButtons";
@@ -101,17 +101,18 @@ export default function HrJobVacancyStatus(props) {
             <TableHead>
               <TableRow>
                 <StyledTableCell align="center">Vacancy ID</StyledTableCell>
+                <StyledTableCell align="center">Publisher Name</StyledTableCell>
                 <StyledTableCell align="center">Job Type</StyledTableCell>
-                <StyledTableCell align="center">Possition</StyledTableCell>
+                <StyledTableCell align="center">Job Possition</StyledTableCell>
                 <StyledTableCell align="center">
                   Number of vacancies
                 </StyledTableCell>
                 <StyledTableCell align="center">
                   Download Document
                 </StyledTableCell>
-                <StyledTableCell align="center">
+                {/* <StyledTableCell align="center">
                   Upload Document
-                </StyledTableCell>
+                </StyledTableCell> */}
                 <StyledTableCell align="center">Action</StyledTableCell>
                 <StyledTableCell align="center">Publish</StyledTableCell>
               </TableRow>
@@ -121,6 +122,9 @@ export default function HrJobVacancyStatus(props) {
                 <StyledTableRow key={row2.vacancy_id}>
                   <StyledTableCell align="center">
                     {row2.vacancy_id}
+                  </StyledTableCell>
+                  <StyledTableCell align="center">
+                    {row2.publisher_fname}&nbsp;{row2.publisher_lname}
                   </StyledTableCell>
                   <StyledTableCell align="center">
                     {row2.job_type}
@@ -138,12 +142,12 @@ export default function HrJobVacancyStatus(props) {
                       filename={row2.vacancy_id}
                     />
                   </StyledTableCell>
-                  <StyledTableCell align="center">
+                  {/* <StyledTableCell align="center">
                     <HrJobRequestedVacancyIcons
                       endpointUrl=""
                       jobId={row2.vacancy_id}
                     />
-                  </StyledTableCell>
+                  </StyledTableCell> */}
                   <StyledTableCell align="center">
                     <HrJobVacancyStatusButtons
                       onStatusChange={handleStatusChange}

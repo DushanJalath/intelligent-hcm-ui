@@ -56,7 +56,7 @@ function LeaveRequestForm(props) {
             };
 
             const accessToken = localStorage.getItem('token');
-            const response = await axios.post('http://localhost:8000/create_leave_request', data, {
+            const response = await axios.post('http://localhost:8000/manager_create_leave_request', data, {
                 headers: {
                     Authorization: `Bearer ${accessToken}`,
                     'Content-Type': 'application/json'

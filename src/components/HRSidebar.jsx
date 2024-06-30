@@ -54,7 +54,7 @@ const Sidebar = () => {
         {
             name: "Absence Management",
             icon: IoCalendarOutline,
-            menus: ["Set Leave Count","Leave Report","Employees Leave Requests","Managers Leave Requests","Employees Attendances","Managers Attendances"],
+            menus: ["Set Leave Count","Leave Report","Leave Requests","Employees Attendances","Managers Attendances"],
         },
         {
             name: "Overtime Tracking",
@@ -64,12 +64,12 @@ const Sidebar = () => {
         {
             name: "Leave Prediction",
             icon: TbReportAnalytics,
-            menus: ["Employees", "Managers"],
+            menus: ["Employees"],
         },
         {
             name: "Job Vacancies",
             icon: FiFile,
-            menus: ["Add Job Vacancy", "Managers Requests","View Job Vacancies"],
+            menus: ["Add Job Vacancy", "Vacancy Requests","View Job Vacancies"],
         }
     ];
 

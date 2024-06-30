@@ -1,4 +1,3 @@
-import BillStatus from "../components/BillStatus";
 import SendBill from '../components/SendBill'
 import '../styles/addBillsPage.css'
 import Sidebar from "../components/Sidebar";
@@ -11,8 +10,7 @@ function AddBillsPage(params) {
                 {userType === 'Employee' && <Sidebar/>}
                 {userType === 'Manager' && <ManagerSidebar/>}   
                 <div className="content-addBill-page">
-                    <SendBill title="Send Bill to HR"/>
-                    <BillStatus title="Bill Status"/>
+                    <SendBill title="Send Bill" className="send-bill"/>
                 </div>
             </>
         );

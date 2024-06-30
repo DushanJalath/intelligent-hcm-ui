@@ -1,82 +1,95 @@
-import React from 'react'
-import '../styles/leavestatus.css'
-import LeaveStatusButton from './LeaveStatusButton';;
-
-const approvedStatus = 'pending';
-const approvedStatus1 = 'approved';
-const approvedStatus2 = 'Rejected';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import '../styles/leavestatus.css';
 
 function LeaveStatus(props) {
+    const [currentPage, setCurrentPage] = useState(1);
+    const [leaves, setLeaves] = useState([]);
+    const leavesPerPage = 10; // Number of leave cards per page
+
+    // Fetch leave status data from the backend
+    useEffect(() => {
+        async function fetchLeaveStatus() {
+            try {
+                const accessToken = localStorage.getItem('token');
+                const response = await axios.get('http://localhost:8000/leave_status', {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+                setLeaves(response.data);
+            } catch (error) {
+                console.error('Error fetching leave status:', error);
+            }
+        }
+
+        fetchLeaveStatus();
+    }, []);
+
+    // Calculate total pages
+    const totalPages = Math.ceil(leaves.length / leavesPerPage);
+
+    const handlePageChange = (page) => {
+        setCurrentPage(page);
+    };
+
+    const handlePreviousPage = () => {
+        setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
+    };
+
+    const handleNextPage = () => {
+        setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
+    };
+
+    // Calculate the index of the first and last leave card to display on the current page
+    const startIndex = (currentPage - 1) * leavesPerPage;
+    const endIndex = Math.min(startIndex + leavesPerPage, leaves.length);
+
     return (
-
-        <div className='leave-container'>
-            <div className='title'>{props.title}</div>
-            <div className="user-card">
-                <table className="leave-details">
-                    <tbody>
-                    <tr>
-                        <td className="leave-type-tag">Leave Type :</td>
-                        <td className="leave-type">Personal Leave</td>
-                    </tr>
-                    <tr>
-                        <td className="leave-startdate-tag">Start Date :</td>
-                        <td className="leave-startdate">2020-10-10</td>
-                    </tr>
-                    <tr>
-                        <td className="leave-startdate-tag">Enf Date :</td>
-                        <td className="leave-startdate">2020-10-13</td>
-                    </tr>
-                    </tbody>
-                </table>
-
-                <LeaveStatusButton status={approvedStatus1}/>
-
+        <div className='leave-status-container'>
+            <div className='leave-status-title'>{props.title}</div>
+            <p className='leavedescription'>Gives a quick update on whether a leave is Pending, Approved, or Rejected.</p>
+            {leaves.slice(startIndex, endIndex).map((leave, index) => (
+                <div key={index} className={`leave-status-card ${leave.status.toLowerCase()}`}>
+                    <div className="leave-part">
+                        <p className="leave-label">Leave Type:</p>
+                        <p className="leave-value">{leave.leaveType}</p>
+                    </div>
+                    <div className="leave-part">
+                        <p className="leave-label">Submit Date:</p>
+                        <p className="leave-value">{leave.submitdate}</p>
+                    </div>
+                    <div className="leave-part">
+                        <p className="leave-label">Start Date:</p>
+                        <p className="leave-value">{leave.startDate}</p>
+                    </div>
+                    <div className="leave-part">
+                        <p className="leave-label">No of Days:</p>
+                        <p className="leave-value">{leave.dayCount}</p>
+                    </div>
+                    <div className="leave-part">
+                        <p className="leave-label">Status:</p>
+                        <p className={`status-leave-value ${leave.status.toLowerCase()}`}>{leave.status}</p>
+                    </div>
+                </div>
+            ))}
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+                <button onClick={handlePreviousPage} style={{ marginRight: '10px' }} disabled={currentPage === 1}>Previous</button>
+                {[...Array(totalPages).keys()].map((page) => (
+                    <button 
+                        key={page + 1} 
+                        onClick={() => handlePageChange(page + 1)} 
+                        style={{ marginRight: '10px' }} 
+                        className={`pagination-button ${currentPage === page + 1 ? 'active' : ''}`}
+                    >
+                        {page + 1}
+                    </button>
+                ))}
+                <button onClick={handleNextPage} style={{ marginLeft: '10px' }} disabled={currentPage === totalPages}>Next</button>
             </div>
-
-            <div className="user-card">
-                <table className="leave-details">
-                    <tbody>
-                    <tr>
-                        <td className="leave-type-tag">Leave Type :</td>
-                        <td className="leave-type">Personal Leave</td>
-                    </tr>
-                    <tr>
-                        <td className="leave-startdate-tag">Start Date :</td>
-                        <td className="leave-startdate">2020-10-10</td>
-                    </tr>
-                    <tr>
-                        <td className="leave-startdate-tag">End Date :</td>
-                        <td className="leave-startdate">2020-10-13</td>
-                    </tr>
-                    </tbody>
-                </table>
-                <LeaveStatusButton status={approvedStatus2}/>
-
-            </div>
-
-            <div className="user-card">
-                <table className="leave-details">
-                    <tbody>
-                    <tr>
-                        <td className="leave-type-tag">Leave Type :</td>
-                        <td className="leave-type">Personal Leave</td>
-                    </tr>
-                    <tr>
-                        <td className="leave-startdate-tag">Start Date :</td>
-                        <td className="leave-startdate">2020-10-10</td>
-                    </tr>
-                    <tr>
-                        <td className="leave-startdate-tag">End Date :</td>
-                        <td className="leave-startdate">2020-10-10</td>
-                    </tr>
-                    </tbody>
-                </table>
-                <LeaveStatusButton status={approvedStatus}/>
-            </div>
-
-            
-    </div>
-    )
+        </div>
+    );
 }
 
-export default LeaveStatus
+export default LeaveStatus;

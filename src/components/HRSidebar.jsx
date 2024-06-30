@@ -13,26 +13,34 @@ import { FiFile } from "react-icons/fi";
 import { FaUserPlus, FaUsers } from "react-icons/fa"
 import { RiBillLine } from "react-icons/ri";
 import "../styles/Sidebar.css";
-
+import api from '../api.js'
 
 const Sidebar = () => {
     const [open, setOpen] = useState(true);
-    const [employeeDetails,setEmployeeDetails] = useState({
-        name: "",
-        role: "HR Management",
-    });
+    const [employeeName,setEmployeeName] = useState("");
+    const [employeePic,setEmployeePic] = useState("");
     const isTabletMid = useMediaQuery({ query: "(max-width: 768px)" });
-    const userName = localStorage.getItem('userName');
+    const location = useLocation();
+    
 
     useEffect(() => {
-        // Update employee details state with the user's name
-        if (userName) {
-            setEmployeeDetails(prevState => ({
-                ...prevState,
-                name: userName
-            }));
-        }
-    }, [userName]);
+        const fetchData = async () => {
+            try {
+                const accessToken = localStorage.getItem('token');
+                const response = await api.get('http://localhost:8000/user-details', {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`
+                    }
+                });
+                setEmployeeName(response.data.fName);
+                setEmployeePic(response.data.profile_pic_url);
+            } catch (error) {
+                console.error('An error occurred:', error.response?.data?.message || error.message);
+            }
+        };
+
+        fetchData();
+    }, [location]);
 
     const [toggleState, setToggleState] = useState(true);
     useLocation();
@@ -46,7 +54,7 @@ const Sidebar = () => {
         {
             name: "Absence Management",
             icon: IoCalendarOutline,
-            menus: ["Employees Leave Requests","Managers Leave Requests","Employees Attendances","Managers Attendances"],
+            menus: ["Set Leave Count","Leave Report","Leave Requests","Employees Attendances","Managers Attendances"],
         },
         {
             name: "Overtime Tracking",
@@ -56,12 +64,17 @@ const Sidebar = () => {
         {
             name: "Leave Prediction",
             icon: TbReportAnalytics,
-            menus: ["Employees", "Managers"],
+            menus: ["Employees"],
         },
         {
             name: "Job Vacancies",
             icon: FiFile,
-            menus: ["Add Job Vacancy", "Managers Requests"],
+            menus: ["Add Job Vacancy", "Vacancy Requests","View Job Vacancies"],
+        },
+        {
+            name: "Candidates",
+            icon: FaUsers,
+            menus: ["New Candidate Details", "Interview Details"],
         }
     ];
 
@@ -81,7 +94,7 @@ const Sidebar = () => {
                         {open && (
                             <div className="rounded-full overflow-hidden">
                                 <img
-                                    src="https://thumbor.forbes.com/thumbor/fit-in/960x/https://www.forbes.com/advisor/wp-content/uploads/2023/12/poodle.jpg"
+                                    src={employeePic}
                                     width={45}
                                     alt=""
                                     className="rounded-full"
@@ -93,10 +106,10 @@ const Sidebar = () => {
                             {open && (
                                 <>
                   <span className="text-xl whitespace-pre">
-                    {employeeDetails.name}
+                    {employeeName}
                   </span>
                                     <span className="text-sm text-gray-500">
-                    {employeeDetails.role}
+                    HR Officer
                   </span>
                                 </>
                             )}
@@ -129,16 +142,16 @@ const Sidebar = () => {
                                Manage Bills
                             </NavLink>
                         </li>
+                        {/* <li>
+                            <NavLink to={"/candidates"} className="link">
+                                <FaUsers size={23} className="min-w-max"/>
+                               Candidates
+                            </NavLink>
+                        </li> */}
                         <li>
                             <NavLink to={"/register"} className="link">
                                 <FaUserPlus  size={23} className="min-w-max"/>
                                Register User
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink to={"/candidates"} className="link">
-                                <FaUsers size={23} className="min-w-max"/>
-                               Candidates
                             </NavLink>
                         </li>
 

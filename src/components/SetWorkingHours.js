@@ -1,26 +1,43 @@
-import '../styles/setWorkingHours.css'
+import '../styles/setWorkingHours.css';
 import ProjectType from './ProjectType';
+import React, { useState, useEffect } from 'react';
 
+function SetWorkingHours({ title, getTodayWorkingHours }) {
+    const [time, setTime] = useState('');
 
-function SetWorkingHours(props) {
-    return(
+    const handleTime = (time2) => {
+        setTime(time2);
+    };
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            getTodayWorkingHours(time);
+        }, 500);
+        
+        return () => clearInterval(intervalId); // Cleanup interval on component unmount
+    }, [time, getTodayWorkingHours]);
+
+    return (
         <div className='container-working-hours'>
-            <div className='title'>{props.title}</div>
-            <div class='list'>
+            <div className='selectProject-title'>{title}</div>
+            <div className='list'>
                 <ProjectType
                     content="Work Task"
+                    getTime={handleTime}
                 />
                 <ProjectType
                     content="Shop Order Operations"
+                    getTime={handleTime}
                 />
                 <ProjectType
                     content="Project Activities"
+                    getTime={handleTime}
                 />
                 <ProjectType
                     content="External"
+                    getTime={handleTime}
                 />
             </div>
-            
         </div>
     );
 }

@@ -11,24 +11,23 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import HrVacancyStatusPdfIcon from "./HrVacancyStatusPdfIcon";
 import HrJobVacancyStatusButtons from "./HrJobVacancyStatusButtons";
-import axios from "axios";
+import api from "../api";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.white,
     color: theme.palette.common.black,
     fontFamily: "Inter",
-    fontSize: "19px",
+    fontSize: "15px",
     fontStyle: "normal",
     fontWeight: 800,
     lineHeight: "normal",
     letterSpacing: "0.18px",
   },
   [`&.${tableCellClasses.body}`]: {
-    fontSize: "14px",
     color: "#000",
     fontFamily: "Inter",
-    fontSize: "18px",
+    fontSize: "14px",
     fontStyle: "normal",
     fontWeight: 600,
     lineHeight: "normal",
@@ -59,7 +58,7 @@ export default function HrApproveBills(props) {
         console.log("Request Headers:", {
           Authorization: `Bearer ${accessToken}`,
         });
-        const response = await axios.get("http://127.0.0.1:8000/get_hr_bills", {
+        const response = await api.get("/get_hr_bills", {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
@@ -120,13 +119,13 @@ export default function HrApproveBills(props) {
                     {row4.Date}
                   </StyledTableCell>
                   <StyledTableCell align="center">
-                    <HrVacancyStatusPdfIcon ImageType={row4.DownloadD} />
+                    <HrVacancyStatusPdfIcon endpointUrl="/get_bill_pdf" cvId = {row4.bill_id} filename="Employeebill"/>
                   </StyledTableCell>
                   <StyledTableCell align="center">
                   <HrJobVacancyStatusButtons
                       onStatusChange={handleStatusChange}
                       id={row4.bill_id}
-                      endpointUrl="http://127.0.0.1:8000/update_hr_bill/{id}"
+                      endpointUrl="/update_hr_bill/{id}"
                     />
                   </StyledTableCell>
                 </StyledTableRow>

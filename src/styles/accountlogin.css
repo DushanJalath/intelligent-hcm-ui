@@ -1,20 +1,22 @@
 .right-container{
+  margin-left: 750px;
+  /* margin-left: 1127px; */
   align-items: center;
   width: 600px;
-  height: 700px;
+  height: 600px;
   background-color: #FFF;
   display: flex;
   flex-direction: column;
   padding: 10px;
   justify-content: space-between;
 }
-.container1{
+.container-login{
   width: 500px;
   height: 700px;
   display: flex;
   flex-direction: column;
 }
-.header{
+.header-login{
   width: 500px;
   display: flex;
   flex-direction: column;
@@ -27,7 +29,7 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  padding-top: 100px;
+  padding-top: 50px;
   padding-bottom: -20px;
 }
 .header-paragraph{
@@ -56,11 +58,11 @@
 }
 
 .login-colms{
-  margin-top: 30px;
+  margin-top: 5px;
 }
 .box-login{
   width: 426px;
-  height: 64px;
+  height: 44px;
   flex-shrink: 0;
   border-radius: 6px;
   border: 1px solid #8692A6;
@@ -79,7 +81,7 @@
 }
 .login-box{
   width: 426px;
-  height: 64px;
+  height: 44px;
   flex-shrink: 0;
   border-radius: 6px;
   background: #02936F;

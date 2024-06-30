@@ -51,11 +51,11 @@ const TimeAndDate = (props) => {
   }, []);
 
   return (
-    <div className='container-1'>
-      <div className='title-1'>{props.title}</div>
-      <div className='timeGrp'>
-        <span className='time'>{currentTime}</span>
-        <div className='date'>
+    <div className='container-1-timeNDate'>
+      <div className='title-1-timeNDate'>{props.title}</div>
+      <div className='timeGrp-timeNDate'>
+        <span className='time-timeNDate'>{currentTime}</span>
+        <div className='date-timeNDate'>
           <span>{currentDay}</span>
           <br />
           <span>{currentMonth}</span>

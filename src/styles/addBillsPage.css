@@ -1,3 +1,17 @@
-.content-addBill-page{
-    margin-left: 350px;
+.add-bills-page {
+    display: flex;
+    /* justify-content: center; */
 }
+
+.bills-container {
+    display: flex;
+}
+
+.container-send-bill,
+.verifyBillss {
+    margin-top: 50px;
+}
+
+
+
+

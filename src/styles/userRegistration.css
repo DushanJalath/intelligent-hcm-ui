@@ -1,15 +1,15 @@
-.container{
+.user-reg-container{
     margin-top: 50px;
-    width: 600px;
-    height : 650px;
+    margin-right: 50px;
+    width: 90%;
+    height : 600px;
     background-color: #EAEAEA;
     border-radius: 10px;
     position: relative;
     padding: 10px;
-    padding-top: 30px;
 }
 
-.title{
+.user-reg-title{
     position: absolute;
     top : 10px;
     right: 10px;
@@ -21,9 +21,10 @@
 }
 
 form{
-    background-color: rgb(255, 255, 255);
-    padding: 15px;
+    background-color: #F3F3F3;
+    padding: 30px;
     border-radius: 10px;
+    margin-bottom: 50px;
 }
 
 input{
@@ -32,19 +33,19 @@ input{
     box-sizing: border-box;
     border-radius: 15px;
 }
-select{
+/* select{
     border: 1px solid #ccc;
     padding: 8px;
     box-sizing: border-box;
     border-radius: 15px;
-}
+} */
 
 label{
     font-weight: bold;
     margin-bottom: 5px;
 }
 
-.grp{
+.user-reg-grp{
    margin-bottom: 6px;
    display: flex;
    flex-direction: column; 
@@ -62,18 +63,7 @@ label{
     border-radius: 50px;
     background-color: #02936F;
     padding: 5px;
-}
-
-.grp-1 {
-    display: flex;
-    flex-direction: row;
-}
-
-.row {
-    display: flex;
-    flex-direction: column;
-    margin-right: 20px; /* Adjust as needed for spacing between columns */
-    margin-bottom: 10px; /* Adjust as needed for spacing between rows */
+    margin-top:50px;
 }
 
 label {
@@ -81,4 +71,9 @@ label {
 }
 
 
+
+.user-reg-grp-container{
+    display: flex;
+    gap: 50px;
+}
 

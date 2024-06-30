@@ -5,20 +5,20 @@
   }
 
   .img-button1{
-    width: 100px;
+    width: 60px;
     height: 36px;
     border-radius: 20px;
     background-color:#02936F;
     color: #fff;
-    font-size:smaller;
+    font-size:10px;
   }
   .img-button2{
-    width: 100px;
+    width: 60px;
     height: 36px;
     border-radius: 20px;
     background-color: rgba(197, 16, 16, 0.986);
     color: #fff;
-    font-size:smaller;
+    font-size:10px;
   }
   .btn-status{
     color: #000;

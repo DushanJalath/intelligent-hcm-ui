@@ -1,10 +1,7 @@
 /* Updated CSS */
-body, html {
-    margin: 0;
-    padding: 0;
-}
 
 .Login-page {
+    position: fixed;
     display: flex;
     margin: 0; /* Remove any default margin */
     padding: 0; /* Remove any default padding */
@@ -13,11 +10,11 @@ body, html {
 }
 
 .Login-cover {
-    width:48.24%;
+    position: fixed;
+    width:52%;
     
 }
 
 .Account-login {
-    margin-top: 40px;
-    margin-left: 260px;
+    margin-left: 20px;
 }

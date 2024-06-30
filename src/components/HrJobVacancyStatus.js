@@ -9,18 +9,18 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import HrJobRequestedVacancyIcons from "./HrJobRequestedVacancyIcons";
-import HrVacancyStatusPdfIcon from "./HrVacancyStatusPdfIcon";
+// import HrJobRequestedVacancyIcons from "./HrJobRequestedVacancyIcons";
+import VacancyPdfDownloadIcon from "./VacancyPdfDownloadIcon";
 import HrJobPublishIcon from "./HrJobPublishIcon";
 import HrJobVacancyStatusButtons from "./HrJobVacancyStatusButtons";
-import axios from "axios";
+import api from "../api";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.white,
     color: theme.palette.common.black,
     fontFamily: "Inter",
-    fontSize: "19px",
+    fontSize: "15px",
     fontStyle: "normal",
     fontWeight: 800,
     lineHeight: "normal",
@@ -29,7 +29,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.body}`]: {
     color: "#000",
     fontFamily: "Inter",
-    fontSize: "18px",
+    fontSize: "14px",
     fontStyle: "normal",
     fontWeight: 600,
     lineHeight: "normal",
@@ -45,36 +45,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     border: 0,
   },
 }));
-// function createDataforHRVS(
-//   vacancy_id,
-//   project_type,
-//   possition,
-//   num_of_vacancies,
-//   DownloadD,
-//   UploadD,
-//   Publish,
-// ) {
-//   return { vacancy_id, project_type, possition, num_of_vacancies, DownloadD, UploadD,Publish};
-// }
-
-// const vacancies = [
-//   createDataforHRVS(1, 'Quality Assurance', 'QA Engineer', 5, 'pdf','download','publish'),
-//   createDataforHRVS(2, 'UI/UX Design', 'UI Designer', 1, 'pdf','download','publish'),
-//   createDataforHRVS(3, 'Software Development', 'Full Stack Developer', 3, 'pdf','download','publish'),
-//   createDataforHRVS(4, 'Quality Assurance', 'QA Engineer', 4, 'pdf','download','publish'),
-//   createDataforHRVS(5, 'UI/UX Design', 'UI Designer', 3, 'pdf','download','publish'),
-//   createDataforHRVS(6, 'Software Development', 'Full Stack Developer', 2, 'pdf','download','publish'),
-//   createDataforHRVS(7, 'UI/UX Design', 'UI Designer', 1, 'pdf','download','publish'),
-//   createDataforHRVS(8, 'Quality Assurance', 'QA Engineer', 3, 'pdf','download','publish'),
-//   createDataforHRVS(9, 'Quality Assurance', 'QA Engineer', 2, 'pdf','download','publish'),
-//   createDataforHRVS(10, 'Quality Assurance', 'QA Engineer', 4, 'pdf','download','publish'),
-//   createDataforHRVS(11, 'UI/UX Design', 'UI Designer', 3, 'pdf','download','publish'),
-//   createDataforHRVS(12, 'Software Development', 'Full Stack Developer', 2, 'pdf','download','publish'),
-//   createDataforHRVS(13, 'UI/UX Design', 'UI Designer', 1, 'download','download','publish'),
-//   createDataforHRVS(14, 'Quality Assurance', 'QA Engineer', 3, 'download','download','publish'),
-//   createDataforHRVS(15, 'Quality Assurance', 'QA Engineer', 2,'download','download','publish'),
-
-// ];
 
 export default function HrJobVacancyStatus(props) {
   const [vacancies, setVacancies] = useState([]);
@@ -88,14 +58,11 @@ export default function HrJobVacancyStatus(props) {
         console.log("Request Headers:", {
           Authorization: `Bearer ${accessToken}`,
         });
-        const response = await axios.get(
-          "http://127.0.0.1:8000/get_hr_vacancies",
-          {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-          }
-        );
+        const response = await api.get("/get_hr_vacancies", {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
         setVacancies(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -134,17 +101,18 @@ export default function HrJobVacancyStatus(props) {
             <TableHead>
               <TableRow>
                 <StyledTableCell align="center">Vacancy ID</StyledTableCell>
-                <StyledTableCell align="center">Project Type</StyledTableCell>
-                <StyledTableCell align="center">Possition</StyledTableCell>
+                <StyledTableCell align="center">Publisher Name</StyledTableCell>
+                <StyledTableCell align="center">Job Type</StyledTableCell>
+                <StyledTableCell align="center">Job Possition</StyledTableCell>
                 <StyledTableCell align="center">
                   Number of vacancies
                 </StyledTableCell>
                 <StyledTableCell align="center">
                   Download Document
                 </StyledTableCell>
-                <StyledTableCell align="center">
+                {/* <StyledTableCell align="center">
                   Upload Document
-                </StyledTableCell>
+                </StyledTableCell> */}
                 <StyledTableCell align="center">Action</StyledTableCell>
                 <StyledTableCell align="center">Publish</StyledTableCell>
               </TableRow>
@@ -156,7 +124,10 @@ export default function HrJobVacancyStatus(props) {
                     {row2.vacancy_id}
                   </StyledTableCell>
                   <StyledTableCell align="center">
-                    {row2.project_type}
+                    {row2.publisher_fname}&nbsp;{row2.publisher_lname}
+                  </StyledTableCell>
+                  <StyledTableCell align="center">
+                    {row2.job_type}
                   </StyledTableCell>
                   <StyledTableCell align="center">
                     {row2.possition}
@@ -165,20 +136,30 @@ export default function HrJobVacancyStatus(props) {
                     {row2.num_of_vacancies}
                   </StyledTableCell>
                   <StyledTableCell align="center">
-                    <HrVacancyStatusPdfIcon ImageType={row2.DownloadD} />
+                    <VacancyPdfDownloadIcon
+                      endpointUrl="/download_vacancy-pdf"
+                      pdfId={row2.pdf_file_id}
+                      filename={row2.vacancy_id}
+                    />
                   </StyledTableCell>
-                  <StyledTableCell align="center">
-                    <HrJobRequestedVacancyIcons endpointUrl="" jobId = {row2.vacancy_id} />
-                  </StyledTableCell>
+                  {/* <StyledTableCell align="center">
+                    <HrJobRequestedVacancyIcons
+                      endpointUrl=""
+                      jobId={row2.vacancy_id}
+                    />
+                  </StyledTableCell> */}
                   <StyledTableCell align="center">
                     <HrJobVacancyStatusButtons
                       onStatusChange={handleStatusChange}
-                      id={row2.vacancy_id }
-                      endpointUrl="http://127.0.0.1:8000/update_hr_vacancy/{id}"
+                      id={row2.vacancy_id}
+                      endpointUrl="/update_hr_vacancy/{id}"
                     />
                   </StyledTableCell>
                   <StyledTableCell align="center">
-                    <HrJobPublishIcon />
+                    <HrJobPublishIcon
+                      endpointUrl="/publish_vacancy"
+                      jobId={row2.vacancy_id}
+                    />
                   </StyledTableCell>
                 </StyledTableRow>
               ))}

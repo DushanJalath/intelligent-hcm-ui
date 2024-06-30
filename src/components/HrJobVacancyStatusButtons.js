@@ -1,11 +1,17 @@
 // HrJobVacancyStatusButtons.js
 import React, { useState } from "react";
-import axios from "axios";
+import Modal from "react-modal";
+import api from "../api";
 import { ImCheckmark, ImCross } from "react-icons/im";
 import "../styles/hrjobvacancystatusbuttons.css";
+import { set } from "date-fns";
+
 
 export default function HrJobVacancyStatusButtons({ onStatusChange, id, endpointUrl }) {
   const [status, setStatus] = useState(null);
+  const [modalIsOpen,setModalIsOpen]= useState(false);
+
+  
 
   const handleStatusChange = async (newStatus) => {
     setStatus(newStatus);
@@ -13,7 +19,7 @@ export default function HrJobVacancyStatusButtons({ onStatusChange, id, endpoint
     const accessToken = localStorage.getItem("token");
 
     try {
-      const response = await axios.put(
+      const response = await api.put(
         endpointUrl.replace("{id}", id),
         { new_status: newStatus },
         {
@@ -36,12 +42,13 @@ export default function HrJobVacancyStatusButtons({ onStatusChange, id, endpoint
     }
   };
 
+
   return (
     <div className="btn-types align-items-center">
       <div className="btn-panel flex ">
         {status === null && (
           <>
-            <button className="img-button1" onClick={() => handleStatusChange("approved")}>
+            <button className="img-button1" onClick={()=>handleStatusChange("approved")}>
               Approve
             </button>
             <button className="img-button2" onClick={() => handleStatusChange("rejected")}>

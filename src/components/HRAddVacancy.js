@@ -5,16 +5,23 @@ import AvInputs from './AvInputs';
 import AvTextArea from './AvTextArea'
 import AvButtons from './AvButtons';
 import { useState } from 'react';
-import axios from 'axios';
+import api from "../api";
+import AvDropdown2 from './AvDropdown2';
 
 export default function HRAddVacancy(props) {
     const [successMessage, setSuccessMessage] = useState('');
 
     //project type
-    const [projectType, setProjectType] = useState('');
-    const handleProjectTypeChange = (value) => {
-        setProjectType(value);
+    const [jobType, setJobType] = useState('');
+    const handleJobTypeChange = (value) => {
+        setJobType(value);
     };
+
+    const [workMode, setWorkMode] = useState('');
+    const handleWorkModeChange = (value) => {
+        setWorkMode(value);
+    }
+
 
     //Job vacancy category
     const [possition, setPossition] = useState(''); 
@@ -48,7 +55,8 @@ export default function HRAddVacancy(props) {
     const HandleGenarate = async (event) => {
         event.preventDefault();
         const formData = {
-            project_type: projectType,
+            job_type: jobType,
+            work_mode: workMode,
             pre_requisits: pre_requisits,  
             possition: possition,
             num_of_vacancies: parseInt(num_of_vacancies),
@@ -61,33 +69,37 @@ export default function HRAddVacancy(props) {
             console.log('Request Headers:', {
                 Authorization: `Bearer ${accessToken}`
             }); // Assuming you store the access token in localStorage
-            const response = await axios.post('http://localhost:8000/create_vacancy', formData, {
+            const response = await api.post('/create_vacancy', formData, {
                 headers: {
                     Authorization: `Bearer ${accessToken}`
                 }
             });
             setSuccessMessage('Vacancy created successfully');
-            console.log(response.data);
+            alert("Vacancy created successfully");
+            // console.log(response.data);
             // Refresh the page after successful submission
             window.location.reload();
         } catch (error) {
             setSuccessMessage('An error occurred');
-            console.error('Error:', error);
+            alert("An error occurred");
+            // console.error('Error:', error);
         }
     };
     
   return (
     <div className='container-HRADD'>
-        <div className='title'><p className='title-para'>{props.title}</p></div>
+        <div className='title-hrv'><p className='title-para'>{props.title}</p></div>
         <div className='para-form'>
             <div className='paragraph1'>
-                <p>Please fill in the details below and generate system suggestions for the job vacancy. If the requirements are satisfactory, submit your form to the HR. If you need to edit the requirements, make 
-                    the necessary changes and forward them to the HR for review.</p>
+                <p>Please fill in the details below and generate system suggestions for the job vacancy. If the requirements are satisfactory, submit your form.</p>
             </div>
-            <div className='form'>
+            <div className='form-hrv'>
                 <form onSubmit={HandleGenarate}>
                     <div className='In1'>
-                        <AvDropdown label="Project type :" value={projectType} onChange={handleProjectTypeChange} placeholder="Select leave type"/>
+                        <AvDropdown label="Job type :" value={jobType} onChange={handleJobTypeChange} placeholder="Select leave type"/>
+                    </div>
+                    <div className='In1'>
+                        <AvDropdown2 label="Work mode :" value={workMode} onChange={handleWorkModeChange} placeholder="Select work mode"/>
                     </div>
                     <div className='In2'>
                         <AvInputs label="Job possition :" value={possition} onChange={handlePossitionChange} placeholder="Enter the possition"/>
@@ -106,10 +118,10 @@ export default function HRAddVacancy(props) {
                     </div>
                     <div className="AV-Buttons">
                         <div className="genarate">
-                            <AvButtons type="submit" label="genarate"/>
+                            <AvButtons type="submit" label="Submit"/>
                         </div>
                     </div>
-                    <p className='success-message'>{successMessage}</p>   
+                    {/* <p className='success-message'>{successMessage}</p>    */}
                 </form>
             </div>
         </div>

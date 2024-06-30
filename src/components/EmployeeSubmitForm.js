@@ -1,38 +1,55 @@
 import '../styles/employeeSubmitForm.css';
-import React, { useState } from 'react';
-import { BsCalendar } from 'react-icons/bs';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Button } from "@mui/material";
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import { useNavigate } from 'react-router-dom';
 
-const CustomDatePickerInput = ({ value, onClick, placeholder }) => (
-    <div className="custom-datepicker-input" onClick={onClick}>
-        <input
-            type="text"
-            value={value}
-            readOnly
-            className="form-control"
-        />
-        <span className="calendar-icon">
-            <BsCalendar />
-        </span>
-    </div>
-);
-
-function EmployeeSubmitForm(props) {
+function EmployeeSubmitForm({ title, vacancy_id }) {
+    // State variables using useState hook
     const [name, setName] = useState('');
     const [contactNo, setContactNo] = useState('');
     const [email, setEmail] = useState('');
     const [cvFile, setCvFile] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [isSubmitEnabled, setIsSubmitEnabled] = useState(false);
+    const [contactError, setContactError] = useState('');
+    const [emailError, setEmailError] = useState('');
+    const [cvError, setCvError] = useState('');
+    const [isResetDisabled, setIsResetDisabled] = useState(false);
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (name && contactNo && email && cvFile && !contactError && !emailError && !cvError) {
+            setIsSubmitEnabled(true);
+        } else {
+            setIsSubmitEnabled(false);
+        }
+    }, [name, contactNo, email, cvFile, contactError, emailError, cvError]);
 
     const handleNameChange = (e) => {
         setName(e.target.value);
     };
 
     const handleContactNoChange = (e) => {
-        setContactNo(e.target.value);
+        const value = e.target.value;
+        if (/^\d*$/.test(value)) {
+            setContactNo(value);
+            setContactError('');
+        } else {
+            setContactError('Only numbers are allowed');
+        }
     };
 
     const handleEmailChange = (e) => {
-        setEmail(e.target.value);
+        const value = e.target.value;
+        setEmail(value);
+        if (!value.includes('@')) {
+            setEmailError('Email must contain "@" sign');
+        } else {
+            setEmailError('');
+        }
     };
 
     const handleCvDrop = (e) => {
@@ -43,8 +60,10 @@ function EmployeeSubmitForm(props) {
             const file = droppedFiles[0];
             if (file.type === 'application/pdf') {
                 setCvFile(file);
+                setCvError('');
             } else {
-                alert('Please upload a PDF file.');
+                setCvFile(null);
+                setCvError('Please upload a PDF file.');
             }
         }
     };
@@ -53,23 +72,71 @@ function EmployeeSubmitForm(props) {
         e.preventDefault();
     };
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        setLoading(true);
+        setIsResetDisabled(true);
+
+        try {
+            const formData = new FormData();
+            formData.append('cv', cvFile);
+            formData.append('name', name);
+            formData.append('email', email);
+            formData.append('contact_number', contactNo);
+            formData.append('vacancy_id', vacancy_id); // Append vacancy_id to form data
+
+            const response = await axios.post('http://localhost:8000/Candidate-CV-Upload/', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+
+            console.log(response.data);
+
+            const parseResponse = await axios.post(`http://localhost:8000/Parse-CV/${response.data.job_application.c_id}`);
+            console.log(parseResponse.data);
+            
+            navigate('/done');
+        } catch (error) {
+            console.error('Error uploading file:', error);
+            navigate('/error');
+        } finally {
+            setLoading(false);
+            setIsResetDisabled(false);
+        }
+    };
+
+    const handleReset = () => {
+        setName('');
+        setContactNo('');
+        setEmail('');
+        setCvFile(null);
+        setContactError('');
+        setEmailError('');
+        setCvError('');
+    };
+
     return (
         <div className='container-ncSubmitForm'>
-            <div className='title-ncSubmitForm'>{props.title}</div>
-            <form>
-                <div className='grp'>
+            <div style={{ fontSize: '18px', fontWeight: '800', marginBottom: '5px', color:'#02936F' }}>{title}</div>
+            <p className='employeeSubmitform'>Submit your CV and fill necessary details.</p>
+            <form onSubmit={handleSubmit}>
+                <div className='grp_form'>
                     <label>Name:</label>
                     <input type="text" placeholder='Full Name' value={name} onChange={handleNameChange} />
                 </div>
-                <div className='grp'>
+                <div className='grp_form'>
                     <label>Contact No:</label>
                     <input type="text" placeholder='Contact No' value={contactNo} onChange={handleContactNoChange} />
+                    {contactError && <p style={{ color: 'red', fontSize: '14px', fontWeight: 'bold' }}>{contactError}</p>}
                 </div>
-                <div className='grp'>
+                <div className='grp_form'>
                     <label>Email:</label>
-                    <input type="text" placeholder='E mail' value={email} onChange={handleEmailChange} />
+                    <input type="text" placeholder='Email' value={email} onChange={handleEmailChange} />
+                    {emailError && <p style={{ color: 'red', fontSize: '14px', fontWeight: 'bold' }}>{emailError}</p>}
                 </div>
-                <div className='grp'>
+                <div className='grp_form'>
                     <label>Upload CV:</label>
                     <div
                         onDrop={handleCvDrop}
@@ -81,14 +148,33 @@ function EmployeeSubmitForm(props) {
                         ) : (
                             <>
                                 <p>Drag &amp; drop your CV here</p>
-                                <img src="/icons8-import-pdf-50.png" alt="PDF icon"
-                                     style={{ width: '30px', height: '27px', marginLeft: '235px' }} />
+                                <CloudUploadIcon style={{ fontSize: 40, color: '#02936F' }} />
                             </>
                         )}
                     </div>
+                    {cvError && <p style={{ color: 'red', fontSize: '14px', fontWeight: 'bold' }}>{cvError}</p>}
                 </div>
-                <div id="ncSubmitForm-submit-button" style={{ marginLeft: "10px", marginTop: "30px", marginBottom: "30px" }}>
-                    <Button variant="contained" color="success" size="small" style={{ borderRadius: "20px", textTransform: "none" }}>Submit</Button>
+                <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginTop: '90px' }}>
+                    <Button
+                        type="submit"
+                        variant="contained"
+                        color="success"
+                        size="medium"
+                        style={{ borderRadius: "20px", textTransform: "none" }}
+                        disabled={!isSubmitEnabled || loading}
+                    >
+                        {loading ? 'Submitting...' : 'Submit'}
+                    </Button>
+                    <Button
+                        variant="contained"
+                        color="error"
+                        size="medium"
+                        style={{ borderRadius: "20px", textTransform: "none", margin: '0 10px' }}
+                        onClick={handleReset}
+                        disabled={isResetDisabled}
+                    >
+                        Reset
+                    </Button>
                 </div>
             </form>
         </div>

@@ -51,5 +51,28 @@
     margin-bottom: 10px;
   }
 
+  .cvuploadbutton {
+  margin-top: 30px;
+  padding: 6px 20px;
+  background-color: #218838;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.cvuploadbutton:hover {
+  background-color: #000000;
+}
+
+.applyIcon {
+  margin-left: 8px;
+  color: white;
+  font-size: 22px;
+}
+
+
 
   

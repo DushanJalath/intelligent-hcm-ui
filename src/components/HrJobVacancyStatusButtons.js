@@ -1,7 +1,7 @@
 // HrJobVacancyStatusButtons.js
 import React, { useState } from "react";
 import Modal from "react-modal";
-import axios from "axios";
+import api from "../api";
 import { ImCheckmark, ImCross } from "react-icons/im";
 import "../styles/hrjobvacancystatusbuttons.css";
 import { set } from "date-fns";
@@ -19,7 +19,7 @@ export default function HrJobVacancyStatusButtons({ onStatusChange, id, endpoint
     const accessToken = localStorage.getItem("token");
 
     try {
-      const response = await axios.put(
+      const response = await api.put(
         endpointUrl.replace("{id}", id),
         { new_status: newStatus },
         {

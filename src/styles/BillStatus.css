@@ -9,20 +9,6 @@
     margin-bottom: 50px;
 }
 
-/* Your existing styles... */
-
-.bill-part:not(:first-child) {
-    margin-left: 20px; /* Added to create space between items */
-}
-
-
-
-.bill-icon {
-    margin-right: 50%;
-    width: 20px;
-    height: 20px;
-    /* Add any styling as needed */
-}
 .bill-status-title {
     color: #02936F;
     border-radius: 50px;
@@ -70,30 +56,39 @@
     color: orange;
 }
 
-.paid .status-bill-value {
+.approved .status-bill-value {
     color: green;
 }
 
-.overdue .status-bill-value {
+.rejected .status-bill-value {
     color: red;
 }
 
-.bill-description {
+.billdescription {
     font-size: 14px;
     color: #555;
     padding-bottom: 6%;
 }
 
-/* Pagination styles */
+/* Add this CSS to billstatus.css */
 
 .pagination-button {
     background-color: transparent;
+    /* border: 1px solid #ccc; */
     padding: 18px 3px;
     cursor: pointer;
     font-weight: 500;
 }
 
 .pagination-button.active {
+    /* background-color: #007bff; Change to your preferred color */
     color: green;
+    /* border-color: #007bff; */
     font-weight: 900;
+}
+
+.bill-icon {
+    font-size: 24px; /* Adjust the size of the icon */
+    margin-top: 4px; /* Adjust the margin if needed */
+    margin-right: 60%;
 }

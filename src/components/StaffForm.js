@@ -1,4 +1,3 @@
-
 import '../styles/employeeSubmitForm.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -6,7 +5,7 @@ import { Button } from "@mui/material";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { useNavigate } from 'react-router-dom';
 
-function EmployeeSubmitForm({ title, vacancy_id }) {
+function StaffForm({ title, vacancy_id }) {
     // State variables using useState hook
     const [name, setName] = useState('');
     const [contactNo, setContactNo] = useState('');
@@ -17,6 +16,8 @@ function EmployeeSubmitForm({ title, vacancy_id }) {
     const [contactError, setContactError] = useState('');
     const [emailError, setEmailError] = useState('');
     const [cvError, setCvError] = useState('');
+    const [feedbackMessage, setFeedbackMessage] = useState('');
+    const [feedbackColor, setFeedbackColor] = useState('');
     const [isResetDisabled, setIsResetDisabled] = useState(false);
 
     const navigate = useNavigate();
@@ -94,13 +95,21 @@ function EmployeeSubmitForm({ title, vacancy_id }) {
             });
 
             console.log(response.data);
-            navigate('/done');
+            setFeedbackMessage('Successfully submitted your details.');
+            setFeedbackColor('#02936F');
+            setIsResetDisabled(false);
+            handleReset(); // Reset form fields
         } catch (error) {
             console.error('Error uploading file:', error);
-            navigate('/error');
+            setFeedbackMessage('Error. Try again.');
+            setFeedbackColor('red');
         } finally {
             setLoading(false);
-            setIsResetDisabled(false);
+
+            // Automatically remove feedback message after 5 seconds
+            setTimeout(() => {
+                setFeedbackMessage('');
+            }, 3000); // Adjust the timeout duration as needed
         }
     };
 
@@ -151,7 +160,7 @@ function EmployeeSubmitForm({ title, vacancy_id }) {
                     </div>
                     {cvError && <p style={{ color: 'red', fontSize: '14px', fontWeight: 'bold' }}>{cvError}</p>}
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginTop: '90px' }}>
+                <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginTop: '20px' }}>
                     <Button
                         type="submit"
                         variant="contained"
@@ -173,9 +182,14 @@ function EmployeeSubmitForm({ title, vacancy_id }) {
                         Reset
                     </Button>
                 </div>
+                {feedbackMessage && (
+                    <p style={{ color: feedbackColor, fontSize: '13px', fontWeight: 'bold', marginTop: '10px', textAlign: 'center' }}>
+                        {feedbackMessage}
+                    </p>
+                )}
             </form>
         </div>
     );
 }
 
-export default EmployeeSubmitForm;
+export default StaffForm;

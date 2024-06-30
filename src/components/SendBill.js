@@ -331,7 +331,6 @@ function SendBill(props) {
         try {
             const formData = new FormData();
             formData.append('file', droppedFiles[0]);
-            formData.append('bill_type', category);
 
             const accessToken = localStorage.getItem('token');
             const response = await axios.post('http://127.0.0.1:8000/upload-bill/', formData, {
@@ -468,7 +467,7 @@ function SendBill(props) {
                 {uploading && (
                     <div className="waiting-message">
                         <CircularProgress size={20} style={{ marginRight: '10px' }} />
-                            <p>Waiting for Response...</p>
+                            <p>Wait for Response...</p>
                     </div>
                 )}
                 

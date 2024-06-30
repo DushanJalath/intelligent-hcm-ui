@@ -13,14 +13,14 @@ import HrJobRequestedVacancyIcons from "./HrJobRequestedVacancyIcons";
 import HrVacancyStatusPdfIcon from "./HrVacancyStatusPdfIcon";
 import HrJobPublishIcon from "./HrJobPublishIcon";
 import HrJobVacancyStatusButtons from "./HrJobVacancyStatusButtons";
-import axios from "axios";
+import api from "../api";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.white,
     color: theme.palette.common.black,
     fontFamily: "Inter",
-    fontSize: "19px",
+    fontSize: "15px",
     fontStyle: "normal",
     fontWeight: 800,
     lineHeight: "normal",
@@ -29,7 +29,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.body}`]: {
     color: "#000",
     fontFamily: "Inter",
-    fontSize: "18px",
+    fontSize: "14px",
     fontStyle: "normal",
     fontWeight: 600,
     lineHeight: "normal",
@@ -45,36 +45,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     border: 0,
   },
 }));
-// function createDataforHRVS(
-//   vacancy_id,
-//   project_type,
-//   possition,
-//   num_of_vacancies,
-//   DownloadD,
-//   UploadD,
-//   Publish,
-// ) {
-//   return { vacancy_id, project_type, possition, num_of_vacancies, DownloadD, UploadD,Publish};
-// }
-
-// const vacancies = [
-//   createDataforHRVS(1, 'Quality Assurance', 'QA Engineer', 5, 'pdf','download','publish'),
-//   createDataforHRVS(2, 'UI/UX Design', 'UI Designer', 1, 'pdf','download','publish'),
-//   createDataforHRVS(3, 'Software Development', 'Full Stack Developer', 3, 'pdf','download','publish'),
-//   createDataforHRVS(4, 'Quality Assurance', 'QA Engineer', 4, 'pdf','download','publish'),
-//   createDataforHRVS(5, 'UI/UX Design', 'UI Designer', 3, 'pdf','download','publish'),
-//   createDataforHRVS(6, 'Software Development', 'Full Stack Developer', 2, 'pdf','download','publish'),
-//   createDataforHRVS(7, 'UI/UX Design', 'UI Designer', 1, 'pdf','download','publish'),
-//   createDataforHRVS(8, 'Quality Assurance', 'QA Engineer', 3, 'pdf','download','publish'),
-//   createDataforHRVS(9, 'Quality Assurance', 'QA Engineer', 2, 'pdf','download','publish'),
-//   createDataforHRVS(10, 'Quality Assurance', 'QA Engineer', 4, 'pdf','download','publish'),
-//   createDataforHRVS(11, 'UI/UX Design', 'UI Designer', 3, 'pdf','download','publish'),
-//   createDataforHRVS(12, 'Software Development', 'Full Stack Developer', 2, 'pdf','download','publish'),
-//   createDataforHRVS(13, 'UI/UX Design', 'UI Designer', 1, 'download','download','publish'),
-//   createDataforHRVS(14, 'Quality Assurance', 'QA Engineer', 3, 'download','download','publish'),
-//   createDataforHRVS(15, 'Quality Assurance', 'QA Engineer', 2,'download','download','publish'),
-
-// ];
 
 export default function HrJobVacancyStatus(props) {
   const [vacancies, setVacancies] = useState([]);
@@ -88,8 +58,8 @@ export default function HrJobVacancyStatus(props) {
         console.log("Request Headers:", {
           Authorization: `Bearer ${accessToken}`,
         });
-        const response = await axios.get(
-          "http://127.0.0.1:8000/get_hr_vacancies",
+        const response = await api.get(
+          "/get_hr_vacancies",
           {
             headers: {
               Authorization: `Bearer ${accessToken}`,
@@ -134,7 +104,7 @@ export default function HrJobVacancyStatus(props) {
             <TableHead>
               <TableRow>
                 <StyledTableCell align="center">Vacancy ID</StyledTableCell>
-                <StyledTableCell align="center">Project Type</StyledTableCell>
+                <StyledTableCell align="center">Job Type</StyledTableCell>
                 <StyledTableCell align="center">Possition</StyledTableCell>
                 <StyledTableCell align="center">
                   Number of vacancies
@@ -156,7 +126,7 @@ export default function HrJobVacancyStatus(props) {
                     {row2.vacancy_id}
                   </StyledTableCell>
                   <StyledTableCell align="center">
-                    {row2.project_type}
+                    {row2.job_type}
                   </StyledTableCell>
                   <StyledTableCell align="center">
                     {row2.possition}
@@ -174,11 +144,11 @@ export default function HrJobVacancyStatus(props) {
                     <HrJobVacancyStatusButtons
                       onStatusChange={handleStatusChange}
                       id={row2.vacancy_id }
-                      endpointUrl="http://127.0.0.1:8000/update_hr_vacancy/{id}"
+                      endpointUrl="/update_hr_vacancy/{id}"
                     />
                   </StyledTableCell>
                   <StyledTableCell align="center">
-                    <HrJobPublishIcon />
+                    <HrJobPublishIcon endpointUrl="/publish_vacancy" jobId={row2.vacancy_id} />
                   </StyledTableCell>
                 </StyledTableRow>
               ))}

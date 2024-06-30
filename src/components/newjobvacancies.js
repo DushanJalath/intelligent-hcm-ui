@@ -60,11 +60,11 @@ function JobVacancy(props) {
                 <div>
                     {jobVacancies.slice(startIndex, endIndex).map((job) => (
                         <JobCard
-                            key={job.job_title}
                             jobTitle={job.job_title}
                             jobType={job.job_type}
                             workMode={job.work_mode}
-                            pdfLink={job.pdf_link}
+                            file_id={job.pdf_id}
+                            vacancy_id={job.vacancy_id}
                         />
                     ))}
                     <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>

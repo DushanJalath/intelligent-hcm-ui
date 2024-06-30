@@ -4,8 +4,7 @@ import { Button } from "@mui/material";
 import '../styles/leaveRequestForm.css';
 
 function LeaveRequestForm(props) {
-    const [userName, setUserName] = useState('');
-    const [userID, setUserID] = useState('');
+    const { title, leaveCounts } = props;
     const [category, setCategory] = useState('');
     const [startDate, setStartDate] = useState('');
     const [numOfDays, setNumOfDays] = useState('');
@@ -14,41 +13,52 @@ function LeaveRequestForm(props) {
     const [feedbackMessage, setFeedbackMessage] = useState('');
     const [feedbackColor, setFeedbackColor] = useState('');
 
-    const handleUserNameChange = (e) => {
-        setUserName(e.target.value);
-    };
-
-    const handleUserIDChange = (e) => {
-        setUserID(e.target.value);
-    };
-
-    const handleCategoryChange = (e) => {
-        setCategory(e.target.value);
-    };
-
     useEffect(() => {
-        if (userName && userID && category && startDate && numOfDays) {
-            setIsSubmitEnabled(true);
+        setIsSubmitEnabled(category && startDate && numOfDays && !isExceedingLeaveCount());
+    }, [category, startDate, numOfDays, leaveCounts]);
+
+    const isExceedingLeaveCount = () => {
+        if (category === 'Sick Leave' && numOfDays > leaveCounts.SickLeaveCount) {
+            setFeedbackMessage('Exceed Leave Count');
+            setFeedbackColor('red');
+            return true;
+        } else if (category === 'Annual Leave' && numOfDays > leaveCounts.AnnualLeaveCount) {
+            setFeedbackMessage('Exceed Leave Count');
+            setFeedbackColor('red');
+            return true;
+        } else if (category === 'Casual Leave' && numOfDays > leaveCounts.CasualLeaveCount) {
+            setFeedbackMessage('Exceed Leave Count');
+            setFeedbackColor('red');
+            return true;
         } else {
-            setIsSubmitEnabled(false);
+            setFeedbackMessage('');
+            setFeedbackColor('');
+            return false;
         }
-    }, [userName, userID, category, startDate, numOfDays]);
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
 
         try {
+            const timezoneOffset = 5.5 * 60 * 60 * 1000; // Offset in milliseconds for UTC+5:30
+            const submitdate = new Date(Date.now() + timezoneOffset).toISOString().split('T')[0];
+            const submitdatetime = new Date(Date.now() + timezoneOffset).toISOString();        
+
             const data = {
-                user_name: userName,
-                user_id: userID,
-                request_type: category,
-                start_date: startDate,
-                num_of_days: numOfDays
+                user_email: 't@gmail.com', // Assuming this is static for now
+                leaveType: category,
+                startDate: startDate,
+                dayCount: numOfDays,
+                submitdate: submitdate,
+                submitdatetime: submitdatetime,
             };
 
-            const response = await axios.post('http://localhost:8000/upload-request/', data, {
+            const accessToken = localStorage.getItem('token');
+            const response = await axios.post('http://localhost:8000/create_leave_request', data, {
                 headers: {
+                    Authorization: `Bearer ${accessToken}`,
                     'Content-Type': 'application/json'
                 }
             });
@@ -59,14 +69,14 @@ function LeaveRequestForm(props) {
             setFeedbackMessage('Leave request submitted successfully');
             setFeedbackColor('green');
 
-            // Reset form after submission
-            setUserName('');
-            setUserID('');
+            // Reset form after successful submission
             setCategory('');
             setStartDate('');
             setNumOfDays('');
+            setIsSubmitEnabled(false); // Disable submit button after successful submission
         } catch (error) {
             console.error('Error submitting request:', error);
+            // Set error feedback message
             setFeedbackMessage('Error submitting. Please try again.');
             setFeedbackColor('red');
         } finally {
@@ -75,38 +85,28 @@ function LeaveRequestForm(props) {
     };
 
     const handleReset = () => {
-        setUserName('');
-        setUserID('');
         setCategory('');
         setStartDate('');
         setNumOfDays('');
         setFeedbackMessage('');
+        setFeedbackColor('');
+        setIsSubmitEnabled(false); // Ensure submit button is disabled after reset
     };
 
     const today = new Date().toISOString().split('T')[0];
 
     return (
         <div className='container-request-leave'>
-            <div className='title-request-leave'>{props.title}</div>
+            <div className='title-request-leave'>{title}</div>
             <p className='requestLeavedescription'>Submit your leave request for HR.</p>
             <form onSubmit={handleSubmit}>
                 <div className='grpRequestLeave'>
-                    <label>User Name:</label>
-                    <input type="text" placeholder='User Name' value={userName} onChange={handleUserNameChange} />
-                </div>
-                <div className='grpRequestLeave'>
-                    <label>User ID:</label>
-                    <input type="text" placeholder='User ID' value={userID} onChange={handleUserIDChange} />
-                </div>
-                <div className='grpRequestLeave'>
                     <label>Leave Type:</label>
-                    <select value={category} onChange={handleCategoryChange} className='select-leave-type'>
+                    <select value={category} onChange={(e) => setCategory(e.target.value)} className='select-leave-type'>
                         <option value=''>Select Leave Type</option>
-                        <option value='Sick Leave'>Sick Leave</option>
-                        <option value='Casual Leave'>Casual Leave</option>
-                        <option value='Maternity Leave'>Maternity Leave</option>
-                        <option value='Paternity Leave'>Paternity Leave</option>
-                        <option value='Annual Leave'>Annual Leave</option>
+                        <option value='Sick Leave' disabled={leaveCounts.SickLeaveCount === 0}>Sick Leave</option>
+                        <option value='Annual Leave' disabled={leaveCounts.AnnualLeaveCount === 0}>Annual Leave</option>
+                        <option value='Casual Leave' disabled={leaveCounts.CasualLeaveCount === 0}>Casual Leave</option>
                     </select>
                 </div>
                 <div className='grpRequestLeave'>

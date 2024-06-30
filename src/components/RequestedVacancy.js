@@ -18,18 +18,17 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     backgroundColor: theme.palette.common.white,
     color: theme.palette.common.black,
     fontFamily: 'Inter',
-    fontSize: '19px',
-    fontStyle: 'normal',
+    fontSize: '15px',
+    fontStyle: 'inter',
     fontWeight: 800,
     lineHeight: 'normal',
     letterSpacing: '0.18px',
   },
   [`&.${tableCellClasses.body}`]: {
-    fontSize: '14px',
     color: '#000',
     fontFamily: 'Inter',
-    fontSize: '18px',
-    fontStyle: 'normal',
+    fontSize: '14px',
+    fontStyle: 'inter',
     fontWeight: 600,
     lineHeight: 'normal',
     letterSpacing: '0.18px',
@@ -93,9 +92,9 @@ export default function RequestedVacancy(props) {
             <TableHead>
               <TableRow>
                 <StyledTableCell align="center">Vacancy ID</StyledTableCell>
-                <StyledTableCell align="center">Project Type</StyledTableCell>
+                <StyledTableCell align="center">Job Type</StyledTableCell>
                 <StyledTableCell align="center">Possition</StyledTableCell>
-                <StyledTableCell align="center">Number of vacancies</StyledTableCell>
+                <StyledTableCell align="center">Number Of Vacancies</StyledTableCell>
                 <StyledTableCell align="center">Document</StyledTableCell>
                 <StyledTableCell align="center">Action</StyledTableCell>
                 <StyledTableCell align="center">Publish</StyledTableCell>
@@ -105,7 +104,7 @@ export default function RequestedVacancy(props) {
               {currentItems.map((row) => (
                 <StyledTableRow key={row.ID}>
                   <StyledTableCell align="center">{row.vacancy_id}</StyledTableCell>
-                  <StyledTableCell align="center">{row.project_type}</StyledTableCell>
+                  <StyledTableCell align="center">{row.job_type}</StyledTableCell>
                   <StyledTableCell align="center">{row.possition}</StyledTableCell>
                   <StyledTableCell align="center">{row.num_of_vacancies}</StyledTableCell>
                   <StyledTableCell align="center"><HrVacancyStatusPdfIcon endpointUrl=" " cvId={row.vacancy_id} filename={row.vacancy_id} /></StyledTableCell>

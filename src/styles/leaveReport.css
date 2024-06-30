@@ -1,0 +1,57 @@
+.container-leave-report {
+    margin-top: 50px;
+    margin-left: 470px;
+    width: 700px;
+    background-color: #00000017;
+    border-radius: 10px;
+    position: relative;
+    padding: 20px;
+}
+
+.title-leave-report {
+    color: #02936F;
+    border-radius: 50px;
+    text-align: left;
+    font-weight: 800;
+    font-size: large;
+}
+
+.leaveReportDescription {
+    font-size: smaller;
+    margin-top: 5px;
+    font-weight: 500;
+}
+
+.grpLeaveReport {
+    margin-bottom: 20px;
+}
+
+.grpLeaveReport label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.email-input {
+    border: 1px solid #ccc;
+    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 15px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.grpLeaveReport.buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.grpLeaveReport .MuiButton-root {
+    margin: 0 10px; /* Adjust button margin */
+}
+
+.feedback-message {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+}

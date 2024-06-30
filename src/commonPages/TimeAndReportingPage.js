@@ -1,4 +1,4 @@
-
+import {React,useState} from 'react'
 import TimeAndDate from '../components/TimeAndDate.js'
 import TodayWorkingHours from '../components/TodayWorkingHours.js'
 import StartIntra from '../components/StartIntra.js'
@@ -10,6 +10,7 @@ import ManagerSidebar from "../components/ManagerSidebar";
 
 function TimeAndReportingPage(pardafedms) {
     const userType = localStorage.getItem('userType');
+    const [elaspsedTime,setElapsedTime]=useState('')
         return(
             <>
                 {userType === 'Employee' && <Sidebar/>}
@@ -21,7 +22,10 @@ function TimeAndReportingPage(pardafedms) {
                     </div>
 
                     <div className='todayWorkingHours'>
-                        <TodayWorkingHours title="Today Working Hours"/>
+                        <TodayWorkingHours 
+                        title="Today Working Hours"
+                        time={elaspsedTime}
+                        />
                     </div>
                 </div>
 
@@ -30,7 +34,7 @@ function TimeAndReportingPage(pardafedms) {
                 </div>
 
                 <div className='working-hours'>
-                    <SetWorkingHours title="Select Project"/>
+                    <SetWorkingHours title="Select Project" getTodayWorkingHours={setElapsedTime}/>
                 </div>
             </>
         );

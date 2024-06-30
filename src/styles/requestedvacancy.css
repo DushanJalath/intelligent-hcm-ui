@@ -1,6 +1,6 @@
 .container4 {
     margin-top: 40px;
-    width: 1372px;
+    width: 980px;
     height: auto;
     flex-shrink: 0;
     border-radius: 30px;
@@ -13,23 +13,18 @@
   
   .title4 {
     position: absolute;
-    width: 302px;
-    height: 50px;
-    flex-shrink: 0;
-    right: 10px;
-    background-color: #02936f;
+    top : -15px;
+    right: 19px;
+    background-color: #02936F;
     color: white;
-    border-radius: 27px;
-    padding: 10px;
-    margin-top: -23px;
-    margin-right: 60px;
+    border-radius: 50px;
+    padding: 5px 20px;
   }
   
   .title-para4 {
     text-align: center;
-    color: #fff;
+    color: #FFF;
     font-family: Inter;
-    font-size: 18px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
@@ -37,9 +32,9 @@
   }
   
   .table-div {
-    width: 1227px;
+    width: 950px;
     height: auto;
-    margin-left: 80px;
+    margin-left: 15px;
     padding-top: 45px;
   }
   
@@ -66,7 +61,7 @@
   .pagination {
     display: flex;
     max-width: 300px;
-    margin-left: 460px;
+    margin-left: 400px;
     margin-top: 20px;
   }
   

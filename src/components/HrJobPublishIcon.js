@@ -22,6 +22,7 @@ export default function HrJobPublishIcon({ endpointUrl, jobId }) {
             // Add your logic for handling the publish response here
         } catch (error) {
             console.error("Error publishing job:", error.message);
+            alert("Vacancy not approved yet or rejected")
         }
     };
 

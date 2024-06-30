@@ -16,7 +16,7 @@ const JobCard = ({ jobTitle, jobType, workMode, file_id, vacancy_id, applyLink }
 
     const handlePdfDownload = async () => {
         try {
-            const response = await fetch(`http://127.0.0.1:8000/file/${file_id}`);
+            const response = await fetch(`http://127.0.0.1:8000/download_vacancy-pdf/${file_id}`);
             const blob = await response.blob();
             const url = window.URL.createObjectURL(new Blob([blob]));
             const link = document.createElement('a');

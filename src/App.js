@@ -5,6 +5,8 @@ import LoginPage from "../src/pages/LoginPage";
 import TimeAndReportingPage from "../src/commonPages/TimeAndReportingPage";
 import OverTimetrackingPage from "../src/commonPages/OverTimetrackingPage";
 import ViewIndividualAttendancePage from "../src/commonPages/ViewIndividualAttendancePage";
+import EmployeeViewIndividualAttendancePage from "../src/employeePages/IndividualEmployeeViewAttendancePage"
+import ManagerViewIndividualAttendancePage from "../src/managerPages/IndividualManagerViewAttendancePage"
 import RequestLeavePage from "../src/commonPages/RequestLeavePage"; //CSS conflict with Login Page
 // import ViewAttendancePage from "./employeePages/ViewAttendancePage";
 import AddBillsPage from "../src/commonPages/AddBillsPage";
@@ -55,7 +57,7 @@ const App = () => {
                                       
                     {/* Employees Pages */}
                     <Route path="/time and reporting" element={<TimeAndReportingPage/>} />
-                    <Route path="/Absence Management/View Attandance" element={<ViewIndividualAttendancePage/>} />
+                    <Route path="/Absence Management/View Attandance" element={<EmployeeViewIndividualAttendancePage/>} />
                     <Route path="/Absence Management/Request Leave" element={<RequestLeavePage/>} />
                     <Route path="/Absence Management/Leave Status" element={<EmpLeaveStatusPage/>} /> 
                     <Route path="/over time tracking" element={<OverTimetrackingPage/>} />
@@ -66,7 +68,7 @@ const App = () => {
 
                     {/* Managers Routes */}
                     <Route path="/time and reporting" element={<TimeAndReportingPage/>} />
-                    <Route path="/Absence Management/View Attandance" element={<ViewIndividualAttendancePage/>} />
+                    <Route path="/Absence Management/View Attandance" element={<ManagerViewIndividualAttendancePage />} />
                     <Route path="/Absence Management/Employees Attendances" element={<EmployeesAttendances/>} />
                     <Route path="/Absence Management/Manager Request Leave" element={<ManagerLeaveRequest/>} />
                     <Route path="/Absence Management/Leave Status" element={<LeaveStatusPage/>} /> 

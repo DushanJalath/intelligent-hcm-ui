@@ -3,10 +3,29 @@ import HRTimeReportingSubComponent from "../components/HRTimeReportingSubCompone
 import '../styles/HRTimeReportingPage.css';
 import HRSidebar from '../components/HRSidebar';
 import TimeAndDate from "../components/TimeAndDate";
-
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 
 export default function TimeAndReportingPageManager (){
+    const [employeeTimeReports, setEmployeeTimeReports] = useState([]);
+    const [managerTimeReports, setManagerTimeReports] = useState([]);
+    useEffect(() => {
+        
+        const fetchData = async () => {
+          try {
+            const response = await axios.get('http://127.0.0.1:8000/employees_timereporting'); 
+            setEmployeeTimeReports(response.data); 
+            console.log(response.data);
+            const response1 = await axios.get('http://127.0.0.1:8000/managers_timereporting'); 
+            setManagerTimeReports(response1.data);
+          } catch (err) {
+            console.log(err.message);
+          }
+        };
+    
+        fetchData();
+      }, []);
     
    const managerTimeReportingData=[
     { dp: 'https://picsum.photos/200/300', name: 'John', details:'Total hours 10:20:25'},
@@ -40,14 +59,14 @@ const employeesTimeReportingData=[
                 <div className="manager-data">
                     <HRTimeReportingSubComponent 
                         title="Managers"
-                        data={managerTimeReportingData}
+                        data={managerTimeReports}
                     />
                 </div>
 
                 <div className="employees-data">
                     <HRTimeReportingSubComponent 
                         title="Employees"
-                        data={employeesTimeReportingData}
+                        data={employeeTimeReports}
                     />
                 </div>
 

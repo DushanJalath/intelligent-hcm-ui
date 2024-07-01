@@ -60,7 +60,6 @@ import { useNavigate } from 'react-router-dom';
 const LandingPage = () => {
 
     const navigate = useNavigate();
-
     const handleUser = () => {
         navigate('/login');
         // Add logic for handling User button click
@@ -74,6 +73,7 @@ const LandingPage = () => {
     };
 
     const handleContact = () => {
+        navigate('/contact');
         // Add logic for handling Contact Us button click
     };
 

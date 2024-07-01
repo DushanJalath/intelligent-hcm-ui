@@ -9,6 +9,7 @@ import React, { useState,useEffect } from 'react';
 import '../styles/InterviewDetails.css'
 import sendEmailToInterviewer from './sendEmailToInterviewer';
 import api from '../api';
+import HRSidebar from '../components/HRSidebar';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -76,7 +77,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = interview.slice(indexOfFirstItem, indexOfLastItem);
-    const totalPages = Math.ceil(vacancies.length / itemsPerPage);
+    const totalPages = Math.ceil(interview.length / itemsPerPage);
   
     const handlePageChange = (newPage) => {
       setCurrentPage(newPage);

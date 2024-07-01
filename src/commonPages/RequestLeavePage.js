@@ -38,8 +38,9 @@ export default function RequestLeavePage() {
     return (
         <div>
             <Sidebar />
-            <LeaveRequestForm title="Request Leave" leaveCounts={leaveCounts} />
             <RemainingLeaves leaveCounts={leaveCounts} />
+            <LeaveRequestForm title="Request Leave" leaveCounts={leaveCounts} />
+
         </div>
     )
 }

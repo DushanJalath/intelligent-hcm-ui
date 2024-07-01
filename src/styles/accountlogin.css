@@ -1,13 +1,8 @@
 .right-container{
-  margin-left: 750px;
-  /* margin-left: 1127px; */
-  align-items: center;
   width: 600px;
   height: 600px;
-  background-color: #FFF;
   display: flex;
   flex-direction: column;
-  padding: 10px;
   justify-content: space-between;
 }
 .container-login{

@@ -9,7 +9,7 @@ export default function EmpLeaveStatusPage (){
         <div>
             {userType === 'Employee' && <Sidebar/>}
             {userType === 'Manager' && <ManagerSidebar/>}
-                <LeaveStatus title="Leave Status" className="leave-status" />
+            <LeaveStatus title="Leave Status" className="leave-status" />
         </div>
     )
 }

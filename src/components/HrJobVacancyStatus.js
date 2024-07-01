@@ -45,36 +45,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     border: 0,
   },
 }));
-// function createDataforHRVS(
-//   vacancy_id,
-//   project_type,
-//   possition,
-//   num_of_vacancies,
-//   DownloadD,
-//   UploadD,
-//   Publish,
-// ) {
-//   return { vacancy_id, project_type, possition, num_of_vacancies, DownloadD, UploadD,Publish};
-// }
-
-// const vacancies = [
-//   createDataforHRVS(1, 'Quality Assurance', 'QA Engineer', 5, 'pdf','download','publish'),
-//   createDataforHRVS(2, 'UI/UX Design', 'UI Designer', 1, 'pdf','download','publish'),
-//   createDataforHRVS(3, 'Software Development', 'Full Stack Developer', 3, 'pdf','download','publish'),
-//   createDataforHRVS(4, 'Quality Assurance', 'QA Engineer', 4, 'pdf','download','publish'),
-//   createDataforHRVS(5, 'UI/UX Design', 'UI Designer', 3, 'pdf','download','publish'),
-//   createDataforHRVS(6, 'Software Development', 'Full Stack Developer', 2, 'pdf','download','publish'),
-//   createDataforHRVS(7, 'UI/UX Design', 'UI Designer', 1, 'pdf','download','publish'),
-//   createDataforHRVS(8, 'Quality Assurance', 'QA Engineer', 3, 'pdf','download','publish'),
-//   createDataforHRVS(9, 'Quality Assurance', 'QA Engineer', 2, 'pdf','download','publish'),
-//   createDataforHRVS(10, 'Quality Assurance', 'QA Engineer', 4, 'pdf','download','publish'),
-//   createDataforHRVS(11, 'UI/UX Design', 'UI Designer', 3, 'pdf','download','publish'),
-//   createDataforHRVS(12, 'Software Development', 'Full Stack Developer', 2, 'pdf','download','publish'),
-//   createDataforHRVS(13, 'UI/UX Design', 'UI Designer', 1, 'download','download','publish'),
-//   createDataforHRVS(14, 'Quality Assurance', 'QA Engineer', 3, 'download','download','publish'),
-//   createDataforHRVS(15, 'Quality Assurance', 'QA Engineer', 2,'download','download','publish'),
-
-// ];
 
 export default function HrJobVacancyStatus(props) {
   const [vacancies, setVacancies] = useState([]);
@@ -134,7 +104,7 @@ export default function HrJobVacancyStatus(props) {
             <TableHead>
               <TableRow>
                 <StyledTableCell align="center">Vacancy ID</StyledTableCell>
-                <StyledTableCell align="center">Project Type</StyledTableCell>
+                <StyledTableCell align="center">Job Type</StyledTableCell>
                 <StyledTableCell align="center">Possition</StyledTableCell>
                 <StyledTableCell align="center">
                   Number of vacancies
@@ -156,7 +126,7 @@ export default function HrJobVacancyStatus(props) {
                     {row2.vacancy_id}
                   </StyledTableCell>
                   <StyledTableCell align="center">
-                    {row2.project_type}
+                    {row2.job_type}
                   </StyledTableCell>
                   <StyledTableCell align="center">
                     {row2.possition}

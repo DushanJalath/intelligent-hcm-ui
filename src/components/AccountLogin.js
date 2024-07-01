@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "../styles/accountlogin.css";
 import UserTypes from "./UserTypes";
 import api from "../api";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../styles/newCandidateApplyJob.css";
 
@@ -93,6 +92,7 @@ export default function AccountLogin() {
       if (error.response) {
         console.error("Login Error:", error.response.data.detail);
         setLoginMessage("Invalid username or password");
+        alert('Invalid username or password')
       } else if (error.request) {
         console.error("Network Error:", error.request);
         console.log("Request Data:", error.request._data);

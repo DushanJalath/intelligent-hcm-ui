@@ -1,4 +1,3 @@
-
 import '../styles/employeeSubmitForm.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -94,6 +93,10 @@ function EmployeeSubmitForm({ title, vacancy_id }) {
             });
 
             console.log(response.data);
+
+            const parseResponse = await axios.post(`http://localhost:8000/Parse-CV/${response.data.job_application.c_id}`);
+            console.log(parseResponse.data);
+            
             navigate('/done');
         } catch (error) {
             console.error('Error uploading file:', error);

@@ -84,11 +84,11 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     };
   
     return (
-      <div className='container4'>
-        <div className='title4'>
+      <div className='container10'>
+        <div className='title10'>
           Interview Details
         </div>
-        <div className='table-div'>
+        <div className='table-div10'>
           <TableContainer>
             <Table sx={{ minWidth: 700 }} aria-label="customized table">
               <TableHead>

@@ -132,4 +132,8 @@
     background-color: #02936f; /* or any other color you want for the active state */
     color: white;
   }
-  
+.filter-container{
+  margin-top: 20px;
+  margin-left: 30px;
+
+}

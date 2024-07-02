@@ -12,6 +12,7 @@ const Chatbot = () => {
         const userMessage = { sender: 'user', text: `😃 ${input}` };
         const newMessages = [...messages, userMessage];
         setMessages(newMessages);
+        setInput('');
 
         // Call the RAG API
         try {
@@ -34,7 +35,7 @@ const Chatbot = () => {
         }
 
         // Clear the input field
-        setInput('');
+        
     };
 
     return (
@@ -49,11 +50,12 @@ const Chatbot = () => {
             <div className="input-area">
                 <input
                     type="text"
+                    placeholder='Enter Message'
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && handleSend()}
                 />
-                <button onClick={handleSend}>Send</button>
+                <button className='button-chatbot' onClick={handleSend}>Send</button>
             </div>
         </div>
     );

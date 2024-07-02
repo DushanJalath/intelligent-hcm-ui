@@ -18,9 +18,9 @@ function SetWorkingHours({ title, getTodayWorkingHours }) {
     }, [time, getTodayWorkingHours]);
 
     return (
-        <div className='container-working-hours'>
-            <div className='selectProject-title'>{title}</div>
-            <div className='list'>
+        <div className='container-working-hours-set-working-hours'>
+            <div className='selectProject-title-set-working-hours'>{title}</div>
+            <div className='list-set-working-hours'>
                 <ProjectType
                     content="Work Task"
                     getTime={handleTime}

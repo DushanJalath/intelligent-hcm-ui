@@ -1,0 +1,14 @@
+.app-container {
+    display: flex;
+    
+  }
+  
+ .main-content {
+    flex: 1; 
+    padding: 10px;
+    
+  }
+  .main-content-firstrow{
+    column-count: 2; 
+    column-gap: 2px;
+  }

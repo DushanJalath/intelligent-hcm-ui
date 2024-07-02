@@ -5,7 +5,7 @@ export default function AvDropdown2(props) {
     const {label,value, onChange } =props;
     return (
       <div className='input1'>
-          <label className='labels'>{label}</label>
+          <label className='labels-av'>{label}</label>
           <div className='dropdown'>
               <select value={value} onChange={(e)=>onChange(e.target.value)} className='drop' required>
                   <option value="" disabled className='options'>Select the work mode..</option>

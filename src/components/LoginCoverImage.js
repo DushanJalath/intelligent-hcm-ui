@@ -1,17 +1,10 @@
 import React from 'react';
-import '../styles/logincoverimage.css';
-import coverimage from '../assets/coverimage.png';
-// import '../styles/newCandidateApplyJob.css';
-// import { FaPlus } from 'react-icons/fa';
+import loginGif from '../assets/newLog.gif';
 
 export default function LoginCoverImage() {
   return (
-    <div className='left-side-container'>
-      <img src={coverimage} alt=" " className='cover-image' />
-      {/* <button className='apply-job-button'>
-        Apply Job Page
-        <FaPlus className="icon" />
-      </button> */}
+    <div className='flex items-center justify-center h-screen'>
+      <img src={loginGif} alt="Login GIF" className='max-w-full max-h-full object-contain' />
     </div>
   );
 }

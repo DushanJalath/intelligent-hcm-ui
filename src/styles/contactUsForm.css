@@ -1,0 +1,75 @@
+.container-contact-us {
+    width: 40%;
+    background-color: hsl(0, 0%, 86%); 
+    border-radius: 10px;
+    position: relative;
+    padding: 20px;
+    top: 50px;
+    margin-bottom: 10%;
+}
+
+.title-contact-us {
+    color: #02936F;
+    border-radius: 50px;
+    text-align: left;
+    font-weight: 800;
+    font-size: large;
+}
+
+.contactUsDescription {
+    font-size: smaller;
+    margin-top: 5px;
+    font-weight: 500;
+}
+
+.grpContactUs {
+    margin-bottom: 20px;
+}
+
+.grpContactUs label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.grpContactUs input[type="text"], .text-input, textarea {
+    border: 1px solid #ccc;
+    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 15px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.grpContactUs textarea {
+    height: 100px;
+    resize: none;
+}
+
+.grpContactUs.buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 12%;
+}
+
+.grpContactUs .MuiButton-root {
+    margin: 0 10px; /* Adjust button margin */
+}
+
+.submit {
+    position: absolute;
+    bottom: 10px;
+    right: 60px;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+    color: white;
+    border-radius: 50px;
+    background-color: #02936F;
+    padding: 5px;
+}
+
+.feedback-message {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 2%;
+}

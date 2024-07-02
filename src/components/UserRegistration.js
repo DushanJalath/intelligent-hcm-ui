@@ -1,5 +1,5 @@
 import '../styles/userRegistration.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import api from '../api';
 
 function UserRegistration(props) {
@@ -13,14 +13,31 @@ function UserRegistration(props) {
     const [position, setPosition] = useState('');
     const [employeeType, setEmployeeType] = useState('Employee'); // Set a default value
     const [profilePic, setProfilePic] = useState(null);
-
+    const [manager, setManager] = useState(null); // Initialize manager state to null
+    const [managers, setManagers] = useState([]); // State to store the list of managers
     const [alertMessage, setAlertMessage] = useState('');
     const [alertClass, setAlertClass] = useState('');
+
+    useEffect(() => {
+        const fetchManagers = async () => {
+            try {
+                const response = await api.get('http://localhost:8000/users/managers');
+                setManagers(response.data);
+            } catch (error) {
+                console.error('Error fetching managers:', error);
+            }
+        };
+        fetchManagers();
+    }, []);
 
     const handleTypeChange = (e) => {
         setEmployeeType(e.target.value);
     };
-    
+
+    const handleManagerChange = (e) => {
+        const selectedManager = managers.find(manager => manager.fName === e.target.value);
+        setManager(selectedManager ? selectedManager.user_email : null);
+    };
 
     const handleConfirmPassword = (e) => {
         setCPassWord(e.target.value);
@@ -30,7 +47,7 @@ function UserRegistration(props) {
         setFirstName(e.target.value);
     };
 
-    const handlePosition=(e)=>{
+    const handlePosition = (e) => {
         setPosition(e.target.value);
     }
 
@@ -79,19 +96,12 @@ function UserRegistration(props) {
         if (profilePic) {
             formData.append('profile_pic', profilePic);
         }
-        console.log('FormData content:');
-        formData.forEach((value, key) => {
-        console.log(`${key}: ${value}`);
-        });
+        formData.append('manager', manager);
 
+        console.log(formData)
 
         try {
             const accessToken = localStorage.getItem('token');
-            console.log('Access Token:', accessToken);
-            console.log('Request Headers:', {
-                Authorization: `Bearer ${accessToken}`
-            });
-
             const response = await api.post('http://localhost:8000/users', formData, {
                 headers: {
                     Authorization: `Bearer ${accessToken}`,
@@ -101,7 +111,6 @@ function UserRegistration(props) {
 
             setAlertMessage('User registered successfully');
             setAlertClass('alert-success');
-            console.log(response.data);
 
             // Optionally, reset the form fields
             setFirstName('');
@@ -111,15 +120,14 @@ function UserRegistration(props) {
             setEmail('');
             setPassWord('');
             setCPassWord('');
-            setEmployeeType('employee');
+            setEmployeeType('');
             setProfilePic(null);
+            setEmployeeType('');
 
-            // No need to reload the window; update UI based on backend response
         } catch (error) {
             const errorMessage = error.response?.data?.message || 'An error occurred';
             setAlertMessage(errorMessage);
             setAlertClass('alert-error');
-            console.error('Error:', error)
         }
     };
 
@@ -149,7 +157,7 @@ function UserRegistration(props) {
                     <div className='user-reg-grp'>
                         <label>Password : </label>
                         <input type="password" placeholder='Password' value={password} onChange={handlePassWordChange} />
-                    </div>    
+                    </div>
                     <div className='user-reg-grp'>
                         <label>Confirm Password : </label>
                         <input type="password" placeholder='Confirm Password' value={cPassword} onChange={handleConfirmPassword} />
@@ -168,8 +176,19 @@ function UserRegistration(props) {
                         <label>Position : </label>
                         <input type="text" placeholder='Position' value={position} onChange={handlePosition} />
                     </div>
+                    <div className='user-reg-grp'>
+                        <label htmlFor="manager">Select Manager : </label>
+                        <select id="manager" name="manager" value={manager || ''} onChange={handleManagerChange}>
+                            <option value="">None</option>
+                            {managers.map((manager) => (
+                                <option key={manager.user_email} value={manager.fName}>
+                                    {manager.fName}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
                 </div>
-                
+
                 <div className='user-reg-grp'>
                     <label>Address : </label>
                     <input type="text" placeholder='Address' value={address} onChange={handleAddressChange} />

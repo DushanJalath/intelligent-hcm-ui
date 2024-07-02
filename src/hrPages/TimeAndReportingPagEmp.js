@@ -5,13 +5,24 @@ import HRSidebar from '../components/HRSidebar';
 import TimeAndDate from "../components/TimeAndDate";
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import buttonImage from "../assets/bot.png";
+import Modal from "react-modal";
+import Chatbot from '../components/Chatbot.js';
 
 
 export default function TimeAndReportingPageEmp (){
 
     const [employeeTimeReports, setEmployeeTimeReports] = useState([]);
     const [managerTimeReports, setManagerTimeReports] = useState([]);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+
+    const openModal = () => {
+        setModalIsOpen(true);
+    };
+
+    const closeModal = () => {
+        setModalIsOpen(false);
+    };
     useEffect(() => {
         
         const fetchData = async () => {
@@ -29,26 +40,10 @@ export default function TimeAndReportingPageEmp (){
         fetchData();
       }, []);
     
-   const managerTimeReportingData=[
-    { dp: 'https://picsum.photos/200/300', name: 'John', details:'Total hours 10:20:25'},
-    { dp: 'https://picsum.photos/200/301', name: 'Sam', details:'Total hours 10:20:25'},
-    { dp: 'https://picsum.photos/200/302', name: 'Jane', details:'Total hours 10:20:25'},
-    { dp: 'https://picsum.photos/200/303', name: 'Robert', details:'Total hours 10:20:25'},
-    { dp: 'https://picsum.photos/200/304', name: 'Paul', details:'Total hours 10:20:25'},
-    { dp: 'https://picsum.photos/200/305', name: 'Mery', details:'Total hours 10:20:25'},
-];
 
-const employeesTimeReportingData=[
-    { dp: 'https://picsum.photos/200/306', name: 'Geny', details:'Total hours 10:20:25'},
-    { dp: 'https://picsum.photos/200/307', name: 'Tessa', details:'Total hours 10:20:25'},
-    { dp: 'https://picsum.photos/200/308', name: 'Lourie', details:'Total hours 10:20:25'},
-    { dp: 'https://picsum.photos/200/309', name: 'Ben', details:'Total hours 10:20:25'},
-    { dp: 'https://picsum.photos/200/310', name: 'Vicky', details:'Total hours 10:20:25'},
-    { dp: 'https://picsum.photos/200/311', name: 'Lee', details:'Total hours 10:20:25'},
-]
     return (
         <>
-        <div>d
+        <div>
             <HRSidebar/>
         </div>
 
@@ -76,6 +71,38 @@ const employeesTimeReportingData=[
             </div>
 
         </div>
+        <div className='chat-bot-icon'>
+                <button className="round-button-chatbot" onClick={openModal}>
+                    <img src={buttonImage} alt="Button" className="button-image-chatbot" />
+                </button>
+                <Modal 
+                    isOpen={modalIsOpen} 
+                    onRequestClose={closeModal}
+                    style={{
+                        content:{
+                            top: '50%',
+                            left: '40%',
+                            right: '20%',
+                            bottom: 'auto',
+                            marginRight: '100px',
+                            transform: 'translate(-50%, -50%)',
+                            width: '80%', // Adjusted width for better responsiveness
+                            maxWidth: '600px',
+                            height: '80vh', // Adjusted height to fit better in the viewport
+                            padding: '0', // Remove default padding
+                            border: 'none', // Remove default border
+                            borderRadius: '10px', // Match chatbot border-radius
+                            overflow: 'hidden' 
+                        },
+                        overlay: {
+                            backgroundColor: 'rgba(0, 0, 0, 0.5)' // Add overlay color
+                        }
+                
+                    }}
+                >
+                    <Chatbot />
+                </Modal>
+            </div>
         
         
     </>

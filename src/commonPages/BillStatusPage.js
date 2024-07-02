@@ -19,6 +19,7 @@ export default function BillStatusPage() {
     };
 
        return (
+
         <div>
             {userType === 'Employee' && <Sidebar />}
             {userType === 'Manager' && <ManagerSidebar />}
@@ -56,5 +57,6 @@ export default function BillStatusPage() {
                 </Modal>
             </div>
         </div>
+
     );
 }

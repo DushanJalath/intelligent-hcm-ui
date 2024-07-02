@@ -52,8 +52,8 @@ export default function ManagerLeaveRequest() {
         <div>
             {userType === 'Employee' && <Sidebar />}
             {userType === 'Manager' && <ManagerSidebar />}
-            <LeaveRequestForm title="Request Leave" leaveCounts={leaveCounts} />
             <RemainingLeaves leaveCounts={leaveCounts} />
+
             <div className='chat-bot-icon'>
         <button className="round-button-chatbot" onClick={openModal}>
             <img src={buttonImage} alt="Button" className="button-image-chatbot" />
@@ -86,6 +86,7 @@ export default function ManagerLeaveRequest() {
             <Chatbot />
         </Modal>
         </div>
+            <LeaveRequestForm title="Request Leave" leaveCounts={leaveCounts} />
         </div>
     )
 }

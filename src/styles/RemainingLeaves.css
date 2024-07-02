@@ -1,8 +1,9 @@
 .remaining-leaves-container {
-  position: absolute;
-  top: 5%;
-  right: 15%;
+
   width: 350px;
+  margin-left: 470px;
+  margin-top: 50px;
+  margin-bottom: 50px;
   height: auto;
   background-color: #EAEAEA;
   border-radius: 10px;

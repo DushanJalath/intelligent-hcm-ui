@@ -41,8 +41,9 @@ export default function ManagerLeaveRequest() {
         <div>
             {userType === 'Employee' && <Sidebar />}
             {userType === 'Manager' && <ManagerSidebar />}
-            <LeaveRequestForm title="Request Leave" leaveCounts={leaveCounts} />
             <RemainingLeaves leaveCounts={leaveCounts} />
+            <LeaveRequestForm title="Request Leave" leaveCounts={leaveCounts} />
+
         </div>
     )
 }

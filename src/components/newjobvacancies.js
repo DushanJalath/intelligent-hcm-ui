@@ -5,7 +5,7 @@ function JobVacancy(props) {
     const [jobVacancies, setJobVacancies] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
-    const jobsPerPage = 5; // Number of job cards per page
+    const jobsPerPage = 5;
 
     useEffect(() => {
         const fetchJobVacancies = async () => {
@@ -13,7 +13,6 @@ function JobVacancy(props) {
                 const response = await fetch('http://127.0.0.1:8000/vacancies');
                 const data = await response.json();
                 setJobVacancies(data);
-                // Calculate total pages
                 const totalPages = Math.ceil(data.length / jobsPerPage);
                 setTotalPages(totalPages);
             } catch (error) {
@@ -36,7 +35,6 @@ function JobVacancy(props) {
         setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
     };
 
-    // Calculate the index of the first and last job card to display on the current page
     const startIndex = (currentPage - 1) * jobsPerPage;
     const endIndex = Math.min(startIndex + jobsPerPage, jobVacancies.length);
 
@@ -49,7 +47,6 @@ function JobVacancy(props) {
                 backgroundColor: '#EAEAEA',
                 borderRadius: '10px',
                 position: 'relative',
-                // padding: '20px',
                 marginLeft: '470px',
                 marginBottom: '50px',
             }}

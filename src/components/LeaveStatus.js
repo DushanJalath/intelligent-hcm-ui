@@ -50,44 +50,50 @@ function LeaveStatus(props) {
         <div className='leave-status-container'>
             <div className='leave-status-title'>{props.title}</div>
             <p className='leavedescription'>Gives a quick update on whether a leave is Pending, Approved, or Rejected.</p>
-            {leaves.slice(startIndex, endIndex).map((leave, index) => (
-                <div key={index} className={`leave-status-card ${leave.status.toLowerCase()}`}>
-                    <div className="leave-part">
-                        <p className="leave-label">Leave Type:</p>
-                        <p className="leave-value">{leave.leaveType}</p>
+            {leaves.length === 0 ? (
+                <div className='no-leaves-message'>No Leaves Found</div>
+            ) : (
+                leaves.slice(startIndex, endIndex).map((leave, index) => (
+                    <div key={index} className={`leave-status-card ${leave.status.toLowerCase()}`}>
+                        <div className="leave-part">
+                            <p className="leave-label">Leave Type:</p>
+                            <p className="leave-value">{leave.leaveType}</p>
+                        </div>
+                        <div className="leave-part">
+                            <p className="leave-label">Submit Date:</p>
+                            <p className="leave-value">{leave.submitdate}</p>
+                        </div>
+                        <div className="leave-part">
+                            <p className="leave-label">Start Date:</p>
+                            <p className="leave-value">{leave.startDate}</p>
+                        </div>
+                        <div className="leave-part">
+                            <p className="leave-label">No of Days:</p>
+                            <p className="leave-value">{leave.dayCount}</p>
+                        </div>
+                        <div className="leave-part">
+                            <p className="leave-label">Status:</p>
+                            <p className={`status-leave-value ${leave.status.toLowerCase()}`}>{leave.status}</p>
+                        </div>
                     </div>
-                    <div className="leave-part">
-                        <p className="leave-label">Submit Date:</p>
-                        <p className="leave-value">{leave.submitdate}</p>
-                    </div>
-                    <div className="leave-part">
-                        <p className="leave-label">Start Date:</p>
-                        <p className="leave-value">{leave.startDate}</p>
-                    </div>
-                    <div className="leave-part">
-                        <p className="leave-label">No of Days:</p>
-                        <p className="leave-value">{leave.dayCount}</p>
-                    </div>
-                    <div className="leave-part">
-                        <p className="leave-label">Status:</p>
-                        <p className={`status-leave-value ${leave.status.toLowerCase()}`}>{leave.status}</p>
-                    </div>
+                ))
+            )}
+            {leaves.length > 0 && (
+                <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+                    <button onClick={handlePreviousPage} style={{ marginRight: '10px' }} disabled={currentPage === 1}>Previous</button>
+                    {[...Array(totalPages).keys()].map((page) => (
+                        <button 
+                            key={page + 1} 
+                            onClick={() => handlePageChange(page + 1)} 
+                            style={{ marginRight: '10px' }} 
+                            className={`pagination-button ${currentPage === page + 1 ? 'active' : ''}`}
+                        >
+                            {page + 1}
+                        </button>
+                    ))}
+                    <button onClick={handleNextPage} style={{ marginLeft: '10px' }} disabled={currentPage === totalPages}>Next</button>
                 </div>
-            ))}
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
-                <button onClick={handlePreviousPage} style={{ marginRight: '10px' }} disabled={currentPage === 1}>Previous</button>
-                {[...Array(totalPages).keys()].map((page) => (
-                    <button 
-                        key={page + 1} 
-                        onClick={() => handlePageChange(page + 1)} 
-                        style={{ marginRight: '10px' }} 
-                        className={`pagination-button ${currentPage === page + 1 ? 'active' : ''}`}
-                    >
-                        {page + 1}
-                    </button>
-                ))}
-                <button onClick={handleNextPage} style={{ marginLeft: '10px' }} disabled={currentPage === totalPages}>Next</button>
-            </div>
+            )}
         </div>
     );
 }

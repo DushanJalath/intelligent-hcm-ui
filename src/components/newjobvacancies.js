@@ -40,14 +40,13 @@ function JobVacancy(props) {
 
     return (
         <div
-            className='job-vacancy-container'
+            className='job-vacancy-container mx-auto w-3/4'
             style={{
                 marginTop: '50px',
                 width: '680px',
                 backgroundColor: '#EAEAEA',
                 borderRadius: '10px',
                 position: 'relative',
-                marginLeft: '470px',
                 marginBottom: '50px',
             }}
         >

@@ -1,13 +1,13 @@
 /* employeeSubmitForm.css */
 .container-ncSubmitForm {
-    width: 700px;
+    width: 45%;
     border-radius: 10px;
     position: relative;
     padding: 15px;
     box-sizing: border-box;
     background-color: #00000017;
-    margin-left: 470px;
     margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .title-ncSubmitForm {

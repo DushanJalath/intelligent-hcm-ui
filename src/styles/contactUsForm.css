@@ -1,11 +1,11 @@
 .container-contact-us {
-    margin-left: 470px;
-    width: 700px;
+    width: 40%;
     background-color: hsl(0, 0%, 86%); 
     border-radius: 10px;
     position: relative;
     padding: 20px;
     top: 50px;
+    margin-bottom: 10%;
 }
 
 .title-contact-us {
@@ -48,7 +48,7 @@
 .grpContactUs.buttons {
     display: flex;
     justify-content: center;
-    margin-top: 70px;
+    margin-top: 12%;
 }
 
 .grpContactUs .MuiButton-root {
@@ -71,5 +71,5 @@
 .feedback-message {
     text-align: center;
     font-weight: bold;
-    margin-top: 20px;
+    margin-top: 2%;
 }

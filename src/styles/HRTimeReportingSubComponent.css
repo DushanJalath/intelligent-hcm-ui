@@ -1,6 +1,6 @@
 .sub-container{
     width: 428px;
-    height: 580px;
+    height: auto;
     top: 400px;
     left: 430px;
     border-radius: 22px;
@@ -29,4 +29,5 @@
 
 .page-buttons{
     margin-top: -30px;
+    padding-bottom:20px;
 }

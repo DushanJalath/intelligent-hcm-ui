@@ -11,7 +11,7 @@ function UserRegistration(props) {
     const [password, setPassWord] = useState('');
     const [cPassword, setCPassWord] = useState('');
     const [position, setPosition] = useState('');
-    const [employeeType, setEmployeeType] = useState('employee'); // Set a default value
+    const [employeeType, setEmployeeType] = useState('Employee'); // Set a default value
     const [profilePic, setProfilePic] = useState(null);
 
     const [alertMessage, setAlertMessage] = useState('');

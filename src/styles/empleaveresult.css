@@ -1,6 +1,6 @@
 .container123{
     margin-top: 50px;
-    margin-left: 220px ;
+    margin-left: 70px ;
     width: 340px;
     height : 200px;
     background-color: #EAEAEA;
@@ -35,7 +35,7 @@
 .blockemp{
   padding: 25px;
   font-weight: bold;
-  padding-left: 30px;
+  /* padding-left: 30px; */
 }
 
 .container123-title{

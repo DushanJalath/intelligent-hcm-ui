@@ -1,7 +1,7 @@
 .container-contact-us-table {
     margin-top: 50px;
-    margin-left: 470px;
-    width: 1200px;
+    margin-left: 25%;
+    width: 70%;
     background-color: #00000017; 
     border-radius: 10px;
     position: relative;
@@ -14,7 +14,6 @@
     text-align: left;
     font-weight: 800;
     font-size: large;
-    margin-bottom: 20px;
 }
 
 .contactusTable {

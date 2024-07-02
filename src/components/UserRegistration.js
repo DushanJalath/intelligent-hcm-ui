@@ -205,8 +205,32 @@ function UserRegistration(props) {
                     </div>
                 )}
             </form>
+
         </div>
-    );
+
+        <div className="user-reg-grp">
+          <label>Address : </label>
+          <input
+            type="text"
+            placeholder="Address"
+            value={address}
+            onChange={handleAddressChange}
+          />
+        </div>
+        <div className="user-reg-grp">
+          <label>Profile Picture : </label>
+          <input type="file" onChange={handleProfilePicChange} />
+        </div>
+
+        <button type="submit" className="submit">
+          Submit
+        </button>
+        {alertMessage && (
+          <div className={`alert ${alertClass}`}>{alertMessage}</div>
+        )}
+      </form>
+    </div>
+  );
 }
 
 export default UserRegistration;

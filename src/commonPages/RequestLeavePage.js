@@ -50,8 +50,10 @@ export default function RequestLeavePage() {
     return (
         <div>
             <Sidebar />
-            <LeaveRequestForm title="Request Leave" leaveCounts={leaveCounts} />
             <RemainingLeaves leaveCounts={leaveCounts} />
+
+            <LeaveRequestForm title="Request Leave" leaveCounts={leaveCounts} />
+
             <div className='chat-bot-icon'>
                 <button className="round-button-chatbot" onClick={openModal}>
                     <img src={buttonImage} alt="Button" className="button-image-chatbot" />

@@ -1,10 +1,10 @@
-.labels{
+.labels-av{
     width: 300px;
     height: 24px;
     top: 195px;
     left: 474px;
     opacity: 0.8px;
-    margin-right: 10px;
+
     font-family: Inter;
     font-size: 16px;
     font-weight: 400;
@@ -18,7 +18,7 @@
 .input-av{
     display: flex;
     flex-direction: row;
-    margin-top: 10px;
+    margin-top: 7px;
     align-items: center;
 }
 .input-text{
@@ -32,5 +32,10 @@
     padding-left: 30px;
     box-sizing: border-box;
     background-color: #FFFFFF;
+    margin-right: 0px;
   
   }
+  
+  /* .box-AV{
+    margin-left: 20px;
+  } */

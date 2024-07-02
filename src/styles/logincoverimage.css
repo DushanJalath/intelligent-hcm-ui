@@ -1,14 +1,6 @@
 .left-side-container {
-  width: auto;
-  height: auto;
-  display: flex;
-  flex-direction: column;
   background-color: #02936F;
 }
 
-.cover-image {
-  /* max-width: auto; */
-  height: auto;
-  flex-shrink: 0;
-}
+
 

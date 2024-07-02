@@ -1,10 +1,9 @@
 import React from "react";
 import ContactUsForm from '../components/ContactUsForm';
-import loginGif from '../assets/contactbb.gif';
 
 export default function ContactUsPage() {
     return (
-        <div className="min-h-screen bg-cover bg-center" style={{ backgroundImage: `url(${loginGif})` }}>
+        <div className="flex justify-center items-center min-h-screen">
             <ContactUsForm title="Contact Us" />
         </div>
     );

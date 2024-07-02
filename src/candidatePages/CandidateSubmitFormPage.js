@@ -1,14 +1,14 @@
 import React from "react";
 import EmployeeSubmitForm from "../components/EmployeeSubmitForm";
-import { useLocation } from 'react-router-dom'; // Import useLocation hook from React Router DOM
+import { useLocation } from 'react-router-dom';
 
 export default function CandidateSubmitFormPage() {
     const location = useLocation();
-    const { vacancy_id } = location.state || {}; // Access vacancy_id from location state
+    const { vacancy_id } = location.state || {};
 
     return (
-        <div>
-            <EmployeeSubmitForm title="Apply for Vacancy" vacancy_id={vacancy_id} /> {/* Pass vacancy_id as a prop */}
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
+            <EmployeeSubmitForm title="Apply for Vacancy" vacancy_id={vacancy_id} />
         </div>
     );
 }

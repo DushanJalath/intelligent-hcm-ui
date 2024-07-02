@@ -13,7 +13,6 @@ import Chatbot from '../components/Chatbot.js';
 export default function TimeAndReportingPageEmp (){
 
     const [employeeTimeReports, setEmployeeTimeReports] = useState([]);
-    const [managerTimeReports, setManagerTimeReports] = useState([]);
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
     const openModal = () => {
@@ -30,8 +29,6 @@ export default function TimeAndReportingPageEmp (){
             const response = await axios.get('http://127.0.0.1:8000/employees_timereporting'); 
             setEmployeeTimeReports(response.data); 
             console.log(response.data);
-            const response1 = await axios.get('http://127.0.0.1:8000/managers_timereporting'); 
-            setManagerTimeReports(response1.data);
           } catch (err) {
             console.log(err.message);
           }
@@ -53,13 +50,6 @@ export default function TimeAndReportingPageEmp (){
             </div>
 
             <div className="lower-container">
-                <div className="manager-data">
-                    <HRTimeReportingSubComponent 
-                        title="Managers"
-                        data={managerTimeReports}
-                    />
-                </div>
-
                 <div className="employees-data">
                     <HRTimeReportingSubComponent 
                         title="Employees"

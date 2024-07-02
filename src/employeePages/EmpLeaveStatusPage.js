@@ -23,8 +23,6 @@ export default function EmpLeaveStatusPage (){
             {userType === 'Employee' && <Sidebar/>}
             {userType === 'Manager' && <ManagerSidebar/>}
 
-            <LeaveStatus title="Leave Status" className="leave-status" />
-
                 <LeaveStatus title="Leave Status" className="leave-status" />
                 <div className='chat-bot-icon'>
                 <button className="round-button-chatbot" onClick={openModal}>

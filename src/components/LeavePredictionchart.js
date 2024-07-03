@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import api from "../api";
 import LeaveChart from "./LeaveChart";
 import "../styles/LeavePredictionchart.css";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
@@ -24,8 +24,8 @@ function LeavePredictionchart() {
   const handlePredictClick = async () => {
     try {
       const accessToken = localStorage.getItem("token");
-      const predictionResponse = await axios.post(
-        "http://127.0.0.1:8001/predict/",
+      const predictionResponse = await api.post(
+        "http://127.0.0.1:8000/predict/",
         { date: date.format("MMDD") }, // Format date as MMDD before sending
         {
           headers: {
@@ -36,8 +36,8 @@ function LeavePredictionchart() {
       setPrediction(predictionResponse.data.predicted_attendance.toFixed(0)); // Rounded to 2 decimal places
       setError(null);
 
-      const chartResponse = await axios.post(
-        "http://127.0.0.1:8001/predict/chart/",
+      const chartResponse = await api.post(
+        "http://127.0.0.1:8000/predict/chart/",
         { date: date.format("MMDD") }, // Format date as MMDD before sending
         {
           headers: {
@@ -79,12 +79,12 @@ function LeavePredictionchart() {
           </DemoContainer>
         </LocalizationProvider>
         <div class="emp-pred-btn">
-        <button className=" buttn-hrpredic" onClick={handlePredictClick}>
-          Predict
-        </button>
+          <button className=" buttn-hrpredic" onClick={handlePredictClick}>
+            Predict
+          </button>
+        </div>
       </div>
-      </div>
-      
+
       {error && <div className="error_a">{error}</div>}
       {prediction !== null && (
         <div class="prediceted-emp-att">
@@ -96,15 +96,16 @@ function LeavePredictionchart() {
       )}
       <div class="leave-chart-emp">
         <div className="modm1">
-          <p className="container123-title">Predicted Attandance Chart That Week</p>
+          <p className="container123-title">
+            Predicted Attandance Chart That Week
+          </p>
         </div>
         <div className="leave-chart-emp1">
-        <LeaveChart 
-          xArray={chartData.map((data) => data.date)}
-          yArray={chartData.map((data) => data.predicted_attendance)}
-        />
+          <LeaveChart
+            xArray={chartData.map((data) => data.date)}
+            yArray={chartData.map((data) => data.predicted_attendance)}
+          />
         </div>
-        
       </div>
     </div>
   );

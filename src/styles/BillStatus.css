@@ -7,8 +7,12 @@
     padding: 20px;
     margin-left: 470px;
     margin-bottom: 50px;
+    transition: width 0.3s ease; /* Add transition for smooth width change */
 }
 
+.bill-status-container.with-delete {
+    width: 900px; /* Adjusted width when delete button is visible */
+}
 .bill-status-title {
     color: #02936F;
     border-radius: 50px;

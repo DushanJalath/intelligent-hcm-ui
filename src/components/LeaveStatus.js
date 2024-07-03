@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../styles/leavestatus.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 function LeaveStatus(props) {
     const [currentPage, setCurrentPage] = useState(1);
@@ -25,7 +27,7 @@ function LeaveStatus(props) {
         }
 
         fetchLeaveStatus();
-    }, []);
+    }, [leaves]); // Add leaves as a dependency
 
     // Calculate total pages
     const totalPages = Math.ceil(leaves.length / leavesPerPage);
@@ -45,6 +47,22 @@ function LeaveStatus(props) {
     // Calculate the index of the first and last leave card to display on the current page
     const startIndex = (currentPage - 1) * leavesPerPage;
     const endIndex = Math.min(startIndex + leavesPerPage, leaves.length);
+
+    const handleDelete = async (billId) => {
+        try {
+            const accessToken = localStorage.getItem('token');
+            await axios.delete(`http://127.0.0.1:8000/leave/${billId}`, {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                }
+            });
+            // Remove the deleted bill from state
+            setLeaves(leaves.filter(leave => leave.leave_id !== billId));
+            console.log(`Successfully deleted bill with ID ${billId}`);
+        } catch (error) {
+            console.error(`Error deleting bill with ID ${billId}:`, error);
+        }
+    };
 
     return (
         <div className='leave-status-container'>
@@ -75,6 +93,12 @@ function LeaveStatus(props) {
                             <p className="leave-label">Status:</p>
                             <p className={`status-leave-value ${leave.status.toLowerCase()}`}>{leave.status}</p>
                         </div>
+                        {leave.status.toLowerCase() === 'pending' && (
+                            <button className="delete-button"
+                                onClick={() => handleDelete(leave.leave_id)}>
+                                <FontAwesomeIcon icon={faTrash} className="text-red-500" fontSize={'25px'} />
+                            </button>
+                        )}
                     </div>
                 ))
             )}
@@ -82,10 +106,10 @@ function LeaveStatus(props) {
                 <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
                     <button onClick={handlePreviousPage} style={{ marginRight: '10px' }} disabled={currentPage === 1}>Previous</button>
                     {[...Array(totalPages).keys()].map((page) => (
-                        <button 
-                            key={page + 1} 
-                            onClick={() => handlePageChange(page + 1)} 
-                            style={{ marginRight: '10px' }} 
+                        <button
+                            key={page + 1}
+                            onClick={() => handlePageChange(page + 1)}
+                            style={{ marginRight: '10px' }}
                             className={`pagination-button ${currentPage === page + 1 ? 'active' : ''}`}
                         >
                             {page + 1}

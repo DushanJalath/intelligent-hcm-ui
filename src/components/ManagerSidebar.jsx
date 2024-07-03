@@ -58,7 +58,7 @@ const Sidebar = () => {
             menus: ["View job vacancies", "Request job vacancy"],
         },
         {
-            name: "Clam Bills",
+            name: "Claim Bills",
             icon: AiOutlinePlusCircle,
             menus: ["Send Bill", "Bill Status"],
         }

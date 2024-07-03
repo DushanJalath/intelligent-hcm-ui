@@ -1,0 +1,65 @@
+.container-contact-us-table {
+    margin-top: 50px;
+    margin-left: 25%;
+    width: 70%;
+    background-color: #00000017; 
+    border-radius: 10px;
+    position: relative;
+    padding: 20px;
+}
+
+.title-contact-us {
+    color: #02936F;
+    border-radius: 50px;
+    text-align: left;
+    font-weight: 800;
+    font-size: large;
+}
+
+.contactusTable {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.contactusTable th, .contactusTable td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+    vertical-align: top;
+    max-width: 200px;
+    word-wrap: break-word;
+}
+
+.contactusTable th {
+    background-color: #2f302f;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.contactusTable tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.contactusTable tr:hover {
+    background-color: #ddd;
+}
+
+.contactusTable button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #02936F;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.contactusTable span {
+    color: green;
+}
+
+.contactusTable td:last-child {
+    text-align: center;
+}

@@ -3,7 +3,7 @@
 .chatbot {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 80vh;
     max-width: 600px;
     margin: 0 auto;
     border: 1px solid #ccc;
@@ -51,16 +51,16 @@
     margin-right: 10px;
   }
   
-  button {
+  .button-chatbot {
     padding: 10px 20px;
     border: none;
-    background-color: #007bff;
+    background-color: #02936F;
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
   }
   
-  button:hover {
-    background-color: #0056b3;
+  .button-chatbot {
+    background-color: #09cc9b;
   }
   

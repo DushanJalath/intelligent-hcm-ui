@@ -15,7 +15,9 @@ export default function StaffFormPage() {
             {userType === 'Employee' && <Sidebar/>}
             {userType === 'Manager' && <ManagerSidebar/>}   
             {userType === 'HR' && <HRSidebar/>}   
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
             <StaffForm title="Apply for Vacancy" vacancy_id={vacancy_id} /> {/* Pass vacancy_id as a prop */}
+            </div>
         </div>
     );
 }

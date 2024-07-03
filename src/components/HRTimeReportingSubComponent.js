@@ -21,7 +21,7 @@ const HRTimeReportingSubComponent=(props)=>{
         )
     }
     return (
-        <div className="sub-container">
+        <div className="hr-time-report-sub-container">
             <div className="title">
                 {props.title}
             </div>

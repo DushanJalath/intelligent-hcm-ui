@@ -5,6 +5,8 @@ import LoginPage from "../src/pages/LoginPage";
 import TimeAndReportingPage from "../src/commonPages/TimeAndReportingPage";
 import OverTimetrackingPage from "../src/commonPages/OverTimetrackingPage";
 import ViewIndividualAttendancePage from "../src/commonPages/ViewIndividualAttendancePage";
+import EmployeeViewIndividualAttendancePage from "../src/employeePages/IndividualEmployeeViewAttendancePage"
+import ManagerViewIndividualAttendancePage from "../src/managerPages/IndividualManagerViewAttendancePage"
 import RequestLeavePage from "../src/commonPages/RequestLeavePage"; //CSS conflict with Login Page
 // import ViewAttendancePage from "./employeePages/ViewAttendancePage";
 import AddBillsPage from "../src/commonPages/AddBillsPage";
@@ -36,6 +38,10 @@ import LeaveCountPage from './commonPages/LeaveCountPage'
 import LeaveReportPage from './hrPages/LeaveReportPage'
 import StaffFormPage from './commonPages/StaffFormPage'
 import ManagerLeaveRequest from './managerPages/ManagerLeaveRequest'
+import InterviewDetailsPage from './hrPages/InterviewDetailsPage'
+import ContactUsPage from './pages/ContactUsPage'
+import ContactPage from './hrPages/ContactPage'
+
 
 const App = () => {
   return (
@@ -47,21 +53,22 @@ const App = () => {
                     <Route path="/login" element={<LoginPage/>} />
                     <Route path="/logout" element={<LoginPage/>} />
                     <Route path="/land" element={<LandingPage/>} />
+                    <Route path="/contact" element={<ContactUsPage/>} />
                                       
                     {/* Employees Pages */}
                     <Route path="/time and reporting" element={<TimeAndReportingPage/>} />
-                    <Route path="/Absence Management/View Attandance" element={<ViewIndividualAttendancePage/>} />
+                    <Route path="/Absence Management/View Attandance" element={<EmployeeViewIndividualAttendancePage/>} />
                     <Route path="/Absence Management/Request Leave" element={<RequestLeavePage/>} />
                     <Route path="/Absence Management/Leave Status" element={<EmpLeaveStatusPage/>} /> 
                     <Route path="/over time tracking" element={<OverTimetrackingPage/>} />
                     <Route path="/Job Details" element={<JobVacancyDetailsPage/>} />
                     <Route path="/staff-submit-form" element={<StaffFormPage/>} />
-                    <Route path="/Clam Bills/Send Bill" element={<AddBillsPage/>} />
-                    <Route path="/Clam Bills/Bill Status" element={<BillStatusPage/>} />
+                    {/* <Route path="/Clam Bills/Send Bill" element={<AddBillsPage/>} /> */}
+                    <Route path="/Claim Bills/Bill Status" element={<BillStatusPage/>} />
 
                     {/* Managers Routes */}
                     <Route path="/time and reporting" element={<TimeAndReportingPage/>} />
-                    <Route path="/Absence Management/View Attandance" element={<ViewIndividualAttendancePage/>} />
+                    <Route path="/Absence Management/View Attandance" element={<ManagerViewIndividualAttendancePage />} />
                     <Route path="/Absence Management/Employees Attendances" element={<EmployeesAttendances/>} />
                     <Route path="/Absence Management/Manager Request Leave" element={<ManagerLeaveRequest/>} />
                     <Route path="/Absence Management/Leave Status" element={<LeaveStatusPage/>} /> 
@@ -69,8 +76,7 @@ const App = () => {
                     <Route path="/Leave Prediction" element={<EmployeesLeavePredictionPage/>} /> 
                     <Route path="/Job Vacancies/View job vacancies" element={<JobVacancyDetailsPage/>} /> 
                     <Route path="/Job Vacancies/Request job vacancy" element={<RequestVacancyPage/>} />
-                    <Route path="/Clam Bills/Send Bill" element={<AddBillsPage/>} />
-
+                    <Route path="/Claim Bills/Send Bill" element={<AddBillsPage/>} />
 
                     {/* HR Routes */}
                     <Route path="/Time Reporting/Employees" element={<TimeAndReportingPageEmp/>} />
@@ -86,10 +92,12 @@ const App = () => {
                     <Route path="/Job Vacancies/Add Job Vacancy" element={<AddJobVacancyPage/>} />
                     <Route path="/Job Vacancies/Vacancy Requests" element={<ApproveJobVacancypage/>} />
                     <Route path="/Job Vacancies/View Job Vacancies" element={<JobVacancyDetailsPage/>} />
+                    <Route path="/Candidates/New Candidate Details" element={<CandidateApplyPage/>} />
+                    <Route path="/Candidates/Interview Details" element={<InterviewDetailsPage/>} />
                     <Route path="/manage bills" element={<ApproveBillsPage/>} />
                     <Route path="/register" element={<UserRegPage/>} />
-                    <Route path="/candidates" element={<CandidateApplyPage/>} /> 
-
+                    <Route path="/contactTable" element={<ContactPage/>} />
+     
                     {/* candidate */}
                     <Route path="/candidate-job-vacancy-details" element={<CandidateJobVacancyDetailsPage/>} /> 
                     <Route path="/candidate-submit-form" element={<CandidateSubmitFormPage/>} /> 

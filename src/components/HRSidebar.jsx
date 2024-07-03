@@ -10,7 +10,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import { IoMdPie } from "react-icons/io";
 import { IoCalendarOutline } from "react-icons/io5";
 import { FiFile } from "react-icons/fi";
-import { FaUserPlus, FaUsers } from "react-icons/fa"
+import { FaUserPlus, FaUsers, FaComments } from "react-icons/fa"
 import { RiBillLine } from "react-icons/ri";
 import "../styles/Sidebar.css";
 import api from '../api.js'
@@ -42,6 +42,9 @@ const Sidebar = () => {
         fetchData();
     }, [location]);
 
+
+    
+
     const [toggleState, setToggleState] = useState(true);
     useLocation();
 
@@ -70,6 +73,11 @@ const Sidebar = () => {
             name: "Job Vacancies",
             icon: FiFile,
             menus: ["Add Job Vacancy", "Vacancy Requests","View Job Vacancies"],
+        },
+        {
+            name: "Candidates",
+            icon: FaUsers,
+            menus: ["New Candidate Details", "Interview Details"],
         }
     ];
 
@@ -144,9 +152,9 @@ const Sidebar = () => {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to={"/candidates"} className="link">
-                                <FaUsers size={23} className="min-w-max"/>
-                               Candidates
+                            <NavLink to={"/contactTable"} className="link">
+                                <FaComments size={23} className="min-w-max"/>
+                               Feedbacks
                             </NavLink>
                         </li>
 

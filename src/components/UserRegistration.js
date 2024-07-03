@@ -13,7 +13,7 @@ function UserRegistration(props) {
     const [position, setPosition] = useState('');
     const [employeeType, setEmployeeType] = useState('Employee'); // Set a default value
     const [profilePic, setProfilePic] = useState(null);
-    const [manager, setManager] = useState(null); // Initialize manager state to null
+    const [manager, setManager] = useState(''); // Initialize manager state to an empty string
     const [managers, setManagers] = useState([]); // State to store the list of managers
     const [alertMessage, setAlertMessage] = useState('');
     const [alertClass, setAlertClass] = useState('');
@@ -35,8 +35,8 @@ function UserRegistration(props) {
     };
 
     const handleManagerChange = (e) => {
-        const selectedManager = managers.find(manager => manager.fName === e.target.value);
-        setManager(selectedManager ? selectedManager.user_email : null);
+        const selectedManager = managers.find(manager => manager.user_email === e.target.value);
+        setManager(selectedManager ? selectedManager.user_email : '');
     };
 
     const handleConfirmPassword = (e) => {
@@ -98,7 +98,7 @@ function UserRegistration(props) {
         }
         formData.append('manager', manager);
 
-        console.log(formData)
+        console.log(formData);
 
         try {
             const accessToken = localStorage.getItem('token');
@@ -120,9 +120,10 @@ function UserRegistration(props) {
             setEmail('');
             setPassWord('');
             setCPassWord('');
-            setEmployeeType('');
+            setPosition('');
             setProfilePic(null);
-            setEmployeeType('');
+            setEmployeeType('Employee');
+            setManager('');
 
         } catch (error) {
             const errorMessage = error.response?.data?.message || 'An error occurred';
@@ -181,7 +182,7 @@ function UserRegistration(props) {
                         <select id="manager" name="manager" value={manager || ''} onChange={handleManagerChange}>
                             <option value="">None</option>
                             {managers.map((manager) => (
-                                <option key={manager.user_email} value={manager.fName}>
+                                <option key={manager.user_email} value={manager.user_email}>
                                     {manager.fName}
                                 </option>
                             ))}
@@ -205,32 +206,8 @@ function UserRegistration(props) {
                     </div>
                 )}
             </form>
-
         </div>
-
-        <div className="user-reg-grp">
-          <label>Address : </label>
-          <input
-            type="text"
-            placeholder="Address"
-            value={address}
-            onChange={handleAddressChange}
-          />
-        </div>
-        <div className="user-reg-grp">
-          <label>Profile Picture : </label>
-          <input type="file" onChange={handleProfilePicChange} />
-        </div>
-
-        <button type="submit" className="submit">
-          Submit
-        </button>
-        {alertMessage && (
-          <div className={`alert ${alertClass}`}>{alertMessage}</div>
-        )}
-      </form>
-    </div>
-  );
+    );
 }
 
 export default UserRegistration;

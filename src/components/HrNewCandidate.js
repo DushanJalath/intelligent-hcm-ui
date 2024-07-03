@@ -145,6 +145,7 @@ export default function HrNewCandidate(props) {
                     <HrNewCandidateStatusButton
                       onStatusChange={handleStatusChange}
                       id={row3.c_id}
+                      email={row3.email}
                       endpointUrl="/update_candidate/{id}"
                     />
                   </StyledTableCell>

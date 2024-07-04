@@ -25,7 +25,7 @@ function LeavePredictionchart() {
     try {
       const accessToken = localStorage.getItem("token");
       const predictionResponse = await api.post(
-        "http://127.0.0.1:8000/predict/",
+        "/predict/",
         { date: date.format("MMDD") }, // Format date as MMDD before sending
         {
           headers: {
@@ -37,7 +37,7 @@ function LeavePredictionchart() {
       setError(null);
 
       const chartResponse = await api.post(
-        "http://127.0.0.1:8000/predict/chart/",
+        "/predict/chart/",
         { date: date.format("MMDD") }, // Format date as MMDD before sending
         {
           headers: {

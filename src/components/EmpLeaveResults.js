@@ -31,7 +31,7 @@ function EmpLeaveResults() {
   return (
     <div className="container123">
       <div className="container123-menu">
-        <p className="container123-title">Leaves Result</p>
+        <p className="container123-title">Today Leaves Result</p>
       </div>
       <div className="blockemp">
         <div className="dataemp">

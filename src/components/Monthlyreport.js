@@ -1,23 +1,47 @@
-import Monrep from '../styles/Monthlyreport.module.css'
+import '../styles/Monthlyreport.css'
 import Printer from '../assets/printer.png';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
 
 
 function Frame(props) {
-    return(
-        <div className={Monrep.container}>
-            <div className={Monrep.title}>{props.title}</div>
-            <div className={Monrep.content}>
-                <div className={Monrep.content1}>
-                Monthly Total Time :  02.10.30 (hr:min:sec)
-                <p>Payment per hour    :  2$</p>
-                </div>
-            <div className={Monrep.content2}>
-            Total Overtime payment :<br/> 5$
-            </div>
-            </div>
-            <img className={Monrep.img} src={Printer}></img>
+    const [data, setData] = useState({total_OT: '',pay_per_hour: 0,total_payment: 0});
+    useEffect(() => {
+        const fetchAttendanceData = async () => {
+            const token = localStorage.getItem('token');
 
+            try {
+                const response = await axios.get('http://127.0.0.1:8000/get_monthly_report', {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+                setData(response.data);
+            
+                console.log(response.data)
+            } catch (error) {
+                console.error('Error fetching attendance data:', error);
+            }
+        };
+        fetchAttendanceData();
+    }, []);
+
+    return(
+        <div className="monthly-report-container">
+            <div className="monthly-report-title">{props.title}</div>
+            <div className="monthly-report-content">
+                <div className="monthly-report-content1">
+                Monthly Total Time :  {data.total_OT} (hr:min:sec)
+                <p>Payment per hour     :  {data.pay_per_hour}$</p>
+                </div>
+            <div className="monthly-report-content2">
+            Total Overtime payment :<br/> {data.total_payment}$
+            </div>
+            </div>
+            {/*<button>
+            <img className="monthly-report-img" src={Printer}></img>
+            </button>*/}
 
 
 

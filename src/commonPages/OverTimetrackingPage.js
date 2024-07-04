@@ -1,8 +1,7 @@
 import Monthlyreport from "../components/Monthlyreport.js"
-import Overtimecount from "../components/Overtimecount.js"
 import Totalovertime from "../components/Totalovertime.js"
 import TimeAndDate from "../components/TimeAndDate.js"
-import "../styles/employeeOvertimeTrackingPage.css"
+import "../styles/OvertimeTrackingPage.css"
 import Sidebar from "../components/Sidebar";
 import ManagerSidebar from "../components/ManagerSidebar";
 import buttonImage from "../assets/bot.png";
@@ -27,14 +26,13 @@ export default function OverTimetrackingPage (){
             {userType === 'Employee' && <Sidebar/>}
             {userType === 'Manager' && <ManagerSidebar/>}
 
-            <div className="column1">
+            <div className="overtime-tracking-main-content">
+                <div className="overtime-tracking-content-1">
                 <TimeAndDate title="Time and Date"/>
-                <Overtimecount title="Overtime count"/>
-                <Totalovertime title="Remainings Overtime"/>
-                <Totalovertime title="Total Overflow"/>
-            </div>
-
-            <div className="column2">
+                <Totalovertime title="Remainings Overtime" url="http://127.0.0.1:8000/get_remaining_overtime"/>
+                <Totalovertime title="Total Overtime" url="http://127.0.0.1:8000/get_total_overtime"/>
+                </div>
+           <div className="overtime-tracking-content-2">
                 <Monthlyreport title="Monthly report"/>
             </div>
             <div className='chat-bot-icon'>
@@ -69,6 +67,7 @@ export default function OverTimetrackingPage (){
                     <Chatbot />
                 </Modal>
             </div>
+        </div>
         </div>
     )
 }

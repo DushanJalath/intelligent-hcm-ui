@@ -1,0 +1,48 @@
+.monthly-report-container{
+    font-family: 'Inter', sans-serif;
+    margin-top: 50px;
+    margin-left: 0px;
+    margin-bottom: 60px;
+    width: 410px;
+    background-color: #00000017; 
+    border-radius: 10px;
+    position: relative;
+    padding: 20px;
+    height:380px;
+    
+  }
+.monthly-report-title{
+    color: #02936F;
+    border-radius: 50px;
+    text-align: left;
+    font-weight: 800;
+    font-size: large;
+}
+
+.monthly-report-content{
+    position: absolute;
+    top:20px;
+    margin-top:40px;
+    font-size: 20px;
+    font-family: 'Inter', sans-serif;
+    padding:10px;
+    
+}
+.monthly-report-content1{
+    
+    font-size: 18px;
+}
+.monthly-report-content2{
+    margin-top: 40px;
+    font-size:30px;
+    font-weight: bold;
+    
+}
+/*.monthly-report-img{
+    height: 100px;
+    margin-right: 0px;
+    position:absolute;
+    bottom:0px;
+    right:0px;
+    
+}*/

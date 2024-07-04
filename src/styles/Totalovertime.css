@@ -1,0 +1,41 @@
+.total-overtime-container{
+    font-family: 'Inter', sans-serif;
+    margin-top: 50px;
+    margin-left: 0px;
+    margin-bottom: 60px;
+    width: 430px;
+    background-color: #00000017; 
+    border-radius: 10px;
+    position: relative;
+    padding: 15px;
+    height:100px;
+    
+  }
+.total-overtime-title{
+    color: #02936F;
+    border-radius: 50px;
+    text-align: left;
+    font-weight: 800;
+    font-size: large;
+
+}
+
+.total-overtime-content{
+    position:absolute;
+    padding:0px;
+    top:15px;
+    margin: 25px 10px;
+    font-family: 'Inter', sans-serif;
+    display:flex;
+    align-items: center;
+}
+
+#total-overtime-time1{
+    margin-left: 90px;
+    padding-left: 0px;
+    font-weight: bold;
+    font-size: 30px;
+}
+#total-overtime-time2{
+    font-size: 15px;
+}

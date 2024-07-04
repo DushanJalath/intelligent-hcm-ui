@@ -53,7 +53,7 @@ const HRTrackOT = ({userType}) => {
                     <div key={rowIndex} className="ot-row">
                         {currentData.slice(rowIndex * 3, rowIndex * 3 + 3).map((data, colIndex) => (
                             <div key={colIndex} className="ot-chart-container">
-                                <NameTag name={data.name} role={data.role} />
+                                <NameTag name={data.name} role={data.role} dp={data.dp} />
                                 <HROTChart values={[data.completed, data.remaining]} />
                             </div>
                         ))}

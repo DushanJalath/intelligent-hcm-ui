@@ -1,15 +1,14 @@
 import React from "react";
-import profile_picture from "../assets/profile_picture.webp"
 import '../styles/NameTag.css';
 
 const NameTag = (props) => {
-    const {name,role}=props;
+    const {name,role,dp}=props;
     
     return (
         <div className="name-tag-container">
             <div className="name-tag">
                 <div className="profile rounded-full overflow-hidden">
-                    <img src={profile_picture}
+                    <img src={dp}
                     width={45}
                     alt=""
                     className="rounded-full"
@@ -22,13 +21,11 @@ const NameTag = (props) => {
                         <div className="name-tag-name">
                         <span className="text-xl whitespace-pre">
                             {name}
-                            {/*{employeeDetails.name}*/}
                         </span> 
                         </div>
                         <div className="name-tag-role">
                         <span className="text-sm text-gray-500">
                             {role}
-                            {/*{employeeDetails.role}*/}
                         </span>
                         </div>
                     </>

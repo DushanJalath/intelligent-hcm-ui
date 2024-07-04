@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import '../styles/BillStatus.css';
 import { AiOutlineFileText } from 'react-icons/ai';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 function BillStatus(props) {
     const [currentPage, setCurrentPage] = useState(1);
@@ -42,9 +44,27 @@ function BillStatus(props) {
         setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
     };
 
+    
+
     // Calculate the index of the first and last bill card to display on the current page
     const startIndex = (currentPage - 1) * billsPerPage;
     const endIndex = Math.min(startIndex + billsPerPage, billDetails.length);
+
+    const handleDelete = async (billId) => {
+        try {
+            const accessToken = localStorage.getItem('token');
+            await axios.delete(`http://127.0.0.1:8000/bill/${billId}`, {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                }
+            });
+            // Remove the deleted bill from state
+            setBillDetails(billDetails.filter(bill => bill.bill_id !== billId));
+            console.log(`Successfully deleted bill with ID ${billId}`);
+        } catch (error) {
+            console.error(`Error deleting bill with ID ${billId}:`, error);
+        }
+    };
 
     return (
         <div className='bill-status-container'>
@@ -79,6 +99,12 @@ function BillStatus(props) {
                                 <p className="bill-label">Status:</p>
                                 <p className={`status-bill-value ${bill.status.toLowerCase()}`}>{bill.status}</p>
                             </div>
+                            {bill.status.toLowerCase() === 'pending' && (
+                                <button className="delete-button"
+                                onClick={() => handleDelete(bill.bill_id)}>
+                                <FontAwesomeIcon icon={faTrash} className="text-red-500" fontSize={'25px'}/>
+                            </button>
+                            )}
                         </div>
                     ))}
                     <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>

@@ -75,10 +75,7 @@ const App = () => {
                 path="/time and reporting"
                 element={<TimeAndReportingPage />}
               />
-              <Route
-                path="/Absence Management/View Attendance"
-                element={<EmployeeViewIndividualAttendancePage />}
-              />
+ <Route path="/Absence Management/View Attendance" element={<EmployeeViewIndividualAttendancePage/>} />
               <Route
                 path="/Absence Management/Request Leave"
                 element={<RequestLeavePage />}
@@ -151,14 +148,8 @@ const App = () => {
           {/* Routes for HR */}
           {userType === "HR" && (
             <>
-              <Route
-                path="/Time Reporting/Employees"
-                element={<TimeAndReportingPageEmp />}
-              />
-              <Route
-                path="/Time Reporting/Managers"
-                element={<TimeAndReportingPageManager />}
-              />
+                    <Route path="/Time Reporting/Employees" element={<TimeAndReportingPageEmp/>} />
+                    <Route path="/Time Reporting/Managers" element={<TimeAndReportingPageManager/>} /> 
               <Route
                 path="/Absence Management/Set Leave Count"
                 element={<LeaveCountPage />}

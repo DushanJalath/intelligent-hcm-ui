@@ -4,12 +4,15 @@ import Sidebar from "../components/Sidebar.jsx";
 import '../styles/individualEmployeeViewAttendancePage.css'
 import WeeklyViewAttendanceBarchart from '../components/WeeklyViewAttendanceBarchart.js'
 import YearlyWorkHourBarchart from '../components/YearlyWorkHourBarchart.js'
+import ManagerSidebar from '../components/ManagerSidebar';
 
 export default function ViewAttendancePage (){
+  const userType = localStorage.getItem('userType');
   return (
     <div className="app-container">
       <div className="navbar">
-            <Sidebar/>
+      {userType === 'Employee' && <Sidebar />}
+      {userType === 'Manager' && <ManagerSidebar/>}  
       </div>
       <div className="main-content">
               <div className="main-content-firstrow">

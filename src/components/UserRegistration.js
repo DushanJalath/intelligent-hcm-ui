@@ -11,12 +11,14 @@ function UserRegistration(props) {
     const [password, setPassWord] = useState('');
     const [cPassword, setCPassWord] = useState('');
     const [position, setPosition] = useState('');
-    const [employeeType, setEmployeeType] = useState('Employee'); // Set a default value
+    const [employeeType, setEmployeeType] = useState('Manager'); // Set a default value
     const [profilePic, setProfilePic] = useState(null);
     const [manager, setManager] = useState(''); // Initialize manager state to an empty string
     const [managers, setManagers] = useState([]); // State to store the list of managers
     const [alertMessage, setAlertMessage] = useState('');
     const [alertClass, setAlertClass] = useState('');
+    const [maxOT, setMaxOT] = useState('');
+    const [otRate, setOtRate] = useState('');
 
     useEffect(() => {
         const fetchManagers = async () => {
@@ -47,9 +49,17 @@ function UserRegistration(props) {
         setFirstName(e.target.value);
     };
 
+    const handleOtRateChange = (e) => {
+        setOtRate(e.target.value);
+    };
+
+    const handleMaxOTChange = (e) => {
+        setMaxOT(e.target.value);
+    };
+
     const handlePosition = (e) => {
         setPosition(e.target.value);
-    }
+    };
 
     const handleLastNameChange = (e) => {
         setLastName(e.target.value);
@@ -92,11 +102,13 @@ function UserRegistration(props) {
         formData.append('address', address);
         formData.append('user_pw', password);
         formData.append('user_type', employeeType);
-        formData.append('user_role', position);
+        formData.append('user_role', position ||'nul');
+        formData.append('max_ot', maxOT || 0);
+        formData.append('hourly_ot_rate', otRate || 0);        
         if (profilePic) {
             formData.append('profile_pic', profilePic);
         }
-        formData.append('manager', manager);
+        formData.append('manager', manager || 'null');
 
         console.log(formData);
 
@@ -168,26 +180,32 @@ function UserRegistration(props) {
                     <div className='user-reg-grp'>
                         <label htmlFor="employeeType">Select Employee Type : </label>
                         <select id="employeeType" name="employeeType" value={employeeType} onChange={handleTypeChange}>
-                            <option value="Employee">Employee</option>
                             <option value="Manager">Manager</option>
+                            <option value="Employee">Employee</option>
                             <option value="HR">HR</option>
                         </select>
-                    </div>
-                    <div className='user-reg-grp'>
-                        <label>Position : </label>
-                        <input type="text" placeholder='Position' value={position} onChange={handlePosition} />
-                    </div>
-                    <div className='user-reg-grp'>
-                        <label htmlFor="manager">Select Manager : </label>
-                        <select id="manager" name="manager" value={manager || ''} onChange={handleManagerChange}>
-                            <option value="">None</option>
-                            {managers.map((manager) => (
-                                <option key={manager.user_email} value={manager.user_email}>
-                                    {manager.fName}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
+                    </div>               
+                    {employeeType === 'Employee' && (
+                        <>
+                        <div className='user-reg-grp'>
+                            <label>Position : </label>
+                            <input type="text" placeholder='Position' value={position} onChange={handlePosition} />
+                        </div>
+                        <div className='user-reg-grp'>
+                            <label htmlFor="manager">Select Manager : </label>
+                            <select id="manager" name="manager" value={manager || ''} onChange={handleManagerChange}>
+                                <option value="">None</option>
+                                {managers.map((manager) => (
+                                    <option key={manager.user_email} value={manager.user_email}>
+                                        {manager.fName}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        
+                        </>
+                        
+                    )}
                 </div>
 
                 <div className='user-reg-grp'>
@@ -198,6 +216,19 @@ function UserRegistration(props) {
                     <label>Profile Picture : </label>
                     <input type="file" onChange={handleProfilePicChange} />
                 </div>
+                {(employeeType === 'Employee' || employeeType === 'Manager') &&
+                    <div className="user-reg-grp-container">
+                        <div className='user-reg-grp'>
+                            <label>Maximum OT Hours: </label>
+                            <input type="text" placeholder='Maximum OT Hours' value={maxOT} onChange={handleMaxOTChange} />
+                        </div>
+                        <div className='user-reg-grp'>
+                            <label>Hourly OT Rate: </label>
+                            <input type="text" placeholder='OT Rate' value={otRate} onChange={handleOtRateChange} />
+                        </div>
+                    </div>
+                }
+                
 
                 <button type="submit" className='submit'>Submit</button>
                 {alertMessage && (

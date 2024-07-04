@@ -12,7 +12,7 @@ function EmpLeaveResults() {
         console.log("Access Token:", accessToken);
 
         const response = await api.get(
-          "http://localhost:8000/predictResult",
+          "/predictResult",
           {
             headers: {
               Authorization: `Bearer ${accessToken}`,

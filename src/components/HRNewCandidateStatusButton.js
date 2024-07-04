@@ -10,7 +10,7 @@ import { set } from "date-fns";
 
 Modal.setAppElement('#root');
 
-export default function HrNewCandidateStatusButton({ onStatusChange, id, endpointUrl }) {
+export default function HrNewCandidateStatusButton({ onStatusChange, id,email, endpointUrl }) {
   const [status, setStatus] = useState(null);
   const [modalIsOpen,setModalIsOpen]= useState(false);
 
@@ -62,7 +62,7 @@ export default function HrNewCandidateStatusButton({ onStatusChange, id, endpoin
             </button>
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
               <button className="modal-close" onClick={closeModal} >X</button>
-            <SendEmail onEmailSent={()=>handleStatusChange('approved')} c_id={id}/>
+            <SendEmail onEmailSent={()=>handleStatusChange('approved')} c_id={id} c_email={email}/>
             </Modal>
             {/*<button className="img-button2" onClick={() => handleStatusChange("rejected")}>
               Reject

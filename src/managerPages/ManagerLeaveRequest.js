@@ -1,92 +1,95 @@
 import React, { useEffect, useState } from "react";
 import buttonImage from "../assets/bot.png";
 import Modal from "react-modal";
-import Chatbot from '../components/Chatbot.js';
+import Chatbot from "../components/Chatbot.js";
 import LeaveRequestForm from "../components/LeaveRequestForm";
 import RemainingLeaves from "../components/RemainingLeaves";
-import Sidebar from "../components/Sidebar";
-import ManagerSidebar from "../components/ManagerSidebar";
+
 import axios from "axios";
 
 export default function ManagerLeaveRequest() {
-    const userType = localStorage.getItem('userType');
-    const [modalIsOpen, setModalIsOpen] = useState(false);
-    const openModal = () => {
-        setModalIsOpen(true);
+  const userType = localStorage.getItem("userType");
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+  const [leaveCounts, setLeaveCounts] = useState({
+    SickLeaveCount: 0,
+    AnnualLeaveCount: 0,
+    CasualLeaveCount: 0,
+  });
+
+  useEffect(() => {
+    const fetchLeaveCounts = async () => {
+      try {
+        const accessToken = localStorage.getItem("token");
+        const response = await axios.get(
+          "http://localhost:8000/managers_remaning_leaves",
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (response.status === 200) {
+          setLeaveCounts(response.data);
+        } else {
+          throw new Error("Failed to fetch data");
+        }
+      } catch (error) {
+        console.error("Error fetching leave counts:", error);
+      }
     };
 
-    const closeModal = () => {
-        setModalIsOpen(false);
-    };
-    const [leaveCounts, setLeaveCounts] = useState({
-        SickLeaveCount: 0,
-        AnnualLeaveCount: 0,
-        CasualLeaveCount: 0
-    });
+    fetchLeaveCounts();
+  }, []);
 
-    useEffect(() => {
-        const fetchLeaveCounts = async () => {
-            try {
-                const accessToken = localStorage.getItem('token');
-                const response = await axios.get('http://localhost:8000/managers_remaning_leaves', {
-                    headers: {
-                        Authorization: `Bearer ${accessToken}`,
-                        'Content-Type': 'application/json'
-                    }
-                });
+  return (
+    <div>
+      <RemainingLeaves leaveCounts={leaveCounts} />
 
-                if (response.status === 200) {
-                    setLeaveCounts(response.data);
-                } else {
-                    throw new Error('Failed to fetch data');
-                }
-            } catch (error) {
-                console.error('Error fetching leave counts:', error);
-            }
-        };
-
-        fetchLeaveCounts();
-    }, []);
-
-    return (
-        <div>
-            {userType === 'Employee' && <Sidebar />}
-            {userType === 'Manager' && <ManagerSidebar />}
-            <RemainingLeaves leaveCounts={leaveCounts} />
-
-            <div className='chat-bot-icon'>
+      <div className="chat-bot-icon">
         <button className="round-button-chatbot" onClick={openModal}>
-            <img src={buttonImage} alt="Button" className="button-image-chatbot" />
+          <img
+            src={buttonImage}
+            alt="Button"
+            className="button-image-chatbot"
+          />
         </button>
-        <Modal 
-            isOpen={modalIsOpen} 
-            onRequestClose={closeModal}
-            style={{
-                content:{
-                    top: '50%',
-                    left: '40%',
-                    right: '20%',
-                    bottom: 'auto',
-                    marginRight: '100px',
-                    transform: 'translate(-50%, -50%)',
-                    width: '80%', // Adjusted width for better responsiveness
-                    maxWidth: '600px',
-                    height: '80vh', // Adjusted height to fit better in the viewport
-                    padding: '0', // Remove default padding
-                    border: 'none', // Remove default border
-                    borderRadius: '10px', // Match chatbot border-radius
-                    overflow: 'hidden' 
-                },
-                overlay: {
-                    backgroundColor: 'rgba(0, 0, 0, 0.5)' // Add overlay color
-                }
-        
-            }}
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          style={{
+            content: {
+              top: "50%",
+              left: "40%",
+              right: "20%",
+              bottom: "auto",
+              marginRight: "100px",
+              transform: "translate(-50%, -50%)",
+              width: "80%", // Adjusted width for better responsiveness
+              maxWidth: "600px",
+              height: "80vh", // Adjusted height to fit better in the viewport
+              padding: "0", // Remove default padding
+              border: "none", // Remove default border
+              borderRadius: "10px", // Match chatbot border-radius
+              overflow: "hidden",
+            },
+            overlay: {
+              backgroundColor: "rgba(0, 0, 0, 0.5)", // Add overlay color
+            },
+          }}
         >
-            <Chatbot />
+          <Chatbot />
         </Modal>
-        </div>
-            <LeaveRequestForm title="Request Leave" leaveCounts={leaveCounts} />
-        </div>
-    )
+      </div>
+      <LeaveRequestForm title="Request Leave" leaveCounts={leaveCounts} />
+    </div>
+  );
 }

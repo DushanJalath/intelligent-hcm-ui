@@ -7,6 +7,8 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import dayjs from "dayjs"; // Import dayjs library
+import Leavepiechart from "./Leavepiechart";
+import LeaveChartToday from "./LeaveChartToday";
 
 function LeavePredictionchart() {
   const [date, setDate] = useState(dayjs()); // Initialize with current date
@@ -89,15 +91,27 @@ function LeavePredictionchart() {
       {prediction !== null && (
         <div class="prediceted-emp-att">
           <h2 class="prediceted-emp-att-ph2">
-            Predicted Attendance&nbsp;:&nbsp;
+            Predicted Attendance On {date.format("MM/DD/YYYY")}&nbsp;:&nbsp;
           </h2>
           <p class="prediceted-emp-att-p">{prediction}</p>
+          <Leavepiechart values={[prediction, 200 - prediction]} class="leave-pie-chart"/>
         </div>
       )}
+      <div className="leave-charts-predict">
       <div class="leave-chart-emp">
         <div className="modm1">
-          <p className="container123-title">
-            Predicted Attandance Chart That Week
+          <p className="container123-title-3">
+          Predicted Attendance Chart for the Next Week Starting Today
+          </p>
+        </div>
+        <div className="leave-chart-emp1">
+          <LeaveChartToday></LeaveChartToday>
+        </div>
+      </div>
+      <div class="leave-chart-emp">
+        <div className="modm1">
+          <p className="container123-title-3">
+          Predicted Attendance up to a week from your selected date
           </p>
         </div>
         <div className="leave-chart-emp1">
@@ -106,6 +120,7 @@ function LeavePredictionchart() {
             yArray={chartData.map((data) => data.predicted_attendance)}
           />
         </div>
+      </div>
       </div>
     </div>
   );

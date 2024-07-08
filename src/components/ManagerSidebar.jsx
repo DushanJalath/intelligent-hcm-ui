@@ -50,7 +50,7 @@ const Sidebar = () => {
       icon: IoCalendarOutline,
       menus: [
         "View Attandance",
-        "Employees Attendances",
+        "Employees Attendance",
         "Manager Request Leave",
         "Leave Status",
       ],

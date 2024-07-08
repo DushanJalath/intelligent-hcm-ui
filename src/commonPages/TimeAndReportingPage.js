@@ -26,7 +26,7 @@ function TimeAndReportingPage() {
     <>
       <div className="time-report">
         <div className="timeDate">
-          <TimeAndDate title="Time and Date" />
+          <TimeAndDate />
         </div>
 
         <div className="todayWorkingHours">

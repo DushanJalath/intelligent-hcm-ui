@@ -1,185 +1,163 @@
 // InterviewDetails.js
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import '../styles/InterviewDetails.css';
-import api from '../api';
-import HRSidebar from '../components/HRSidebar';
-import { styled } from '@mui/material/styles';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Button from '@mui/material/Button';
-import sendEmailToInterviewer from './sendEmailToInterviewer';
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.head}`]: {
-    color: theme.palette.common.black,
-    fontFamily: 'Inter',
-    fontSize: '17px',
-    fontStyle: 'normal',
-    fontWeight: 800,
-    lineHeight: 'normal',
-    letterSpacing: '0.18px',
-  },
-  [`&.${tableCellClasses.body}`]: {
-    color: '#000',
-    fontFamily: 'Inter',
-    fontSize: '15px',
-    fontStyle: 'normal',
-    fontWeight: 600,
-    lineHeight: 'normal',
-    letterSpacing: '0.18px',
-  },
-}));
+const InterviewDetails = ({ title }) => {
+    const [interviews, setInterviews] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [currentPage, setCurrentPage] = useState(1);
 
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  '&:nth-of-type(odd)': {
-    backgroundColor: '#939393',
-  },
-  '&:last-child td, &:last-child th': {
-    border: 0,
-  },
-}));
+    useEffect(() => {
+        const fetchInterviews = async () => {
+            try {
+                const accessToken = localStorage.getItem('token'); // Adjust based on your authentication method
+                const response = await axios.get('http://localhost:8000/get_interviews', {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+                setInterviews(response.data);
+            } catch (error) {
+                setError('Failed to fetch interviews');
+            } finally {
+                setLoading(false);
+            }
+        };
 
-const InterviewDetails = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [interview, setInterview] = useState([]);
+        fetchInterviews();
+    }, []);
 
-  useEffect(() => {
-    const fetchInterviews = async () => {
-      try {
-        const accessToken = localStorage.getItem('token');
-        if (!accessToken) {
-          throw new Error('Access token not found');
+    const handleSendEmail = async (c_id) => {
+        try {
+            await axios.post('http://localhost:8000/send_email', { c_id });
+            alert('Email sent successfully!');
+        } catch (error) {
+            console.error('Error sending email:', error);
+            alert('Email sending failed. Please try again.');
         }
-
-        const response = await api.get('/get_interviews', {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        });
-
-        setInterview(response.data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-        // Handle error (e.g., show error message to user)
-      }
     };
 
-    fetchInterviews();
-  }, []);
+    const itemsPerPage = 10;
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = interviews.slice(indexOfFirstItem, indexOfLastItem);
+    const totalPages = Math.ceil(interviews.length / itemsPerPage);
 
-  const handleSendEmail = async (c_id) => {
-    try {
-      await sendEmailToInterviewer(c_id);
-      alert('Email sent successfully!');
-    } catch (error) {
-      console.error('Error sending email:', error);
-      alert('Email sending failed. Please try again.');
+    const handlePageChange = (newPage) => {
+        setCurrentPage(newPage);
+    };
+
+    const handlePreviousPage = () => {
+      setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
+    };
+  
+    const handleNextPage = () => {
+      setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
+    };
+
+    if (loading) {
+        return <div>Loading...</div>;
     }
-  };
 
-  const itemsPerPage = 10;
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = interview.slice(indexOfFirstItem, indexOfLastItem);
-  const totalPages = Math.ceil(interview.length / itemsPerPage);
+    if (error) {
+        return <div>{error}</div>;
+    }
 
-  const handlePageChange = (newPage) => {
-    setCurrentPage(newPage);
-  };
-
-  return (
-    <div className='interview-container4'>
-      <div className='title4'>Interview Details</div>
-      <div className='table-div'>
-        <TableContainer>
-          <Table sx={{ minWidth: 700 }} aria-label='customized table'>
-            <TableHead>
-              <TableRow sx={{ backgroundColor: '#02936f' }}>
-                <StyledTableCell align='center'>Interview ID</StyledTableCell>
-                <StyledTableCell align='center'>Candidate ID</StyledTableCell>
-                <StyledTableCell align='center'>Date</StyledTableCell>
-                <StyledTableCell align='center'>Time</StyledTableCell>
-                <StyledTableCell align='center'>Venue</StyledTableCell>
-                <StyledTableCell align='center'>Interviewer</StyledTableCell>
-                <StyledTableCell align='center'>Confirmed Date</StyledTableCell>
-                <StyledTableCell align='center'>Status</StyledTableCell>
-                <StyledTableCell align='center'>Actions</StyledTableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {currentItems.map((row) => (
-                <StyledTableRow key={row.ID}>
-                  <StyledTableCell align='center'>{row.i_id}</StyledTableCell>
-                  <StyledTableCell align='center'>{row.c_id}</StyledTableCell>
-                  <StyledTableCell align='center'>{row.date}</StyledTableCell>
-                  <StyledTableCell align='center'>{row.time}</StyledTableCell>
-                  <StyledTableCell align='center'>{row.venue}</StyledTableCell>
-                  <StyledTableCell align='center'>{row.interviewer_id}</StyledTableCell>
-                  <StyledTableCell align='center'>{row.confirmed_date}</StyledTableCell>
-                  <StyledTableCell align='center'>{row.result}</StyledTableCell>
-                  <StyledTableCell align='center'>
-                    <Button 
-                      sx={{
-                        width: '70px',
-                        height: '45px',
-                        borderRadius: '10px',
-                        backgroundColor: '#02936F',
-                        color: '#fff',
-                        fontSize: '11px',
-                        padding:'15px',
-                        '&:hover':{
-                          backgroundColor: '#02936F',}
-                        
-                      }}
-                      varient='contained'
-                      onClick={() => handleSendEmail(row.c_id)} // Pass necessary data to handleSendEmail function
-                    >
-                      Send Email
-                    </Button>
-                  </StyledTableCell>
-                </StyledTableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-
-        <nav aria-label='Page-navigation'>
-          <ul className='pagination'>
-            <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
-              <button
-                className={`page-link1 ${currentPage === 1 ? 'active-prev' : ''}`}
-                onClick={() => handlePageChange(currentPage - 1)}
-              >
-                Previous
-              </button>
-            </li>
-            {Array.from({ length: totalPages }, (_, index) => (
-              <li key={index} className={`page-item1 ${currentPage === index + 1 ? 'active' : ''}`}>
+    return (
+        <div className="interview-details-container">
+            <div className="interview-details-title">{title}</div>
+            {interviews.length === 0 ? (
+                <div>No interviews to show</div>
+            ) : (
+                <>
+                    <table className="interview-details-table">
+                        <thead>
+                            <tr>
+                                <th>I ID</th>
+                                <th>C ID</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Venue</th>
+                                <th>Interviewer</th>
+                                <th>Confirmed Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {currentItems.map((interview) => (
+                                <tr key={interview.ID}>
+                                    <td>{interview.i_id}</td>
+                                    <td>{interview.c_id}</td>
+                                    <td>{interview.date}</td>
+                                    <td>{interview.time}</td>
+                                    <td>{interview.venue}</td>
+                                    <td>{interview.interviewer_id}</td>
+                                    <td>{interview.confirmed_date}</td>
+                                    <td>{interview.result}</td>
+                                    <td>
+                                        <button
+                                            className="interview-details-button"
+                                            onClick={() => handleSendEmail(interview.c_id)}
+                                        >
+                                            Send Email
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                    <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginTop: "20px",
+            }}
+          >
+            <button
+              onClick={handlePreviousPage}
+              style={{ marginRight: "10px", fontWeight: 600 }}
+              disabled={currentPage === 1}
+            >
+              Previous
+            </button>
+            {[...Array(totalPages).keys()].map((page) => {
+              const isActive = currentPage === page + 1;
+              return (
                 <button
-                  className={`page-link ${currentPage === index + 1 ? 'active' : ''}`}
-                  onClick={() => handlePageChange(index + 1)}
+                  key={page + 1}
+                  onClick={() => handlePageChange(page + 1)}
+                  style={{
+                    marginRight: "10px",
+                    padding: "8px 16px",
+                    borderRadius: "25px",
+                    backgroundColor: isActive ? "#218838" : "#f0f0f0",
+                    color: isActive ? "white" : "black",
+                    fontWeight: isActive ? "900" : "normal",
+                    border: isActive ? "none" : "none",
+                    cursor: "pointer",
+                    transition: "background-color 0.3s",
+                  }}
                 >
-                  {index + 1}
+                  {page + 1}
                 </button>
-              </li>
-            ))}
-            <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
-              <button
-                className={`page-link1 ${currentPage === totalPages ? 'active-next' : ''}`}
-                onClick={() => handlePageChange(currentPage + 1)}
-              >
-                Next
-              </button>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  );
+              );
+            })}
+            <button
+              onClick={handleNextPage}
+              style={{ marginLeft: "10px", fontWeight: 600 }}
+              disabled={currentPage === totalPages}
+            >
+              Next
+            </button>
+          </div>
+                </>
+            )}
+        </div>
+    );
 };
 
 export default InterviewDetails;

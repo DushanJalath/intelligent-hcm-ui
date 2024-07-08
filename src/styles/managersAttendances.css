@@ -1,29 +1,33 @@
-.container-contact-us-table {
+.managers-attendances-container {
     margin-top: 50px;
-    margin-left: 25%;
-    width: 70%;
+    margin-left: 19%;
+    margin-bottom: 3%;
+    width: 40%;
+
     background-color: #00000017; 
     border-radius: 10px;
     position: relative;
     padding: 20px;
 }
 
-.title-contact-us {
+.managers-attendances-title {
     color: #02936F;
     border-radius: 50px;
     text-align: left;
     font-weight: 800;
     font-size: large;
+
 }
 
-.contactusTable {
+.managers-attendances-table {
     width: 100%;
     border-collapse: collapse;
     border-radius: 10px;
     overflow: hidden;
+    margin-top: 5%;
 }
 
-.contactusTable th, .contactusTable td {
+.managers-attendances-table th, .managers-attendances-table td {
     border: 1px solid #ccc;
     padding: 8px;
     text-align: left;
@@ -32,22 +36,23 @@
     word-wrap: break-word;
 }
 
-.contactusTable th {
-    background-color: #2f302f;
+.managers-attendances-table th {
+    background-color: #02936F;
     color: white;
     font-weight: bold;
     text-align: center;
+    padding: 20px;
 }
 
-.contactusTable tr:nth-child(even) {
+.managers-attendances-table tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-.contactusTable tr:hover {
+.managers-attendances-table tr:hover {
     background-color: #ddd;
 }
 
-.contactusTable button {
+.managers-attendances-table button {
     padding: 5px 10px;
     border: none;
     background-color: #02936F;
@@ -56,19 +61,22 @@
     border-radius: 5px;
 }
 
-.contactusTable span {
+.managers-attendances-table span {
     color: green;
 }
 
-.contactusTable td:last-child {
+.managers-attendances-table td:last-child {
     text-align: center;
 }
 
-
-.profile-pic {
+.managers-attendances-profile-pic {
     width: 50px; /* Adjust the size as needed */
     height: 50px; /* Adjust the size as needed */
     border-radius: 50%;
     object-fit: cover;
+    margin: auto; /* Center the image horizontally */
 }
 
+.managers-attendances-table td {
+    text-align: center; /* Center the content horizontally */
+}

@@ -1,4 +1,4 @@
-import ViewIndividualAttendance from "../commonPages/ViewIndividualAttendance.js";
+import EmployeesAttendances from "../commonPages/EmployeesAttendances";
 import { React, useState } from "react";
 import buttonImage from "../assets/bot.png";
 import Modal from "react-modal";
@@ -15,7 +15,7 @@ export default function ContactPage() {
   };
   return (
     <div>
-      <ViewIndividualAttendance title="Today's Staff Presence" />
+      <EmployeesAttendances title="Employee Attendance Today" />
       <div className="chat-bot-icon">
         <button className="round-button-chatbot" onClick={openModal}>
           <img

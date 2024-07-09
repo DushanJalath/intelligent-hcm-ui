@@ -58,7 +58,10 @@ const CalendarComponent = ({ title }) => {
           
   return (
     <div className='view-attendance-calender-container'>
-            <div className='view-attendance-calender-title'>{title}</div>
+                        <div className="managers-attendances-title">{title}</div>
+            <p className='requestLeavedescription'>
+            Overview of attendance patterns.
+            </p>
     <div>
         <Calendar tileClassName={tileClassName}  />
     </div>

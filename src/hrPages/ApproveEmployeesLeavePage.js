@@ -16,7 +16,7 @@ export default function ApproveEmployeesLeavePage() {
 
   return (
     <div>
-      <LeaveApproveEmployees />
+      <LeaveApproveEmployees title="Leave Request Approval"/>
       <div className="chat-bot-icon">
         <button className="round-button-chatbot" onClick={openModal}>
           <img

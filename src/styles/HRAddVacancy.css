@@ -9,6 +9,9 @@
     background: #EAEAEA;
     border-radius: 10px;
     position: relative;
+    padding-left: 20px;
+    padding-top: 20px;
+    margin-bottom: 10px;
 }
 
 .title-hrv{

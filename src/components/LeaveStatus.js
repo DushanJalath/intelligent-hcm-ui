@@ -144,7 +144,7 @@ function LeaveStatus(props) {
                   backgroundColor: isActive ? "#218838" : "#f0f0f0",
                   color: isActive ? "white" : "black",
                   fontWeight: isActive ? "900" : "normal",
-                  border: isActive ? "1px solid #0056b3" : "none",
+                  // border: isActive ? "1px solid #0056b3" : "none",
                   cursor: "pointer",
                   transition: "background-color 0.3s",
                 }}

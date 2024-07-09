@@ -44,7 +44,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-export default function RequestedVacancy(props) {
+export default function RequestedVacancy({title}) {
   const [vacancies, setVacancies] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -85,9 +85,10 @@ export default function RequestedVacancy(props) {
 
   return (
     <div className="container4">
-      <div className="title4">
-        <p className="title-para4">{props.title}</p>
-      </div>
+            <div className="title-contact-us">{title}</div>
+            <p className='requestLeavedescription'>
+                View the list of messages from the contact us form. HR can manage and respond to these messages efficiently.
+            </p>
       <div className="table-div">
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 700 }} aria-label="customized table">

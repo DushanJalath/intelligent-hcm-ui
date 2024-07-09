@@ -21,7 +21,6 @@ function SendBill(props) {
 
     const handleCategoryChange = (e) => {
         setCategory(e.target.value);
-        // Clear feedback message when category is filled
         if (feedbackMessage) {
             setFeedbackMessage('');
             setFeedbackColor('');

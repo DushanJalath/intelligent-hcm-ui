@@ -145,7 +145,9 @@ const ChartComponent = ({ title }) => {
 
     return (
         <div className='yearly-workhour-bar-container'>
-            <div className='yearly-workhour-bar-title'>{title}</div>
+                        <div className="managers-attendances-title">{title}</div>
+            <p className='requestLeavedescription'>
+            Overview of a user's total work hours for each month.</p>
             <Card sx={{ padding: 2, boxShadow: 3, width: 600, marginLeft: 'auto', marginRight: 'auto' }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
                     <IconButton onClick={() => handleYearChange(-1)} title="Previous Year" sx={{ color: '#02936F' }}>

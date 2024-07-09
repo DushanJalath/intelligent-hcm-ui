@@ -1,12 +1,14 @@
 // InterviewDetails.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import sendEmailToInterviewer from './sendEmailToInterviewer';
 import '../styles/InterviewDetails.css';
 
 const InterviewDetails = ({ title }) => {
     const [interviews, setInterviews] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [sentEmails, setSentEmails] = useState({}); 
     const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
@@ -32,7 +34,8 @@ const InterviewDetails = ({ title }) => {
 
     const handleSendEmail = async (c_id) => {
         try {
-            await axios.post('http://localhost:8000/send_email', { c_id });
+            await sendEmailToInterviewer(c_id);
+            setSentEmails((prev) => ({ ...prev, [c_id]: true }));
             alert('Email sent successfully!');
         } catch (error) {
             console.error('Error sending email:', error);
@@ -102,8 +105,9 @@ const InterviewDetails = ({ title }) => {
                                         <button
                                             className="interview-details-button"
                                             onClick={() => handleSendEmail(interview.c_id)}
+                                            disabled={sentEmails[interview.c_id]}
                                         >
-                                            Send Email
+                                            {sentEmails[interview.c_id] ? 'Email Sent' : 'Send Email'}
                                         </button>
                                     </td>
                                 </tr>

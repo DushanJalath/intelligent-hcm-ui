@@ -133,7 +133,7 @@ export default function HrNewCandidate(props) {
                   <StyledTableCell align="center">{row3.c_id}</StyledTableCell>
                   <StyledTableCell align="center">{row3.name}</StyledTableCell>
                   <StyledTableCell align="center">{row3.email}</StyledTableCell>
-                  <StyledTableCell align="center">{row3.score}</StyledTableCell>
+                  <StyledTableCell align="center">{row3.score} %</StyledTableCell>
                   <StyledTableCell align="center">
                     <HrVacancyStatusPdfIcon
                       endpointUrl="/download_cv"

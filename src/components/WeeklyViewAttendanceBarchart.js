@@ -15,9 +15,12 @@ const months = [
 const ChartComponent = ({ title }) => {
     const [dataObjects, setDataObjects] = useState([]);
     const [totalWorkHourToday, setTotalWorkHourToday] = useState("");
-    const [currentDate, setCurrentDate] = useState({
-        month: 4,  // April
-        year: 2023,
+    const [currentDate, setCurrentDate] = useState(() => {
+        const now = new Date();
+        return {
+            month: now.getMonth() + 1,  
+            year: now.getFullYear(),
+        };
     });
 
     useEffect(() => {

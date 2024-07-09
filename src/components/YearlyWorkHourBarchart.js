@@ -50,20 +50,22 @@ const ChartComponent = ({ title }) => {
     }, []);
 
    
-    const [currentDate, setCurrentDate] = useState({
-        year: 2023,
+    const [currentDate, setCurrentDate] = useState(() => {
+        const now = new Date();
+        return {
+            year: now.getFullYear(),
+        };
     });
 
-    // Filter data based on the current year
+    
     const filterData = () => {
         return dataObjects.filter(item => item.year === currentDate.year);
     };
 
-    // Prepare chart data for the current year
+
     const prepareChartData = () => {
         const filteredData = filterData();
 
-        // Aggregate hours by month
         const hoursByMonth = Array.from({ length: 12 }, (_, i) => {
             const month = i + 1;
             const dataForMonth = filteredData.find(item => item.month === month);
@@ -71,15 +73,15 @@ const ChartComponent = ({ title }) => {
         });
 
         return {
-            labels: months.slice(1), // Skip the empty first month
+            labels: months.slice(1), 
             datasets: [
                 {
                     label: 'Hours Worked',
                     data: hoursByMonth,
                     backgroundColor: '#02936F',
-                    borderColor: '#d3d3d3', // Grey border for the empty space
+                    borderColor: '#d3d3d3', 
                     borderWidth: 1,
-                    borderSkipped: false, // Ensure that the border color is applied to all sides of the bar
+                    borderSkipped: false, 
                 },
             ],
         };
@@ -121,7 +123,7 @@ const ChartComponent = ({ title }) => {
                     display: false,
                 },
                 min: 0,
-                max: Math.max(...data.datasets[0].data) + 1, // Adjust y-axis max value based on data
+                max: Math.max(...data.datasets[0].data) + 1, 
             },
         },
         elements: {
@@ -131,7 +133,7 @@ const ChartComponent = ({ title }) => {
         },
     };
 
-    // Handle year change
+    
     const handleYearChange = (direction) => {
         setCurrentDate((prevDate) => {
             const newYear = prevDate.year + direction;
@@ -140,7 +142,7 @@ const ChartComponent = ({ title }) => {
     };
 
     useEffect(() => {
-        // Optional: Perform any actions when currentDate changes
+        
     }, [currentDate]);
 
     return (

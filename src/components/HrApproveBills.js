@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/hrjobvacancystatus.css";
-import { useState } from "react";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -44,26 +43,22 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const itemsPerPages = 8;
+const itemsPerPage = 10;
 
-export default function HrApproveBills(props) {
+export default function HrApproveBills({ title }) {
   const [currentPage, setCurrentPage] = useState(1);
-  const [hrbills, sethrbills] = useState([]);
+  const [hrbills, setHrbills] = useState([]);
 
   useEffect(() => {
     const fetchBills = async () => {
       try {
         const accessToken = localStorage.getItem("token");
-        console.log("Access Token:", accessToken);
-        console.log("Request Headers:", {
-          Authorization: `Bearer ${accessToken}`,
-        });
         const response = await api.get("/get_hr_bills", {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
         });
-        sethrbills(response.data);
+        setHrbills(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -71,29 +66,36 @@ export default function HrApproveBills(props) {
     fetchBills();
   }, []);
 
-  const indexOfLastItem = currentPage * itemsPerPages;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPages;
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = hrbills.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(hrbills.length / itemsPerPage);
 
-  const totalPages = Math.ceil(hrbills.length / itemsPerPages);
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+  };
 
-  const handlePageChange4 = (newPage1) => {
-    setCurrentPage(newPage1);
+  const handlePreviousPage = () => {
+    setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
+  };
+
+  const handleNextPage = () => {
+    setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
   };
 
   const handleStatusChange = (id, newStatus) => {
-    // Update the status in your data structure (hrbills)
-    const updatedbills = hrbills.map((bill) => {
+    const updatedBills = hrbills.map((bill) => {
       return bill.bill_id === id ? { ...bill, status: newStatus } : bill;
     });
-    sethrbills(updatedbills);
+    setHrbills(updatedBills);
   };
 
   return (
     <div className="container6">
-      <div className="title6">
-        <p className="title-para6">{props.title}</p>
-      </div>
+      <div className="managers-attendances-title">{title}</div>
+      <p className="requestLeavedescription">
+        View the list of employees currently present today. HR can track real-time attendance and manage workforce availability efficiently.
+      </p>
       <div className="table-div2">
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -102,30 +104,24 @@ export default function HrApproveBills(props) {
                 <StyledTableCell align="center">Request ID</StyledTableCell>
                 <StyledTableCell align="center">Bill Category</StyledTableCell>
                 <StyledTableCell align="center">Submitted date</StyledTableCell>
-                <StyledTableCell align="center">
-                  Download Document
-                </StyledTableCell>
+                <StyledTableCell align="center">Download Document</StyledTableCell>
                 <StyledTableCell align="center">Action</StyledTableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {currentItems.map((row4) => (
-                <StyledTableRow key={row4.ID}>
-                  <StyledTableCell align="center">{row4.bill_id}</StyledTableCell>
+              {currentItems.map((row) => (
+                <StyledTableRow key={row.bill_id}>
+                  <StyledTableCell align="center">{row.bill_id}</StyledTableCell>
+                  <StyledTableCell align="center">{row.category}</StyledTableCell>
+                  <StyledTableCell align="center">{row.Date}</StyledTableCell>
                   <StyledTableCell align="center">
-                    {row4.category}
+                    <HrVacancyStatusPdfIcon endpointUrl="/get_bill_pdf" cvId={row.bill_id} filename="Employeebill" />
                   </StyledTableCell>
                   <StyledTableCell align="center">
-                    {row4.Date}
-                  </StyledTableCell>
-                  <StyledTableCell align="center">
-                    <HrVacancyStatusPdfIcon endpointUrl="/get_bill_pdf" cvId = {row4.bill_id} filename="Employeebill"/>
-                  </StyledTableCell>
-                  <StyledTableCell align="center">
-                  <HrJobVacancyStatusButtons
+                    <HrJobVacancyStatusButtons
                       onStatusChange={handleStatusChange}
-                      id={row4.bill_id}
-                      endpointUrl="/update_hr_bill/{id}"
+                      id={row.bill_id}
+                      endpointUrl={`/update_hr_bill/${row.bill_id}`}
                     />
                   </StyledTableCell>
                 </StyledTableRow>
@@ -134,51 +130,41 @@ export default function HrApproveBills(props) {
           </Table>
         </TableContainer>
 
-        <nav aria-label="Page-navigation">
-          <ul className="pagination">
-            <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
-              <button
-                className={`page-link1 ${
-                  currentPage === 1 ? "active-prev" : ""
-                }`}
-                onClick={() => handlePageChange4(currentPage - 1)}
-              >
-                Previous
-              </button>
-            </li>
-            {Array.from({ length: totalPages }, (_, index) => (
-              <li
-                key={index}
-                className={`page-item1 ${
-                  currentPage === index + 1 ? "active" : ""
-                }`}
-              >
-                <button
-                  className={`page-link ${
-                    currentPage === index + 1 ? "active" : ""
-                  }`}
-                  onClick={() => handlePageChange4(index + 1)}
-                >
-                  {index + 1}
-                </button>
-              </li>
-            ))}
-            <li
-              className={`page-item ${
-                currentPage === totalPages ? "disabled" : ""
-              }`}
+        <div style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
+          <button
+            onClick={handlePreviousPage}
+            style={{ marginRight: "10px", fontWeight: 600 }}
+            disabled={currentPage === 1}
+          >
+            Previous
+          </button>
+          {[...Array(totalPages).keys()].map((page) => (
+            <button
+              key={page + 1}
+              onClick={() => handlePageChange(page + 1)}
+              style={{
+                marginRight: "10px",
+                padding: "8px 16px",
+                borderRadius: "25px",
+                backgroundColor: currentPage === page + 1 ? "#218838" : "#f0f0f0",
+                color: currentPage === page + 1 ? "white" : "black",
+                fontWeight: currentPage === page + 1 ? "900" : "normal",
+                border: currentPage === page + 1 ? "none" : "none",
+                cursor: "pointer",
+                transition: "background-color 0.3s",
+              }}
             >
-              <button
-                className={`page-link1 ${
-                  currentPage === totalPages ? "active-next" : ""
-                }`}
-                onClick={() => handlePageChange4(currentPage + 1)}
-              >
-                Next
-              </button>
-            </li>
-          </ul>
-        </nav>
+              {page + 1}
+            </button>
+          ))}
+          <button
+            onClick={handleNextPage}
+            style={{ marginLeft: "10px", fontWeight: 600 }}
+            disabled={currentPage === totalPages}
+          >
+            Next
+          </button>
+        </div>
       </div>
     </div>
   );

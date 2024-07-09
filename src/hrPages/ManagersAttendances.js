@@ -4,8 +4,6 @@ import '../styles/managersAttendances.css';
 
 const ManagersAttendances = ({ title }) => {
     const [contacts, setContacts] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
@@ -20,9 +18,7 @@ const ManagersAttendances = ({ title }) => {
                 });
                 setContacts(response.data);
             } catch (error) {
-                setError('Failed to fetch contacts');
-            } finally {
-                setLoading(false);
+                console.error('Failed to fetch contacts:', error);
             }
         };
 
@@ -47,20 +43,14 @@ const ManagersAttendances = ({ title }) => {
         setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
     };
 
-    if (loading) {
-        return <div>Loading...</div>;
-    }
-
-    if (error) {
-        return <div>{error}</div>;
-    }
-
     return (
         <div className="managers-attendances-container">
             <div className="managers-attendances-title">{title}</div>
-            <p className='requestLeavedescription'>View the list of employees currently present today. HR can track real-time attendance and manage workforce availability efficiently.</p>
+            <p className='requestLeavedescription'>
+                View the list of employees currently present today. HR can track real-time attendance and manage workforce availability efficiently.
+            </p>
             {contacts.length === 0 ? (
-                <div>No feedback to show</div>
+                <div>No Manager detials to show</div>
             ) : (
                 <table className="managers-attendances-table">
                     <thead>
@@ -71,7 +61,7 @@ const ManagersAttendances = ({ title }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {currentItems.contacts.map((contact) => (
+                        {currentItems.map((contact) => (
                             <tr key={contact.user_email}>
                                 <td>
                                     <img 
@@ -87,7 +77,7 @@ const ManagersAttendances = ({ title }) => {
                     </tbody>
                 </table>
             )}
-                        <div style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
+            <div style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
                 <button
                     onClick={handlePreviousPage}
                     style={{ marginRight: "10px", fontWeight: 600 }}

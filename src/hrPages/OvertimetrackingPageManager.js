@@ -18,7 +18,7 @@ const OvertimetrackingPageManager = () => {
     <>
       <div className="hr-ot-tracking">
         <div className="hr-ot-sub-container">
-          <HRTrackOT userType="Manager" />
+          <HRTrackOT userType="Manager" title="Employee Attendance Today"/>
         </div>
       </div>
       <div className="chat-bot-icon">

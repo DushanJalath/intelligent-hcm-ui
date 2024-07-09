@@ -6,7 +6,7 @@ import api from "../api"
 
 
 
-const HRTrackOT = ({userType}) => {
+const HRTrackOT = ({userType,title }) => {
     const [otData, setOtData] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 6;
@@ -36,19 +36,30 @@ const HRTrackOT = ({userType}) => {
     }, [userType]);
 
 
-    const itemsPerPages = 8;
-    const indexOfLastItem = currentPage * itemsPerPages;
-    const indexOfFirstItem = indexOfLastItem - itemsPerPages;
+
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentData = otData.slice(indexOfFirstItem, indexOfLastItem);
-    const totalPages = Math.ceil(otData.length / itemsPerPages);
+    const totalPages = Math.ceil(otData.length / itemsPerPage);
   
     const handlePageChange = (newPage1) => {
       setCurrentPage(newPage1);
     };
 
+    const handlePreviousPage = () => {
+      setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
+  };
+
+  const handleNextPage = () => {
+      setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
+  };
+
     return (
         <div className="hrOTContainer">
+             <div className="managers-attendances-title">{title}</div>
             <div className="ot-table">
+           
+            <p className='requestLeavedescription'>View the list of employees currently present today. HR can track real-time attendance and manage workforce availability efficiently.</p>
                 {Array.from({ length: Math.ceil(currentData.length / 3) }, (_, rowIndex) => (
                     <div key={rowIndex} className="ot-row">
                         {currentData.slice(rowIndex * 3, rowIndex * 3 + 3).map((data, colIndex) => (
@@ -61,51 +72,41 @@ const HRTrackOT = ({userType}) => {
                 ))}
             </div>
            
-            <nav aria-label="Page-navigation">
-          <ul className="hrot-pagination">
-            <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
-              <button
-                className={`page-link1 ${
-                  currentPage === 1 ? "active-prev" : ""
-                }`}
-                onClick={() => handlePageChange(currentPage - 1)}
-              >
-                Previous
-              </button>
-            </li>
-            {Array.from({ length: totalPages }, (_, index) => (
-              <li
-                key={index}
-                className={`page-item1 ${
-                  currentPage === index + 1 ? "active" : ""
-                }`}
-              >
+            <div style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
                 <button
-                  className={`page-link ${
-                    currentPage === index + 1 ? "active" : ""
-                  }`}
-                  onClick={() => handlePageChange(index + 1)}
+                    onClick={handlePreviousPage}
+                    style={{ marginRight: "10px", fontWeight: 600 }}
+                    disabled={currentPage === 1}
                 >
-                  {index + 1}
+                    Previous
                 </button>
-              </li>
-            ))}
-            <li
-              className={`page-item ${
-                currentPage === totalPages ? "disabled" : ""
-              }`}
-            >
-              <button
-                className={`page-link1 ${
-                  currentPage === totalPages ? "active-next" : ""
-                }`}
-                onClick={() => handlePageChange(currentPage + 1)}
-              >
-                Next
-              </button>
-            </li>
-          </ul>
-        </nav>
+                {[...Array(totalPages).keys()].map((page) => (
+                    <button
+                        key={page + 1}
+                        onClick={() => handlePageChange(page + 1)}
+                        style={{
+                            marginRight: "10px",
+                            padding: "8px 16px",
+                            borderRadius: "25px",
+                            backgroundColor: currentPage === page + 1 ? "#218838" : "#f0f0f0",
+                            color: currentPage === page + 1 ? "white" : "black",
+                            fontWeight: currentPage === page + 1 ? "900" : "normal",
+                            border: currentPage === page + 1 ? "none" : "none",
+                            cursor: "pointer",
+                            transition: "background-color 0.3s",
+                        }}
+                    >
+                        {page + 1}
+                    </button>
+                ))}
+                <button
+                    onClick={handleNextPage}
+                    style={{ marginLeft: "10px", fontWeight: 600 }}
+                    disabled={currentPage === totalPages}
+                >
+                    Next
+                </button>
+            </div>
         </div>
     );
 };

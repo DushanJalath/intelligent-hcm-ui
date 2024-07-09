@@ -8,7 +8,7 @@ import { useState } from 'react';
 import api from "../api";
 import AvDropdown2 from './AvDropdown2';
 
-export default function HRAddVacancy(props) {
+export default function HRAddVacancy({ title }) {
     const [successMessage, setSuccessMessage] = useState('');
 
     //project type
@@ -88,11 +88,9 @@ export default function HRAddVacancy(props) {
     
   return (
     <div className='container-HRADD'>
-        <div className='title-hrv'><p className='title-para'>{props.title}</p></div>
+        <div className="managers-attendances-title">{title}</div>
+        <p className='requestLeavedescription'>View the list of employees currently present today. HR can track real-time attendance and manage workforce availability efficiently.</p>
         <div className='para-form'>
-            <div className='paragraph1'>
-                <p>Please fill in the details below and generate system suggestions for the job vacancy. If the requirements are satisfactory, submit your form.</p>
-            </div>
             <div className='form-hrv'>
                 <form onSubmit={HandleGenarate}>
                     <div className='In1'>

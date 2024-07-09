@@ -4,9 +4,10 @@ import axios from 'axios';
 import '../styles/LeaveApprove.css';
 import { Button } from "@mui/material";
 
-export default function LeaveApproveEmployees() {
+export default function LeaveApproveEmployees({ title }) {
     const [leaveRequests, setLeaveRequests] = useState([]);
     const [statusUpdates, setStatusUpdates] = useState({});
+    const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
         const fetchLeaveRequests = async () => {
@@ -49,12 +50,32 @@ export default function LeaveApproveEmployees() {
         }
     };
 
+    const itemsPerPage = 10;
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = leaveRequests.slice(indexOfFirstItem, indexOfLastItem);
+    const totalPages = Math.ceil(leaveRequests.length / itemsPerPage);
+
+    const handlePageChange = (newPage) => {
+        setCurrentPage(newPage);
+    };
+
+    const handlePreviousPage = () => {
+        setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
+    };
+
+    const handleNextPage = () => {
+        setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
+    };
+
     return (
         <div className="leaveApprove-container">
-            <div className="menu">
-                <p>Approve Employees Leave</p>
-            </div>
-            {leaveRequests.map((request, index) => (
+            <div className="managers-attendances-title">{title}</div>
+            <p className='requestLeavedescription'>
+                View the list of employees currently present today. HR can track real-time attendance and manage workforce availability efficiently.
+            </p>
+            
+            {currentItems.map((request, index) => (
                 <div className="user-card" key={index}>
                     <div className="user-details">
                         <div className="user-name">
@@ -147,6 +168,42 @@ export default function LeaveApproveEmployees() {
                     </div>
                 </div>
             ))}
+            
+                <div style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
+                <button
+                    onClick={handlePreviousPage}
+                    style={{ marginRight: "10px", fontWeight: 600 }}
+                    disabled={currentPage === 1}
+                >
+                    Previous
+                </button>
+                {[...Array(totalPages).keys()].map((page) => (
+                    <button
+                        key={page + 1}
+                        onClick={() => handlePageChange(page + 1)}
+                        style={{
+                            marginRight: "10px",
+                            padding: "8px 16px",
+                            borderRadius: "25px",
+                            backgroundColor: currentPage === page + 1 ? "#218838" : "#f0f0f0",
+                            color: currentPage === page + 1 ? "white" : "black",
+                            fontWeight: currentPage === page + 1 ? "900" : "normal",
+                            border: currentPage === page + 1 ? "none" : "none",
+                            cursor: "pointer",
+                            transition: "background-color 0.3s",
+                        }}
+                    >
+                        {page + 1}
+                    </button>
+                ))}
+                <button
+                    onClick={handleNextPage}
+                    style={{ marginLeft: "10px", fontWeight: 600 }}
+                    disabled={currentPage === totalPages}
+                >
+                    Next
+                </button>
+            </div>
         </div>
     );
 }

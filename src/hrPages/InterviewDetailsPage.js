@@ -6,7 +6,7 @@ export default function InterviewDetailsPage() {
   return (
     <div>
       <div>
-        <InterviewDetails />
+        <InterviewDetails title={"Interview Details"}/>
       </div>
     </div>
   );

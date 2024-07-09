@@ -2,7 +2,7 @@ import '../styles/userRegistration.css';
 import React, { useState, useEffect } from 'react';
 import api from '../api';
 
-function UserRegistration(props) {
+function UserRegistration({title}) {
     const [fName, setFirstName] = useState('');
     const [lName, setLastName] = useState('');
     const [contactNo, setContactNo] = useState('');
@@ -146,7 +146,10 @@ function UserRegistration(props) {
 
     return (
         <div className='user-reg-container'>
-            <div className='user-reg-title'>{props.title}</div>
+            <div className="title-contact-us">{title}</div>
+            <p className='requestLeavedescription'>
+            The user registration form is designed to collect essential information from new users to create an account in the system.
+            </p>
             <form onSubmit={addTodoHandler}>
                 <div className="user-reg-grp-container">
                     <div className='user-reg-grp'>

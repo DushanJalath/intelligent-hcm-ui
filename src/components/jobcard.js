@@ -104,9 +104,11 @@ const JobCard = ({ jobTitle, jobType, workMode, file_id, vacancy_id, applyLink }
                     <FaFilePdf style={{ color: '#ff0000', fontSize: '30px', cursor: 'pointer' }} />
                 </a>
                 <br />
-                <button className={styles.cvuploadbutton} onClick={handleApply}>
-                    Apply <FaUserPlus className={styles.applyIcon} />
-                </button>
+                {userType !== 'Manager' && userType !== 'HR' && (
+                    <button className={styles.cvuploadbutton} onClick={handleApply}>
+                        Apply <FaUserPlus className={styles.applyIcon} />
+                    </button>
+                )}
                 {renderStopButton()} {/* Render Stop button conditionally */}
             </div>
         </div>

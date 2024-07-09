@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import SubMenu from "./SubMenu";
-import { SlSettings } from "react-icons/sl";
 import { AiOutlineAppstore, AiOutlinePlusCircle } from "react-icons/ai";
 import { IoExitOutline } from "react-icons/io5";
 import { useMediaQuery } from "react-responsive";

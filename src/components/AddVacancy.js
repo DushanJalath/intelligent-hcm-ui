@@ -8,7 +8,7 @@ import { useState } from 'react';
 import api from '../api';
 import AvDropdown2 from './AvDropdown2';
 
-export default function AddVacancy(props) {
+export default function AddVacancy({title}) {
     const [successMessage, setSuccessMessage] = useState('');
 
     const [jobType, setJobType] = useState('');
@@ -95,12 +95,11 @@ export default function AddVacancy(props) {
 
   return (
     <div className='container-AV'>
-        <div className='title-AV'><p className='title-para-AV'>{props.title}</p></div>
+                    <div className="title-contact-us">{title}</div>
+            <p className='requestLeavedescription'>
+                View the list of messages from the contact us form. HR can manage and respond to these messages efficiently.
+            </p>
         <div className='para-form-AV'>
-            <div className='paragraph1-AV'>
-                <p>Please fill in the details below and generate system suggestions for the job vacancy. If the requirements are satisfactory, submit your form to the HR. If you need to edit the requirements, make 
-                    the necessary changes and forward them to the HR for review.</p>
-            </div>
             <div className='form-AV'>
                 <form onSubmit={HandleGenarate}>
                     <div className='In1'>

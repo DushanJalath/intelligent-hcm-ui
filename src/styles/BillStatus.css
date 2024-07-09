@@ -5,7 +5,7 @@
     border-radius: 10px;
     position: relative;
     padding: 20px;
-    margin-left: 470px;
+    margin-left: 25%;
     margin-bottom: 50px;
     transition: width 0.3s ease; /* Add transition for smooth width change */
 }

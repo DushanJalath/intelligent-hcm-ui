@@ -21,6 +21,7 @@
   border-collapse: collapse;
   border-radius: 10px;
   overflow: hidden;
+  margin-top: 20px;
 }
 
 .interview-details-table th, .interview-details-table td {
@@ -30,6 +31,7 @@
   vertical-align: top;
   max-width: 200px;
   word-wrap: break-word;
+  font-size: 12px;
 }
 
 .interview-details-table th {

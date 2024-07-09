@@ -23,10 +23,8 @@ const InterviewDetails = ({ title }) => {
                 });
                 setInterviews(response.data);
             } catch (error) {
-                setError('Failed to fetch interviews');
-            } finally {
-                setLoading(false);
-            }
+                console.error('Failed to fetch contacts:', error);
+            } 
         };
 
         fetchInterviews();
@@ -61,17 +59,12 @@ const InterviewDetails = ({ title }) => {
       setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
     };
 
-    if (loading) {
-        return <div>Loading...</div>;
-    }
-
-    if (error) {
-        return <div>{error}</div>;
-    }
-
     return (
         <div className="interview-details-container">
-            <div className="interview-details-title">{title}</div>
+            <div className="title-contact-us">{title}</div>
+            <p className='requestLeavedescription'>
+                View the list of messages from the contact us form. HR can manage and respond to these messages efficiently.
+            </p>
             {interviews.length === 0 ? (
                 <div>No interviews to show</div>
             ) : (
@@ -79,7 +72,6 @@ const InterviewDetails = ({ title }) => {
                     <table className="interview-details-table">
                         <thead>
                             <tr>
-                                <th>I ID</th>
                                 <th>C ID</th>
                                 <th>Date</th>
                                 <th>Time</th>
@@ -93,7 +85,6 @@ const InterviewDetails = ({ title }) => {
                         <tbody>
                             {currentItems.map((interview) => (
                                 <tr key={interview.ID}>
-                                    <td>{interview.i_id}</td>
                                     <td>{interview.c_id}</td>
                                     <td>{interview.date}</td>
                                     <td>{interview.time}</td>

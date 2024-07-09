@@ -16,7 +16,7 @@
   }
   input {
       font-size: 90%;
-      padding-left: 10px;
+      padding: 8px;
   }
   svg{
       display: inline-block;

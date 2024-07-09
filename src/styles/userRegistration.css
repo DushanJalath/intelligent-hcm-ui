@@ -1,12 +1,13 @@
 .user-reg-container{
     margin-top: 50px;
     margin-right: 50px;
-    width: 90%;
+    width: 88%;
     height : auto;
     background-color: #EAEAEA;
     border-radius: 10px;
     position: relative;
-    padding: 10px;
+    padding: 20px;
+    margin-bottom: 50px;
 }
 
 .user-reg-title{

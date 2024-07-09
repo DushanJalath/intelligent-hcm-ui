@@ -25,7 +25,7 @@ const OverTimetrackingPageEmp = () => {
                 </div>*/}
 
           <div className="hr-ot-sub-container">
-            <HRTrackOT userType="Employee" />
+            <HRTrackOT userType="Employee" title="Employee Attendance Today"/>
           </div>
         </div>
       </div>

@@ -29,7 +29,7 @@ function BillStatus(props) {
     fetchBillDetails();
   }, []);
 
-  // Calculate total pages
+
   const totalPages = Math.ceil(billDetails.length / billsPerPage);
 
   const handlePageChange = (page) => {
@@ -44,7 +44,7 @@ function BillStatus(props) {
     setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
   };
 
-  // Calculate the index of the first and last bill card to display on the current page
+
   const startIndex = (currentPage - 1) * billsPerPage;
   const endIndex = Math.min(startIndex + billsPerPage, billDetails.length);
 
@@ -56,7 +56,7 @@ function BillStatus(props) {
           Authorization: `Bearer ${accessToken}`,
         },
       });
-      // Remove the deleted bill from state
+
       setBillDetails(billDetails.filter((bill) => bill.bill_id !== billId));
       console.log(`Successfully deleted bill with ID ${billId}`);
     } catch (error) {
@@ -150,7 +150,6 @@ function BillStatus(props) {
                     backgroundColor: isActive ? "#218838" : "#f0f0f0",
                     color: isActive ? "white" : "black",
                     fontWeight: isActive ? "900" : "normal",
-                    border: isActive ? "1px solid #0056b3" : "none",
                     cursor: "pointer",
                     transition: "background-color 0.3s",
                   }}

@@ -1,11 +1,10 @@
 .yearly-workhour-bar-container{
-    margin-top: 50px;
     width: 640px;
     background-color: #EAEAEA;
     border-radius: 10px;
     position: relative;
     padding: 20px;
-    margin-left: 400px;
+    margin-left: 25%;
     margin-bottom: 50px;
 }
 

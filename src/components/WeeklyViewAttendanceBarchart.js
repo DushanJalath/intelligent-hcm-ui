@@ -15,9 +15,12 @@ const months = [
 const ChartComponent = ({ title }) => {
     const [dataObjects, setDataObjects] = useState([]);
     const [totalWorkHourToday, setTotalWorkHourToday] = useState("");
-    const [currentDate, setCurrentDate] = useState({
-        month: 4,  // April
-        year: 2023,
+    const [currentDate, setCurrentDate] = useState(() => {
+        const now = new Date();
+        return {
+            month: now.getMonth() + 1,  
+            year: now.getFullYear(),
+        };
     });
 
     useEffect(() => {
@@ -127,7 +130,9 @@ const ChartComponent = ({ title }) => {
 
     return (
         <div className='weekly-view-bar-container'>
-            <div className='weekly-view-bar-title'>{title}</div>
+            <div className="managers-attendances-title">{title}</div>
+            <p className='requestLeavedescription'>
+            Overview of a user's total work hours for each week.</p>
             <Card sx={{ padding: 2, boxShadow: 3, width: 420, marginLeft: 0 }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
                     <IconButton onClick={() => handleMonthChange(-1)} title="Previous Month" sx={{ color: '#02936F' }}>
